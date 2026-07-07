@@ -1,10 +1,20 @@
-# CTHR: Constraint-Traceable Hierarchical Rule Compilation
+# CTHR
+
+[Zhulongtao6/CTHR-Constraint-Traceable-Hierarchical-Rule-Compilation-for-Auditable-KG-Driven-Optimization](https://github.com/Zhulongtao6/CTHR-Constraint-Traceable-Hierarchical-Rule-Compilation-for-Auditable-KG-Driven-Optimization)
 
 This repository contains the experiment code, benchmark data, prompts, result artifacts, and paper source for:
 
 **CTHR: Constraint-Traceable Hierarchical Rule Compilation for Auditable KG-Driven Optimization**.
 
 CTHR is a provenance-preserving KG-to-rule-to-feasible-cell modeling layer. It compiles source-linked rules into auditable feasible cells that can be consumed by downstream solver backends.
+
+## Figures
+
+![CTHR overview](paper_editing/figures/figs/fig.%201.%20overview.jpg)
+
+![Flat modeling and CTHR valid-structure modeling example](paper_editing/figures/figs/fig.%202.%20an%20example.jpg)
+
+![Example benchmark task inputs](paper_editing/figures/figs/fig.%203.%20an%20example%20of%20dataset%20.jpg)
 
 ## Repository Layout
 
@@ -49,4 +59,3 @@ Run scripts from the repository root so that relative paths resolve consistently
 ## Prompts
 
 The KG-to-rule extraction prompts are provided under `prompts/`. They are included to make the rule-library construction process inspectable and reproducible.
-
