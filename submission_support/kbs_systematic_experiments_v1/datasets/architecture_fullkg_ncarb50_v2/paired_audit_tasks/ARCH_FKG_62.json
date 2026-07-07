@@ -1,0 +1,471 @@
+{
+  "version": "architecture_ncarb50_v2_paired_audit_task_v1",
+  "visibility": "hidden_evaluation_or_offline_audit_only_not_method_input",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_62",
+    "title": "NCARB-derived existing care-unit patient door exception",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "exception_resolution",
+    "design_intent": "Paraphrased NCARB-derived scenario: clinic door retrofit and access-control coordination. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "occupancy_group": "I-2",
+      "condition": "Condition 1",
+      "door_status": "existing",
+      "occupancy_type": "Group I-2",
+      "door_usage": "movement of patients in beds",
+      "status": "existing",
+      "ncarb_scenario_theme": "clinic door retrofit and access-control coordination",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "fire_and_egress",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Existing care-unit door exception field retrofit decision variant.",
+      "existing_condition": "field_retrofit_decision",
+      "exception_trigger_condition": "existing_i2_condition_1",
+      "retrofit_cost_context": "field_modification_cost_sensitive"
+    },
+    "decision_variables": {
+      "door_clear_width_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 28,
+        "upper": 48
+      },
+      "retrofit_cost_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      },
+      "usable_width_margin_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 0,
+        "upper": 16
+      }
+    },
+    "objectives": [
+      {
+        "name": "minimize_retrofit_cost",
+        "expression": "retrofit_cost_score"
+      },
+      {
+        "name": "maximize_usable_width_margin",
+        "expression": "usable_width_margin_in"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.68,
+        0.32
+      ],
+      "meaning": "prioritize lower retrofit cost while preserving usable width margin"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_62_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "clinic door retrofit and access-control coordination",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "scenario_variant_status": "parameterized_scenario_variant",
+    "scenario_variant_note": "Parameterized variant with substantive changes in facts, bounds, weights, or document context; not a fully independent real project case.",
+    "scenario_variant_differentiator": "Existing care-unit door exception field retrofit decision variant.",
+    "scenario_variant_group_id": "ncarb50_scenario_variant_group_10"
+  },
+  "evaluation_reference": {
+    "omega_id": "ARCH_FKG_62",
+    "title": "NCARB-derived existing care-unit patient door exception",
+    "rule_structure": {
+      "expected_source_rule_ids": [
+        "ifc2021-moe-door-patient-bed-min-width",
+        "ifc2021-moe-door-patient-bed-exception-i2-condition1"
+      ],
+      "expected_defeated_rule_ids": [
+        "ifc2021-moe-door-patient-bed-min-width"
+      ],
+      "expected_surviving_rule_ids": [
+        "ifc2021-moe-door-patient-bed-exception-i2-condition1"
+      ],
+      "expected_valid_rule_structures": [
+        [
+          "ifc2021-moe-door-patient-bed-exception-i2-condition1"
+        ]
+      ],
+      "expected_rule_behavior": {
+        "should_activate": [
+          "Exception for existing means of egress doors in Group I-2, Condition 1"
+        ],
+        "should_exclude": [
+          "Minimum clear width for means of egress doors used for patient bed movement"
+        ],
+        "should_resolve": [
+          "exception_or_override"
+        ]
+      },
+      "challenge_types": [
+        "exception_or_override"
+      ],
+      "valid_constraint_cell_ids": [
+        "ARCH_FKG_62_cell_1"
+      ],
+      "expected_provenance": {
+        "kg_chunk_ids": [
+          "099fde66-faf8-570e-9149-0286f08114ce"
+        ],
+        "kg_node_ids": [
+          "b0d05832-51ec-5c51-9e75-386eb55272f0",
+          "cb46b375-5110-5a8a-b8b4-25fcfad8e50a",
+          "ebed6137-4c48-5018-9411-23b5e2b10d4a"
+        ],
+        "kg_edge_ids": [
+          "kg_edge_23822",
+          "kg_edge_37053"
+        ],
+        "source_documents": [
+          {
+            "document": "IFC-2021",
+            "section": "Means of egress doors used for the movement of patients in beds",
+            "page": "unknown",
+            "chunk_id": "099fde66-faf8-570e-9149-0286f08114ce"
+          },
+          {
+            "document": "IFC-2021",
+            "section": "Exceptions: 2. In Group I-2, Condition 1, existing means of egress doors...",
+            "page": "unknown",
+            "chunk_id": "099fde66-faf8-570e-9149-0286f08114ce"
+          },
+          {
+            "document": "ARE-Practice-Exam-Project-Development-and-Documentation.pdf",
+            "section": "Project Development and Documentation",
+            "page": "practice-exam-question",
+            "question_number": "Question 16",
+            "derivation_policy": "Paraphrased and parameterized from an NCARB practice-exam scenario; original question text is not copied."
+          }
+        ]
+      }
+    },
+    "feasible_region": {
+      "executable_constraints": [
+        {
+          "constraint_id": "C1",
+          "expression": "door_clear_width_in >= 32",
+          "role": "existing_i2_condition1_width_exception",
+          "source_type": "rule_library",
+          "source_id": "ifc2021-moe-door-patient-bed-exception-i2-condition1",
+          "executable": true,
+          "checker_expression": "door_clear_width_in >= 32",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "door_clear_width_in"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C2",
+          "expression": "usable_width_margin_in == door_clear_width_in - 32",
+          "role": "exception_width_margin_certificate",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_existing_door_model",
+          "executable": true,
+          "checker_expression": "usable_width_margin_in == door_clear_width_in - 32",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "usable_width_margin_in",
+              "door_clear_width_in"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C90",
+          "expression": "retrofit_cost_score >= 0.5 * (door_clear_width_in - 32)",
+          "role": "retrofit_cost_scales_with_added_width",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "retrofit_cost_score >= 0.5 * (door_clear_width_in - 32)",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "retrofit_cost_score",
+              "door_clear_width_in"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Wider existing-door retrofit increases cost proxy."
+          }
+        }
+      ],
+      "structure_only_constraints": [
+        {
+          "constraint_id": "S1",
+          "expression": "1 == 1",
+          "role": "exception_defeats_baseline_width_rule",
+          "source_type": "rule_library",
+          "source_id": "ifc2021-moe-door-patient-bed-min-width",
+          "executable": false,
+          "reason_not_executable": "not represented as a direct numeric predicate",
+          "semantic_statement": "new patient-bed door width rule is defeated by the existing I-2 Condition 1 exception",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "metadata": {
+            "structure_only_relation": true,
+            "semantic_statement": "new patient-bed door width rule is defeated by the existing I-2 Condition 1 exception",
+            "boolean_placeholder_policy": "The executable expression is a tautological placeholder; the relation is evaluated through rule_structure labels, provenance, and semantic_statement."
+          }
+        }
+      ],
+      "valid_constraint_cells": [
+        {
+          "cell_id": "ARCH_FKG_62_cell_1",
+          "cell_type": "single_valid_fullkg_rule_structure",
+          "rule_ids": [
+            "ifc2021-moe-door-patient-bed-exception-i2-condition1"
+          ],
+          "constraints": [
+            {
+              "constraint_id": "C1",
+              "expression": "door_clear_width_in >= 32",
+              "role": "existing_i2_condition1_width_exception",
+              "source_type": "rule_library",
+              "source_id": "ifc2021-moe-door-patient-bed-exception-i2-condition1",
+              "executable": true,
+              "checker_expression": "door_clear_width_in >= 32",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "door_clear_width_in"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C2",
+              "expression": "usable_width_margin_in == door_clear_width_in - 32",
+              "role": "exception_width_margin_certificate",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_existing_door_model",
+              "executable": true,
+              "checker_expression": "usable_width_margin_in == door_clear_width_in - 32",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "usable_width_margin_in",
+                  "door_clear_width_in"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C90",
+              "expression": "retrofit_cost_score >= 0.5 * (door_clear_width_in - 32)",
+              "role": "retrofit_cost_scales_with_added_width",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "retrofit_cost_score >= 0.5 * (door_clear_width_in - 32)",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "retrofit_cost_score",
+                  "door_clear_width_in"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Wider existing-door retrofit increases cost proxy."
+              }
+            }
+          ],
+          "description": "Executable feasible cell induced by the expected full-KG rule structure for this grounded scenario."
+        }
+      ],
+      "reference_semantics": {
+        "positive_membership_condition": "all executable_constraints evaluate true and at least one valid cell holds when cells are present",
+        "structure_only_constraints_usage": "used to check rule resolution, provenance, exceptions, or semantic requirements before numeric membership checking"
+      }
+    },
+    "certificate_targets": {
+      "source_rule_ids": [
+        "ifc2021-moe-door-patient-bed-min-width",
+        "ifc2021-moe-door-patient-bed-exception-i2-condition1"
+      ],
+      "provenance": [
+        {
+          "document": "IFC-2021",
+          "section": "Means of egress doors used for the movement of patients in beds",
+          "page": "unknown",
+          "chunk_id": "099fde66-faf8-570e-9149-0286f08114ce"
+        },
+        {
+          "document": "IFC-2021",
+          "section": "Exceptions: 2. In Group I-2, Condition 1, existing means of egress doors...",
+          "page": "unknown",
+          "chunk_id": "099fde66-faf8-570e-9149-0286f08114ce"
+        }
+      ]
+    },
+    "diagnostic_candidate_rule_ids_reference_only": [
+      "ifc2021-moe-door-patient-bed-min-width",
+      "ifc2021-moe-door-patient-bed-exception-i2-condition1"
+    ],
+    "rule_library_id_bindings": [
+      {
+        "rule_id": "ifc2021-moe-door-patient-bed-exception-i2-condition1",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ifc2021-moe-door-patient-bed-exception-i2-condition1",
+        "rule_name": "Exception for existing means of egress doors in Group I-2, Condition 1",
+        "rule_type": "exception",
+        "source_chunk_ids": [
+          "099fde66-faf8-570e-9149-0286f08114ce"
+        ],
+        "source_node_ids": [
+          "cb46b375-5110-5a8a-b8b4-25fcfad8e50a"
+        ],
+        "provenance": [
+          {
+            "document": "IFC-2021",
+            "section": "Exceptions: 2. In Group I-2, Condition 1, existing means of egress doors...",
+            "page": "unknown",
+            "chunk_id": "099fde66-faf8-570e-9149-0286f08114ce"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "minimum_clear_width",
+            "op": ">=",
+            "value": 813,
+            "unit": "mm"
+          },
+          {
+            "variable": "minimum_clear_width",
+            "op": ">=",
+            "value": 32,
+            "unit": "in"
+          }
+        ]
+      },
+      {
+        "rule_id": "ifc2021-moe-door-patient-bed-min-width",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ifc2021-moe-door-patient-bed-min-width",
+        "rule_name": "Minimum clear width for means of egress doors used for patient bed movement",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "099fde66-faf8-570e-9149-0286f08114ce"
+        ],
+        "source_node_ids": [
+          "b0d05832-51ec-5c51-9e75-386eb55272f0",
+          "ebed6137-4c48-5018-9411-23b5e2b10d4a"
+        ],
+        "provenance": [
+          {
+            "document": "IFC-2021",
+            "section": "Means of egress doors used for the movement of patients in beds",
+            "page": "unknown",
+            "chunk_id": "099fde66-faf8-570e-9149-0286f08114ce"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "minimum_clear_width",
+            "op": ">=",
+            "value": 1054,
+            "unit": "mm"
+          },
+          {
+            "variable": "minimum_clear_width",
+            "op": ">=",
+            "value": 41.5,
+            "unit": "in"
+          }
+        ]
+      }
+    ],
+    "reference_constraint_rule_bindings": [
+      {
+        "reference_container": "feasible_region.executable_constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "existing_i2_condition1_width_exception",
+        "reference_expression": "door_clear_width_in >= 32",
+        "source_rule_id": "ifc2021-moe-door-patient-bed-exception-i2-condition1",
+        "rule_library_rule_id": "ifc2021-moe-door-patient-bed-exception-i2-condition1",
+        "rule_library_rule_name": "Exception for existing means of egress doors in Group I-2, Condition 1"
+      },
+      {
+        "reference_container": "feasible_region.structure_only_constraints[0]",
+        "reference_constraint_id": "S1",
+        "reference_role": "exception_defeats_baseline_width_rule",
+        "reference_expression": "1 == 1",
+        "source_rule_id": "ifc2021-moe-door-patient-bed-min-width",
+        "rule_library_rule_id": "ifc2021-moe-door-patient-bed-min-width",
+        "rule_library_rule_name": "Minimum clear width for means of egress doors used for patient bed movement",
+        "semantic_statement": "new patient-bed door width rule is defeated by the existing I-2 Condition 1 exception",
+        "expression_language": "python_safe_arithmetic_predicate",
+        "metadata": {
+          "structure_only_relation": true,
+          "semantic_statement": "new patient-bed door width rule is defeated by the existing I-2 Condition 1 exception",
+          "boolean_placeholder_policy": "The executable expression is a tautological placeholder; the relation is evaluated through rule_structure labels, provenance, and semantic_statement."
+        }
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "existing_i2_condition1_width_exception",
+        "reference_expression": "door_clear_width_in >= 32",
+        "source_rule_id": "ifc2021-moe-door-patient-bed-exception-i2-condition1",
+        "rule_library_rule_id": "ifc2021-moe-door-patient-bed-exception-i2-condition1",
+        "rule_library_rule_name": "Exception for existing means of egress doors in Group I-2, Condition 1"
+      }
+    ],
+    "task_derivation_source": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "document": "ARE-Practice-Exam-Project-Development-and-Documentation.pdf",
+      "division": "Project Development and Documentation",
+      "question_number": "Question 16",
+      "theme": "clinic door retrofit and access-control coordination",
+      "adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "source_policy": "Hidden provenance only; algorithm-visible inputs expose only generalized NCARB-derived themes."
+    },
+    "benchmark_extension_metadata": {
+      "extension_round": "architecture_ncarb_50_extension",
+      "source_base_task_id": "ARCH_FKG_08",
+      "ncarb_category": "fire_and_egress",
+      "source_policy": "paraphrased_parameterized_not_verbatim",
+      "dataset_characterization": "NCARB practice-topic-derived, paraphrased, and parameterized architecture-code semantic extension task.",
+      "independence_claim": "parameterized_variant_not_fully_independent_real_project_case",
+      "source_visibility_policy": "Exact practice identifiers, original question text, answer choices, and source file names are hidden from algorithm-visible inputs.",
+      "scenario_variant_group_id": "ncarb50_scenario_variant_group_10",
+      "scenario_variant_group_members": [
+        "ARCH_FKG_62",
+        "ARCH_FKG_97"
+      ],
+      "scenario_variant_status": "parameterized_scenario_variant",
+      "scenario_variant_differentiator": "Existing care-unit door exception field retrofit decision variant.",
+      "method_visibility": "hidden_evaluation_reference_not_method_input"
+    }
+  }
+}

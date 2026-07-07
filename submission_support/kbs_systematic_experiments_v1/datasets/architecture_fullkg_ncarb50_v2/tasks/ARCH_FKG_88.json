@@ -1,0 +1,78 @@
+{
+  "version": "architecture_ncarb50_v2_public_task_v1",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_88",
+    "title": "NCARB-derived fire-wall alternative to outdoor control area setback",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "site_hazard_control_area_layout",
+    "design_intent": "Evaluate a fire-wall alternative for an outdoor control area where site constraints make full separation costly.",
+    "scenario_facts": {
+      "entity_type": "outdoor control area",
+      "hazardous_material_state": "solid_or_liquid",
+      "public_way_or_buildable_lot_line": true,
+      "alternative_fire_wall_considered": true,
+      "ncarb_scenario_theme": "brownfield retail site planning",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "site_and_zoning_like",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized"
+    },
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "brownfield retail site planning",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "decision_variables": {
+      "minimum_setback_distance_ft": {
+        "type": "continuous",
+        "unit": "ft",
+        "lower": 0,
+        "upper": 40
+      },
+      "fire_wall_rating_hr": {
+        "type": "continuous",
+        "unit": "hour",
+        "lower": 0,
+        "upper": 4
+      },
+      "site_efficiency_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 15
+      },
+      "protection_redundancy_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 15
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_site_efficiency",
+        "expression": "site_efficiency_score"
+      },
+      {
+        "name": "maximize_protection_redundancy",
+        "expression": "protection_redundancy_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.5,
+        0.5
+      ],
+      "meaning": "balance site efficiency and fire-resistance protection"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_88_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references."
+  }
+}

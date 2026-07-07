@@ -1,0 +1,485 @@
+{
+  "version": "architecture_ncarb50_v2_paired_audit_task_v1",
+  "visibility": "hidden_evaluation_or_offline_audit_only_not_method_input",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_68",
+    "title": "NCARB-derived solvent area extinguisher placement",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "hazardous_process_safety_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: restaurant event and service-area coordination. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "process": "solvent_distillation",
+      "hazardous_residue_present": true,
+      "facility_activity": "solvent distillation",
+      "material_type": "hazardous residue",
+      "ncarb_scenario_theme": "restaurant event and service-area coordination",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "fire_and_egress",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Rule-applicability judgment task for categorical/code-trigger semantics."
+    },
+    "decision_variables": {
+      "portable_fire_extinguisher_count": {
+        "type": "integer",
+        "unit": "unit",
+        "lower": 0,
+        "upper": 6
+      },
+      "extinguisher_coverage_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      },
+      "storage_compliance_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1
+      }
+    },
+    "objectives": [
+      {
+        "name": "minimize_extinguisher_count",
+        "expression": "portable_fire_extinguisher_count"
+      },
+      {
+        "name": "maximize_extinguisher_coverage",
+        "expression": "extinguisher_coverage_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.45,
+        0.55
+      ],
+      "meaning": "slightly prioritize coverage"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_68_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "restaurant event and service-area coordination",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "task_semantics_profile": "semantic_indicator_dominant",
+    "task_semantics_note": "Rule applicability, precedence, categorical, or system-capability semantics dominate this task; it is not a pure continuous numeric optimization task.",
+    "scenario_variant_differentiator": "Rule-applicability judgment task for categorical/code-trigger semantics."
+  },
+  "evaluation_reference": {
+    "omega_id": "ARCH_FKG_68",
+    "title": "NCARB-derived solvent area extinguisher placement",
+    "rule_structure": {
+      "expected_source_rule_ids": [
+        "ifc-2021-5705-4-9-portable-fire-extinguishers",
+        "ifc-2021-5705-4-8-storage-hazardous-residue"
+      ],
+      "expected_defeated_rule_ids": [],
+      "expected_surviving_rule_ids": [
+        "ifc-2021-5705-4-8-storage-hazardous-residue",
+        "ifc-2021-5705-4-9-portable-fire-extinguishers"
+      ],
+      "expected_valid_rule_structures": [
+        [
+          "ifc-2021-5705-4-8-storage-hazardous-residue",
+          "ifc-2021-5705-4-9-portable-fire-extinguishers"
+        ]
+      ],
+      "expected_rule_behavior": {
+        "should_activate": [
+          "Storage requirement for hazardous residue from distillation",
+          "Provision of approved portable fire extinguishers for solvent distillation areas"
+        ],
+        "should_exclude": [],
+        "should_resolve": [
+          "multi_rule_conjunction"
+        ]
+      },
+      "challenge_types": [
+        "multi_rule_conjunction"
+      ],
+      "valid_constraint_cell_ids": [
+        "ARCH_FKG_68_cell_1"
+      ],
+      "expected_provenance": {
+        "kg_chunk_ids": [
+          "0f3f9182-6a1b-5ec3-a2cf-294bc104fed7"
+        ],
+        "kg_node_ids": [
+          "031a4b66-0a6f-5c05-a5ba-73d6e4169818",
+          "1963ed98-8cb1-5e5f-967d-869257effab3",
+          "d048a75d-42b8-56a1-99ec-c4fc0bc342c4",
+          "d36de405-a91f-5a9d-8711-4e385adca42d",
+          "dd3631e8-01a1-5eea-aa0f-4733ef1ee0d3"
+        ],
+        "kg_edge_ids": [
+          "kg_edge_15076",
+          "kg_edge_15895",
+          "kg_edge_15901",
+          "kg_edge_32094",
+          "kg_edge_47609"
+        ],
+        "source_documents": [
+          {
+            "document": "IFC 2021",
+            "section": "5705.4.9",
+            "page": "unknown",
+            "chunk_id": "0f3f9182-6a1b-5ec3-a2cf-294bc104fed7"
+          },
+          {
+            "document": "IFC 2021",
+            "section": "5705.4.8",
+            "page": "unknown",
+            "chunk_id": "0f3f9182-6a1b-5ec3-a2cf-294bc104fed7"
+          },
+          {
+            "document": "ARE-Practice-Exam-Project-Development-and-Documentation.pdf",
+            "section": "Project Development and Documentation",
+            "page": "practice-exam-question",
+            "question_number": "Question 9",
+            "derivation_policy": "Paraphrased and parameterized from an NCARB practice-exam scenario; original question text is not copied."
+          }
+        ]
+      }
+    },
+    "feasible_region": {
+      "executable_constraints": [
+        {
+          "constraint_id": "C1",
+          "expression": "portable_fire_extinguisher_count >= 1",
+          "role": "portable_extinguisher_minimum",
+          "source_type": "rule_library",
+          "source_id": "ifc-2021-5705-4-9-portable-fire-extinguishers",
+          "executable": true,
+          "checker_expression": "portable_fire_extinguisher_count >= 1",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "portable_fire_extinguisher_count"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "semantic_indicator_encoding": true,
+            "derived_from_text_or_semantic_rule": true,
+            "derived_from_rule_id": "ifc-2021-5705-4-9-portable-fire-extinguishers",
+            "encoding_note": "This executable predicate is a task-level semantic encoding of a textual or categorical full-KG rule."
+          }
+        },
+        {
+          "constraint_id": "C2",
+          "expression": "storage_compliance_indicator == 1",
+          "role": "hazardous_residue_storage_compliance",
+          "source_type": "rule_library",
+          "source_id": "ifc-2021-5705-4-8-storage-hazardous-residue",
+          "executable": true,
+          "checker_expression": "storage_compliance_indicator == 1",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "storage_compliance_indicator"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "semantic_indicator_encoding": true,
+            "derived_from_text_or_semantic_rule": true,
+            "derived_from_rule_id": "ifc-2021-5705-4-8-storage-hazardous-residue",
+            "encoding_note": "This executable predicate is a task-level semantic encoding of a textual or categorical full-KG rule.",
+            "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+          }
+        },
+        {
+          "constraint_id": "C90",
+          "expression": "extinguisher_coverage_score <= 5 * portable_fire_extinguisher_count",
+          "role": "coverage_scales_with_extinguisher_count",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "extinguisher_coverage_score <= 5 * portable_fire_extinguisher_count",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "extinguisher_coverage_score",
+              "portable_fire_extinguisher_count"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Extinguisher coverage is coupled to extinguisher count.",
+            "semantic_indicator_encoding": true,
+            "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+          }
+        }
+      ],
+      "structure_only_constraints": [],
+      "valid_constraint_cells": [
+        {
+          "cell_id": "ARCH_FKG_68_cell_1",
+          "cell_type": "single_valid_fullkg_rule_structure",
+          "rule_ids": [
+            "ifc-2021-5705-4-8-storage-hazardous-residue",
+            "ifc-2021-5705-4-9-portable-fire-extinguishers"
+          ],
+          "constraints": [
+            {
+              "constraint_id": "C1",
+              "expression": "portable_fire_extinguisher_count >= 1",
+              "role": "portable_extinguisher_minimum",
+              "source_type": "rule_library",
+              "source_id": "ifc-2021-5705-4-9-portable-fire-extinguishers",
+              "executable": true,
+              "checker_expression": "portable_fire_extinguisher_count >= 1",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "portable_fire_extinguisher_count"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "semantic_indicator_encoding": true,
+                "derived_from_text_or_semantic_rule": true,
+                "derived_from_rule_id": "ifc-2021-5705-4-9-portable-fire-extinguishers",
+                "encoding_note": "This executable predicate is a task-level semantic encoding of a textual or categorical full-KG rule."
+              }
+            },
+            {
+              "constraint_id": "C2",
+              "expression": "storage_compliance_indicator == 1",
+              "role": "hazardous_residue_storage_compliance",
+              "source_type": "rule_library",
+              "source_id": "ifc-2021-5705-4-8-storage-hazardous-residue",
+              "executable": true,
+              "checker_expression": "storage_compliance_indicator == 1",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "storage_compliance_indicator"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "semantic_indicator_encoding": true,
+                "derived_from_text_or_semantic_rule": true,
+                "derived_from_rule_id": "ifc-2021-5705-4-8-storage-hazardous-residue",
+                "encoding_note": "This executable predicate is a task-level semantic encoding of a textual or categorical full-KG rule.",
+                "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+              }
+            },
+            {
+              "constraint_id": "C90",
+              "expression": "extinguisher_coverage_score <= 5 * portable_fire_extinguisher_count",
+              "role": "coverage_scales_with_extinguisher_count",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "extinguisher_coverage_score <= 5 * portable_fire_extinguisher_count",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "extinguisher_coverage_score",
+                  "portable_fire_extinguisher_count"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Extinguisher coverage is coupled to extinguisher count.",
+                "semantic_indicator_encoding": true,
+                "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+              }
+            }
+          ],
+          "description": "Executable feasible cell induced by the expected full-KG rule structure for this grounded scenario."
+        }
+      ],
+      "reference_semantics": {
+        "positive_membership_condition": "all executable_constraints evaluate true and at least one valid cell holds when cells are present",
+        "structure_only_constraints_usage": "used to check rule resolution, provenance, exceptions, or semantic requirements before numeric membership checking"
+      }
+    },
+    "certificate_targets": {
+      "source_rule_ids": [
+        "ifc-2021-5705-4-9-portable-fire-extinguishers",
+        "ifc-2021-5705-4-8-storage-hazardous-residue"
+      ],
+      "provenance": [
+        {
+          "document": "IFC 2021",
+          "section": "5705.4.9",
+          "page": "unknown",
+          "chunk_id": "0f3f9182-6a1b-5ec3-a2cf-294bc104fed7"
+        },
+        {
+          "document": "IFC 2021",
+          "section": "5705.4.8",
+          "page": "unknown",
+          "chunk_id": "0f3f9182-6a1b-5ec3-a2cf-294bc104fed7"
+        }
+      ]
+    },
+    "diagnostic_candidate_rule_ids_reference_only": [
+      "ifc-2021-5705-4-9-portable-fire-extinguishers",
+      "ifc-2021-5705-4-8-storage-hazardous-residue"
+    ],
+    "rule_library_id_bindings": [
+      {
+        "rule_id": "ifc-2021-5705-4-8-storage-hazardous-residue",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ifc-2021-5705-4-8-storage-hazardous-residue",
+        "rule_name": "Storage requirement for hazardous residue from distillation",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "0f3f9182-6a1b-5ec3-a2cf-294bc104fed7"
+        ],
+        "source_node_ids": [
+          "1963ed98-8cb1-5e5f-967d-869257effab3",
+          "d36de405-a91f-5a9d-8711-4e385adca42d",
+          "dd3631e8-01a1-5eea-aa0f-4733ef1ee0d3"
+        ],
+        "provenance": [
+          {
+            "document": "IFC 2021",
+            "section": "5705.4.8",
+            "page": "unknown",
+            "chunk_id": "0f3f9182-6a1b-5ec3-a2cf-294bc104fed7"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "storage_compliance",
+            "op": "=",
+            "value": [
+              "Section 5704",
+              "Chapter 50"
+            ],
+            "unit": "unknown"
+          }
+        ]
+      },
+      {
+        "rule_id": "ifc-2021-5705-4-9-portable-fire-extinguishers",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ifc-2021-5705-4-9-portable-fire-extinguishers",
+        "rule_name": "Provision of approved portable fire extinguishers for solvent distillation areas",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "0f3f9182-6a1b-5ec3-a2cf-294bc104fed7"
+        ],
+        "source_node_ids": [
+          "d048a75d-42b8-56a1-99ec-c4fc0bc342c4",
+          "031a4b66-0a6f-5c05-a5ba-73d6e4169818"
+        ],
+        "provenance": [
+          {
+            "document": "IFC 2021",
+            "section": "5705.4.9",
+            "page": "unknown",
+            "chunk_id": "0f3f9182-6a1b-5ec3-a2cf-294bc104fed7"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "portable_fire_extinguisher_provision",
+            "op": "=",
+            "value": "Section 906",
+            "unit": "unknown"
+          },
+          {
+            "variable": "minimum_quantity",
+            "op": ">=",
+            "value": 1,
+            "unit": "unit"
+          }
+        ]
+      }
+    ],
+    "reference_constraint_rule_bindings": [
+      {
+        "reference_container": "feasible_region.executable_constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "portable_extinguisher_minimum",
+        "reference_expression": "portable_fire_extinguisher_count >= 1",
+        "source_rule_id": "ifc-2021-5705-4-9-portable-fire-extinguishers",
+        "rule_library_rule_id": "ifc-2021-5705-4-9-portable-fire-extinguishers",
+        "rule_library_rule_name": "Provision of approved portable fire extinguishers for solvent distillation areas"
+      },
+      {
+        "reference_container": "feasible_region.executable_constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "hazardous_residue_storage_compliance",
+        "reference_expression": "storage_compliance_indicator == 1",
+        "source_rule_id": "ifc-2021-5705-4-8-storage-hazardous-residue",
+        "rule_library_rule_id": "ifc-2021-5705-4-8-storage-hazardous-residue",
+        "rule_library_rule_name": "Storage requirement for hazardous residue from distillation",
+        "metadata": {
+          "semantic_indicator_encoding": true,
+          "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+        }
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "portable_extinguisher_minimum",
+        "reference_expression": "portable_fire_extinguisher_count >= 1",
+        "source_rule_id": "ifc-2021-5705-4-9-portable-fire-extinguishers",
+        "rule_library_rule_id": "ifc-2021-5705-4-9-portable-fire-extinguishers",
+        "rule_library_rule_name": "Provision of approved portable fire extinguishers for solvent distillation areas"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "hazardous_residue_storage_compliance",
+        "reference_expression": "storage_compliance_indicator == 1",
+        "source_rule_id": "ifc-2021-5705-4-8-storage-hazardous-residue",
+        "rule_library_rule_id": "ifc-2021-5705-4-8-storage-hazardous-residue",
+        "rule_library_rule_name": "Storage requirement for hazardous residue from distillation",
+        "metadata": {
+          "semantic_indicator_encoding": true,
+          "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+        }
+      }
+    ],
+    "task_derivation_source": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "document": "ARE-Practice-Exam-Project-Development-and-Documentation.pdf",
+      "division": "Project Development and Documentation",
+      "question_number": "Question 9",
+      "theme": "restaurant event and service-area coordination",
+      "adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "source_policy": "Hidden provenance only; algorithm-visible inputs expose only generalized NCARB-derived themes."
+    },
+    "benchmark_extension_metadata": {
+      "extension_round": "architecture_ncarb_50_extension",
+      "source_base_task_id": "ARCH_FKG_16",
+      "ncarb_category": "fire_and_egress",
+      "source_policy": "paraphrased_parameterized_not_verbatim",
+      "dataset_characterization": "NCARB practice-topic-derived, paraphrased, and parameterized architecture-code semantic extension task.",
+      "independence_claim": "parameterized_variant_not_fully_independent_real_project_case",
+      "source_visibility_policy": "Exact practice identifiers, original question text, answer choices, and source file names are hidden from algorithm-visible inputs.",
+      "constraint_semantics_class": "semantic_indicator_dominant",
+      "semantic_indicator_note": "Kept to test textual, categorical, system-capability, applicability, or precedence recovery; not a pure numeric optimization case.",
+      "method_visibility": "hidden_evaluation_reference_not_method_input"
+    }
+  }
+}

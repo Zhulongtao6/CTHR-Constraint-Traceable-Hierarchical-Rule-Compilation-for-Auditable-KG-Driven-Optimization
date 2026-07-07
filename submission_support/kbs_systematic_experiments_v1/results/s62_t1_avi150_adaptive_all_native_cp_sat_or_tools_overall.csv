@@ -1,0 +1,2 @@
+﻿Dataset,Method,Method type,Rule Precision,Rule Recall,Formal CSR,Sem-CSR,False accept,Invalid cases
+Aviation,Native CP-SAT + OR-Tools,native_symbolic,3.4%,8.3%,36.0%,10.7%,25.3%,134/150 (89.3%) (96 unsupported)

@@ -1,0 +1,522 @@
+{
+  "version": "architecture_ncarb50_v2_paired_audit_task_v1",
+  "visibility": "hidden_evaluation_or_offline_audit_only_not_method_input",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_99",
+    "title": "NCARB-derived audible alarm calculation sheet",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "fire_alarm_audibility_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: code table and alarm calculation documentation. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "ambient_avg_dba": 58,
+      "ambient_max_60s_dba": 72,
+      "space_type": "construction_document_alarm_calc_sheet",
+      "system.type": "audible alarm notification appliance",
+      "type": "audible alarm notification appliance",
+      "ncarb_scenario_theme": "code table and alarm calculation documentation",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "construction_documentation",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Construction calculation-sheet audible alarm variant with document coordination context."
+    },
+    "decision_variables": {
+      "sound_pressure_level_dba": {
+        "type": "continuous",
+        "unit": "dBA",
+        "lower": 60,
+        "upper": 115
+      },
+      "audibility_margin_dba": {
+        "type": "continuous",
+        "unit": "dBA",
+        "lower": 0,
+        "upper": 40
+      },
+      "occupant_discomfort_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_audibility_margin",
+        "expression": "audibility_margin_dba"
+      },
+      {
+        "name": "minimize_occupant_discomfort",
+        "expression": "occupant_discomfort_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.48,
+        0.52
+      ],
+      "meaning": "balance documented sound-pressure margin and occupant comfort"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_99_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "code table and alarm calculation documentation",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "scenario_variant_status": "parameterized_scenario_variant",
+    "scenario_variant_note": "Parameterized variant with substantive changes in facts, bounds, weights, or document context; not a fully independent real project case.",
+    "scenario_variant_differentiator": "Construction calculation-sheet audible alarm variant with document coordination context.",
+    "scenario_variant_group_id": "ncarb50_scenario_variant_group_03",
+    "constraint_solver_profile": "requires_nonlinear_or_auxiliary_constraint_checker",
+    "nonlinear_or_auxiliary_note": "Contains a helper expression such as max(), abs(), symbolic division, or a variable product."
+  },
+  "evaluation_reference": {
+    "omega_id": "ARCH_FKG_99",
+    "title": "NCARB-derived audible alarm calculation sheet",
+    "rule_structure": {
+      "expected_source_rule_ids": [
+        "ifc-2021-907-5-2-1-2-audible-alarm-spl-min",
+        "ifc-2021-907-5-2-1-2-audible-alarm-spl-max"
+      ],
+      "expected_defeated_rule_ids": [],
+      "expected_surviving_rule_ids": [
+        "ifc-2021-907-5-2-1-2-audible-alarm-spl-max",
+        "ifc-2021-907-5-2-1-2-audible-alarm-spl-min"
+      ],
+      "expected_valid_rule_structures": [
+        [
+          "ifc-2021-907-5-2-1-2-audible-alarm-spl-max",
+          "ifc-2021-907-5-2-1-2-audible-alarm-spl-min"
+        ]
+      ],
+      "expected_rule_behavior": {
+        "should_activate": [
+          "Maximum combined sound pressure level from alarms and ambient noise",
+          "Minimum audible alarm sound pressure level in occupiable spaces"
+        ],
+        "should_exclude": [],
+        "should_resolve": [
+          "formula_propagation",
+          "multi_rule_conjunction"
+        ]
+      },
+      "challenge_types": [
+        "formula_propagation",
+        "multi_rule_conjunction"
+      ],
+      "valid_constraint_cell_ids": [
+        "ARCH_FKG_99_cell_1"
+      ],
+      "expected_provenance": {
+        "kg_chunk_ids": [
+          "0f0d308c-572d-5f1b-a951-fbdcfc460dad"
+        ],
+        "kg_node_ids": [
+          "e4292d69-ee53-5d77-b69b-144510120678"
+        ],
+        "kg_edge_ids": [
+          "kg_edge_17825"
+        ],
+        "source_documents": [
+          {
+            "document": "IFC-2021",
+            "section": "907.5.2.1.2",
+            "page": "unknown",
+            "chunk_id": "0f0d308c-572d-5f1b-a951-fbdcfc460dad"
+          },
+          {
+            "document": "ARE-Practice-Exam-Project-Development-and-Documentation.pdf",
+            "section": "Project Development and Documentation",
+            "page": "practice-exam-question",
+            "question_number": "Question 28",
+            "derivation_policy": "Paraphrased and parameterized from an NCARB practice-exam scenario; original question text is not copied."
+          }
+        ]
+      }
+    },
+    "feasible_region": {
+      "executable_constraints": [
+        {
+          "constraint_id": "C1",
+          "expression": "sound_pressure_level_dba >= max(ambient_avg_dba + 15, ambient_max_60s_dba + 5)",
+          "role": "audible_alarm_minimum_spl",
+          "source_type": "rule_library",
+          "source_id": "ifc-2021-907-5-2-1-2-audible-alarm-spl-min",
+          "executable": true,
+          "checker_expression": "sound_pressure_level_dba >= max(ambient_avg_dba + 15, ambient_max_60s_dba + 5)",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "sound_pressure_level_dba"
+            ],
+            "scenario_fields": [
+              "ambient_avg_dba",
+              "ambient_max_60s_dba"
+            ],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+            "nonlinear_or_auxiliary_reasons": [
+              "auxiliary_function"
+            ],
+            "linear_backend_note": "Use a nonlinear/auxiliary-function constraint checker or an explicit linearized surrogate before sending this constraint to a pure linear optimizer."
+          }
+        },
+        {
+          "constraint_id": "C2",
+          "expression": "sound_pressure_level_dba <= 110",
+          "role": "audible_alarm_maximum_spl",
+          "source_type": "rule_library",
+          "source_id": "ifc-2021-907-5-2-1-2-audible-alarm-spl-max",
+          "executable": true,
+          "checker_expression": "sound_pressure_level_dba <= 110",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "sound_pressure_level_dba"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C3",
+          "expression": "audibility_margin_dba == sound_pressure_level_dba - max(ambient_avg_dba + 15, ambient_max_60s_dba + 5)",
+          "role": "audibility_margin_certificate",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_audibility_model",
+          "executable": true,
+          "checker_expression": "audibility_margin_dba == sound_pressure_level_dba - max(ambient_avg_dba + 15, ambient_max_60s_dba + 5)",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "audibility_margin_dba",
+              "sound_pressure_level_dba"
+            ],
+            "scenario_fields": [
+              "ambient_avg_dba",
+              "ambient_max_60s_dba"
+            ],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+            "nonlinear_or_auxiliary_reasons": [
+              "auxiliary_function"
+            ],
+            "linear_backend_note": "Use a nonlinear/auxiliary-function constraint checker or an explicit linearized surrogate before sending this constraint to a pure linear optimizer."
+          }
+        },
+        {
+          "constraint_id": "C90",
+          "expression": "occupant_discomfort_score >= sound_pressure_level_dba - 75",
+          "role": "discomfort_scales_with_alarm_spl",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "occupant_discomfort_score >= sound_pressure_level_dba - 75",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "occupant_discomfort_score",
+              "sound_pressure_level_dba"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Occupant discomfort is coupled to selected alarm sound pressure level."
+          }
+        }
+      ],
+      "structure_only_constraints": [],
+      "valid_constraint_cells": [
+        {
+          "cell_id": "ARCH_FKG_99_cell_1",
+          "cell_type": "single_valid_fullkg_rule_structure",
+          "rule_ids": [
+            "ifc-2021-907-5-2-1-2-audible-alarm-spl-max",
+            "ifc-2021-907-5-2-1-2-audible-alarm-spl-min"
+          ],
+          "constraints": [
+            {
+              "constraint_id": "C1",
+              "expression": "sound_pressure_level_dba >= max(ambient_avg_dba + 15, ambient_max_60s_dba + 5)",
+              "role": "audible_alarm_minimum_spl",
+              "source_type": "rule_library",
+              "source_id": "ifc-2021-907-5-2-1-2-audible-alarm-spl-min",
+              "executable": true,
+              "checker_expression": "sound_pressure_level_dba >= max(ambient_avg_dba + 15, ambient_max_60s_dba + 5)",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "sound_pressure_level_dba"
+                ],
+                "scenario_fields": [
+                  "ambient_avg_dba",
+                  "ambient_max_60s_dba"
+                ],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+                "nonlinear_or_auxiliary_reasons": [
+                  "auxiliary_function"
+                ],
+                "linear_backend_note": "Use a nonlinear/auxiliary-function constraint checker or an explicit linearized surrogate before sending this constraint to a pure linear optimizer."
+              }
+            },
+            {
+              "constraint_id": "C2",
+              "expression": "sound_pressure_level_dba <= 110",
+              "role": "audible_alarm_maximum_spl",
+              "source_type": "rule_library",
+              "source_id": "ifc-2021-907-5-2-1-2-audible-alarm-spl-max",
+              "executable": true,
+              "checker_expression": "sound_pressure_level_dba <= 110",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "sound_pressure_level_dba"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C3",
+              "expression": "audibility_margin_dba == sound_pressure_level_dba - max(ambient_avg_dba + 15, ambient_max_60s_dba + 5)",
+              "role": "audibility_margin_certificate",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_audibility_model",
+              "executable": true,
+              "checker_expression": "audibility_margin_dba == sound_pressure_level_dba - max(ambient_avg_dba + 15, ambient_max_60s_dba + 5)",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "audibility_margin_dba",
+                  "sound_pressure_level_dba"
+                ],
+                "scenario_fields": [
+                  "ambient_avg_dba",
+                  "ambient_max_60s_dba"
+                ],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+                "nonlinear_or_auxiliary_reasons": [
+                  "auxiliary_function"
+                ],
+                "linear_backend_note": "Use a nonlinear/auxiliary-function constraint checker or an explicit linearized surrogate before sending this constraint to a pure linear optimizer."
+              }
+            },
+            {
+              "constraint_id": "C90",
+              "expression": "occupant_discomfort_score >= sound_pressure_level_dba - 75",
+              "role": "discomfort_scales_with_alarm_spl",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "occupant_discomfort_score >= sound_pressure_level_dba - 75",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "occupant_discomfort_score",
+                  "sound_pressure_level_dba"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Occupant discomfort is coupled to selected alarm sound pressure level."
+              }
+            }
+          ],
+          "description": "Executable feasible cell induced by the expected full-KG rule structure for this grounded scenario."
+        }
+      ],
+      "reference_semantics": {
+        "positive_membership_condition": "all executable_constraints evaluate true and at least one valid cell holds when cells are present",
+        "structure_only_constraints_usage": "used to check rule resolution, provenance, exceptions, or semantic requirements before numeric membership checking"
+      }
+    },
+    "certificate_targets": {
+      "source_rule_ids": [
+        "ifc-2021-907-5-2-1-2-audible-alarm-spl-min",
+        "ifc-2021-907-5-2-1-2-audible-alarm-spl-max"
+      ],
+      "provenance": [
+        {
+          "document": "IFC-2021",
+          "section": "907.5.2.1.2",
+          "page": "unknown",
+          "chunk_id": "0f0d308c-572d-5f1b-a951-fbdcfc460dad"
+        }
+      ]
+    },
+    "diagnostic_candidate_rule_ids_reference_only": [
+      "ifc-2021-907-5-2-1-2-audible-alarm-spl-min",
+      "ifc-2021-907-5-2-1-2-audible-alarm-spl-max"
+    ],
+    "rule_library_id_bindings": [
+      {
+        "rule_id": "ifc-2021-907-5-2-1-2-audible-alarm-spl-max",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ifc-2021-907-5-2-1-2-audible-alarm-spl-max",
+        "rule_name": "Maximum combined sound pressure level from alarms and ambient noise",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "0f0d308c-572d-5f1b-a951-fbdcfc460dad"
+        ],
+        "source_node_ids": [
+          "e4292d69-ee53-5d77-b69b-144510120678"
+        ],
+        "provenance": [
+          {
+            "document": "IFC-2021",
+            "section": "907.5.2.1.2",
+            "page": "unknown",
+            "chunk_id": "0f0d308c-572d-5f1b-a951-fbdcfc460dad"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "sound_pressure_level_total_max",
+            "op": "<=",
+            "value": 110,
+            "unit": "dBA"
+          }
+        ]
+      },
+      {
+        "rule_id": "ifc-2021-907-5-2-1-2-audible-alarm-spl-min",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ifc-2021-907-5-2-1-2-audible-alarm-spl-min",
+        "rule_name": "Minimum audible alarm sound pressure level in occupiable spaces",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "0f0d308c-572d-5f1b-a951-fbdcfc460dad"
+        ],
+        "source_node_ids": [
+          "e4292d69-ee53-5d77-b69b-144510120678"
+        ],
+        "provenance": [
+          {
+            "document": "IFC-2021",
+            "section": "907.5.2.1.2",
+            "page": "unknown",
+            "chunk_id": "0f0d308c-572d-5f1b-a951-fbdcfc460dad"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "sound_pressure_level_min",
+            "op": ">=",
+            "value": "max(ambient_avg + 15, ambient_max_60s + 5)",
+            "unit": "dBA"
+          }
+        ]
+      }
+    ],
+    "reference_constraint_rule_bindings": [
+      {
+        "reference_container": "feasible_region.executable_constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "audible_alarm_minimum_spl",
+        "reference_expression": "sound_pressure_level_dba >= max(ambient_avg_dba + 15, ambient_max_60s_dba + 5)",
+        "source_rule_id": "ifc-2021-907-5-2-1-2-audible-alarm-spl-min",
+        "rule_library_rule_id": "ifc-2021-907-5-2-1-2-audible-alarm-spl-min",
+        "rule_library_rule_name": "Minimum audible alarm sound pressure level in occupiable spaces",
+        "metadata": {
+          "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+          "nonlinear_or_auxiliary_reasons": [
+            "auxiliary_function"
+          ],
+          "linear_backend_note": "Use a nonlinear/auxiliary-function constraint checker or an explicit linearized surrogate before sending this constraint to a pure linear optimizer."
+        }
+      },
+      {
+        "reference_container": "feasible_region.executable_constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "audible_alarm_maximum_spl",
+        "reference_expression": "sound_pressure_level_dba <= 110",
+        "source_rule_id": "ifc-2021-907-5-2-1-2-audible-alarm-spl-max",
+        "rule_library_rule_id": "ifc-2021-907-5-2-1-2-audible-alarm-spl-max",
+        "rule_library_rule_name": "Maximum combined sound pressure level from alarms and ambient noise"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "audible_alarm_minimum_spl",
+        "reference_expression": "sound_pressure_level_dba >= max(ambient_avg_dba + 15, ambient_max_60s_dba + 5)",
+        "source_rule_id": "ifc-2021-907-5-2-1-2-audible-alarm-spl-min",
+        "rule_library_rule_id": "ifc-2021-907-5-2-1-2-audible-alarm-spl-min",
+        "rule_library_rule_name": "Minimum audible alarm sound pressure level in occupiable spaces",
+        "metadata": {
+          "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+          "nonlinear_or_auxiliary_reasons": [
+            "auxiliary_function"
+          ],
+          "linear_backend_note": "Use a nonlinear/auxiliary-function constraint checker or an explicit linearized surrogate before sending this constraint to a pure linear optimizer."
+        }
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "audible_alarm_maximum_spl",
+        "reference_expression": "sound_pressure_level_dba <= 110",
+        "source_rule_id": "ifc-2021-907-5-2-1-2-audible-alarm-spl-max",
+        "rule_library_rule_id": "ifc-2021-907-5-2-1-2-audible-alarm-spl-max",
+        "rule_library_rule_name": "Maximum combined sound pressure level from alarms and ambient noise"
+      }
+    ],
+    "task_derivation_source": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "document": "ARE-Practice-Exam-Project-Development-and-Documentation.pdf",
+      "division": "Project Development and Documentation",
+      "question_number": "Question 28",
+      "theme": "code table and alarm calculation documentation",
+      "adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "source_policy": "Hidden provenance only; algorithm-visible inputs expose only generalized NCARB-derived themes."
+    },
+    "benchmark_extension_metadata": {
+      "extension_round": "architecture_ncarb_50_extension",
+      "source_base_task_id": "ARCH_FKG_11",
+      "ncarb_category": "construction_documentation",
+      "source_policy": "paraphrased_parameterized_not_verbatim",
+      "dataset_characterization": "NCARB practice-topic-derived, paraphrased, and parameterized architecture-code semantic extension task.",
+      "independence_claim": "parameterized_variant_not_fully_independent_real_project_case",
+      "source_visibility_policy": "Exact practice identifiers, original question text, answer choices, and source file names are hidden from algorithm-visible inputs.",
+      "scenario_variant_group_id": "ncarb50_scenario_variant_group_03",
+      "scenario_variant_group_members": [
+        "ARCH_FKG_64",
+        "ARCH_FKG_72",
+        "ARCH_FKG_99"
+      ],
+      "scenario_variant_status": "parameterized_scenario_variant",
+      "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+      "nonlinear_or_auxiliary_reasons": [
+        "auxiliary_function",
+        "auxiliary_function_or_variable_product"
+      ],
+      "scenario_variant_differentiator": "Construction calculation-sheet audible alarm variant with document coordination context.",
+      "method_visibility": "hidden_evaluation_reference_not_method_input"
+    }
+  }
+}

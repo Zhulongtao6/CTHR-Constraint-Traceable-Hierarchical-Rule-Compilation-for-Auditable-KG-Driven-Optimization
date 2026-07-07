@@ -1,0 +1,13 @@
+{
+  "mode": "isolated_subprocess_driver",
+  "dataset": "Aviation Rule Relation Balanced v13 150",
+  "dataset_root": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\datasets\\aviation_rule_relation_balanced_v13_150",
+  "task_count": 150,
+  "cell_solver_rows": 450,
+  "audit_rows": 450,
+  "grounding_full": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\results\\av13_latest_20260703\\section_6_3_aviation_smix_v11_150_old_candidate_recall_guard_profile_auto_resolver_candidate_to_valid_full.json",
+  "rule_library": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\datasets\\aviation_rule_relation_balanced_v13_150\\rule_libraries\\qwen\\full_aviation_rule_library_qwen.json",
+  "prune_slow_backends_after_scip_infeasible": true,
+  "isolated_all_backends": true,
+  "elapsed_seconds": 1567.1664608999854
+}

@@ -1,0 +1,75 @@
+You are converting aviation regulatory knowledge graph evidence into a CTHR
+rule library. The input is a batch of source-linked KG chunks from a CAAC flight
+procedure design knowledge graph.
+
+Extract only rules that are explicitly supported by the provided chunks or KG
+neighbors. If a chunk contains table of contents, definitions without a rule, or
+non-normative background, return no rules for that chunk.
+
+Return only valid JSON with this schema:
+
+{
+  "batch_id": "...",
+  "rules": [
+    {
+      "rule_id": "stable_short_id",
+      "name": "human-readable rule name",
+      "domain": "aviation",
+      "rule_type": "requirement|definition|calculation|parameter|exception|precedence|applicability|procedure_step",
+      "source_chunk_ids": ["existing chunk id"],
+      "source_node_ids": ["existing KG node id if relevant"],
+      "guard": {
+        "all": [
+          {"field": "scenario/property name", "op": "eq|neq|gt|gte|lt|lte|in", "value": "condition value"}
+        ]
+      },
+      "constraints": [
+        {
+          "variable": "decision or regulatory quantity name",
+          "op": ">=|<=|=|>|<|formula|text",
+          "value": "number, expression, or text condition",
+          "unit": "unit if stated, otherwise unknown",
+          "source_quote": "short source phrase supporting the constraint",
+          "evidence": {
+            "chunk_ids": ["existing chunk id"],
+            "kg_node_ids": ["existing KG node id if relevant"],
+            "kg_edge_ids": ["existing KG edge id if relevant"]
+          }
+        }
+      ],
+      "relations": [
+        {
+          "type": "overrides|precedes|excludes|depends_on|applies_to|defines|uses_parameter|requires",
+          "target": "target rule, entity, parameter, or condition",
+          "source_quote": "short source phrase supporting the relation",
+          "evidence": {
+            "chunk_ids": ["existing chunk id"],
+            "kg_node_ids": ["existing KG node id if relevant"],
+            "kg_edge_ids": ["existing KG edge id if relevant"]
+          }
+        }
+      ],
+      "provenance": [
+        {
+          "document": "document/part name if known",
+          "section": "section or page marker if known",
+          "page": "page number if stated, otherwise unknown",
+          "chunk_id": "existing chunk id"
+        }
+      ],
+      "extraction_notes": "brief note explaining how the rule was grounded",
+      "confidence": 0.0
+    }
+  ],
+  "non_rule_chunk_ids": ["chunk ids with no extractable normative rule"]
+}
+
+Rules:
+- Do not invent numeric values, units, source chunks, sections, or pages.
+- Use only existing chunk IDs, KG node IDs, and KG edge IDs from the input.
+- Preserve Chinese technical terms when they are the clearest variable names.
+- If a condition changes whether a rule applies, put it in guard or relations.
+- If a formula is stated but not reducible to a linear inequality, use op="formula".
+- If the evidence only states a qualitative requirement, use op="text".
+- Keep separate exception, precedence, and alternative rules as separate rules.
+- Use confidence between 0 and 1 based on how explicit the evidence is.

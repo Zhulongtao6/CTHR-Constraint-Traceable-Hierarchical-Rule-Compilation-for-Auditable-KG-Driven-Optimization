@@ -1,0 +1,80 @@
+{
+  "version": "architecture_ncarb50_v2_public_task_v1",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_91",
+    "title": "NCARB-derived open parking garage sprinkler threshold",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "parking_garage_fire_protection_design",
+    "design_intent": "Evaluate sprinkler provision for an open parking garage exceeding the area threshold while balancing cost and reliability.",
+    "scenario_facts": {
+      "occupancy_type": "open parking garage",
+      "fire_area": 52000,
+      "ncarb_scenario_theme": "site selection with transit and parking",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "site_and_zoning_like",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Open parking garage sprinkler applicability judgment task."
+    },
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "site selection with transit and parking",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "decision_variables": {
+      "sprinkler_system_indicator": {
+        "type": "integer",
+        "unit": "binary",
+        "lower": 0,
+        "upper": 1
+      },
+      "sprinkler_zone_count": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 1,
+        "upper": 10
+      },
+      "fire_protection_cost_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 24
+      },
+      "coverage_reliability_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 24
+      }
+    },
+    "objectives": [
+      {
+        "name": "minimize_fire_protection_cost",
+        "expression": "fire_protection_cost_score"
+      },
+      {
+        "name": "maximize_coverage_reliability",
+        "expression": "coverage_reliability_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.45,
+        0.55
+      ],
+      "meaning": "balance sprinkler cost and fire-protection reliability"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_91_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "task_semantics_profile": "semantic_indicator_dominant",
+    "task_semantics_note": "Rule applicability, precedence, categorical, or system-capability semantics dominate this task; it is not a pure continuous numeric optimization task.",
+    "scenario_variant_differentiator": "Open parking garage sprinkler applicability judgment task."
+  }
+}

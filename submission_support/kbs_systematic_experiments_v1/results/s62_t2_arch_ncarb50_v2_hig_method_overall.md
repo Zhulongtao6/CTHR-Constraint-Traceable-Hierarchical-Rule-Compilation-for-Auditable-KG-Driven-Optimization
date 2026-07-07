@@ -1,0 +1,9 @@
+| Dataset | Solver over CTHR cells | Solve | Cell CSR | Objective gap |
+| --- | --- | ---: | ---: | ---: |
+| Architecture | CTHR default solver | 100.0 | 100.0 | 1.999532% |
+| Architecture | ASP/clingo over CTHR cells | 100.0 | 100.0 | 2.003102% |
+| Architecture | SLSQP over CTHR cells | 100.0 | 100.0 | 2.003342% |
+| Architecture | Pure HiGHS over CTHR cells | 72.0 | 72.0 | 2.777088% |
+| Architecture | HiGHS over CTHR cells | 100.0 | 100.0 | 2.003312% |
+| Architecture | CP-SAT + OR-Tools over CTHR cells | 100.0 | 100.0 | 2.004783% |
+| Architecture | SCIP over CTHR cells | 100.0 | 100.0 | 0.003819% |

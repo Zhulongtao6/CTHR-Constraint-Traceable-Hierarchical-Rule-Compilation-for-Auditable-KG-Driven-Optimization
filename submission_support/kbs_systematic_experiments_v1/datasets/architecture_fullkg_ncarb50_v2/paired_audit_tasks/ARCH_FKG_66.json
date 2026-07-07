@@ -1,0 +1,466 @@
+{
+  "version": "architecture_ncarb50_v2_paired_audit_task_v1",
+  "visibility": "hidden_evaluation_or_offline_audit_only_not_method_input",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_66",
+    "title": "NCARB-derived waterfront temporary event tent egress",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "temporary_structure_site_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: waterfront cultural center temporary event layout. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "temporary_structure": "multiple_tents",
+      "event_type": "outdoor_assembly",
+      "structure_type": "tent",
+      "fire_break_clearance_provided": "not_True",
+      "ncarb_scenario_theme": "waterfront cultural center temporary event layout",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "fire_and_egress",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized"
+    },
+    "decision_variables": {
+      "aggregate_tent_area_sf": {
+        "type": "continuous",
+        "unit": "sf",
+        "lower": 100,
+        "upper": 1000
+      },
+      "minimum_clearance_ft": {
+        "type": "continuous",
+        "unit": "ft",
+        "lower": 0,
+        "upper": 30
+      },
+      "covered_area_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_covered_area",
+        "expression": "covered_area_score"
+      },
+      {
+        "name": "maximize_clearance_margin",
+        "expression": "minimum_clearance_ft - 12"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.5,
+        0.5
+      ],
+      "meaning": "balance usable event area and fire-break clearance"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_66_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "waterfront cultural center temporary event layout",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    }
+  },
+  "evaluation_reference": {
+    "omega_id": "ARCH_FKG_66",
+    "title": "NCARB-derived waterfront temporary event tent egress",
+    "rule_structure": {
+      "expected_source_rule_ids": [
+        "ifc_tent_aggregate_area_limit",
+        "ifc_tent_clearance_requirement"
+      ],
+      "expected_defeated_rule_ids": [],
+      "expected_surviving_rule_ids": [
+        "ifc_tent_aggregate_area_limit",
+        "ifc_tent_clearance_requirement"
+      ],
+      "expected_valid_rule_structures": [
+        [
+          "ifc_tent_aggregate_area_limit",
+          "ifc_tent_clearance_requirement"
+        ]
+      ],
+      "expected_rule_behavior": {
+        "should_activate": [
+          "Maximum aggregate area of multiple tents without fire break clearance",
+          "Minimum clearance for tents to structures and other tents"
+        ],
+        "should_exclude": [],
+        "should_resolve": [
+          "multi_rule_conjunction"
+        ]
+      },
+      "challenge_types": [
+        "multi_rule_conjunction"
+      ],
+      "valid_constraint_cell_ids": [
+        "ARCH_FKG_66_cell_1"
+      ],
+      "expected_provenance": {
+        "kg_chunk_ids": [
+          "1a288e2e-47b1-54c5-942f-669d2051e778"
+        ],
+        "kg_node_ids": [
+          "0fcdef75-c113-574d-9ec6-656f74cbd8ac",
+          "1d349405-f4c5-5570-ac66-42d6011c5b44",
+          "a5868456-a8ce-5cff-87ba-4ea4375ed234",
+          "dea48a50-9966-5b2b-aa7a-2588c27b1d2d"
+        ],
+        "kg_edge_ids": [
+          "kg_edge_18582",
+          "kg_edge_18589",
+          "kg_edge_18591",
+          "kg_edge_18609"
+        ],
+        "source_documents": [
+          {
+            "document": "IFC 2021",
+            "section": "unknown",
+            "page": "unknown",
+            "chunk_id": "1a288e2e-47b1-54c5-942f-669d2051e778"
+          },
+          {
+            "document": "ARE-Practice-Exam-Programming-and-Analysis.pdf",
+            "section": "Programming and Analysis",
+            "page": "practice-exam-question",
+            "question_number": "Question 26",
+            "derivation_policy": "Paraphrased and parameterized from an NCARB practice-exam scenario; original question text is not copied."
+          }
+        ]
+      }
+    },
+    "feasible_region": {
+      "executable_constraints": [
+        {
+          "constraint_id": "C1",
+          "expression": "aggregate_tent_area_sf <= 700",
+          "role": "tent_aggregate_area_limit",
+          "source_type": "rule_library",
+          "source_id": "ifc_tent_aggregate_area_limit",
+          "executable": true,
+          "checker_expression": "aggregate_tent_area_sf <= 700",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "aggregate_tent_area_sf"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C2",
+          "expression": "minimum_clearance_ft >= 12",
+          "role": "tent_clearance_requirement",
+          "source_type": "rule_library",
+          "source_id": "ifc_tent_clearance_requirement",
+          "executable": true,
+          "checker_expression": "minimum_clearance_ft >= 12",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "minimum_clearance_ft"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C90",
+          "expression": "covered_area_score <= aggregate_tent_area_sf / 70",
+          "role": "covered_area_score_scales_with_tent_area",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "covered_area_score <= aggregate_tent_area_sf / 70",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "covered_area_score",
+              "aggregate_tent_area_sf"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Covered-area utility is coupled to aggregate tent area."
+          }
+        },
+        {
+          "constraint_id": "C91",
+          "expression": "aggregate_tent_area_sf + 20 * minimum_clearance_ft <= 1000",
+          "role": "site_area_tradeoff_between_tent_area_and_clearance",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "aggregate_tent_area_sf + 20 * minimum_clearance_ft <= 1000",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "aggregate_tent_area_sf",
+              "minimum_clearance_ft"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Finite event-site area creates a trade-off between tent area and clearance margin."
+          }
+        }
+      ],
+      "structure_only_constraints": [],
+      "valid_constraint_cells": [
+        {
+          "cell_id": "ARCH_FKG_66_cell_1",
+          "cell_type": "single_valid_fullkg_rule_structure",
+          "rule_ids": [
+            "ifc_tent_aggregate_area_limit",
+            "ifc_tent_clearance_requirement"
+          ],
+          "constraints": [
+            {
+              "constraint_id": "C1",
+              "expression": "aggregate_tent_area_sf <= 700",
+              "role": "tent_aggregate_area_limit",
+              "source_type": "rule_library",
+              "source_id": "ifc_tent_aggregate_area_limit",
+              "executable": true,
+              "checker_expression": "aggregate_tent_area_sf <= 700",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "aggregate_tent_area_sf"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C2",
+              "expression": "minimum_clearance_ft >= 12",
+              "role": "tent_clearance_requirement",
+              "source_type": "rule_library",
+              "source_id": "ifc_tent_clearance_requirement",
+              "executable": true,
+              "checker_expression": "minimum_clearance_ft >= 12",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "minimum_clearance_ft"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C90",
+              "expression": "covered_area_score <= aggregate_tent_area_sf / 70",
+              "role": "covered_area_score_scales_with_tent_area",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "covered_area_score <= aggregate_tent_area_sf / 70",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "covered_area_score",
+                  "aggregate_tent_area_sf"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Covered-area utility is coupled to aggregate tent area."
+              }
+            },
+            {
+              "constraint_id": "C91",
+              "expression": "aggregate_tent_area_sf + 20 * minimum_clearance_ft <= 1000",
+              "role": "site_area_tradeoff_between_tent_area_and_clearance",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "aggregate_tent_area_sf + 20 * minimum_clearance_ft <= 1000",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "aggregate_tent_area_sf",
+                  "minimum_clearance_ft"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Finite event-site area creates a trade-off between tent area and clearance margin."
+              }
+            }
+          ],
+          "description": "Executable feasible cell induced by the expected full-KG rule structure for this grounded scenario."
+        }
+      ],
+      "reference_semantics": {
+        "positive_membership_condition": "all executable_constraints evaluate true and at least one valid cell holds when cells are present",
+        "structure_only_constraints_usage": "used to check rule resolution, provenance, exceptions, or semantic requirements before numeric membership checking"
+      }
+    },
+    "certificate_targets": {
+      "source_rule_ids": [
+        "ifc_tent_aggregate_area_limit",
+        "ifc_tent_clearance_requirement"
+      ],
+      "provenance": [
+        {
+          "document": "IFC 2021",
+          "section": "unknown",
+          "page": "unknown",
+          "chunk_id": "1a288e2e-47b1-54c5-942f-669d2051e778"
+        }
+      ]
+    },
+    "diagnostic_candidate_rule_ids_reference_only": [
+      "ifc_tent_aggregate_area_limit",
+      "ifc_tent_clearance_requirement"
+    ],
+    "rule_library_id_bindings": [
+      {
+        "rule_id": "ifc_tent_aggregate_area_limit",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ifc_tent_aggregate_area_limit",
+        "rule_name": "Maximum aggregate area of multiple tents without fire break clearance",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "1a288e2e-47b1-54c5-942f-669d2051e778"
+        ],
+        "source_node_ids": [
+          "1d349405-f4c5-5570-ac66-42d6011c5b44",
+          "a5868456-a8ce-5cff-87ba-4ea4375ed234",
+          "dea48a50-9966-5b2b-aa7a-2588c27b1d2d"
+        ],
+        "provenance": [
+          {
+            "document": "IFC 2021",
+            "section": "unknown",
+            "page": "unknown",
+            "chunk_id": "1a288e2e-47b1-54c5-942f-669d2051e778"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "aggregate_area",
+            "op": "<=",
+            "value": 700,
+            "unit": "square feet"
+          }
+        ]
+      },
+      {
+        "rule_id": "ifc_tent_clearance_requirement",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ifc_tent_clearance_requirement",
+        "rule_name": "Minimum clearance for tents to structures and other tents",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "1a288e2e-47b1-54c5-942f-669d2051e778"
+        ],
+        "source_node_ids": [
+          "0fcdef75-c113-574d-9ec6-656f74cbd8ac",
+          "a5868456-a8ce-5cff-87ba-4ea4375ed234"
+        ],
+        "provenance": [
+          {
+            "document": "IFC 2021",
+            "section": "unknown",
+            "page": "unknown",
+            "chunk_id": "1a288e2e-47b1-54c5-942f-669d2051e778"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "minimum_clearance",
+            "op": ">=",
+            "value": 12,
+            "unit": "feet"
+          }
+        ]
+      }
+    ],
+    "reference_constraint_rule_bindings": [
+      {
+        "reference_container": "feasible_region.executable_constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "tent_aggregate_area_limit",
+        "reference_expression": "aggregate_tent_area_sf <= 700",
+        "source_rule_id": "ifc_tent_aggregate_area_limit",
+        "rule_library_rule_id": "ifc_tent_aggregate_area_limit",
+        "rule_library_rule_name": "Maximum aggregate area of multiple tents without fire break clearance"
+      },
+      {
+        "reference_container": "feasible_region.executable_constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "tent_clearance_requirement",
+        "reference_expression": "minimum_clearance_ft >= 12",
+        "source_rule_id": "ifc_tent_clearance_requirement",
+        "rule_library_rule_id": "ifc_tent_clearance_requirement",
+        "rule_library_rule_name": "Minimum clearance for tents to structures and other tents"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "tent_aggregate_area_limit",
+        "reference_expression": "aggregate_tent_area_sf <= 700",
+        "source_rule_id": "ifc_tent_aggregate_area_limit",
+        "rule_library_rule_id": "ifc_tent_aggregate_area_limit",
+        "rule_library_rule_name": "Maximum aggregate area of multiple tents without fire break clearance"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "tent_clearance_requirement",
+        "reference_expression": "minimum_clearance_ft >= 12",
+        "source_rule_id": "ifc_tent_clearance_requirement",
+        "rule_library_rule_id": "ifc_tent_clearance_requirement",
+        "rule_library_rule_name": "Minimum clearance for tents to structures and other tents"
+      }
+    ],
+    "task_derivation_source": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "document": "ARE-Practice-Exam-Programming-and-Analysis.pdf",
+      "division": "Programming and Analysis",
+      "question_number": "Question 26",
+      "theme": "waterfront cultural center temporary event layout",
+      "adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "source_policy": "Hidden provenance only; algorithm-visible inputs expose only generalized NCARB-derived themes."
+    },
+    "benchmark_extension_metadata": {
+      "extension_round": "architecture_ncarb_50_extension",
+      "source_base_task_id": "ARCH_FKG_13",
+      "ncarb_category": "fire_and_egress",
+      "source_policy": "paraphrased_parameterized_not_verbatim",
+      "dataset_characterization": "NCARB practice-topic-derived, paraphrased, and parameterized architecture-code semantic extension task.",
+      "independence_claim": "parameterized_variant_not_fully_independent_real_project_case",
+      "source_visibility_policy": "Exact practice identifiers, original question text, answer choices, and source file names are hidden from algorithm-visible inputs.",
+      "method_visibility": "hidden_evaluation_reference_not_method_input"
+    }
+  }
+}

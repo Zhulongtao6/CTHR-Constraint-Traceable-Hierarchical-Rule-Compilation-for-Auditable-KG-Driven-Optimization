@@ -1,0 +1,494 @@
+{
+  "version": "architecture_ncarb50_v2_paired_audit_task_v1",
+  "visibility": "hidden_evaluation_or_offline_audit_only_not_method_input",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_60",
+    "title": "NCARB-derived area-of-refuge wheelchair space planning",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "accessible_egress_refuge_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: accessible route and refuge planning. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "egress_component": "area_of_refuge",
+      "adjacent_smoke_barrier": true,
+      "entity.type": "area of refuge",
+      "type": "area of refuge",
+      "ncarb_scenario_theme": "accessible route and refuge planning",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "accessibility",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Mixed numeric and semantic-indicator area-of-refuge task combining wheelchair-space sizing and smoke-separation indicators."
+    },
+    "decision_variables": {
+      "adjoining_wheelchair_obstruction_count": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 0,
+        "upper": 4
+      },
+      "smoke_separation_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1
+      },
+      "wheelchair_spaces_count": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 1,
+        "upper": 8
+      },
+      "refuge_area_sf": {
+        "type": "continuous",
+        "unit": "sf",
+        "lower": 30,
+        "upper": 300
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_wheelchair_spaces",
+        "expression": "wheelchair_spaces_count"
+      },
+      {
+        "name": "minimize_refuge_area",
+        "expression": "refuge_area_sf"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.55,
+        0.45
+      ],
+      "meaning": "slightly prioritize refuge capacity"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_60_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "accessible route and refuge planning",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "scenario_variant_differentiator": "Mixed numeric and semantic-indicator area-of-refuge task combining wheelchair-space sizing and smoke-separation indicators.",
+    "task_semantics_profile": "mixed_numeric_and_semantic_indicator",
+    "task_semantics_note": "This task mixes numeric sizing constraints with semantic indicator variables."
+  },
+  "evaluation_reference": {
+    "omega_id": "ARCH_FKG_60",
+    "title": "NCARB-derived area-of-refuge wheelchair space planning",
+    "rule_structure": {
+      "expected_source_rule_ids": [
+        "ifc-2021-1009-6-4-wheelchair-access",
+        "ifc-2021-1009-6-4-separation"
+      ],
+      "expected_defeated_rule_ids": [],
+      "expected_surviving_rule_ids": [
+        "ifc-2021-1009-6-4-separation",
+        "ifc-2021-1009-6-4-wheelchair-access"
+      ],
+      "expected_valid_rule_structures": [
+        [
+          "ifc-2021-1009-6-4-separation",
+          "ifc-2021-1009-6-4-wheelchair-access"
+        ]
+      ],
+      "expected_rule_behavior": {
+        "should_activate": [
+          "Area of refuge separation requirement",
+          "Wheelchair space obstruction limit in area of refuge"
+        ],
+        "should_exclude": [],
+        "should_resolve": [
+          "multi_rule_conjunction"
+        ]
+      },
+      "challenge_types": [
+        "multi_rule_conjunction"
+      ],
+      "valid_constraint_cell_ids": [
+        "ARCH_FKG_60_cell_1"
+      ],
+      "expected_provenance": {
+        "kg_chunk_ids": [
+          "09cb8446-feef-5c8a-8354-bde1d57f1275"
+        ],
+        "kg_node_ids": [
+          "01c00860-3c4f-5e55-9562-18a587cf18f8",
+          "5b31078c-4a47-5fb8-abb0-57b5e5025b6e",
+          "a540ccbf-1325-5838-be7e-f8ce1b9ff237",
+          "ed7b6e6e-e318-504c-bcfa-65e30a4f6e4f"
+        ],
+        "kg_edge_ids": [
+          "kg_edge_19458",
+          "kg_edge_22208",
+          "kg_edge_25001",
+          "kg_edge_34498"
+        ],
+        "source_documents": [
+          {
+            "document": "IFC 2021",
+            "section": "1009.6.4",
+            "page": "unknown",
+            "chunk_id": "09cb8446-feef-5c8a-8354-bde1d57f1275"
+          },
+          {
+            "document": "ARE-Practice-Exam-Project-Planning-and-Design.pdf",
+            "section": "Project Planning and Design",
+            "page": "practice-exam-question",
+            "question_number": "Question 23",
+            "derivation_policy": "Paraphrased and parameterized from an NCARB practice-exam scenario; original question text is not copied."
+          }
+        ]
+      }
+    },
+    "feasible_region": {
+      "executable_constraints": [
+        {
+          "constraint_id": "C1",
+          "expression": "adjoining_wheelchair_obstruction_count <= 1",
+          "role": "wheelchair_space_obstruction_limit",
+          "source_type": "rule_library",
+          "source_id": "ifc-2021-1009-6-4-wheelchair-access",
+          "executable": true,
+          "checker_expression": "adjoining_wheelchair_obstruction_count <= 1",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "adjoining_wheelchair_obstruction_count"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C2",
+          "expression": "smoke_separation_indicator == 1",
+          "role": "area_of_refuge_separation_provided",
+          "source_type": "rule_library",
+          "source_id": "ifc-2021-1009-6-4-separation",
+          "executable": true,
+          "checker_expression": "smoke_separation_indicator == 1",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "smoke_separation_indicator"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "semantic_indicator_encoding": true,
+            "derived_from_text_or_semantic_rule": true,
+            "derived_from_rule_id": "ifc-2021-1009-6-4-separation",
+            "encoding_note": "This executable predicate is a task-level semantic encoding of a textual or categorical full-KG rule."
+          }
+        },
+        {
+          "constraint_id": "C90",
+          "expression": "wheelchair_spaces_count >= 1",
+          "role": "minimum_refuge_wheelchair_space",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "wheelchair_spaces_count >= 1",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "wheelchair_spaces_count"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "The refuge layout must provide at least one wheelchair space when the refuge rule is activated."
+          }
+        },
+        {
+          "constraint_id": "C91",
+          "expression": "refuge_area_sf >= 30 * wheelchair_spaces_count",
+          "role": "refuge_area_scales_with_wheelchair_spaces",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "refuge_area_sf >= 30 * wheelchair_spaces_count",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "refuge_area_sf",
+              "wheelchair_spaces_count"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Refuge area is coupled to the number of wheelchair spaces."
+          }
+        }
+      ],
+      "structure_only_constraints": [],
+      "valid_constraint_cells": [
+        {
+          "cell_id": "ARCH_FKG_60_cell_1",
+          "cell_type": "single_valid_fullkg_rule_structure",
+          "rule_ids": [
+            "ifc-2021-1009-6-4-separation",
+            "ifc-2021-1009-6-4-wheelchair-access"
+          ],
+          "constraints": [
+            {
+              "constraint_id": "C1",
+              "expression": "adjoining_wheelchair_obstruction_count <= 1",
+              "role": "wheelchair_space_obstruction_limit",
+              "source_type": "rule_library",
+              "source_id": "ifc-2021-1009-6-4-wheelchair-access",
+              "executable": true,
+              "checker_expression": "adjoining_wheelchair_obstruction_count <= 1",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "adjoining_wheelchair_obstruction_count"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C2",
+              "expression": "smoke_separation_indicator == 1",
+              "role": "area_of_refuge_separation_provided",
+              "source_type": "rule_library",
+              "source_id": "ifc-2021-1009-6-4-separation",
+              "executable": true,
+              "checker_expression": "smoke_separation_indicator == 1",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "smoke_separation_indicator"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "semantic_indicator_encoding": true,
+                "derived_from_text_or_semantic_rule": true,
+                "derived_from_rule_id": "ifc-2021-1009-6-4-separation",
+                "encoding_note": "This executable predicate is a task-level semantic encoding of a textual or categorical full-KG rule."
+              }
+            },
+            {
+              "constraint_id": "C90",
+              "expression": "wheelchair_spaces_count >= 1",
+              "role": "minimum_refuge_wheelchair_space",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "wheelchair_spaces_count >= 1",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "wheelchair_spaces_count"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "The refuge layout must provide at least one wheelchair space when the refuge rule is activated."
+              }
+            },
+            {
+              "constraint_id": "C91",
+              "expression": "refuge_area_sf >= 30 * wheelchair_spaces_count",
+              "role": "refuge_area_scales_with_wheelchair_spaces",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "refuge_area_sf >= 30 * wheelchair_spaces_count",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "refuge_area_sf",
+                  "wheelchair_spaces_count"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Refuge area is coupled to the number of wheelchair spaces."
+              }
+            }
+          ],
+          "description": "Executable feasible cell induced by the expected full-KG rule structure for this grounded scenario."
+        }
+      ],
+      "reference_semantics": {
+        "positive_membership_condition": "all executable_constraints evaluate true and at least one valid cell holds when cells are present",
+        "structure_only_constraints_usage": "used to check rule resolution, provenance, exceptions, or semantic requirements before numeric membership checking"
+      }
+    },
+    "certificate_targets": {
+      "source_rule_ids": [
+        "ifc-2021-1009-6-4-wheelchair-access",
+        "ifc-2021-1009-6-4-separation"
+      ],
+      "provenance": [
+        {
+          "document": "IFC 2021",
+          "section": "1009.6.4",
+          "page": "unknown",
+          "chunk_id": "09cb8446-feef-5c8a-8354-bde1d57f1275"
+        }
+      ]
+    },
+    "diagnostic_candidate_rule_ids_reference_only": [
+      "ifc-2021-1009-6-4-wheelchair-access",
+      "ifc-2021-1009-6-4-separation"
+    ],
+    "rule_library_id_bindings": [
+      {
+        "rule_id": "ifc-2021-1009-6-4-separation",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ifc-2021-1009-6-4-separation",
+        "rule_name": "Area of refuge separation requirement",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "09cb8446-feef-5c8a-8354-bde1d57f1275"
+        ],
+        "source_node_ids": [
+          "ed7b6e6e-e318-504c-bcfa-65e30a4f6e4f",
+          "01c00860-3c4f-5e55-9562-18a587cf18f8",
+          "a540ccbf-1325-5838-be7e-f8ce1b9ff237"
+        ],
+        "provenance": [
+          {
+            "document": "IFC 2021",
+            "section": "1009.6.4",
+            "page": "unknown",
+            "chunk_id": "09cb8446-feef-5c8a-8354-bde1d57f1275"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "separation_method",
+            "op": "text",
+            "value": "smoke barrier complying with IBC Section 709 OR horizontal exit complying with IBC Section 1026",
+            "unit": "unknown"
+          },
+          {
+            "variable": "smoke_intrusion",
+            "op": "text",
+            "value": "shall be designed to minimize the intrusion of smoke",
+            "unit": "unknown"
+          }
+        ]
+      },
+      {
+        "rule_id": "ifc-2021-1009-6-4-wheelchair-access",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ifc-2021-1009-6-4-wheelchair-access",
+        "rule_name": "Wheelchair space obstruction limit in area of refuge",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "09cb8446-feef-5c8a-8354-bde1d57f1275"
+        ],
+        "source_node_ids": [
+          "5b31078c-4a47-5fb8-abb0-57b5e5025b6e",
+          "ed7b6e6e-e318-504c-bcfa-65e30a4f6e4f"
+        ],
+        "provenance": [
+          {
+            "document": "IFC 2021",
+            "section": "1009.6.4",
+            "page": "unknown",
+            "chunk_id": "09cb8446-feef-5c8a-8354-bde1d57f1275"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "obstruction_by_adjoining_wheelchair_spaces",
+            "op": "<=",
+            "value": 1,
+            "unit": "count"
+          }
+        ]
+      }
+    ],
+    "reference_constraint_rule_bindings": [
+      {
+        "reference_container": "feasible_region.executable_constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "wheelchair_space_obstruction_limit",
+        "reference_expression": "adjoining_wheelchair_obstruction_count <= 1",
+        "source_rule_id": "ifc-2021-1009-6-4-wheelchair-access",
+        "rule_library_rule_id": "ifc-2021-1009-6-4-wheelchair-access",
+        "rule_library_rule_name": "Wheelchair space obstruction limit in area of refuge"
+      },
+      {
+        "reference_container": "feasible_region.executable_constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "area_of_refuge_separation_provided",
+        "reference_expression": "smoke_separation_indicator == 1",
+        "source_rule_id": "ifc-2021-1009-6-4-separation",
+        "rule_library_rule_id": "ifc-2021-1009-6-4-separation",
+        "rule_library_rule_name": "Area of refuge separation requirement"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "wheelchair_space_obstruction_limit",
+        "reference_expression": "adjoining_wheelchair_obstruction_count <= 1",
+        "source_rule_id": "ifc-2021-1009-6-4-wheelchair-access",
+        "rule_library_rule_id": "ifc-2021-1009-6-4-wheelchair-access",
+        "rule_library_rule_name": "Wheelchair space obstruction limit in area of refuge"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "area_of_refuge_separation_provided",
+        "reference_expression": "smoke_separation_indicator == 1",
+        "source_rule_id": "ifc-2021-1009-6-4-separation",
+        "rule_library_rule_id": "ifc-2021-1009-6-4-separation",
+        "rule_library_rule_name": "Area of refuge separation requirement"
+      }
+    ],
+    "task_derivation_source": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "document": "ARE-Practice-Exam-Project-Planning-and-Design.pdf",
+      "division": "Project Planning and Design",
+      "question_number": "Question 23",
+      "theme": "accessible route and refuge planning",
+      "adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "source_policy": "Hidden provenance only; algorithm-visible inputs expose only generalized NCARB-derived themes."
+    },
+    "benchmark_extension_metadata": {
+      "extension_round": "architecture_ncarb_50_extension",
+      "source_base_task_id": "ARCH_FKG_09",
+      "ncarb_category": "accessibility",
+      "source_policy": "paraphrased_parameterized_not_verbatim",
+      "dataset_characterization": "NCARB practice-topic-derived, paraphrased, and parameterized architecture-code semantic extension task.",
+      "independence_claim": "parameterized_variant_not_fully_independent_real_project_case",
+      "source_visibility_policy": "Exact practice identifiers, original question text, answer choices, and source file names are hidden from algorithm-visible inputs.",
+      "constraint_semantics_class": "mixed_numeric_and_semantic_indicator",
+      "semantic_indicator_note": "Contains both numeric sizing constraints and semantic indicator requirements.",
+      "method_visibility": "hidden_evaluation_reference_not_method_input"
+    }
+  }
+}

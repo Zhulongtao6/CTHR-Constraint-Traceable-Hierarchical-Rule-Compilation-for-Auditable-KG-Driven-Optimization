@@ -1,0 +1,4 @@
+﻿Domain,Generator,Rule Precision,Rule Recall,Formal CSR,Sem-CSR,False accept,Candidate zero,CTHR no valid,Invalid cases,Unsupported tasks,Relation templates added
+Aviation rule relation balanced v13 150,Qwen-plus,100.0%,100.0%,96.7%,96.7%,0.0%,0,0,5/150,0,616
+Aviation rule relation balanced v13 150,DeepSeek-Pro,86.8%,100.0%,96.7%,96.7%,0.0%,0,0,5/150,0,616
+Aviation rule relation balanced v13 150,Xiaomi MIMO,88.9%,100.0%,94.0%,94.0%,0.0%,0,0,9/150,0,616

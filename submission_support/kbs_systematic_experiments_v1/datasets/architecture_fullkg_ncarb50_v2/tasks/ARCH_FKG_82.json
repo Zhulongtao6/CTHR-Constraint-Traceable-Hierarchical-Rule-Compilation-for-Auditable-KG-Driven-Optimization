@@ -1,0 +1,87 @@
+{
+  "version": "architecture_ncarb50_v2_public_task_v1",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_82",
+    "title": "NCARB-derived accessible egress elevator for high-rise option",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IBC",
+    "task_type": "accessible_means_of_egress_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: multi-story office option evaluation. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "occupied_floors_above_exit_discharge": 18,
+      "accessible_means_of_egress_required": true,
+      "building.occupied_floor_stories_from_exit_discharge": 18,
+      "occupied_floor_stories_from_exit_discharge": 18,
+      "scenario.has_life_safety_risk": true,
+      "has_life_safety_risk": true,
+      "ncarb_scenario_theme": "multi-story office option evaluation",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "area_and_height",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "High-rise accessible egress elevator context with more occupied stories and emergency power emphasis.",
+      "elevator_context": "high_rise_vertical_evacuation",
+      "emergency_power_redundancy_required": true
+    },
+    "decision_variables": {
+      "accessible_egress_elevator_count": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 0,
+        "upper": 4
+      },
+      "emergency_power_system_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1
+      },
+      "elevator_core_impact_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      },
+      "life_safety_resilience_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      }
+    },
+    "objectives": [
+      {
+        "name": "minimize_elevator_core_impact",
+        "expression": "elevator_core_impact_score"
+      },
+      {
+        "name": "maximize_life_safety_resilience",
+        "expression": "life_safety_resilience_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.32,
+        0.68
+      ],
+      "meaning": "prioritize high-rise life-safety resilience and emergency power continuity"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_82_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "multi-story office option evaluation",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "scenario_variant_status": "parameterized_scenario_variant",
+    "scenario_variant_note": "Parameterized variant with substantive changes in facts, bounds, weights, or document context; not a fully independent real project case.",
+    "scenario_variant_differentiator": "High-rise accessible egress elevator context with more occupied stories and emergency power emphasis.",
+    "scenario_variant_group_id": "ncarb50_scenario_variant_group_08"
+  }
+}

@@ -1,0 +1,68 @@
+You are converting a small source-KG evidence packet into a CTHR rule base.
+
+Use only the evidence provided in the user message. Do not invent variables,
+documents, pages, sections, numeric values, rule relations, or source anchors.
+
+Return only valid JSON with this schema:
+
+{
+  "case_id": "...",
+  "rules": [
+    {
+      "rule_id": "stable_short_id",
+      "name": "human readable rule name",
+      "domain": "architecture|aviation",
+      "source_node_ids": ["kg node id(s) that this rule comes from"],
+      "guard": {
+        "all": [
+          {"field": "scenario field name", "op": "eq|neq|gt|gte|lt|lte|in", "value": "scenario value"}
+        ]
+      },
+      "constraints": [
+        {
+          "variable": "one allowed variable",
+          "op": ">=|<=|=|>|<",
+          "value": 0,
+          "unit": "unit from evidence",
+          "evidence": {
+            "chunk_ids": ["existing chunk id"],
+            "kg_edge_ids": ["existing edge id"]
+          }
+        }
+      ],
+      "relations": [
+        {
+          "type": "overrides|precedes|excludes|depends_on",
+          "target_rule": "target rule_id if known; otherwise target source node id",
+          "evidence": {
+            "chunk_ids": ["existing chunk id"],
+            "kg_edge_ids": ["existing edge id"]
+          }
+        }
+      ],
+      "provenance": [
+        {
+          "document": "exact document name from source chunk",
+          "section": "exact section from source chunk",
+          "page": 0,
+          "chunk_id": "existing chunk id"
+        }
+      ]
+    }
+  ]
+}
+
+Important modeling rules:
+- A requires_minimum KG edge becomes a >= constraint.
+- A requires_maximum KG edge becomes a <= constraint.
+- An excludes edge means the two rule paths are alternative valid structures,
+  not simultaneous constraints.
+- An overrides edge means the source rule defeats the target rule when both
+  are applicable.
+- A precedes edge means the source rule governs over the target rule when both
+  conflict.
+- A depends_on edge should be represented as a depends_on relation.
+- Keep multiple alternative compliance paths as separate rules or separate
+  valid structures. Do not merge mutually exclusive templates into one rule.
+- Every constraint and relation must cite existing evidence by chunk_id and
+  kg_edge_id.

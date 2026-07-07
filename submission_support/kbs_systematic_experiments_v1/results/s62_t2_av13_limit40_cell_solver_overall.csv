@@ -1,0 +1,5 @@
+﻿Dataset,Solver over CTHR cells,Solve,Cell CSR,Objective gap
+Aviation Rule Relation Balanced v13 150,CTHR default solver,96.667,96.667,0.0%
+Aviation Rule Relation Balanced v13 150,ASP/clingo over CTHR cells,0.0,0.0,N/A
+Aviation Rule Relation Balanced v13 150,CP-SAT + OR-Tools over CTHR cells,96.667,95.333,0.717636%
+Aviation Rule Relation Balanced v13 150,SCIP over CTHR cells,96.667,96.667,0.0%

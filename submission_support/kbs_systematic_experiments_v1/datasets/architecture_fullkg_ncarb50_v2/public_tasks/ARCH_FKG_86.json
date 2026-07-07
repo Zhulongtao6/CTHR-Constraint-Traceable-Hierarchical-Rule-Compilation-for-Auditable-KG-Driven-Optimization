@@ -1,0 +1,70 @@
+{
+  "version": "architecture_ncarb50_v2_public_task_v1",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_86",
+    "title": "NCARB-derived outdoor control area setback from buildable lot line",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "site_hazard_control_area_layout",
+    "design_intent": "Place an outdoor control area while balancing buildable site efficiency against required separation from public ways and buildable lot lines.",
+    "scenario_facts": {
+      "entity_type": "outdoor control area",
+      "public_way_or_buildable_lot_line": true,
+      "ncarb_scenario_theme": "utility easement and side-yard siting",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "site_and_zoning_like",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized"
+    },
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "utility easement and side-yard siting",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "decision_variables": {
+      "minimum_setback_distance_ft": {
+        "type": "continuous",
+        "unit": "ft",
+        "lower": 0,
+        "upper": 40
+      },
+      "site_efficiency_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 15
+      },
+      "separation_safety_margin_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 15
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_site_efficiency",
+        "expression": "site_efficiency_score"
+      },
+      {
+        "name": "maximize_separation_safety_margin",
+        "expression": "separation_safety_margin_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.45,
+        0.55
+      ],
+      "meaning": "balance usable site efficiency and separation margin"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_86_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references."
+  }
+}

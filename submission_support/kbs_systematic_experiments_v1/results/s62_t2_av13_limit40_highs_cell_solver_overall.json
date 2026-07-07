@@ -1,0 +1,76 @@
+{
+  "generated_at": "2026-07-03 15:49:44",
+  "experiment": "Section 6.2 Table 2: Solver backends over CTHR compiled cells",
+  "datasets": {
+    "Aviation": {
+      "tasks": 150,
+      "path": "submission_support\\kbs_systematic_experiments_v1\\datasets\\aviation_rule_relation_balanced_v13_150",
+      "grounding_full": "submission_support\\kbs_systematic_experiments_v1\\results\\av13_candidate_limit40\\section_6_3_aviation_smix_v11_150_old_candidate_recall_guard_profile_auto_resolver_candidate_to_valid_full.json"
+    }
+  },
+  "settings": {
+    "cell_source": "latest CTHR predicted_valid_rule_ids + compiled_rule_constraint_templates",
+    "default_solver": "differential_evolution + SLSQP local refinement",
+    "asp_clingo_solver": "ASP cell-selection with clingo + continuous SLSQP refinement inside selected CTHR cells",
+    "cp_sat_solver": "OR-Tools CP-SAT over integer-scaled CTHR compiled constraints",
+    "scip_solver": "SCIP over CTHR compiled constraints",
+    "de_maxiter": 80,
+    "feasibility_tolerance": 0.0001
+  },
+  "summary": [
+    {
+      "Dataset": "Aviation",
+      "Solver over CTHR cells": "CTHR default solver",
+      "Solve": 96.667,
+      "Cell CSR": 96.667,
+      "Objective gap": "0.0%",
+      "Task count": 150,
+      "Gap count": 145
+    },
+    {
+      "Dataset": "Aviation",
+      "Solver over CTHR cells": "ASP/clingo over CTHR cells",
+      "Solve": 0.0,
+      "Cell CSR": 0.0,
+      "Objective gap": "N/A",
+      "Task count": 150,
+      "Gap count": 0
+    },
+    {
+      "Dataset": "Aviation",
+      "Solver over CTHR cells": "SLSQP over CTHR cells",
+      "Solve": 6.667,
+      "Cell CSR": 6.667,
+      "Objective gap": "14.925374%",
+      "Task count": 150,
+      "Gap count": 10
+    },
+    {
+      "Dataset": "Aviation",
+      "Solver over CTHR cells": "HiGHS over CTHR cells",
+      "Solve": 84.667,
+      "Cell CSR": 84.667,
+      "Objective gap": "1e-05%",
+      "Task count": 150,
+      "Gap count": 127
+    },
+    {
+      "Dataset": "Aviation",
+      "Solver over CTHR cells": "CP-SAT + OR-Tools over CTHR cells",
+      "Solve": 96.667,
+      "Cell CSR": 95.333,
+      "Objective gap": "0.717636%",
+      "Task count": 150,
+      "Gap count": 143
+    },
+    {
+      "Dataset": "Aviation",
+      "Solver over CTHR cells": "SCIP over CTHR cells",
+      "Solve": 96.667,
+      "Cell CSR": 96.667,
+      "Objective gap": "0.0%",
+      "Task count": 150,
+      "Gap count": 145
+    }
+  ]
+}

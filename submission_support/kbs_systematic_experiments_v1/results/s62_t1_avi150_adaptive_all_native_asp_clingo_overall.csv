@@ -1,0 +1,2 @@
+﻿Dataset,Method,Method type,Rule Precision,Rule Recall,Formal CSR,Sem-CSR,False accept,Invalid cases
+Aviation,Native ASP + clingo,native_symbolic,7.5%,19.3%,0.0%,0.0%,0.0%,150/150 (100.0%)

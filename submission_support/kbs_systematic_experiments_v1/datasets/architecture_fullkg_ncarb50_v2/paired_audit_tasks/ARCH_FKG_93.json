@@ -1,0 +1,730 @@
+{
+  "version": "architecture_ncarb50_v2_paired_audit_task_v1",
+  "visibility": "hidden_evaluation_or_offline_audit_only_not_method_input",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_93",
+    "title": "NCARB-derived emergency voice specification precedence",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "emergency_voice_alarm_precedence_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: addenda and specification sequence. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "system_type": "emergency_voice_alarm_communication_system",
+      "alternative_announcement_use_requested": true,
+      "shared_voice_alarm_channel_capacity": 5,
+      "ncarb_scenario_theme": "addenda and specification sequence",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "construction_documentation",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Construction specification review variant for emergency voice system priority.",
+      "voice_alarm_context": "construction_specification_review"
+    },
+    "decision_variables": {
+      "selective_paging_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1
+      },
+      "all_call_paging_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1
+      },
+      "manual_fire_alarm_priority_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1
+      },
+      "reserved_alarm_priority_channels": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 1,
+        "upper": 5
+      },
+      "alternative_announcement_channel_count": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 0,
+        "upper": 5
+      },
+      "operator_flexibility_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 12
+      },
+      "alarm_preemption_reliability_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 16
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_operator_flexibility",
+        "expression": "operator_flexibility_score"
+      },
+      {
+        "name": "maximize_alarm_preemption_reliability",
+        "expression": "alarm_preemption_reliability_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.62,
+        0.38
+      ],
+      "meaning": "prioritize specification review flexibility while preserving manual fire alarm priority"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_93_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "addenda and specification sequence",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "scenario_variant_status": "parameterized_scenario_variant",
+    "scenario_variant_note": "Parameterized variant with substantive changes in facts, bounds, weights, or document context; not a fully independent real project case.",
+    "task_semantics_profile": "semantic_indicator_dominant",
+    "task_semantics_note": "Rule applicability, precedence, categorical, or system-capability semantics dominate this task; it is not a pure continuous numeric optimization task.",
+    "scenario_variant_differentiator": "Construction specification review variant for emergency voice system priority.",
+    "scenario_variant_group_id": "ncarb50_scenario_variant_group_02"
+  },
+  "evaluation_reference": {
+    "omega_id": "ARCH_FKG_93",
+    "title": "NCARB-derived emergency voice specification precedence",
+    "rule_structure": {
+      "expected_source_rule_ids": [
+        "ifc-907.5.2.2.1-paging-zones-capability",
+        "ifc-907.5.2.2.3-precedence-of-fire-alarm-use"
+      ],
+      "expected_defeated_rule_ids": [],
+      "expected_surviving_rule_ids": [
+        "ifc-907.5.2.2.1-paging-zones-capability",
+        "ifc-907.5.2.2.3-precedence-of-fire-alarm-use"
+      ],
+      "expected_valid_rule_structures": [
+        [
+          "ifc-907.5.2.2.1-paging-zones-capability",
+          "ifc-907.5.2.2.3-precedence-of-fire-alarm-use"
+        ]
+      ],
+      "expected_rule_behavior": {
+        "should_activate": [
+          "Emergency voice/alarm communication system must support selective and all-call paging zones",
+          "Manual fire alarm use takes precedence over other uses of emergency voice/alarm communication system"
+        ],
+        "should_exclude": [],
+        "should_resolve": [
+          "precedence",
+          "override_resolution",
+          "multi_rule_conjunction"
+        ]
+      },
+      "challenge_types": [
+        "precedence",
+        "override_resolution",
+        "multi_rule_conjunction"
+      ],
+      "valid_constraint_cell_ids": [
+        "ARCH_FKG_93_cell_1"
+      ],
+      "expected_provenance": {
+        "kg_chunk_ids": [
+          "ae00467b-89d5-5c25-8fb5-538667853805"
+        ],
+        "kg_node_ids": [
+          "67f889b6-9b62-54ad-b2e6-d55dbe44fd97",
+          "a89864dc-8255-5770-930a-c947d37eb722",
+          "f1e09945-b829-5b2b-be4c-491917331d73"
+        ],
+        "kg_edge_ids": [
+          "kg_edge_32338",
+          "kg_edge_32656",
+          "kg_edge_32658"
+        ],
+        "source_documents": [
+          {
+            "document": "IFC 2021",
+            "section": "907.5.2.2",
+            "page": "unknown",
+            "chunk_id": "ae00467b-89d5-5c25-8fb5-538667853805"
+          },
+          {
+            "document": "IFC 2021",
+            "section": "907.5.2.2.3",
+            "page": "unknown",
+            "chunk_id": "ae00467b-89d5-5c25-8fb5-538667853805"
+          },
+          {
+            "document": "ARE-Practice-Exam-Project-Development-and-Documentation.pdf",
+            "section": "Project Development and Documentation",
+            "page": "practice-exam-question",
+            "question_number": "Question 8",
+            "derivation_policy": "Paraphrased and parameterized from an NCARB practice-exam scenario; original question text is not copied."
+          }
+        ]
+      }
+    },
+    "feasible_region": {
+      "executable_constraints": [
+        {
+          "constraint_id": "C1",
+          "expression": "selective_paging_indicator == 1",
+          "role": "selective_paging_capability",
+          "source_type": "rule_library",
+          "source_id": "ifc-907.5.2.2.1-paging-zones-capability",
+          "executable": true,
+          "checker_expression": "selective_paging_indicator == 1",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "selective_paging_indicator"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "semantic_indicator_encoding": true,
+            "derived_from_text_or_semantic_rule": true,
+            "derived_from_rule_id": "ifc-907.5.2.2.1-paging-zones-capability",
+            "encoding_note": "This executable predicate is a task-level semantic encoding of a textual or categorical full-KG rule.",
+            "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+          }
+        },
+        {
+          "constraint_id": "C2",
+          "expression": "all_call_paging_indicator == 1",
+          "role": "all_call_paging_capability",
+          "source_type": "rule_library",
+          "source_id": "ifc-907.5.2.2.1-paging-zones-capability",
+          "executable": true,
+          "checker_expression": "all_call_paging_indicator == 1",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "all_call_paging_indicator"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "semantic_indicator_encoding": true,
+            "derived_from_text_or_semantic_rule": true,
+            "derived_from_rule_id": "ifc-907.5.2.2.1-paging-zones-capability",
+            "encoding_note": "This executable predicate is a task-level semantic encoding of a textual or categorical full-KG rule.",
+            "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+          }
+        },
+        {
+          "constraint_id": "C3",
+          "expression": "manual_fire_alarm_priority_indicator == 1",
+          "role": "manual_fire_alarm_use_precedence",
+          "source_type": "rule_library",
+          "source_id": "ifc-907.5.2.2.3-precedence-of-fire-alarm-use",
+          "executable": true,
+          "checker_expression": "manual_fire_alarm_priority_indicator == 1",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "manual_fire_alarm_priority_indicator"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "semantic_indicator_encoding": true,
+            "derived_from_text_or_semantic_rule": true,
+            "derived_from_rule_id": "ifc-907.5.2.2.3-precedence-of-fire-alarm-use",
+            "encoding_note": "This executable predicate is a task-level semantic encoding of a textual or categorical full-KG rule.",
+            "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+          }
+        },
+        {
+          "constraint_id": "C4",
+          "expression": "reserved_alarm_priority_channels + alternative_announcement_channel_count <= shared_voice_alarm_channel_capacity",
+          "role": "shared_channel_capacity_model",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_voice_alarm_model",
+          "executable": true,
+          "checker_expression": "reserved_alarm_priority_channels + alternative_announcement_channel_count <= shared_voice_alarm_channel_capacity",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "reserved_alarm_priority_channels",
+              "alternative_announcement_channel_count"
+            ],
+            "scenario_fields": [
+              "shared_voice_alarm_channel_capacity"
+            ],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "semantic_indicator_encoding": true,
+            "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+          }
+        },
+        {
+          "constraint_id": "C90",
+          "expression": "operator_flexibility_score <= 2 * alternative_announcement_channel_count",
+          "role": "operator_flexibility_from_alternative_channels",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "operator_flexibility_score <= 2 * alternative_announcement_channel_count",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "operator_flexibility_score",
+              "alternative_announcement_channel_count"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Operator flexibility is tied to the number of non-alarm announcement channels left available.",
+            "semantic_indicator_encoding": true,
+            "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+          }
+        },
+        {
+          "constraint_id": "C91",
+          "expression": "alarm_preemption_reliability_score <= 2 * reserved_alarm_priority_channels + 4 * manual_fire_alarm_priority_indicator",
+          "role": "preemption_reliability_from_reserved_priority_capacity",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "alarm_preemption_reliability_score <= 2 * reserved_alarm_priority_channels + 4 * manual_fire_alarm_priority_indicator",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "alarm_preemption_reliability_score",
+              "reserved_alarm_priority_channels",
+              "manual_fire_alarm_priority_indicator"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Alarm preemption reliability grows with reserved priority capacity and the required manual alarm priority behavior.",
+            "semantic_indicator_encoding": true,
+            "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+          }
+        }
+      ],
+      "structure_only_constraints": [
+        {
+          "constraint_id": "S1",
+          "expression": "1 == 1",
+          "role": "manual_fire_alarm_precedence_resolution",
+          "source_type": "rule_library",
+          "source_id": "ifc-907.5.2.2.3-precedence-of-fire-alarm-use",
+          "executable": false,
+          "reason_not_executable": "not represented as a direct numeric predicate",
+          "semantic_statement": "manual fire alarm use overrides alternative announcement use when both use the emergency voice alarm system",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "metadata": {
+            "structure_only_relation": true,
+            "semantic_statement": "manual fire alarm use overrides alternative announcement use when both use the emergency voice alarm system",
+            "boolean_placeholder_policy": "The executable expression is a tautological placeholder; the relation is evaluated through rule_structure labels, provenance, and semantic_statement."
+          }
+        }
+      ],
+      "valid_constraint_cells": [
+        {
+          "cell_id": "ARCH_FKG_93_cell_1",
+          "cell_type": "single_valid_fullkg_rule_structure",
+          "rule_ids": [
+            "ifc-907.5.2.2.1-paging-zones-capability",
+            "ifc-907.5.2.2.3-precedence-of-fire-alarm-use"
+          ],
+          "constraints": [
+            {
+              "constraint_id": "C1",
+              "expression": "selective_paging_indicator == 1",
+              "role": "selective_paging_capability",
+              "source_type": "rule_library",
+              "source_id": "ifc-907.5.2.2.1-paging-zones-capability",
+              "executable": true,
+              "checker_expression": "selective_paging_indicator == 1",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "selective_paging_indicator"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "semantic_indicator_encoding": true,
+                "derived_from_text_or_semantic_rule": true,
+                "derived_from_rule_id": "ifc-907.5.2.2.1-paging-zones-capability",
+                "encoding_note": "This executable predicate is a task-level semantic encoding of a textual or categorical full-KG rule.",
+                "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+              }
+            },
+            {
+              "constraint_id": "C2",
+              "expression": "all_call_paging_indicator == 1",
+              "role": "all_call_paging_capability",
+              "source_type": "rule_library",
+              "source_id": "ifc-907.5.2.2.1-paging-zones-capability",
+              "executable": true,
+              "checker_expression": "all_call_paging_indicator == 1",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "all_call_paging_indicator"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "semantic_indicator_encoding": true,
+                "derived_from_text_or_semantic_rule": true,
+                "derived_from_rule_id": "ifc-907.5.2.2.1-paging-zones-capability",
+                "encoding_note": "This executable predicate is a task-level semantic encoding of a textual or categorical full-KG rule.",
+                "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+              }
+            },
+            {
+              "constraint_id": "C3",
+              "expression": "manual_fire_alarm_priority_indicator == 1",
+              "role": "manual_fire_alarm_use_precedence",
+              "source_type": "rule_library",
+              "source_id": "ifc-907.5.2.2.3-precedence-of-fire-alarm-use",
+              "executable": true,
+              "checker_expression": "manual_fire_alarm_priority_indicator == 1",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "manual_fire_alarm_priority_indicator"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "semantic_indicator_encoding": true,
+                "derived_from_text_or_semantic_rule": true,
+                "derived_from_rule_id": "ifc-907.5.2.2.3-precedence-of-fire-alarm-use",
+                "encoding_note": "This executable predicate is a task-level semantic encoding of a textual or categorical full-KG rule.",
+                "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+              }
+            },
+            {
+              "constraint_id": "C4",
+              "expression": "reserved_alarm_priority_channels + alternative_announcement_channel_count <= shared_voice_alarm_channel_capacity",
+              "role": "shared_channel_capacity_model",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_voice_alarm_model",
+              "executable": true,
+              "checker_expression": "reserved_alarm_priority_channels + alternative_announcement_channel_count <= shared_voice_alarm_channel_capacity",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "reserved_alarm_priority_channels",
+                  "alternative_announcement_channel_count"
+                ],
+                "scenario_fields": [
+                  "shared_voice_alarm_channel_capacity"
+                ],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "semantic_indicator_encoding": true,
+                "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+              }
+            },
+            {
+              "constraint_id": "C90",
+              "expression": "operator_flexibility_score <= 2 * alternative_announcement_channel_count",
+              "role": "operator_flexibility_from_alternative_channels",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "operator_flexibility_score <= 2 * alternative_announcement_channel_count",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "operator_flexibility_score",
+                  "alternative_announcement_channel_count"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Operator flexibility is tied to the number of non-alarm announcement channels left available.",
+                "semantic_indicator_encoding": true,
+                "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+              }
+            },
+            {
+              "constraint_id": "C91",
+              "expression": "alarm_preemption_reliability_score <= 2 * reserved_alarm_priority_channels + 4 * manual_fire_alarm_priority_indicator",
+              "role": "preemption_reliability_from_reserved_priority_capacity",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "alarm_preemption_reliability_score <= 2 * reserved_alarm_priority_channels + 4 * manual_fire_alarm_priority_indicator",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "alarm_preemption_reliability_score",
+                  "reserved_alarm_priority_channels",
+                  "manual_fire_alarm_priority_indicator"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Alarm preemption reliability grows with reserved priority capacity and the required manual alarm priority behavior.",
+                "semantic_indicator_encoding": true,
+                "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+              }
+            }
+          ],
+          "description": "Executable feasible cell induced by the expected full-KG rule structure for this grounded scenario."
+        }
+      ],
+      "reference_semantics": {
+        "positive_membership_condition": "all executable_constraints evaluate true and at least one valid cell holds when cells are present",
+        "structure_only_constraints_usage": "used to check rule resolution, provenance, exceptions, or semantic requirements before numeric membership checking"
+      }
+    },
+    "certificate_targets": {
+      "source_rule_ids": [
+        "ifc-907.5.2.2.1-paging-zones-capability",
+        "ifc-907.5.2.2.3-precedence-of-fire-alarm-use"
+      ],
+      "provenance": [
+        {
+          "document": "IFC 2021",
+          "section": "907.5.2.2",
+          "page": "unknown",
+          "chunk_id": "ae00467b-89d5-5c25-8fb5-538667853805"
+        },
+        {
+          "document": "IFC 2021",
+          "section": "907.5.2.2.3",
+          "page": "unknown",
+          "chunk_id": "ae00467b-89d5-5c25-8fb5-538667853805"
+        }
+      ]
+    },
+    "diagnostic_candidate_rule_ids_reference_only": [
+      "ifc-907.5.2.2.1-paging-zones-capability",
+      "ifc-907.5.2.2.3-precedence-of-fire-alarm-use"
+    ],
+    "rule_library_id_bindings": [
+      {
+        "rule_id": "ifc-907.5.2.2.1-paging-zones-capability",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ifc-907.5.2.2.1-paging-zones-capability",
+        "rule_name": "Emergency voice/alarm communication system must support selective and all-call paging zones",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "ae00467b-89d5-5c25-8fb5-538667853805"
+        ],
+        "source_node_ids": [
+          "a89864dc-8255-5770-930a-c947d37eb722",
+          "67f889b6-9b62-54ad-b2e6-d55dbe44fd97",
+          "f1e09945-b829-5b2b-be4c-491917331d73"
+        ],
+        "provenance": [
+          {
+            "document": "IFC 2021",
+            "section": "907.5.2.2",
+            "page": "unknown",
+            "chunk_id": "ae00467b-89d5-5c25-8fb5-538667853805"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "emergency_voice_alarm_communication_system_paging_capability",
+            "op": "=",
+            "value": "selective_and_all_call",
+            "unit": "unknown"
+          }
+        ]
+      },
+      {
+        "rule_id": "ifc-907.5.2.2.3-precedence-of-fire-alarm-use",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ifc-907.5.2.2.3-precedence-of-fire-alarm-use",
+        "rule_name": "Manual fire alarm use takes precedence over other uses of emergency voice/alarm communication system",
+        "rule_type": "precedence",
+        "source_chunk_ids": [
+          "ae00467b-89d5-5c25-8fb5-538667853805"
+        ],
+        "source_node_ids": [
+          "a89864dc-8255-5770-930a-c947d37eb722"
+        ],
+        "provenance": [
+          {
+            "document": "IFC 2021",
+            "section": "907.5.2.2.3",
+            "page": "unknown",
+            "chunk_id": "ae00467b-89d5-5c25-8fb5-538667853805"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "emergency_voice_alarm_communication_system_use_priority",
+            "op": "=",
+            "value": "manual_fire_alarm_over_other_announcements",
+            "unit": "unknown"
+          }
+        ]
+      }
+    ],
+    "reference_constraint_rule_bindings": [
+      {
+        "reference_container": "feasible_region.executable_constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "selective_paging_capability",
+        "reference_expression": "selective_paging_indicator == 1",
+        "source_rule_id": "ifc-907.5.2.2.1-paging-zones-capability",
+        "rule_library_rule_id": "ifc-907.5.2.2.1-paging-zones-capability",
+        "rule_library_rule_name": "Emergency voice/alarm communication system must support selective and all-call paging zones",
+        "metadata": {
+          "semantic_indicator_encoding": true,
+          "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+        }
+      },
+      {
+        "reference_container": "feasible_region.executable_constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "all_call_paging_capability",
+        "reference_expression": "all_call_paging_indicator == 1",
+        "source_rule_id": "ifc-907.5.2.2.1-paging-zones-capability",
+        "rule_library_rule_id": "ifc-907.5.2.2.1-paging-zones-capability",
+        "rule_library_rule_name": "Emergency voice/alarm communication system must support selective and all-call paging zones",
+        "metadata": {
+          "semantic_indicator_encoding": true,
+          "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+        }
+      },
+      {
+        "reference_container": "feasible_region.executable_constraints[2]",
+        "reference_constraint_id": "C3",
+        "reference_role": "manual_fire_alarm_use_precedence",
+        "reference_expression": "manual_fire_alarm_priority_indicator == 1",
+        "source_rule_id": "ifc-907.5.2.2.3-precedence-of-fire-alarm-use",
+        "rule_library_rule_id": "ifc-907.5.2.2.3-precedence-of-fire-alarm-use",
+        "rule_library_rule_name": "Manual fire alarm use takes precedence over other uses of emergency voice/alarm communication system",
+        "metadata": {
+          "semantic_indicator_encoding": true,
+          "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+        }
+      },
+      {
+        "reference_container": "feasible_region.structure_only_constraints[0]",
+        "reference_constraint_id": "S1",
+        "reference_role": "manual_fire_alarm_precedence_resolution",
+        "reference_expression": "1 == 1",
+        "source_rule_id": "ifc-907.5.2.2.3-precedence-of-fire-alarm-use",
+        "rule_library_rule_id": "ifc-907.5.2.2.3-precedence-of-fire-alarm-use",
+        "rule_library_rule_name": "Manual fire alarm use takes precedence over other uses of emergency voice/alarm communication system",
+        "semantic_statement": "manual fire alarm use overrides alternative announcement use when both use the emergency voice alarm system",
+        "expression_language": "python_safe_arithmetic_predicate",
+        "metadata": {
+          "structure_only_relation": true,
+          "semantic_statement": "manual fire alarm use overrides alternative announcement use when both use the emergency voice alarm system",
+          "boolean_placeholder_policy": "The executable expression is a tautological placeholder; the relation is evaluated through rule_structure labels, provenance, and semantic_statement."
+        }
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "selective_paging_capability",
+        "reference_expression": "selective_paging_indicator == 1",
+        "source_rule_id": "ifc-907.5.2.2.1-paging-zones-capability",
+        "rule_library_rule_id": "ifc-907.5.2.2.1-paging-zones-capability",
+        "rule_library_rule_name": "Emergency voice/alarm communication system must support selective and all-call paging zones",
+        "metadata": {
+          "semantic_indicator_encoding": true,
+          "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+        }
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "all_call_paging_capability",
+        "reference_expression": "all_call_paging_indicator == 1",
+        "source_rule_id": "ifc-907.5.2.2.1-paging-zones-capability",
+        "rule_library_rule_id": "ifc-907.5.2.2.1-paging-zones-capability",
+        "rule_library_rule_name": "Emergency voice/alarm communication system must support selective and all-call paging zones",
+        "metadata": {
+          "semantic_indicator_encoding": true,
+          "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+        }
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[2]",
+        "reference_constraint_id": "C3",
+        "reference_role": "manual_fire_alarm_use_precedence",
+        "reference_expression": "manual_fire_alarm_priority_indicator == 1",
+        "source_rule_id": "ifc-907.5.2.2.3-precedence-of-fire-alarm-use",
+        "rule_library_rule_id": "ifc-907.5.2.2.3-precedence-of-fire-alarm-use",
+        "rule_library_rule_name": "Manual fire alarm use takes precedence over other uses of emergency voice/alarm communication system",
+        "metadata": {
+          "semantic_indicator_encoding": true,
+          "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+        }
+      }
+    ],
+    "task_derivation_source": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "document": "ARE-Practice-Exam-Project-Development-and-Documentation.pdf",
+      "division": "Project Development and Documentation",
+      "question_number": "Question 8",
+      "theme": "addenda and specification sequence",
+      "adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "source_policy": "Hidden provenance only; algorithm-visible inputs expose only generalized NCARB-derived themes."
+    },
+    "benchmark_extension_metadata": {
+      "extension_round": "architecture_ncarb_50_extension",
+      "source_base_task_id": "ARCH_FKG_22",
+      "ncarb_category": "construction_documentation",
+      "source_policy": "paraphrased_parameterized_not_verbatim",
+      "dataset_characterization": "NCARB practice-topic-derived, paraphrased, and parameterized architecture-code semantic extension task.",
+      "independence_claim": "parameterized_variant_not_fully_independent_real_project_case",
+      "source_visibility_policy": "Exact practice identifiers, original question text, answer choices, and source file names are hidden from algorithm-visible inputs.",
+      "scenario_variant_group_id": "ncarb50_scenario_variant_group_02",
+      "scenario_variant_group_members": [
+        "ARCH_FKG_70",
+        "ARCH_FKG_74",
+        "ARCH_FKG_75",
+        "ARCH_FKG_93"
+      ],
+      "scenario_variant_status": "parameterized_scenario_variant",
+      "constraint_semantics_class": "semantic_indicator_dominant",
+      "semantic_indicator_note": "Kept to test textual, categorical, system-capability, applicability, or precedence recovery; not a pure numeric optimization case.",
+      "scenario_variant_differentiator": "Construction specification review variant for emergency voice system priority.",
+      "method_visibility": "hidden_evaluation_reference_not_method_input"
+    }
+  }
+}

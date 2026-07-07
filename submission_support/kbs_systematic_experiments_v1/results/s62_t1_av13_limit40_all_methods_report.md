@@ -1,0 +1,184 @@
+# Section 6.2 Table 1: Aviation All Methods With Old-Candidate Profile Grounding
+
+## Scope
+
+- Dataset: `aviation_rule_relation_balanced_v13_150` only.
+- Candidate grounding: old broad rule-library scorer with aviation recall guard.
+- CTHR default valid rules: candidate-constrained profile_auto_resolver output from the grounding file.
+- Flat and native symbolic baselines use the candidate_rule_ids_generated field as method-visible candidates.
+- CTHR-style ASP/CP-SAT/SCIP use exactly the same predicted_valid_rule_ids grounding as CTHR default.
+- Evaluation references are used only for metrics.
+
+## Result
+
+| Dataset | Method | Method type | Rule Precision | Rule Recall | Formal CSR | Sem-CSR | False accept | Invalid cases |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Aviation | Flat baseline | flat | 7.9% | 91.7% | 0.0% | 0.0% | 0.0% | 150/150 (100.0%) |
+| Aviation | Native ASP + clingo | native_symbolic | 6.4% | 19.3% | 7.3% | 0.0% | 7.3% | 150/150 (100.0%) |
+| Aviation | Native CP-SAT + OR-Tools | native_symbolic | 3.3% | 8.3% | 31.3% | 10.7% | 20.7% | 134/150 (89.3%) (103 unsupported) |
+| Aviation | Native SCIP | native_symbolic | 3.3% | 8.3% | 31.3% | 8.7% | 22.7% | 137/150 (91.3%) (103 unsupported) |
+| Aviation | CTHR default | cthr_semantic_modeling | 74.7% | 70.7% | 96.7% | 88.7% | 8.0% | 17/150 (11.3%) (5 unsupported) |
+| Aviation | CTHR-style ASP + clingo | cthr_semantic_modeling | 74.7% | 70.7% | 1.3% | 0.0% | 1.3% | 150/150 (100.0%) |
+| Aviation | CTHR-style CP-SAT + OR-Tools | cthr_semantic_modeling | 74.7% | 70.7% | 94.0% | 86.0% | 8.0% | 21/150 (14.0%) (6 unsupported) |
+| Aviation | CTHR-style SCIP | cthr_semantic_modeling | 74.7% | 70.7% | 96.7% | 88.7% | 8.0% | 17/150 (11.3%) (5 unsupported) |
+
+## Run Summary
+
+```json
+{
+  "generated_at": "2026-07-02 21:51:00",
+  "domain": "aviation",
+  "dataset": {
+    "dataset": "Aviation",
+    "domain": "aviation",
+    "root": "submission_support\\kbs_systematic_experiments_v1\\datasets\\aviation_rule_relation_balanced_v13_150",
+    "tasks": 150,
+    "rule_library": "submission_support\\kbs_systematic_experiments_v1\\datasets\\aviation_rule_relation_balanced_v13_150\\rule_libraries\\qwen\\full_aviation_rule_library_qwen.json",
+    "grounding_result": "submission_support\\kbs_systematic_experiments_v1\\results\\av13_candidate_limit40\\section_6_3_aviation_smix_v11_150_old_candidate_recall_guard_profile_auto_resolver_candidate_to_valid_full.json",
+    "constraint_templates": "submission_support\\kbs_systematic_experiments_v1\\datasets\\aviation_rule_relation_balanced_v13_150\\constraint_templates\\compiled_rule_constraint_templates.json",
+    "grounding_policy": {
+      "flat_and_native_symbolic": "candidate_rule_ids_generated",
+      "cthr_default_and_cthr_style_backends": "predicted_valid_rule_ids"
+    },
+    "grounding": {
+      "source": "v13 candidate limit 40 profile auto grounding",
+      "mean_candidate_count": 26.893333333333334,
+      "mean_cthr_predicted_valid_count": 1.92,
+      "cthr_exact_match_rate": 0.41333333333333333
+    }
+  },
+  "methods": [
+    {
+      "Method": "Flat baseline",
+      "Method type": "flat"
+    },
+    {
+      "Method": "Native ASP + clingo",
+      "Method type": "native_symbolic"
+    },
+    {
+      "Method": "Native CP-SAT + OR-Tools",
+      "Method type": "native_symbolic"
+    },
+    {
+      "Method": "Native SCIP",
+      "Method type": "native_symbolic"
+    },
+    {
+      "Method": "CTHR default",
+      "Method type": "cthr_semantic_modeling"
+    },
+    {
+      "Method": "CTHR-style ASP + clingo",
+      "Method type": "cthr_semantic_modeling"
+    },
+    {
+      "Method": "CTHR-style CP-SAT + OR-Tools",
+      "Method type": "cthr_semantic_modeling"
+    },
+    {
+      "Method": "CTHR-style SCIP",
+      "Method type": "cthr_semantic_modeling"
+    }
+  ],
+  "grounding_full": "submission_support\\kbs_systematic_experiments_v1\\results\\av13_candidate_limit40\\section_6_3_aviation_smix_v11_150_old_candidate_recall_guard_profile_auto_resolver_candidate_to_valid_full.json",
+  "outputs": {
+    "per_task_csv": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\results\\s62_t1_av13_limit40_all_methods_per_task.csv",
+    "overall_csv": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\results\\s62_t1_av13_limit40_all_methods_overall.csv",
+    "overall_md": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\results\\s62_t1_av13_limit40_all_methods_overall.md",
+    "overall_json": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\results\\s62_t1_av13_limit40_all_methods_overall.json",
+    "report_md": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\results\\s62_t1_av13_limit40_all_methods_report.md"
+  },
+  "aggregate_rows": [
+    {
+      "Dataset": "Aviation",
+      "Method": "Flat baseline",
+      "Method type": "flat",
+      "Rule Precision": "7.9%",
+      "Rule Recall": "91.7%",
+      "Formal CSR": "0.0%",
+      "Sem-CSR": "0.0%",
+      "False accept": "0.0%",
+      "Invalid cases": "150/150 (100.0%)"
+    },
+    {
+      "Dataset": "Aviation",
+      "Method": "Native ASP + clingo",
+      "Method type": "native_symbolic",
+      "Rule Precision": "6.4%",
+      "Rule Recall": "19.3%",
+      "Formal CSR": "7.3%",
+      "Sem-CSR": "0.0%",
+      "False accept": "7.3%",
+      "Invalid cases": "150/150 (100.0%)"
+    },
+    {
+      "Dataset": "Aviation",
+      "Method": "Native CP-SAT + OR-Tools",
+      "Method type": "native_symbolic",
+      "Rule Precision": "3.3%",
+      "Rule Recall": "8.3%",
+      "Formal CSR": "31.3%",
+      "Sem-CSR": "10.7%",
+      "False accept": "20.7%",
+      "Invalid cases": "134/150 (89.3%) (103 unsupported)"
+    },
+    {
+      "Dataset": "Aviation",
+      "Method": "Native SCIP",
+      "Method type": "native_symbolic",
+      "Rule Precision": "3.3%",
+      "Rule Recall": "8.3%",
+      "Formal CSR": "31.3%",
+      "Sem-CSR": "8.7%",
+      "False accept": "22.7%",
+      "Invalid cases": "137/150 (91.3%) (103 unsupported)"
+    },
+    {
+      "Dataset": "Aviation",
+      "Method": "CTHR default",
+      "Method type": "cthr_semantic_modeling",
+      "Rule Precision": "74.7%",
+      "Rule Recall": "70.7%",
+      "Formal CSR": "96.7%",
+      "Sem-CSR": "88.7%",
+      "False accept": "8.0%",
+      "Invalid cases": "17/150 (11.3%) (5 unsupported)"
+    },
+    {
+      "Dataset": "Aviation",
+      "Method": "CTHR-style ASP + clingo",
+      "Method type": "cthr_semantic_modeling",
+      "Rule Precision": "74.7%",
+      "Rule Recall": "70.7%",
+      "Formal CSR": "1.3%",
+      "Sem-CSR": "0.0%",
+      "False accept": "1.3%",
+      "Invalid cases": "150/150 (100.0%)"
+    },
+    {
+      "Dataset": "Aviation",
+      "Method": "CTHR-style CP-SAT + OR-Tools",
+      "Method type": "cthr_semantic_modeling",
+      "Rule Precision": "74.7%",
+      "Rule Recall": "70.7%",
+      "Formal CSR": "94.0%",
+      "Sem-CSR": "86.0%",
+      "False accept": "8.0%",
+      "Invalid cases": "21/150 (14.0%) (6 unsupported)"
+    },
+    {
+      "Dataset": "Aviation",
+      "Method": "CTHR-style SCIP",
+      "Method type": "cthr_semantic_modeling",
+      "Rule Precision": "74.7%",
+      "Rule Recall": "70.7%",
+      "Formal CSR": "96.7%",
+      "Sem-CSR": "88.7%",
+      "False accept": "8.0%",
+      "Invalid cases": "17/150 (11.3%) (5 unsupported)"
+    }
+  ],
+  "metric_note": "All methods run through the same Section 6.2 Table 1 evaluator. Flat consumes candidate_rule_ids_generated directly. Native ASP/CP-SAT/SCIP consume candidate_rule_ids_generated directly. CTHR default and CTHR-style ASP/CP-SAT/SCIP consume the same predicted_valid_rule_ids from the grounding file. For CTHR-style methods, rule grounding is fixed before backend-specific constraint solving."
+}
+```

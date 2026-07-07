@@ -1,0 +1,430 @@
+{
+  "version": "aviation_rule_relation_balanced_v13_150",
+  "generated_at": "2026-06-29T07:51:39Z",
+  "model": "qwen",
+  "alignment_policy": "沿用 v6 已审计强语义对齐，只使用强对齐规则。",
+  "summary": {
+    "canonical_rule_count": 50,
+    "aligned_canonical_rule_count": 50,
+    "exact_or_strong_aligned_canonical_rule_count": 50,
+    "unresolved_canonical_rule_count": 0,
+    "unresolved_canonical_rule_ids": []
+  },
+  "canonical_to_model": [
+    {
+      "canonical_rule_id": "C3_2_3_4_template_contour_construction",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "C3_2_3_4_template_contour_construction"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "C3_2_3_arc_radii_definition",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "C3_2_3_arc_radii_definition"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "I4_4_intermediate_segment_length_formula",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "I4_4_intermediate_segment_length_formula"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "RA-6.3.4-align-final-approach-track",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "RA-6.3.4-align-final-approach-track"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "buffer_zone_width_sector_boundary",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "buffer_zone_width_sector_boundary"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "calc_ds_vor_dme_km",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "calc_ds_vor_dme_km"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "calc_ds_vor_dme_nm_kft",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "calc_ds_vor_dme_nm_kft"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "chart_required_supplementary_data",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "chart_required_supplementary_data"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "descent_fix_distance_max",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "descent_fix_distance_max"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "descent_fix_tolerance",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "descent_fix_tolerance"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "descent_gradient_rounding",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "descent_gradient_rounding"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "dme_arc_radius_range_sector_partition",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "dme_arc_radius_range_sector_partition"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "dta_formula",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "dta_formula"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "ha_conversion_formula",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "ha_conversion_formula"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "holding_speed_helicopter_6000ft_or_below",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "holding_speed_helicopter_6000ft_or_below"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "ils_crm_input_requirements_mls",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "ils_crm_input_requirements_mls"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "ils_glidepath_angle_range",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "ils_glidepath_angle_range"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "intermediate_segment_length_table",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "intermediate_segment_length_table"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "missed_approach_transition_surface_i_class",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "missed_approach_transition_surface_i_class"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "moc_intermediate_approach_min",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "moc_intermediate_approach_min"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "moc_intermediate_approach_segment_7.4.3.8",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "moc_intermediate_approach_segment_7.4.3.8"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "moc_secondary_area_linear_decay",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "moc_secondary_area_linear_decay"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "msd_flyby_non_si_25deg",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "msd_flyby_non_si_25deg"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "msd_flyover_si_20deg",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "msd_flyover_si_20deg"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "navigation_angle_convention",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "navigation_angle_convention"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "paoas_protection_scope",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "paoas_protection_scope"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "pbn_intermediate_segment_max_length_gbas",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "pbn_intermediate_segment_max_length_gbas"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "pbn_intermediate_segment_optimum_length",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "pbn_intermediate_segment_optimum_length"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "pbn_intermediate_segment_optimum_length_helicopter",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "pbn_intermediate_segment_optimum_length_helicopter"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "pbn_intermediate_segment_stability_requirement",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "pbn_intermediate_segment_stability_requirement"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "procedure_altitude_increment_intermediate_7.4.3.9",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "procedure_altitude_increment_intermediate_7.4.3.9"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "rf_segment_bank_angle_15deg_above_fl190",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "rf_segment_bank_angle_15deg_above_fl190"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "rf_segment_max_bank_angle_25deg",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "rf_segment_max_bank_angle_25deg"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "rule_distance_rounding_rule",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "rule_distance_rounding_rule"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "rule_height_rounding_rule",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "rule_height_rounding_rule"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "rule_moca_mea_publication_requirement",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "rule_moca_mea_publication_requirement"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "rule_non_si_glide_path_formula",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "rule_non_si_glide_path_formula"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "sbas_fas_db_publication_requirements_5.8.7",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "sbas_fas_db_publication_requirements_5.8.7"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "sia_cda_consideration",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "sia_cda_consideration"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "sia_multi_airport_service_capability",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "sia_multi_airport_service_capability"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "sia_start_point_requirement",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "sia_start_point_requirement"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "sia_transition_requirement",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "sia_transition_requirement"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "tnh_calculation_formula",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "tnh_calculation_formula"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "ttaa_buffer_zone_radius",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "ttaa_buffer_zone_radius"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "ttaa_obstacle_clearance_mountain_increase",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "ttaa_obstacle_clearance_mountain_increase"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "turn_radius_km_formula",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "turn_radius_km_formula"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "turn_radius_nm_formula",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "turn_radius_nm_formula"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "vor_fix_tolerance_cone_half_angle",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "vor_fix_tolerance_cone_half_angle"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "wd_calculation_formula",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "wd_calculation_formula"
+      ],
+      "unresolved": false
+    },
+    {
+      "canonical_rule_id": "wd_rounding_requirement",
+      "status": "exact_or_strong_alignment",
+      "aligned_model_rule_ids": [
+        "wd_rounding_requirement"
+      ],
+      "unresolved": false
+    }
+  ],
+  "dataset_name": "aviation_rule_relation_balanced_v13_150",
+  "source_dataset": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\datasets\\aviation_rule_relation_balanced_v12_150",
+  "channel_number_role_patch_at": "2026-06-29T07:51:39Z",
+  "relation_balanced_v12": {
+    "generated_at": "2026-07-02T08:18:16Z",
+    "source_dataset": "aviation_strong_mixed_v11_150",
+    "positioning": "150 aviation rule-grounded design and compliance tasks with balanced CTHR rule-relation coverage.",
+    "public_hidden_separation": "task_focus is public; cthr_relation_coverage and expected invalid or blocked rule ids are hidden evaluation references."
+  },
+  "relation_balanced_v13": {
+    "generated_at": "2026-07-02T08:50:03Z",
+    "source_dataset": "aviation_rule_relation_balanced_v12_150",
+    "revision_goal": "solver mechanism diversity: only business_multi_constraint tasks retain complex continuous geometry; other focus groups use lightweight linear or boolean feasible cells.",
+    "public_hidden_separation": "Only task focus is public; detailed relation labels and blocked candidate rules remain in hidden evaluation references."
+  }
+}

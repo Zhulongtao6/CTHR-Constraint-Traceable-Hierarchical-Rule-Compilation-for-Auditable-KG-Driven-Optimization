@@ -1,0 +1,265 @@
+{
+  "version": "architecture_ncarb50_v2_paired_audit_task_v1",
+  "visibility": "hidden_evaluation_or_offline_audit_only_not_method_input",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_89",
+    "title": "NCARB-derived commercial parking garage sprinkler coverage",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "parking_garage_fire_protection_design",
+    "design_intent": "Select commercial parking garage sprinkler coverage while balancing system cost against fire-protection reliability.",
+    "scenario_facts": {
+      "occupancy_type": "commercial parking garage",
+      "fire_area": 6200,
+      "ncarb_scenario_theme": "parking capacity and building selection",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "site_and_zoning_like",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Parking garage sprinkler applicability judgment task."
+    },
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "parking capacity and building selection",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "decision_variables": {
+      "sprinkler_system_indicator": {
+        "type": "integer",
+        "unit": "binary",
+        "lower": 0,
+        "upper": 1
+      },
+      "sprinkler_zone_count": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 1,
+        "upper": 8
+      },
+      "fire_protection_cost_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 20
+      },
+      "coverage_reliability_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 20
+      }
+    },
+    "objectives": [
+      {
+        "name": "minimize_fire_protection_cost",
+        "expression": "fire_protection_cost_score"
+      },
+      {
+        "name": "maximize_coverage_reliability",
+        "expression": "coverage_reliability_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.45,
+        0.55
+      ],
+      "meaning": "balance sprinkler cost and fire-protection reliability"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_89_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "task_semantics_profile": "semantic_indicator_dominant",
+    "task_semantics_note": "Rule applicability, precedence, categorical, or system-capability semantics dominate this task; it is not a pure continuous numeric optimization task.",
+    "scenario_variant_differentiator": "Parking garage sprinkler applicability judgment task."
+  },
+  "evaluation_reference": {
+    "omega_id": "ARCH_FKG_89",
+    "title": "NCARB-derived commercial parking garage sprinkler coverage",
+    "rule_structure": {
+      "expected_source_rule_ids": [
+        "ifc_903_2_10_1_sprinklers_commercial_garage"
+      ],
+      "expected_defeated_rule_ids": [],
+      "expected_surviving_rule_ids": [
+        "ifc_903_2_10_1_sprinklers_commercial_garage"
+      ],
+      "expected_valid_rule_structures": [
+        [
+          "ifc_903_2_10_1_sprinklers_commercial_garage"
+        ]
+      ],
+      "expected_rule_behavior": {
+        "should_activate": [
+          "Automatic sprinkler system required in commercial parking garages exceeding 5,000 sq ft"
+        ],
+        "should_exclude": [],
+        "should_resolve": [
+          "scenario_conditioned_applicability",
+          "life_safety_system_design"
+        ]
+      },
+      "challenge_types": [
+        "scenario_conditioned_applicability",
+        "life_safety_system_design"
+      ],
+      "valid_constraint_cell_ids": [
+        "ARCH_FKG_89_cell_1"
+      ],
+      "expected_provenance": {
+        "kg_chunk_ids": [
+          "f9ce48cf-5a37-5510-9cec-2c2adb0966a9"
+        ],
+        "kg_node_ids": [
+          "fa819250-021f-5b5a-ac35-5ea5cbef88cf",
+          "80e4e63b-34e3-503c-aacb-c4d68929e83e",
+          "b334159c-2d5b-5556-a09b-c1dc6d02a3c4"
+        ],
+        "kg_edge_ids": [
+          "kg_edge_31277",
+          "kg_edge_31279",
+          "kg_edge_17519"
+        ],
+        "source_documents": [
+          {
+            "document": "IFC 2021",
+            "section": "source_chunk",
+            "page": "unknown",
+            "chunk_id": "f9ce48cf-5a37-5510-9cec-2c2adb0966a9",
+            "rule_id": "ifc_903_2_10_1_sprinklers_commercial_garage"
+          },
+          {
+            "document": "ARE-Practice-Exam-Programming-and-Analysis.pdf",
+            "section": "Programming and Analysis",
+            "page": "practice-exam-question",
+            "question_number": "Question 1",
+            "derivation_policy": "Paraphrased and parameterized from an NCARB practice-exam scenario; original question text is not copied."
+          }
+        ]
+      }
+    },
+    "task_derivation_source": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "document": "ARE-Practice-Exam-Programming-and-Analysis.pdf",
+      "division": "Programming and Analysis",
+      "question_number": "Question 1",
+      "theme": "parking capacity and building selection",
+      "adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "source_policy": "Hidden provenance only; algorithm-visible inputs expose only generalized NCARB-derived themes."
+    },
+    "benchmark_extension_metadata": {
+      "extension_round": "architecture_ncarb_50_extension",
+      "source_base_task_id": null,
+      "ncarb_category": "site_and_zoning_like",
+      "source_policy": "paraphrased_parameterized_not_verbatim",
+      "dataset_characterization": "NCARB practice-topic-derived, paraphrased, and parameterized architecture-code semantic extension task.",
+      "independence_claim": "parameterized_variant_not_fully_independent_real_project_case",
+      "source_visibility_policy": "Exact practice identifiers, original question text, answer choices, and source file names are hidden from algorithm-visible inputs.",
+      "constraint_semantics_class": "semantic_indicator_dominant",
+      "semantic_indicator_note": "Kept to test textual, categorical, system-capability, applicability, or precedence recovery; not a pure numeric optimization case.",
+      "method_visibility": "hidden_evaluation_reference_not_method_input"
+    },
+    "feasible_region": {
+      "executable_constraints": [
+        {
+          "constraint_id": "C1",
+          "expression": "sprinkler_system_indicator == 1",
+          "role": "commercial_parking_garage_sprinkler_required",
+          "source_type": "rule_library",
+          "source_id": "ifc_903_2_10_1_sprinklers_commercial_garage",
+          "executable": true,
+          "checker_expression": "sprinkler_system_indicator == 1",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "sprinkler_system_indicator"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "semantic_indicator_encoding": true,
+            "derived_from_text_rule": true,
+            "encoding_note": "Binary variable encodes required automatic sprinkler provision for a commercial parking garage.",
+            "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+          }
+        },
+        {
+          "constraint_id": "C90",
+          "expression": "fire_protection_cost_score >= 2 * sprinkler_zone_count + 4 * sprinkler_system_indicator",
+          "role": "sprinkler_cost_from_zone_count",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "fire_protection_cost_score >= 2 * sprinkler_zone_count + 4 * sprinkler_system_indicator",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "fire_protection_cost_score",
+              "sprinkler_system_indicator",
+              "sprinkler_zone_count"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Sprinkler cost increases with coverage zone count and required system provision.",
+            "semantic_indicator_encoding": true,
+            "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+          }
+        },
+        {
+          "constraint_id": "C91",
+          "expression": "coverage_reliability_score <= 3 * sprinkler_zone_count + 5 * sprinkler_system_indicator",
+          "role": "sprinkler_reliability_from_zone_count",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "coverage_reliability_score <= 3 * sprinkler_zone_count + 5 * sprinkler_system_indicator",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "coverage_reliability_score",
+              "sprinkler_system_indicator",
+              "sprinkler_zone_count"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Coverage reliability grows with sprinkler zones and required system provision.",
+            "semantic_indicator_encoding": true,
+            "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+          }
+        }
+      ],
+      "structure_only_constraints": [],
+      "valid_constraint_cells": [
+        {
+          "cell_id": "ARCH_FKG_89_cell_1",
+          "description": "Single source-grounded feasible cell after applying applicable rules and public scenario model constraints.",
+          "constraint_ids": [
+            "C1",
+            "C90",
+            "C91"
+          ],
+          "source_rule_ids": [
+            "ifc_903_2_10_1_sprinklers_commercial_garage"
+          ]
+        }
+      ]
+    },
+    "evaluation_usage_note": "Hidden reference only. Algorithms must not receive rule IDs, feasible-region answers, provenance targets, defeated/surviving labels, or valid-cell labels during prediction."
+  }
+}

@@ -1,0 +1,502 @@
+{
+  "version": "architecture_ncarb50_v2_paired_audit_task_v1",
+  "visibility": "hidden_evaluation_or_offline_audit_only_not_method_input",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_61",
+    "title": "NCARB-derived patient-bed egress door clear opening",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "healthcare_egress_door_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: clinic egress door and hardware coordination. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "occupancy_group": "I-2",
+      "bed_movement_required": true,
+      "door_status": "new",
+      "occupancy_type": "Group I-2",
+      "door_usage": "movement of patients in beds",
+      "ncarb_scenario_theme": "clinic egress door and hardware coordination",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "fire_and_egress",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Medical-room design variant with room-level clear-opening parameters.",
+      "medical_door_context": "room_design_clear_opening",
+      "construction_tolerance_in": 0.5
+    },
+    "decision_variables": {
+      "door_clear_width_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 40,
+        "upper": 60
+      },
+      "door_opening_height_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 76,
+        "upper": 96
+      },
+      "opening_area_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 20
+      },
+      "bed_transfer_margin_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 0,
+        "upper": 20
+      }
+    },
+    "objectives": [
+      {
+        "name": "minimize_opening_area_score",
+        "expression": "opening_area_score"
+      },
+      {
+        "name": "maximize_bed_transfer_margin",
+        "expression": "bed_transfer_margin_in"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.44,
+        0.56
+      ],
+      "meaning": "prioritize patient-bed transfer margin in room design"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_61_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "clinic egress door and hardware coordination",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "scenario_variant_status": "parameterized_scenario_variant",
+    "scenario_variant_note": "Parameterized variant with substantive changes in facts, bounds, weights, or document context; not a fully independent real project case.",
+    "scenario_variant_differentiator": "Medical-room design variant with room-level clear-opening parameters.",
+    "scenario_variant_group_id": "ncarb50_scenario_variant_group_09",
+    "constraint_solver_profile": "requires_nonlinear_or_auxiliary_constraint_checker",
+    "nonlinear_or_auxiliary_note": "Contains a helper expression such as max(), abs(), symbolic division, or a variable product."
+  },
+  "evaluation_reference": {
+    "omega_id": "ARCH_FKG_61",
+    "title": "NCARB-derived patient-bed egress door clear opening",
+    "rule_structure": {
+      "expected_source_rule_ids": [
+        "ifc2021-moe-door-patient-bed-min-width",
+        "ifc2021-moe-door-patient-bed-min-height"
+      ],
+      "expected_defeated_rule_ids": [],
+      "expected_surviving_rule_ids": [
+        "ifc2021-moe-door-patient-bed-min-height",
+        "ifc2021-moe-door-patient-bed-min-width"
+      ],
+      "expected_valid_rule_structures": [
+        [
+          "ifc2021-moe-door-patient-bed-min-height",
+          "ifc2021-moe-door-patient-bed-min-width"
+        ]
+      ],
+      "expected_rule_behavior": {
+        "should_activate": [
+          "Minimum height for means of egress doors used for patient bed movement",
+          "Minimum clear width for means of egress doors used for patient bed movement"
+        ],
+        "should_exclude": [],
+        "should_resolve": [
+          "multi_rule_conjunction"
+        ]
+      },
+      "challenge_types": [
+        "multi_rule_conjunction"
+      ],
+      "valid_constraint_cell_ids": [
+        "ARCH_FKG_61_cell_1"
+      ],
+      "expected_provenance": {
+        "kg_chunk_ids": [
+          "099fde66-faf8-570e-9149-0286f08114ce"
+        ],
+        "kg_node_ids": [
+          "60cd4d28-4b66-5bd3-9b2e-bf480ea84f70",
+          "b0d05832-51ec-5c51-9e75-386eb55272f0",
+          "ebed6137-4c48-5018-9411-23b5e2b10d4a"
+        ],
+        "kg_edge_ids": [
+          "kg_edge_37053",
+          "kg_edge_37055"
+        ],
+        "source_documents": [
+          {
+            "document": "IFC-2021",
+            "section": "Means of egress doors used for the movement of patients in beds",
+            "page": "unknown",
+            "chunk_id": "099fde66-faf8-570e-9149-0286f08114ce"
+          },
+          {
+            "document": "ARE-Practice-Exam-Project-Development-and-Documentation.pdf",
+            "section": "Project Development and Documentation",
+            "page": "practice-exam-question",
+            "question_number": "Question 16",
+            "derivation_policy": "Paraphrased and parameterized from an NCARB practice-exam scenario; original question text is not copied."
+          }
+        ]
+      }
+    },
+    "feasible_region": {
+      "executable_constraints": [
+        {
+          "constraint_id": "C1",
+          "expression": "door_clear_width_in >= 41.5",
+          "role": "patient_bed_door_width",
+          "source_type": "rule_library",
+          "source_id": "ifc2021-moe-door-patient-bed-min-width",
+          "executable": true,
+          "checker_expression": "door_clear_width_in >= 41.5",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "door_clear_width_in"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C2",
+          "expression": "door_opening_height_in >= 80",
+          "role": "patient_bed_door_height",
+          "source_type": "rule_library",
+          "source_id": "ifc2021-moe-door-patient-bed-min-height",
+          "executable": true,
+          "checker_expression": "door_opening_height_in >= 80",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "door_opening_height_in"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C3",
+          "expression": "bed_transfer_margin_in == door_clear_width_in - 41.5",
+          "role": "bed_transfer_margin_certificate",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_healthcare_door_model",
+          "executable": true,
+          "checker_expression": "bed_transfer_margin_in == door_clear_width_in - 41.5",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "bed_transfer_margin_in",
+              "door_clear_width_in"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C90",
+          "expression": "opening_area_score >= door_clear_width_in * door_opening_height_in / 200",
+          "role": "opening_area_scales_with_door_size",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "opening_area_score >= door_clear_width_in * door_opening_height_in / 200",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "opening_area_score",
+              "door_clear_width_in",
+              "door_opening_height_in"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Door opening area burden is tied to selected clear width and height.",
+            "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+            "nonlinear_or_auxiliary_reasons": [
+              "variable_product"
+            ],
+            "linear_backend_note": "Use a nonlinear/auxiliary-function constraint checker or an explicit linearized surrogate before sending this constraint to a pure linear optimizer."
+          }
+        }
+      ],
+      "structure_only_constraints": [],
+      "valid_constraint_cells": [
+        {
+          "cell_id": "ARCH_FKG_61_cell_1",
+          "cell_type": "single_valid_fullkg_rule_structure",
+          "rule_ids": [
+            "ifc2021-moe-door-patient-bed-min-height",
+            "ifc2021-moe-door-patient-bed-min-width"
+          ],
+          "constraints": [
+            {
+              "constraint_id": "C1",
+              "expression": "door_clear_width_in >= 41.5",
+              "role": "patient_bed_door_width",
+              "source_type": "rule_library",
+              "source_id": "ifc2021-moe-door-patient-bed-min-width",
+              "executable": true,
+              "checker_expression": "door_clear_width_in >= 41.5",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "door_clear_width_in"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C2",
+              "expression": "door_opening_height_in >= 80",
+              "role": "patient_bed_door_height",
+              "source_type": "rule_library",
+              "source_id": "ifc2021-moe-door-patient-bed-min-height",
+              "executable": true,
+              "checker_expression": "door_opening_height_in >= 80",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "door_opening_height_in"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C3",
+              "expression": "bed_transfer_margin_in == door_clear_width_in - 41.5",
+              "role": "bed_transfer_margin_certificate",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_healthcare_door_model",
+              "executable": true,
+              "checker_expression": "bed_transfer_margin_in == door_clear_width_in - 41.5",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "bed_transfer_margin_in",
+                  "door_clear_width_in"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C90",
+              "expression": "opening_area_score >= door_clear_width_in * door_opening_height_in / 200",
+              "role": "opening_area_scales_with_door_size",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "opening_area_score >= door_clear_width_in * door_opening_height_in / 200",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "opening_area_score",
+                  "door_clear_width_in",
+                  "door_opening_height_in"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Door opening area burden is tied to selected clear width and height.",
+                "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+                "nonlinear_or_auxiliary_reasons": [
+                  "variable_product"
+                ],
+                "linear_backend_note": "Use a nonlinear/auxiliary-function constraint checker or an explicit linearized surrogate before sending this constraint to a pure linear optimizer."
+              }
+            }
+          ],
+          "description": "Executable feasible cell induced by the expected full-KG rule structure for this grounded scenario."
+        }
+      ],
+      "reference_semantics": {
+        "positive_membership_condition": "all executable_constraints evaluate true and at least one valid cell holds when cells are present",
+        "structure_only_constraints_usage": "used to check rule resolution, provenance, exceptions, or semantic requirements before numeric membership checking"
+      }
+    },
+    "certificate_targets": {
+      "source_rule_ids": [
+        "ifc2021-moe-door-patient-bed-min-width",
+        "ifc2021-moe-door-patient-bed-min-height"
+      ],
+      "provenance": [
+        {
+          "document": "IFC-2021",
+          "section": "Means of egress doors used for the movement of patients in beds",
+          "page": "unknown",
+          "chunk_id": "099fde66-faf8-570e-9149-0286f08114ce"
+        }
+      ]
+    },
+    "diagnostic_candidate_rule_ids_reference_only": [
+      "ifc2021-moe-door-patient-bed-min-width",
+      "ifc2021-moe-door-patient-bed-min-height"
+    ],
+    "rule_library_id_bindings": [
+      {
+        "rule_id": "ifc2021-moe-door-patient-bed-min-height",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ifc2021-moe-door-patient-bed-min-height",
+        "rule_name": "Minimum height for means of egress doors used for patient bed movement",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "099fde66-faf8-570e-9149-0286f08114ce"
+        ],
+        "source_node_ids": [
+          "b0d05832-51ec-5c51-9e75-386eb55272f0",
+          "60cd4d28-4b66-5bd3-9b2e-bf480ea84f70"
+        ],
+        "provenance": [
+          {
+            "document": "IFC-2021",
+            "section": "Means of egress doors used for the movement of patients in beds",
+            "page": "unknown",
+            "chunk_id": "099fde66-faf8-570e-9149-0286f08114ce"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "door_opening_height",
+            "op": ">=",
+            "value": 2032,
+            "unit": "mm"
+          },
+          {
+            "variable": "door_opening_height",
+            "op": ">=",
+            "value": 80,
+            "unit": "in"
+          }
+        ]
+      },
+      {
+        "rule_id": "ifc2021-moe-door-patient-bed-min-width",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ifc2021-moe-door-patient-bed-min-width",
+        "rule_name": "Minimum clear width for means of egress doors used for patient bed movement",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "099fde66-faf8-570e-9149-0286f08114ce"
+        ],
+        "source_node_ids": [
+          "b0d05832-51ec-5c51-9e75-386eb55272f0",
+          "ebed6137-4c48-5018-9411-23b5e2b10d4a"
+        ],
+        "provenance": [
+          {
+            "document": "IFC-2021",
+            "section": "Means of egress doors used for the movement of patients in beds",
+            "page": "unknown",
+            "chunk_id": "099fde66-faf8-570e-9149-0286f08114ce"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "minimum_clear_width",
+            "op": ">=",
+            "value": 1054,
+            "unit": "mm"
+          },
+          {
+            "variable": "minimum_clear_width",
+            "op": ">=",
+            "value": 41.5,
+            "unit": "in"
+          }
+        ]
+      }
+    ],
+    "reference_constraint_rule_bindings": [
+      {
+        "reference_container": "feasible_region.executable_constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "patient_bed_door_width",
+        "reference_expression": "door_clear_width_in >= 41.5",
+        "source_rule_id": "ifc2021-moe-door-patient-bed-min-width",
+        "rule_library_rule_id": "ifc2021-moe-door-patient-bed-min-width",
+        "rule_library_rule_name": "Minimum clear width for means of egress doors used for patient bed movement"
+      },
+      {
+        "reference_container": "feasible_region.executable_constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "patient_bed_door_height",
+        "reference_expression": "door_opening_height_in >= 80",
+        "source_rule_id": "ifc2021-moe-door-patient-bed-min-height",
+        "rule_library_rule_id": "ifc2021-moe-door-patient-bed-min-height",
+        "rule_library_rule_name": "Minimum height for means of egress doors used for patient bed movement"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "patient_bed_door_width",
+        "reference_expression": "door_clear_width_in >= 41.5",
+        "source_rule_id": "ifc2021-moe-door-patient-bed-min-width",
+        "rule_library_rule_id": "ifc2021-moe-door-patient-bed-min-width",
+        "rule_library_rule_name": "Minimum clear width for means of egress doors used for patient bed movement"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "patient_bed_door_height",
+        "reference_expression": "door_opening_height_in >= 80",
+        "source_rule_id": "ifc2021-moe-door-patient-bed-min-height",
+        "rule_library_rule_id": "ifc2021-moe-door-patient-bed-min-height",
+        "rule_library_rule_name": "Minimum height for means of egress doors used for patient bed movement"
+      }
+    ],
+    "task_derivation_source": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "document": "ARE-Practice-Exam-Project-Development-and-Documentation.pdf",
+      "division": "Project Development and Documentation",
+      "question_number": "Question 16",
+      "theme": "clinic egress door and hardware coordination",
+      "adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "source_policy": "Hidden provenance only; algorithm-visible inputs expose only generalized NCARB-derived themes."
+    },
+    "benchmark_extension_metadata": {
+      "extension_round": "architecture_ncarb_50_extension",
+      "source_base_task_id": "ARCH_FKG_07",
+      "ncarb_category": "fire_and_egress",
+      "source_policy": "paraphrased_parameterized_not_verbatim",
+      "dataset_characterization": "NCARB practice-topic-derived, paraphrased, and parameterized architecture-code semantic extension task.",
+      "independence_claim": "parameterized_variant_not_fully_independent_real_project_case",
+      "source_visibility_policy": "Exact practice identifiers, original question text, answer choices, and source file names are hidden from algorithm-visible inputs.",
+      "scenario_variant_group_id": "ncarb50_scenario_variant_group_09",
+      "scenario_variant_group_members": [
+        "ARCH_FKG_61",
+        "ARCH_FKG_96"
+      ],
+      "scenario_variant_status": "parameterized_scenario_variant",
+      "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+      "nonlinear_or_auxiliary_reasons": [
+        "auxiliary_function_or_variable_product",
+        "variable_product"
+      ],
+      "scenario_variant_differentiator": "Medical-room design variant with room-level clear-opening parameters.",
+      "method_visibility": "hidden_evaluation_reference_not_method_input"
+    }
+  }
+}

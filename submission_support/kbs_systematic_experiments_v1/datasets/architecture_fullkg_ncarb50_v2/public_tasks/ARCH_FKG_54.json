@@ -1,0 +1,83 @@
+{
+  "version": "architecture_ncarb50_v2_public_task_v1",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_54",
+    "title": "NCARB-derived accessible storage room clear-floor layout",
+    "domain": "architecture_code_compliance",
+    "source_domain": "ADA",
+    "task_type": "accessible_storage_layout_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: bike storage room and public storage planning. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "room_type": "accessible_mobility_guest_room",
+      "storage_elements_provided": true,
+      "location": "accessible spaces",
+      "ncarb_scenario_theme": "bike storage room and public storage planning",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "accessibility",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized"
+    },
+    "decision_variables": {
+      "clear_floor_width_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 24,
+        "upper": 60
+      },
+      "clear_floor_depth_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 36,
+        "upper": 72
+      },
+      "accessible_storage_type_count": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 0,
+        "upper": 6
+      },
+      "storage_capacity_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      },
+      "maneuvering_quality_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_storage_capacity",
+        "expression": "storage_capacity_score"
+      },
+      {
+        "name": "maximize_maneuvering_quality",
+        "expression": "maneuvering_quality_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.5,
+        0.5
+      ],
+      "meaning": "balance storage capacity and accessible maneuvering space"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_54_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "bike storage room and public storage planning",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    }
+  }
+}

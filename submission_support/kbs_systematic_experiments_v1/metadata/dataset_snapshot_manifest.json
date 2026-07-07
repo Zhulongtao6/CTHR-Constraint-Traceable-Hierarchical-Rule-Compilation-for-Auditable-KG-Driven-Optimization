@@ -1,0 +1,41 @@
+{
+  "created_at": "2026-05-26 19:17:34 +08:00",
+  "purpose": "Formal KBS submission support package for systematic CTHR experiments",
+  "source_paths": {
+    "aviation": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\paper\\aviation_stress_benchmark_layers",
+    "architecture": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\paper\\architecture_generated_benchmark_layers"
+  },
+  "package_paths": {
+    "root": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1",
+    "aviation_dataset": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\datasets\\aviation",
+    "architecture_dataset": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\datasets\\architecture",
+    "scripts": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\scripts",
+    "results": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\results",
+    "reports": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\reports",
+    "logs": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\logs",
+    "metadata": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\metadata",
+    "aviation_combined_dataset": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\datasets\\aviation_combined"
+  },
+  "counts": {
+    "architecture_task_files": 30,
+    "aviation_combined_task_files": 31,
+    "aviation_stress_only_task_files": 12
+  },
+  "frozen_inputs": {
+    "aviation_queries": "datasets/aviation/aviation_stress_optimization_queries.json",
+    "aviation_rule_structure_labels": "datasets/aviation/aviation_stress_rule_structure_labels.json",
+    "aviation_feasible_region_labels": "datasets/aviation/aviation_stress_feasible_region_labels.json",
+    "aviation_rule_library": "datasets/aviation/aviation_stress_rule_library.combined.json",
+    "architecture_queries": "datasets/architecture/architecture_optimization_queries.json",
+    "architecture_rule_structure_labels": "datasets/architecture/architecture_rule_structure_labels.json",
+    "architecture_feasible_region_labels": "datasets/architecture/architecture_feasible_region_labels.json",
+    "aviation_combined_queries": "datasets/aviation_combined/aviation_combined_optimization_queries.json",
+    "aviation_combined_rule_structure_labels": "datasets/aviation_combined/aviation_combined_rule_structure_labels.json",
+    "aviation_combined_feasible_region_labels": "datasets/aviation_combined/aviation_combined_feasible_region_labels.json",
+    "aviation_combined_rule_library": "datasets/aviation_combined/aviation_combined_rule_library.combined.json"
+  },
+  "canonical_datasets": {
+    "aviation": "datasets/aviation_combined",
+    "architecture": "datasets/architecture"
+  }
+}

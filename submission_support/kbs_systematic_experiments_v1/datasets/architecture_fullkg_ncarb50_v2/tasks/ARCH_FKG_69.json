@@ -1,0 +1,81 @@
+{
+  "version": "architecture_ncarb50_v2_public_task_v1",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_69",
+    "title": "NCARB-derived indoor dispensing ventilation package",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "cryogenic_dispensing_room_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: hydrostatic and building system coordination. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "process": "indoor_cryogenic_fluid_dispensing",
+      "leak_accumulation_risk": true,
+      "activity": "dispensing cryogenic fluids indoors",
+      "ncarb_scenario_theme": "hydrostatic and building system coordination",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "fire_and_egress",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Rule-applicability judgment task for categorical/code-trigger semantics."
+    },
+    "decision_variables": {
+      "mechanical_ventilation_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1
+      },
+      "ibc_construction_compliance_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1
+      },
+      "exhaust_capacity_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      },
+      "energy_use_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_exhaust_capacity",
+        "expression": "exhaust_capacity_score"
+      },
+      {
+        "name": "minimize_energy_use",
+        "expression": "energy_use_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.55,
+        0.45
+      ],
+      "meaning": "slightly prioritize leak-response ventilation capacity"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_69_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "hydrostatic and building system coordination",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "task_semantics_profile": "semantic_indicator_dominant",
+    "task_semantics_note": "Rule applicability, precedence, categorical, or system-capability semantics dominate this task; it is not a pure continuous numeric optimization task.",
+    "scenario_variant_differentiator": "Rule-applicability judgment task for categorical/code-trigger semantics."
+  }
+}

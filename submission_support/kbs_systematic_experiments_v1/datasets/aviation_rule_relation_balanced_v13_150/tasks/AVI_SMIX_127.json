@@ -1,0 +1,242 @@
+{
+  "version": "aviation_rule_relation_balanced_v13_150",
+  "algorithm_input": {
+    "omega_id": "AVI_SMIX_127",
+    "title": "航图资料公布：高度公布修约增量",
+    "domain": "aviation_procedure_design",
+    "task_type": "chart_publication_strong_business_review",
+    "strong_business_third_type": true,
+    "business_domain": "publication",
+    "design_intent": "执行航图、数据块、最低高度、下降梯度或程序资料公布审查中的程序设计或审查。任务先判断业务前提，再编译公布精度或定位容差相关数值约束，最后在安全裕度、空域或公布误差、运行风险之间求解多目标可行折中。 第七版进一步加入反向业务变量和反向约束，使任务不能通过直接取规范阈值边界求解。",
+    "scenario_facts": {
+      "benchmark_round": "aviation_strong_mixed_v5_150",
+      "business_domain": "publication",
+      "program_design_context": "航图、数据块、最低高度、下降梯度或程序资料公布审查",
+      "review_question": "资料是否进入正式公布流程，以及哪些字段、修约和唯一性要求必须同时满足。",
+      "case_variant_index": 127,
+      "operation_context": "障碍物资料更新后复核",
+      "traffic_and_terrain_variant": "山区或高原",
+      "source_policy": "由 v4 来源规则语义重构，未新增规则编号或来源页码",
+      "boundary_degeneracy_repair_round": "v7",
+      "original_degeneracy_type": "边界区间题",
+      "counter_constraint_policy": "增加同业务域反向变量，使最优解不能由单一规范阈值直接决定",
+      "v7_business_counter_explanation": "航图公布题把固定修约或字段格式作为约束，优化修约误差、字段完整性、图幅拥挤度和人工校核代价；提高字段完整性会增加图幅和校核负担，因此不能把固定公布精度当作最优解。",
+      "rule_query_focus": "alternative_exclusion",
+      "relation_balanced_version": "aviation_rule_relation_balanced_v13_150",
+      "method_visible_relation_positioning": "互斥替代合规路径查询：重点保留完整候选路径，避免把互斥路径的局部约束混合成错误可行域。",
+      "alternative_path_context": "当前场景存在互斥候选合规路径，方法只能选择完整有效路径，不能混合路径局部约束。",
+      "solver_mechanism_profile": "lightweight_linear_or_boolean_rule_cell",
+      "method_visible_focus_note": "互斥候选规则判断：核心是从多个语义相近但不能混用的规则路径中选择一条完整有效路径。",
+      "incompatible_condition_indicator_127": 1
+    },
+    "decision_variables": {
+      "publication_requirement_applicability_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1,
+        "description": "公开输入中的程序适用性、类别、例外或公布前提变量；不包含参考规则编号。"
+      },
+      "height_rounding_increment_m": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 10,
+        "description": "原规则库数值变量。"
+      },
+      "publication_error_127": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 100.0,
+        "description": "由公开场景模型计算的航空业务派生设计量，用于多目标求解，不包含隐藏规则答案。"
+      },
+      "publication_completeness_margin_127": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 100.0,
+        "description": "由公开场景模型计算的航空业务派生设计量，用于多目标求解，不包含隐藏规则答案。"
+      },
+      "rounding_resolution_risk_127": {
+        "type": "continuous",
+        "unit": "risk_or_extent_index",
+        "lower": 0,
+        "upper": 100.0,
+        "description": "由公开场景模型计算的航空业务派生设计量，用于多目标求解，不包含隐藏规则答案。"
+      },
+      "source_procedure_value_127": {
+        "type": "continuous",
+        "unit": "published_unit",
+        "lower": 0,
+        "upper": 100000,
+        "description": "源程序参数值。"
+      },
+      "published_chart_value_127": {
+        "type": "continuous",
+        "unit": "published_unit",
+        "lower": 0,
+        "upper": 100000,
+        "description": "航图公布值。"
+      },
+      "publication_rounding_error_127": {
+        "type": "continuous",
+        "unit": "published_parameter_unit",
+        "lower": 0.0,
+        "upper": 50.0,
+        "description": "公布修约误差。"
+      },
+      "required_publication_field_count_127": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 0,
+        "upper": 20,
+        "description": "航图或数据块需要完整公布的字段数量。"
+      },
+      "chart_congestion_index_127": {
+        "type": "continuous",
+        "unit": "chart_index",
+        "lower": 0.0,
+        "upper": 100.0,
+        "description": "图幅拥挤度或数据块排版压力。"
+      },
+      "manual_verification_minutes_127": {
+        "type": "continuous",
+        "unit": "min",
+        "lower": 0.0,
+        "upper": 120.0,
+        "description": "人工校核工作量。"
+      },
+      "source_publication_value_127": {
+        "type": "continuous",
+        "unit": "published_parameter_unit",
+        "lower": 0.0,
+        "upper": 2000.0,
+        "description": "源程序参数值，用于和公布值比较。"
+      },
+      "published_publication_value_127": {
+        "type": "continuous",
+        "unit": "published_parameter_unit",
+        "lower": 0.0,
+        "upper": 2000.0,
+        "description": "拟公布的航图参数值。"
+      },
+      "coding_conflict_risk_127": {
+        "type": "continuous",
+        "unit": "risk_index",
+        "lower": 0.0,
+        "upper": 100.0,
+        "description": "编码或命名冲突风险。"
+      },
+      "source_publication_consistency_margin_127": {
+        "type": "continuous",
+        "unit": "margin_index",
+        "lower": 0.0,
+        "upper": 100.0,
+        "description": "源程序参数与公布参数的一致性裕度。"
+      },
+      "candidate_rule_A_selected_127": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1,
+        "business_meaning": "候选规则路径 A 是否被选中。"
+      },
+      "candidate_rule_B_selected_127": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1,
+        "business_meaning": "候选规则路径 B 是否被选中。"
+      },
+      "selected_effective_rule_count_127": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 0,
+        "upper": 2,
+        "business_meaning": "被选中的有效候选路径数量。"
+      },
+      "excluded_rule_indicator_127": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1,
+        "business_meaning": "不兼容候选路径是否被排除。"
+      },
+      "excluded_candidate_violation_count_127": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 0,
+        "upper": 2,
+        "business_meaning": "错误候选路径违反数量。"
+      },
+      "wrong_alternative_risk_127": {
+        "type": "continuous",
+        "unit": "risk",
+        "lower": 0,
+        "upper": 2,
+        "business_meaning": "替代规则误选风险。"
+      },
+      "correct_candidate_selection_score_127": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 1,
+        "business_meaning": "正确候选规则选择得分。"
+      },
+      "exclusion_explanation_completeness_127": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 1,
+        "business_meaning": "排除解释完整度。"
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_correct_candidate_rule_selection",
+        "expression": "correct_candidate_selection_score_127",
+        "sense": "maximize",
+        "business_meaning": "选择正确候选规则路径。"
+      },
+      {
+        "name": "minimize_wrong_alternative_risk",
+        "expression": "wrong_alternative_risk_127",
+        "sense": "minimize",
+        "business_meaning": "降低互斥替代路径误选风险。"
+      },
+      {
+        "name": "maximize_exclusion_explanation",
+        "expression": "exclusion_explanation_completeness_127",
+        "sense": "maximize",
+        "business_meaning": "提高排除解释完整度。"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.34,
+        0.33,
+        0.33
+      ],
+      "meaning": "优先保持程序适用性和安全裕度，同时控制空域、航段、速度、角度或公布误差带来的业务代价。"
+    },
+    "public_scenario_model": {
+      "model_id": "AVI_SMIX_127_v5_scenario_model",
+      "path": "scenario_models/aviation_strong_mixed_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "公开的非规范业务闭环模型；用于把规则变量、设计变量和多目标求解连接起来，不含隐藏参考规则编号或证书答案。"
+    },
+    "visible_input_note": "算法只能读取公开任务输入、公开场景模型和规则库；隐藏参考和来源证据只供评估器使用。",
+    "strong_mixed_subtype": "业务均衡混合",
+    "v8_strong_coupling_summary": {
+      "original_numeric_rule_variable": "height_rounding_increment_m",
+      "business_counter_template_id": "publication_source_traceability",
+      "coupling_policy": "原规则数值变量至少进入一个反向业务约束；非航图公布题还进入目标函数。"
+    },
+    "task_focus": "alternative_exclusion",
+    "task_focus_description": "互斥候选规则判断：核心是从多个语义相近但不能混用的规则路径中选择一条完整有效路径。",
+    "objective_interpretation": "目标函数用于可行解排序；本题主要挑战由 task_focus 决定，不应把全部任务理解为同一种非线性连续优化问题。",
+    "solver_mechanism_profile": "lightweight_linear_or_boolean_rule_cell",
+    "v13_lightweight_cell_note": "本题公开场景模型已降级为线性或布尔轻量规则可行域单元，避免把规则关系题误变成障碍物连续几何优化题。"
+  }
+}

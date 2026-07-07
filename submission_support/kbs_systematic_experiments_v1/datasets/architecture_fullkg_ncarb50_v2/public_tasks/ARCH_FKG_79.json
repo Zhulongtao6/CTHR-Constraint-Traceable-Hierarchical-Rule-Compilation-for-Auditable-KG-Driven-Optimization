@@ -1,0 +1,85 @@
+{
+  "version": "architecture_ncarb50_v2_public_task_v1",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_79",
+    "title": "NCARB-derived Type IV fire-flow duration applicability",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "fire_flow_supply_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: construction type and allowable area. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "construction_type": "Type IV",
+      "fire_flow_calculation_area_sf": 9800,
+      "building_construction_type": "type iv and v-a",
+      "fire_flow_calculation_area_sqft": 10400,
+      "scenario_variant": "parameterized_variant",
+      "expansion_case_family": "area_and_height",
+      "ncarb_scenario_theme": "construction type and allowable area",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Type IV fire-flow duration applicability variant with changed area and connection-size emphasis.",
+      "structural_context": "type_iv_duration_applicability_review"
+    },
+    "decision_variables": {
+      "available_fire_flow_gpm": {
+        "type": "continuous",
+        "unit": "gpm",
+        "lower": 1000,
+        "upper": 2400
+      },
+      "flow_duration_hours": {
+        "type": "continuous",
+        "unit": "hour",
+        "lower": 2,
+        "upper": 4
+      },
+      "service_connection_size_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      },
+      "duration_margin_hours": {
+        "type": "continuous",
+        "unit": "hour",
+        "lower": 0,
+        "upper": 2
+      }
+    },
+    "objectives": [
+      {
+        "name": "minimize_service_connection_size",
+        "expression": "service_connection_size_score"
+      },
+      {
+        "name": "maximize_duration_margin",
+        "expression": "duration_margin_hours"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.42,
+        0.58
+      ],
+      "meaning": "prioritize duration margin for altered Type IV area"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_79_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "construction type and allowable area",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "scenario_variant_status": "parameterized_scenario_variant",
+    "scenario_variant_note": "Parameterized variant with substantive changes in facts, bounds, weights, or document context; not a fully independent real project case.",
+    "scenario_variant_differentiator": "Type IV fire-flow duration applicability variant with changed area and connection-size emphasis.",
+    "scenario_variant_group_id": "ncarb50_scenario_variant_group_13"
+  }
+}

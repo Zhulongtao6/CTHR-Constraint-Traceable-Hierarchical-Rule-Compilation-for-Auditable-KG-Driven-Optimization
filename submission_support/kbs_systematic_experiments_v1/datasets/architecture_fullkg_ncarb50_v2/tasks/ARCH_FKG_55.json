@@ -1,0 +1,83 @@
+{
+  "version": "architecture_ncarb50_v2_public_task_v1",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_55",
+    "title": "NCARB-derived medical-office visual sign proportion",
+    "domain": "architecture_code_compliance",
+    "source_domain": "ADA",
+    "task_type": "accessible_wayfinding_sign_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: medical office interior wayfinding sign design. The optimizer prioritizes patient and visitor readability while keeping the panel proportion compact.",
+    "scenario_facts": {
+      "sign_type": "visual_wayfinding",
+      "viewer_group": "public_accessible_route",
+      "character_type": "visual",
+      "ncarb_scenario_theme": "medical office interior signage scope",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "accessibility",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Medical-office wayfinding design variant with public-corridor viewing distance and readability-priority objective weights.",
+      "viewing_distance_ft": 18,
+      "sign_location": "medical_office_public_corridor",
+      "patient_public_area": true,
+      "design_review_context": "schematic_wayfinding_design_review",
+      "readability_priority_context": "patient_and_visitor_readability"
+    },
+    "decision_variables": {
+      "font_width_to_height_ratio": {
+        "type": "continuous",
+        "unit": "dimensionless",
+        "lower": 0.4,
+        "upper": 1.25
+      },
+      "sign_panel_width_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      },
+      "readability_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      }
+    },
+    "objectives": [
+      {
+        "name": "minimize_sign_panel_width",
+        "expression": "sign_panel_width_score"
+      },
+      {
+        "name": "maximize_patient_readability",
+        "expression": "readability_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.4,
+        0.6
+      ],
+      "meaning": "prioritize patient and visitor readability over compact sign-panel proportion"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_55_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "medical office interior signage scope",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "scenario_variant_status": "parameterized_scenario_variant",
+    "scenario_variant_note": "Parameterized variant with substantive changes in facts, bounds, weights, or document context; not a fully independent real project case.",
+    "scenario_variant_differentiator": "Medical-office wayfinding design variant with public-corridor viewing distance and readability-priority objective weights.",
+    "scenario_variant_group_id": "ncarb50_scenario_variant_group_07",
+    "constraint_solver_profile": "requires_nonlinear_or_auxiliary_constraint_checker",
+    "nonlinear_or_auxiliary_note": "Contains a helper expression such as max(), abs(), symbolic division, or a variable product."
+  }
+}

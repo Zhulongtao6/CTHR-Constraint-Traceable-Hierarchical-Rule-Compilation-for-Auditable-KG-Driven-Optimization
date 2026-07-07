@@ -1,0 +1,72 @@
+{
+  "version": "architecture_ncarb50_v2_public_task_v1",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_66",
+    "title": "NCARB-derived waterfront temporary event tent egress",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "temporary_structure_site_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: waterfront cultural center temporary event layout. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "temporary_structure": "multiple_tents",
+      "event_type": "outdoor_assembly",
+      "structure_type": "tent",
+      "fire_break_clearance_provided": "not_True",
+      "ncarb_scenario_theme": "waterfront cultural center temporary event layout",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "fire_and_egress",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized"
+    },
+    "decision_variables": {
+      "aggregate_tent_area_sf": {
+        "type": "continuous",
+        "unit": "sf",
+        "lower": 100,
+        "upper": 1000
+      },
+      "minimum_clearance_ft": {
+        "type": "continuous",
+        "unit": "ft",
+        "lower": 0,
+        "upper": 30
+      },
+      "covered_area_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_covered_area",
+        "expression": "covered_area_score"
+      },
+      {
+        "name": "maximize_clearance_margin",
+        "expression": "minimum_clearance_ft - 12"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.5,
+        0.5
+      ],
+      "meaning": "balance usable event area and fire-break clearance"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_66_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "waterfront cultural center temporary event layout",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    }
+  }
+}

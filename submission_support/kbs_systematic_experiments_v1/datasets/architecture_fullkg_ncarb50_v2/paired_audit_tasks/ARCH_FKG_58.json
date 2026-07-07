@@ -1,0 +1,480 @@
+{
+  "version": "architecture_ncarb50_v2_paired_audit_task_v1",
+  "visibility": "hidden_evaluation_or_offline_audit_only_not_method_input",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_58",
+    "title": "NCARB-derived accessible park path landing package",
+    "domain": "architecture_code_compliance",
+    "source_domain": "ADA",
+    "task_type": "accessible_ramp_landing_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: accessible walking path through historic park. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "route_type": "accessible_ramp",
+      "landing_condition": "permitted_alternative_size",
+      "element_type": "ramp landing",
+      "code_reference": "405.7.4",
+      "scenario_variant": "parameterized_variant",
+      "expansion_case_family": "accessibility",
+      "ncarb_scenario_theme": "accessible walking path through historic park",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Outdoor historic-park path landing variant with broader landing bounds and maneuvering-margin emphasis.",
+      "route_context": "outdoor_historic_park_path_landing"
+    },
+    "decision_variables": {
+      "landing_length_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 60,
+        "upper": 96
+      },
+      "landing_width_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 60,
+        "upper": 96
+      },
+      "landing_footprint_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      },
+      "maneuvering_margin_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      }
+    },
+    "objectives": [
+      {
+        "name": "minimize_landing_footprint",
+        "expression": "landing_footprint_score"
+      },
+      {
+        "name": "maximize_maneuvering_margin",
+        "expression": "maneuvering_margin_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.38,
+        0.62
+      ],
+      "meaning": "prefer outdoor maneuvering margin over compact footprint"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_58_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "accessible walking path through historic park",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "scenario_variant_status": "parameterized_scenario_variant",
+    "scenario_variant_note": "Parameterized variant with substantive changes in facts, bounds, weights, or document context; not a fully independent real project case.",
+    "scenario_variant_differentiator": "Outdoor historic-park path landing variant with broader landing bounds and maneuvering-margin emphasis.",
+    "scenario_variant_group_id": "ncarb50_scenario_variant_group_06",
+    "constraint_solver_profile": "requires_nonlinear_or_auxiliary_constraint_checker",
+    "nonlinear_or_auxiliary_note": "Contains a helper expression such as max(), abs(), symbolic division, or a variable product."
+  },
+  "evaluation_reference": {
+    "omega_id": "ARCH_FKG_58",
+    "title": "NCARB-derived accessible park path landing package",
+    "rule_structure": {
+      "expected_source_rule_ids": [
+        "ada_ramp_landing_min_size_permitted_alt"
+      ],
+      "expected_defeated_rule_ids": [],
+      "expected_surviving_rule_ids": [
+        "ada_ramp_landing_min_size_permitted_alt"
+      ],
+      "expected_valid_rule_structures": [
+        [
+          "ada_ramp_landing_min_size_permitted_alt"
+        ]
+      ],
+      "expected_rule_behavior": {
+        "should_activate": [
+          "Ramp landing minimum dimensions permitted alternative size"
+        ],
+        "should_exclude": [],
+        "should_resolve": [
+          "multi_constraint_single_rule",
+          "accessibility_route_design",
+          "multi_rule_conjunction"
+        ]
+      },
+      "challenge_types": [
+        "multi_constraint_single_rule",
+        "accessibility_route_design",
+        "multi_rule_conjunction"
+      ],
+      "valid_constraint_cell_ids": [
+        "ARCH_FKG_58_cell_1"
+      ],
+      "expected_provenance": {
+        "kg_chunk_ids": [
+          "ebb6d554-10ae-5ec2-ab6f-38b6d3cfc3c3"
+        ],
+        "kg_node_ids": [
+          "3060d7ec-b978-5320-a9be-fc7a81651565"
+        ],
+        "kg_edge_ids": [
+          "kg_edge_59951"
+        ],
+        "source_documents": [
+          {
+            "document": "ADA 2010",
+            "section": "405.7.4",
+            "page": "unknown",
+            "chunk_id": "ebb6d554-10ae-5ec2-ab6f-38b6d3cfc3c3"
+          },
+          {
+            "document": "ARE-Practice-Exam-Project-Planning-and-Design.pdf",
+            "section": "Project Planning and Design",
+            "page": "practice-exam-question",
+            "question_number": "Question 23",
+            "derivation_policy": "Paraphrased and parameterized from an NCARB practice-exam scenario; original question text is not copied."
+          }
+        ]
+      }
+    },
+    "feasible_region": {
+      "executable_constraints": [
+        {
+          "constraint_id": "C1",
+          "expression": "landing_length_in >= 48",
+          "role": "ramp_landing_minimum_length",
+          "source_type": "rule_library",
+          "source_id": "ada_ramp_landing_min_size_permitted_alt",
+          "executable": true,
+          "checker_expression": "landing_length_in >= 48",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "landing_length_in"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C2",
+          "expression": "landing_width_in >= 60",
+          "role": "ramp_landing_minimum_width",
+          "source_type": "rule_library",
+          "source_id": "ada_ramp_landing_min_size_permitted_alt",
+          "executable": true,
+          "checker_expression": "landing_width_in >= 60",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "landing_width_in"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C90",
+          "expression": "landing_footprint_score >= landing_length_in * landing_width_in / 500",
+          "role": "landing_footprint_from_dimensions",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "landing_footprint_score >= landing_length_in * landing_width_in / 500",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "landing_footprint_score",
+              "landing_length_in",
+              "landing_width_in"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Landing footprint is tied to landing length and width.",
+            "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+            "nonlinear_or_auxiliary_reasons": [
+              "variable_product"
+            ],
+            "linear_backend_note": "Use a nonlinear/auxiliary-function constraint checker or an explicit linearized surrogate before sending this constraint to a pure linear optimizer."
+          }
+        },
+        {
+          "constraint_id": "C91",
+          "expression": "maneuvering_margin_score <= (landing_length_in - 48 + landing_width_in - 60) / 4",
+          "role": "maneuvering_margin_from_landing_dimensions",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "maneuvering_margin_score <= (landing_length_in - 48 + landing_width_in - 60) / 4",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "maneuvering_margin_score",
+              "landing_length_in",
+              "landing_width_in"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Maneuvering margin is tied to landing dimension surplus."
+          }
+        }
+      ],
+      "structure_only_constraints": [],
+      "valid_constraint_cells": [
+        {
+          "cell_id": "ARCH_FKG_58_cell_1",
+          "cell_type": "single_valid_fullkg_rule_structure",
+          "rule_ids": [
+            "ada_ramp_landing_min_size_permitted_alt"
+          ],
+          "constraints": [
+            {
+              "constraint_id": "C1",
+              "expression": "landing_length_in >= 48",
+              "role": "ramp_landing_minimum_length",
+              "source_type": "rule_library",
+              "source_id": "ada_ramp_landing_min_size_permitted_alt",
+              "executable": true,
+              "checker_expression": "landing_length_in >= 48",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "landing_length_in"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C2",
+              "expression": "landing_width_in >= 60",
+              "role": "ramp_landing_minimum_width",
+              "source_type": "rule_library",
+              "source_id": "ada_ramp_landing_min_size_permitted_alt",
+              "executable": true,
+              "checker_expression": "landing_width_in >= 60",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "landing_width_in"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C90",
+              "expression": "landing_footprint_score >= landing_length_in * landing_width_in / 500",
+              "role": "landing_footprint_from_dimensions",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "landing_footprint_score >= landing_length_in * landing_width_in / 500",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "landing_footprint_score",
+                  "landing_length_in",
+                  "landing_width_in"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Landing footprint is tied to landing length and width.",
+                "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+                "nonlinear_or_auxiliary_reasons": [
+                  "variable_product"
+                ],
+                "linear_backend_note": "Use a nonlinear/auxiliary-function constraint checker or an explicit linearized surrogate before sending this constraint to a pure linear optimizer."
+              }
+            },
+            {
+              "constraint_id": "C91",
+              "expression": "maneuvering_margin_score <= (landing_length_in - 48 + landing_width_in - 60) / 4",
+              "role": "maneuvering_margin_from_landing_dimensions",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "maneuvering_margin_score <= (landing_length_in - 48 + landing_width_in - 60) / 4",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "maneuvering_margin_score",
+                  "landing_length_in",
+                  "landing_width_in"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Maneuvering margin is tied to landing dimension surplus."
+              }
+            }
+          ],
+          "description": "Executable feasible cell induced by the expected full-KG rule structure for this grounded scenario."
+        }
+      ],
+      "reference_semantics": {
+        "positive_membership_condition": "all executable_constraints evaluate true and at least one valid cell holds when cells are present",
+        "structure_only_constraints_usage": "used to check rule resolution, provenance, exceptions, or semantic requirements before numeric membership checking"
+      }
+    },
+    "certificate_targets": {
+      "source_rule_ids": [
+        "ada_ramp_landing_min_size_permitted_alt"
+      ],
+      "provenance": [
+        {
+          "document": "ADA 2010",
+          "section": "405.7.4",
+          "page": "unknown",
+          "chunk_id": "ebb6d554-10ae-5ec2-ab6f-38b6d3cfc3c3"
+        }
+      ]
+    },
+    "diagnostic_candidate_rule_ids_reference_only": [
+      "ada_ramp_landing_min_size_permitted_alt"
+    ],
+    "rule_library_id_bindings": [
+      {
+        "rule_id": "ada_ramp_landing_min_size_permitted_alt",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ada_ramp_landing_min_size_permitted_alt",
+        "rule_name": "Ramp landing minimum dimensions permitted alternative size",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "ebb6d554-10ae-5ec2-ab6f-38b6d3cfc3c3"
+        ],
+        "source_node_ids": [
+          "3060d7ec-b978-5320-a9be-fc7a81651565"
+        ],
+        "provenance": [
+          {
+            "document": "ADA 2010",
+            "section": "405.7.4",
+            "page": "unknown",
+            "chunk_id": "ebb6d554-10ae-5ec2-ab6f-38b6d3cfc3c3"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "minimum_length",
+            "op": ">=",
+            "value": 48,
+            "unit": "inches"
+          },
+          {
+            "variable": "minimum_width",
+            "op": ">=",
+            "value": 60,
+            "unit": "inches"
+          }
+        ]
+      }
+    ],
+    "reference_constraint_rule_bindings": [
+      {
+        "reference_container": "feasible_region.executable_constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "ramp_landing_minimum_length",
+        "reference_expression": "landing_length_in >= 48",
+        "source_rule_id": "ada_ramp_landing_min_size_permitted_alt",
+        "rule_library_rule_id": "ada_ramp_landing_min_size_permitted_alt",
+        "rule_library_rule_name": "Ramp landing minimum dimensions permitted alternative size"
+      },
+      {
+        "reference_container": "feasible_region.executable_constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "ramp_landing_minimum_width",
+        "reference_expression": "landing_width_in >= 60",
+        "source_rule_id": "ada_ramp_landing_min_size_permitted_alt",
+        "rule_library_rule_id": "ada_ramp_landing_min_size_permitted_alt",
+        "rule_library_rule_name": "Ramp landing minimum dimensions permitted alternative size"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "ramp_landing_minimum_length",
+        "reference_expression": "landing_length_in >= 48",
+        "source_rule_id": "ada_ramp_landing_min_size_permitted_alt",
+        "rule_library_rule_id": "ada_ramp_landing_min_size_permitted_alt",
+        "rule_library_rule_name": "Ramp landing minimum dimensions permitted alternative size"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "ramp_landing_minimum_width",
+        "reference_expression": "landing_width_in >= 60",
+        "source_rule_id": "ada_ramp_landing_min_size_permitted_alt",
+        "rule_library_rule_id": "ada_ramp_landing_min_size_permitted_alt",
+        "rule_library_rule_name": "Ramp landing minimum dimensions permitted alternative size"
+      }
+    ],
+    "expansion_metadata": {
+      "source_task_id": "ARCH_FKG_28",
+      "coverage_focus": "multi_rule_conjunction",
+      "target_relation": "accessibility_route_design",
+      "strict_common_intended": true,
+      "overlay_model": "canonical_source_semantics",
+      "expansion_round": "100_task_extension_v1"
+    },
+    "task_derivation_source": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "document": "ARE-Practice-Exam-Project-Planning-and-Design.pdf",
+      "division": "Project Planning and Design",
+      "question_number": "Question 23",
+      "theme": "accessible walking path through historic park",
+      "adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "source_policy": "Hidden provenance only; algorithm-visible inputs expose only generalized NCARB-derived themes."
+    },
+    "benchmark_extension_metadata": {
+      "extension_round": "architecture_ncarb_50_extension",
+      "source_base_task_id": "ARCH_FKG_50",
+      "ncarb_category": "accessibility",
+      "source_policy": "paraphrased_parameterized_not_verbatim",
+      "dataset_characterization": "NCARB practice-topic-derived, paraphrased, and parameterized architecture-code semantic extension task.",
+      "independence_claim": "parameterized_variant_not_fully_independent_real_project_case",
+      "source_visibility_policy": "Exact practice identifiers, original question text, answer choices, and source file names are hidden from algorithm-visible inputs.",
+      "scenario_variant_group_id": "ncarb50_scenario_variant_group_06",
+      "scenario_variant_group_members": [
+        "ARCH_FKG_52",
+        "ARCH_FKG_58"
+      ],
+      "scenario_variant_status": "parameterized_scenario_variant",
+      "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+      "nonlinear_or_auxiliary_reasons": [
+        "auxiliary_function_or_variable_product",
+        "variable_product"
+      ],
+      "scenario_variant_differentiator": "Outdoor historic-park path landing variant with broader landing bounds and maneuvering-margin emphasis.",
+      "method_visibility": "hidden_evaluation_reference_not_method_input"
+    }
+  }
+}

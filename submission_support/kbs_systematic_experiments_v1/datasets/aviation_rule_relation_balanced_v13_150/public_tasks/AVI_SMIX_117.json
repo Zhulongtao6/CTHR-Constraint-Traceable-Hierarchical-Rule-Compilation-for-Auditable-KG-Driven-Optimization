@@ -1,0 +1,439 @@
+{
+  "version": "aviation_rule_relation_balanced_v13_150",
+  "algorithm_input": {
+    "omega_id": "AVI_SMIX_117",
+    "title": "精密或类精密进近：仪表着陆系统下滑角采用值与垂直引导稳定性审查",
+    "domain": "aviation_procedure_design",
+    "task_type": "precision_approach_strong_business_design",
+    "strong_business_third_type": true,
+    "business_domain": "precision",
+    "design_intent": "审查仪表着陆系统下滑角适用前提成立时，实际采用下滑角、下降率、保护面裕度和最终进近段长度压力之间的折中。规则最大下滑角只作为上限边界，不再作为需要最大化的设计目标。",
+    "scenario_facts": {
+      "benchmark_round": "aviation_strong_mixed_v5_150",
+      "business_domain": "precision",
+      "program_design_context": "仪表着陆系统、卫星增强、垂直引导或最终进近数据块审查",
+      "review_question": "程序是否属于需要垂直引导或最终进近数据公布的类别，以及相应垂直参数是否可接受。",
+      "case_variant_index": 117,
+      "operation_context": "专家复核前检查",
+      "traffic_and_terrain_variant": "山区或高原",
+      "source_policy": "由 v4 来源规则语义重构，未新增规则编号或来源页码",
+      "boundary_degeneracy_repair_round": "v7",
+      "original_degeneracy_type": "边界区间题",
+      "counter_constraint_policy": "增加同业务域反向变量，使最优解不能由单一规范阈值直接决定",
+      "v7_business_counter_explanation": "精密进近题加入下滑角、下降率、稳定距离、跑道入口距离、保护面裕度和最终进近数据块完整性；降低下降率、增大保护面裕度和提升字段完整性之间存在垂直引导与公布数据的真实冲突。",
+      "v11_objective_conflict_patch": "下滑角最大值作为规则边界保留，目标改为实际采用下滑角导致的下降率、保护面裕度和航段长度压力。",
+      "obstacle_point_set_117": [
+        {
+          "obstacle_id": "OBS_117_1",
+          "along_track_distance_nm": 3.1,
+          "lateral_offset_m": 329,
+          "ground_elevation_m": 170,
+          "obstacle_height_m": 40,
+          "obstacle_top_height_m": 210,
+          "segment": "最终进近保护面",
+          "protection_half_width_m": 940,
+          "zone": "主区",
+          "primary_zone_indicator": 1,
+          "secondary_zone_indicator": 0,
+          "clearance_reduction_factor": 1.0
+        },
+        {
+          "obstacle_id": "OBS_117_2",
+          "along_track_distance_nm": 5.95,
+          "lateral_offset_m": 676,
+          "ground_elevation_m": 185,
+          "obstacle_height_m": 29,
+          "obstacle_top_height_m": 214,
+          "segment": "最终进近保护面",
+          "protection_half_width_m": 940,
+          "zone": "次区",
+          "primary_zone_indicator": 0,
+          "secondary_zone_indicator": 1,
+          "clearance_reduction_factor": 0.64
+        }
+      ],
+      "minimum_required_obstacle_clearance_m_117": 60,
+      "reference_procedure_altitude_m_117": 309,
+      "obstacle_assessment_segment_length_nm_117": 6.1,
+      "controlling_obstacle_id_117": "OBS_117_1",
+      "obstacle_business_chain_note_117": "障碍物顶高影响保护面高度和最终进近下降压力，程序高度提高会改善净空但增加下降率或稳定建立压力。",
+      "v11_obstacle_specific_realism_patch": "适用题已补充具体障碍物点，障碍物顶高、横向偏距、主区或次区判断进入公开场景模型约束。",
+      "obstacle_along_track_distance_nm_117_1": 3.1,
+      "obstacle_lateral_offset_m_117_1": 329,
+      "obstacle_ground_elevation_m_117_1": 170,
+      "obstacle_structure_height_m_117_1": 40,
+      "obstacle_top_height_reference_m_117_1": 210,
+      "obstacle_protection_half_width_m_117_1": 940,
+      "obstacle_primary_zone_indicator_117_1": 1,
+      "obstacle_secondary_zone_indicator_117_1": 0,
+      "obstacle_along_track_distance_nm_117_2": 5.95,
+      "obstacle_lateral_offset_m_117_2": 676,
+      "obstacle_ground_elevation_m_117_2": 185,
+      "obstacle_structure_height_m_117_2": 29,
+      "obstacle_top_height_reference_m_117_2": 214,
+      "obstacle_protection_half_width_m_117_2": 940,
+      "obstacle_primary_zone_indicator_117_2": 0,
+      "obstacle_secondary_zone_indicator_117_2": 1,
+      "runway_threshold_elevation_m_117": 69,
+      "rule_query_focus": "alternative_exclusion",
+      "relation_balanced_version": "aviation_rule_relation_balanced_v13_150",
+      "method_visible_relation_positioning": "互斥替代合规路径查询：重点保留完整候选路径，避免把互斥路径的局部约束混合成错误可行域。",
+      "alternative_path_context": "当前场景存在互斥候选合规路径，方法只能选择完整有效路径，不能混合路径局部约束。",
+      "solver_mechanism_profile": "lightweight_linear_or_boolean_rule_cell",
+      "method_visible_focus_note": "互斥候选规则判断：核心是从多个语义相近但不能混用的规则路径中选择一条完整有效路径。",
+      "incompatible_condition_indicator_117": 1
+    },
+    "decision_variables": {
+      "precision_approach_applicability_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1,
+        "description": "公开输入中的程序适用性、类别、例外或公布前提变量；不包含参考规则编号。"
+      },
+      "glide_path_angle_minimum_deg": {
+        "type": "continuous",
+        "unit": "deg",
+        "lower": 1.625,
+        "upper": 9.5
+      },
+      "glide_path_angle_minimum_deg_available_margin": {
+        "type": "continuous",
+        "unit": "deg",
+        "lower": 0,
+        "upper": 10,
+        "description": "由角度、梯度或坡度压力计算的可用裕度变量，用于衡量规则边界内的设计余量。"
+      },
+      "glide_path_angle_optimum_deg": {
+        "type": "continuous",
+        "unit": "deg",
+        "lower": 0,
+        "upper": 6.8
+      },
+      "glide_path_angle_maximum_deg": {
+        "type": "continuous",
+        "unit": "deg",
+        "lower": 0,
+        "upper": 9.725,
+        "description": "原规则库数值变量。"
+      },
+      "vertical_guidance_deviation_117": {
+        "type": "continuous",
+        "unit": "deg",
+        "lower": 0,
+        "upper": 100.0,
+        "description": "由公开场景模型计算的航空业务派生设计量，用于多目标求解，不包含隐藏规则答案。"
+      },
+      "glidepath_safety_margin_117": {
+        "type": "continuous",
+        "unit": "deg",
+        "lower": 0,
+        "upper": 100.0,
+        "description": "由公开场景模型计算的航空业务派生设计量，用于多目标求解，不包含隐藏规则答案。"
+      },
+      "final_approach_data_margin_117": {
+        "type": "continuous",
+        "unit": "risk_or_extent_index",
+        "lower": 0,
+        "upper": 100.0,
+        "description": "由公开场景模型计算的航空业务派生设计量，用于多目标求解，不包含隐藏规则答案。"
+      },
+      "glide_path_angle_deg_117": {
+        "type": "continuous",
+        "unit": "degree",
+        "lower": 2.0,
+        "upper": 4.0,
+        "description": "垂直引导或下滑航径角。"
+      },
+      "descent_rate_ft_min_117": {
+        "type": "continuous",
+        "unit": "ft/min",
+        "lower": 250,
+        "upper": 1200,
+        "description": "由地速和下滑角共同决定的下降率。"
+      },
+      "vertical_guidance_stabilization_distance_nm_117": {
+        "type": "continuous",
+        "unit": "NM",
+        "lower": 0.5,
+        "upper": 20.0,
+        "description": "垂直引导稳定建立距离。"
+      },
+      "threshold_distance_nm_117": {
+        "type": "continuous",
+        "unit": "NM",
+        "lower": 0.0,
+        "upper": 15.0,
+        "description": "相对跑道入口的几何距离。"
+      },
+      "protection_surface_margin_m_117": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0.0,
+        "upper": 300.0,
+        "description": "保护面净空裕度。"
+      },
+      "fas_data_field_completeness_count_117": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 0,
+        "upper": 20,
+        "description": "最终进近航段数据块完整字段数。"
+      },
+      "ground_speed_kt_117": {
+        "type": "continuous",
+        "unit": "kt",
+        "lower": 80,
+        "upper": 180,
+        "description": "最终进近地速，用于下降率估算。"
+      },
+      "descent_gradient_percent_117": {
+        "type": "continuous",
+        "unit": "percent",
+        "lower": 3.0,
+        "upper": 8.0,
+        "description": "最终进近垂直下降梯度。"
+      },
+      "fas_channel_encoding_conflict_risk_117": {
+        "type": "continuous",
+        "unit": "risk_index",
+        "lower": 0.0,
+        "upper": 100.0,
+        "description": "最终进近航段数据块频道号或编码冲突风险。"
+      },
+      "adopted_glide_path_angle_deg_117": {
+        "type": "continuous",
+        "unit": "degree",
+        "lower": 2.0,
+        "upper": 4.5,
+        "description": "实际采用下滑角，用于障碍物保护面高度和下降率折中。"
+      },
+      "glide_angle_limit_margin_deg_117": {
+        "type": "continuous",
+        "unit": "deg",
+        "lower": 0,
+        "upper": 5,
+        "description": "规则最大下滑角与实际采用下滑角之间的裕度。"
+      },
+      "final_segment_length_pressure_117": {
+        "type": "continuous",
+        "unit": "pressure_index",
+        "lower": 0,
+        "upper": 100,
+        "description": "最终进近段长度和近端障碍物共同形成的长度压力。"
+      },
+      "procedure_design_altitude_m_117": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 3000,
+        "description": "由具体障碍物顶高和所需越障余度共同约束的程序设计高度。"
+      },
+      "procedure_altitude_increase_m_117": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 2000,
+        "description": "相对参考程序高度的增加量，用于体现提高程序高度带来的运行代价。"
+      },
+      "controlling_obstacle_clearance_margin_m_117": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": -200,
+        "upper": 1000,
+        "description": "所有障碍物点中的控制净空裕度，最大化该量会与程序高度和空域占用代价冲突。"
+      },
+      "obstacle_driven_protection_half_width_m_117": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 4000,
+        "description": "由障碍物横向偏距驱动的保护区半宽。"
+      },
+      "obstacle_related_protected_area_km2_117": {
+        "type": "continuous",
+        "unit": "km2",
+        "lower": 0,
+        "upper": 80,
+        "description": "由保护区半宽和障碍物评估航段长度形成的保护空域面积。"
+      },
+      "obstacle_top_height_m_117_1": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 3000,
+        "description": "OBS_117_1 的计算顶高。"
+      },
+      "required_obstacle_clearance_m_117_1": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 500,
+        "description": "OBS_117_1 按主区或次区位置计算的所需越障余度。"
+      },
+      "actual_obstacle_clearance_m_117_1": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": -300,
+        "upper": 3000,
+        "description": "OBS_117_1 的实际净空。"
+      },
+      "obstacle_clearance_margin_m_117_1": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": -400,
+        "upper": 2000,
+        "description": "OBS_117_1 的净空裕度。"
+      },
+      "obstacle_top_height_m_117_2": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 3000,
+        "description": "OBS_117_2 的计算顶高。"
+      },
+      "required_obstacle_clearance_m_117_2": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 500,
+        "description": "OBS_117_2 按主区或次区位置计算的所需越障余度。"
+      },
+      "actual_obstacle_clearance_m_117_2": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": -300,
+        "upper": 3000,
+        "description": "OBS_117_2 的实际净空。"
+      },
+      "obstacle_clearance_margin_m_117_2": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": -400,
+        "upper": 2000,
+        "description": "OBS_117_2 的净空裕度。"
+      },
+      "glide_surface_height_at_control_obstacle_m_117": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 2500,
+        "description": "控制障碍物沿航迹位置处的下滑面高度。"
+      },
+      "control_obstacle_protection_surface_margin_m_117": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": -300,
+        "upper": 1200,
+        "description": "控制障碍物相对下滑面或保护面的净空裕度。"
+      },
+      "candidate_rule_A_selected_117": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1,
+        "business_meaning": "候选规则路径 A 是否被选中。"
+      },
+      "candidate_rule_B_selected_117": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1,
+        "business_meaning": "候选规则路径 B 是否被选中。"
+      },
+      "selected_effective_rule_count_117": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 0,
+        "upper": 2,
+        "business_meaning": "被选中的有效候选路径数量。"
+      },
+      "excluded_rule_indicator_117": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1,
+        "business_meaning": "不兼容候选路径是否被排除。"
+      },
+      "excluded_candidate_violation_count_117": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 0,
+        "upper": 2,
+        "business_meaning": "错误候选路径违反数量。"
+      },
+      "wrong_alternative_risk_117": {
+        "type": "continuous",
+        "unit": "risk",
+        "lower": 0,
+        "upper": 2,
+        "business_meaning": "替代规则误选风险。"
+      },
+      "correct_candidate_selection_score_117": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 1,
+        "business_meaning": "正确候选规则选择得分。"
+      },
+      "exclusion_explanation_completeness_117": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 1,
+        "business_meaning": "排除解释完整度。"
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_correct_candidate_rule_selection",
+        "expression": "correct_candidate_selection_score_117",
+        "sense": "maximize",
+        "business_meaning": "选择正确候选规则路径。"
+      },
+      {
+        "name": "minimize_wrong_alternative_risk",
+        "expression": "wrong_alternative_risk_117",
+        "sense": "minimize",
+        "business_meaning": "降低互斥替代路径误选风险。"
+      },
+      {
+        "name": "maximize_exclusion_explanation",
+        "expression": "exclusion_explanation_completeness_117",
+        "sense": "maximize",
+        "business_meaning": "提高排除解释完整度。"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.34,
+        0.33,
+        0.33
+      ],
+      "meaning": "优先保持程序适用性和安全裕度，同时控制空域、航段、速度、角度或公布误差带来的业务代价。"
+    },
+    "public_scenario_model": {
+      "model_id": "AVI_SMIX_117_v5_scenario_model",
+      "path": "scenario_models/aviation_strong_mixed_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "公开的非规范业务闭环模型；用于把规则变量、设计变量和多目标求解连接起来，不含隐藏参考规则编号或证书答案。"
+    },
+    "visible_input_note": "算法只能读取公开任务输入、公开场景模型和规则库；隐藏参考和来源证据只供评估器使用。",
+    "strong_mixed_subtype": "业务均衡混合",
+    "v8_strong_coupling_summary": {
+      "original_numeric_rule_variable": "glide_path_angle_maximum_deg",
+      "business_counter_template_id": "precision_intermediate_stabilization",
+      "coupling_policy": "原规则数值变量至少进入一个反向业务约束；非航图公布题还进入目标函数。"
+    },
+    "v11_obstacle_specific_realism_summary": {
+      "obstacle_point_count": 2,
+      "controlling_obstacle_id": "OBS_117_1",
+      "business_conflict": "提高程序高度可增加控制障碍物净空裕度，但会增加高度增量和保护空域面积；扩大保护区半宽可覆盖横向偏移障碍物，但会增加空域占用。"
+    },
+    "task_focus": "alternative_exclusion",
+    "task_focus_description": "互斥候选规则判断：核心是从多个语义相近但不能混用的规则路径中选择一条完整有效路径。",
+    "objective_interpretation": "目标函数用于可行解排序；本题主要挑战由 task_focus 决定，不应把全部任务理解为同一种非线性连续优化问题。",
+    "solver_mechanism_profile": "lightweight_linear_or_boolean_rule_cell",
+    "v13_lightweight_cell_note": "本题公开场景模型已降级为线性或布尔轻量规则可行域单元，避免把规则关系题误变成障碍物连续几何优化题。"
+  }
+}

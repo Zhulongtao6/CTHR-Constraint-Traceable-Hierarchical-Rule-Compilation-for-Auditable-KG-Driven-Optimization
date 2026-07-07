@@ -1,0 +1,464 @@
+{
+  "version": "architecture_ncarb50_v2_paired_audit_task_v1",
+  "visibility": "hidden_evaluation_or_offline_audit_only_not_method_input",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_56",
+    "title": "NCARB-derived emergency address sign sizing for street frontage",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "fire_department_wayfinding_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: commercial parcel frontage and emergency wayfinding. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "building_frontage": "street-facing",
+      "fire_department_response_route": true,
+      "ncarb_scenario_theme": "commercial parcel frontage and emergency wayfinding",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "accessibility",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized"
+    },
+    "decision_variables": {
+      "character_height_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 2,
+        "upper": 12
+      },
+      "stroke_width_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 0.1,
+        "upper": 2
+      },
+      "sign_panel_area_sf": {
+        "type": "continuous",
+        "unit": "sf",
+        "lower": 0.5,
+        "upper": 12
+      },
+      "legibility_margin_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      }
+    },
+    "objectives": [
+      {
+        "name": "minimize_sign_panel_area",
+        "expression": "sign_panel_area_sf"
+      },
+      {
+        "name": "maximize_legibility_margin",
+        "expression": "legibility_margin_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.45,
+        0.55
+      ],
+      "meaning": "slightly prioritize emergency legibility over compact sign area"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_56_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "commercial parcel frontage and emergency wayfinding",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "constraint_solver_profile": "requires_nonlinear_or_auxiliary_constraint_checker",
+    "nonlinear_or_auxiliary_note": "Contains a helper expression such as max(), abs(), symbolic division, or a variable product."
+  },
+  "evaluation_reference": {
+    "omega_id": "ARCH_FKG_56",
+    "title": "NCARB-derived emergency address sign sizing for street frontage",
+    "rule_structure": {
+      "expected_source_rule_ids": [
+        "ifc-2021-address-id-min-size"
+      ],
+      "expected_defeated_rule_ids": [],
+      "expected_surviving_rule_ids": [
+        "ifc-2021-address-id-min-size"
+      ],
+      "expected_valid_rule_structures": [
+        [
+          "ifc-2021-address-id-min-size"
+        ]
+      ],
+      "expected_rule_behavior": {
+        "should_activate": [
+          "Minimum size and stroke width for address identification characters"
+        ],
+        "should_exclude": [],
+        "should_resolve": [
+          "multi_constraint_single_rule"
+        ]
+      },
+      "challenge_types": [
+        "multi_constraint_single_rule"
+      ],
+      "valid_constraint_cell_ids": [
+        "ARCH_FKG_56_cell_1"
+      ],
+      "expected_provenance": {
+        "kg_chunk_ids": [
+          "09867c92-262c-5dac-b1c5-00b3b9420c34"
+        ],
+        "kg_node_ids": [
+          "7b7e7d72-4b4a-5103-b7fc-45c522d0da80"
+        ],
+        "kg_edge_ids": [
+          "kg_edge_28185"
+        ],
+        "source_documents": [
+          {
+            "document": "IFC 2021",
+            "section": "unknown",
+            "page": "unknown",
+            "chunk_id": "09867c92-262c-5dac-b1c5-00b3b9420c34"
+          },
+          {
+            "document": "ARE-Practice-Exam-Programming-and-Analysis.pdf",
+            "section": "Programming and Analysis",
+            "page": "practice-exam-question",
+            "question_number": "Question 22",
+            "derivation_policy": "Paraphrased and parameterized from an NCARB practice-exam scenario; original question text is not copied."
+          }
+        ]
+      }
+    },
+    "feasible_region": {
+      "executable_constraints": [
+        {
+          "constraint_id": "C1",
+          "expression": "character_height_in >= 4",
+          "role": "address_character_height",
+          "source_type": "rule_library",
+          "source_id": "ifc-2021-address-id-min-size",
+          "executable": true,
+          "checker_expression": "character_height_in >= 4",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "character_height_in"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C2",
+          "expression": "stroke_width_in >= 0.5",
+          "role": "address_stroke_width",
+          "source_type": "rule_library",
+          "source_id": "ifc-2021-address-id-min-size",
+          "executable": true,
+          "checker_expression": "stroke_width_in >= 0.5",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "stroke_width_in"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C90",
+          "expression": "sign_panel_area_sf >= character_height_in * stroke_width_in / 2",
+          "role": "sign_area_scales_with_letter_geometry",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "sign_panel_area_sf >= character_height_in * stroke_width_in / 2",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "sign_panel_area_sf",
+              "character_height_in",
+              "stroke_width_in"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Compact sign area is constrained by selected character height and stroke width.",
+            "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+            "nonlinear_or_auxiliary_reasons": [
+              "variable_product"
+            ],
+            "linear_backend_note": "Use a nonlinear/auxiliary-function constraint checker or an explicit linearized surrogate before sending this constraint to a pure linear optimizer."
+          }
+        },
+        {
+          "constraint_id": "C91",
+          "expression": "legibility_margin_score <= 2 * (character_height_in - 4) + 5 * (stroke_width_in - 0.5)",
+          "role": "legibility_margin_from_character_size",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "legibility_margin_score <= 2 * (character_height_in - 4) + 5 * (stroke_width_in - 0.5)",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "legibility_margin_score",
+              "character_height_in",
+              "stroke_width_in"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Emergency legibility margin grows only when character height or stroke width exceeds the minimum."
+          }
+        }
+      ],
+      "structure_only_constraints": [],
+      "valid_constraint_cells": [
+        {
+          "cell_id": "ARCH_FKG_56_cell_1",
+          "cell_type": "single_valid_fullkg_rule_structure",
+          "rule_ids": [
+            "ifc-2021-address-id-min-size"
+          ],
+          "constraints": [
+            {
+              "constraint_id": "C1",
+              "expression": "character_height_in >= 4",
+              "role": "address_character_height",
+              "source_type": "rule_library",
+              "source_id": "ifc-2021-address-id-min-size",
+              "executable": true,
+              "checker_expression": "character_height_in >= 4",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "character_height_in"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C2",
+              "expression": "stroke_width_in >= 0.5",
+              "role": "address_stroke_width",
+              "source_type": "rule_library",
+              "source_id": "ifc-2021-address-id-min-size",
+              "executable": true,
+              "checker_expression": "stroke_width_in >= 0.5",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "stroke_width_in"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C90",
+              "expression": "sign_panel_area_sf >= character_height_in * stroke_width_in / 2",
+              "role": "sign_area_scales_with_letter_geometry",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "sign_panel_area_sf >= character_height_in * stroke_width_in / 2",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "sign_panel_area_sf",
+                  "character_height_in",
+                  "stroke_width_in"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Compact sign area is constrained by selected character height and stroke width.",
+                "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+                "nonlinear_or_auxiliary_reasons": [
+                  "variable_product"
+                ],
+                "linear_backend_note": "Use a nonlinear/auxiliary-function constraint checker or an explicit linearized surrogate before sending this constraint to a pure linear optimizer."
+              }
+            },
+            {
+              "constraint_id": "C91",
+              "expression": "legibility_margin_score <= 2 * (character_height_in - 4) + 5 * (stroke_width_in - 0.5)",
+              "role": "legibility_margin_from_character_size",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "legibility_margin_score <= 2 * (character_height_in - 4) + 5 * (stroke_width_in - 0.5)",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "legibility_margin_score",
+                  "character_height_in",
+                  "stroke_width_in"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Emergency legibility margin grows only when character height or stroke width exceeds the minimum."
+              }
+            }
+          ],
+          "description": "Executable feasible cell induced by the expected full-KG rule structure for this grounded scenario."
+        }
+      ],
+      "reference_semantics": {
+        "positive_membership_condition": "all executable_constraints evaluate true and at least one valid cell holds when cells are present",
+        "structure_only_constraints_usage": "used to check rule resolution, provenance, exceptions, or semantic requirements before numeric membership checking"
+      }
+    },
+    "certificate_targets": {
+      "source_rule_ids": [
+        "ifc-2021-address-id-min-size"
+      ],
+      "provenance": [
+        {
+          "document": "IFC 2021",
+          "section": "unknown",
+          "page": "unknown",
+          "chunk_id": "09867c92-262c-5dac-b1c5-00b3b9420c34"
+        }
+      ]
+    },
+    "diagnostic_candidate_rule_ids_reference_only": [
+      "ifc-2021-address-id-min-size"
+    ],
+    "rule_library_id_bindings": [
+      {
+        "rule_id": "ifc-2021-address-id-min-size",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ifc-2021-address-id-min-size",
+        "rule_name": "Minimum size and stroke width for address identification characters",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "09867c92-262c-5dac-b1c5-00b3b9420c34"
+        ],
+        "source_node_ids": [
+          "7b7e7d72-4b4a-5103-b7fc-45c522d0da80"
+        ],
+        "provenance": [
+          {
+            "document": "IFC 2021",
+            "section": "unknown",
+            "page": "unknown",
+            "chunk_id": "09867c92-262c-5dac-b1c5-00b3b9420c34"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "character_height",
+            "op": ">=",
+            "value": 4,
+            "unit": "inches"
+          },
+          {
+            "variable": "stroke_width",
+            "op": ">=",
+            "value": 0.5,
+            "unit": "inches"
+          },
+          {
+            "variable": "character_format",
+            "op": "=",
+            "value": "Arabic numerals or alphabetical letters",
+            "unit": "unknown"
+          },
+          {
+            "variable": "background_contrast",
+            "op": "text",
+            "value": "characters shall contrast with their background",
+            "unit": "unknown"
+          }
+        ]
+      }
+    ],
+    "reference_constraint_rule_bindings": [
+      {
+        "reference_container": "feasible_region.executable_constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "address_character_height",
+        "reference_expression": "character_height_in >= 4",
+        "source_rule_id": "ifc-2021-address-id-min-size",
+        "rule_library_rule_id": "ifc-2021-address-id-min-size",
+        "rule_library_rule_name": "Minimum size and stroke width for address identification characters"
+      },
+      {
+        "reference_container": "feasible_region.executable_constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "address_stroke_width",
+        "reference_expression": "stroke_width_in >= 0.5",
+        "source_rule_id": "ifc-2021-address-id-min-size",
+        "rule_library_rule_id": "ifc-2021-address-id-min-size",
+        "rule_library_rule_name": "Minimum size and stroke width for address identification characters"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "address_character_height",
+        "reference_expression": "character_height_in >= 4",
+        "source_rule_id": "ifc-2021-address-id-min-size",
+        "rule_library_rule_id": "ifc-2021-address-id-min-size",
+        "rule_library_rule_name": "Minimum size and stroke width for address identification characters"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "address_stroke_width",
+        "reference_expression": "stroke_width_in >= 0.5",
+        "source_rule_id": "ifc-2021-address-id-min-size",
+        "rule_library_rule_id": "ifc-2021-address-id-min-size",
+        "rule_library_rule_name": "Minimum size and stroke width for address identification characters"
+      }
+    ],
+    "task_derivation_source": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "document": "ARE-Practice-Exam-Programming-and-Analysis.pdf",
+      "division": "Programming and Analysis",
+      "question_number": "Question 22",
+      "theme": "commercial parcel frontage and emergency wayfinding",
+      "adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "source_policy": "Hidden provenance only; algorithm-visible inputs expose only generalized NCARB-derived themes."
+    },
+    "benchmark_extension_metadata": {
+      "extension_round": "architecture_ncarb_50_extension",
+      "source_base_task_id": "ARCH_FKG_02",
+      "ncarb_category": "accessibility",
+      "source_policy": "paraphrased_parameterized_not_verbatim",
+      "dataset_characterization": "NCARB practice-topic-derived, paraphrased, and parameterized architecture-code semantic extension task.",
+      "independence_claim": "parameterized_variant_not_fully_independent_real_project_case",
+      "source_visibility_policy": "Exact practice identifiers, original question text, answer choices, and source file names are hidden from algorithm-visible inputs.",
+      "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+      "nonlinear_or_auxiliary_reasons": [
+        "auxiliary_function_or_variable_product",
+        "variable_product"
+      ],
+      "method_visibility": "hidden_evaluation_reference_not_method_input"
+    }
+  }
+}

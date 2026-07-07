@@ -1,0 +1,828 @@
+{
+  "version": "architecture_ncarb50_v2_relation_coverage_v1",
+  "generated_at": "2026-06-24T20:59:29",
+  "task_count": 50,
+  "strict_common_task_count": 50,
+  "source_policy": "NCARB-derived tasks are paraphrased and parameterized; original practice-exam text and answer choices are not copied.",
+  "model_overlay_policy": "Evaluation overlays project canonical Qwen/source rule IDs to Qwen, DeepSeek, and Xiaomi MIMO using exact_or_strong_alignment only.",
+  "per_task_coverage": [
+    {
+      "task_id": "ARCH_FKG_51",
+      "title": "NCARB-derived means-of-egress ramp for clinic level change",
+      "challenge_types": [
+        "multi_rule_conjunction"
+      ],
+      "ncarb_category": "accessibility",
+      "rule_ids": [
+        "ifc2021_ramp_landing_size_change_in_direction",
+        "ifc_ramp_slope_egress_1012_2"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_52",
+      "title": "NCARB-derived compact accessible ramp landing",
+      "challenge_types": [
+        "multi_constraint_single_rule",
+        "accessibility_route_design"
+      ],
+      "ncarb_category": "accessibility",
+      "rule_ids": [
+        "ada_ramp_landing_min_size_permitted_alt"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_53",
+      "title": "NCARB-derived accessible restroom door operation package",
+      "challenge_types": [
+        "multi_rule_conjunction",
+        "accessibility_operability"
+      ],
+      "ncarb_category": "accessibility",
+      "rule_ids": [
+        "ada-toilet-compartment-door-latch-side-clearance",
+        "ada-toilet-compartment-door-pull-placement",
+        "ada-toilet-compartment-door-self-closing"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_54",
+      "title": "NCARB-derived accessible storage room clear-floor layout",
+      "challenge_types": [
+        "multi_rule_conjunction",
+        "accessibility_space_planning"
+      ],
+      "ncarb_category": "accessibility",
+      "rule_ids": [
+        "ada-305-3-clear-floor-space-min-dimensions",
+        "ada_225_2_storage_accessibility"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_55",
+      "title": "NCARB-derived medical-office visual sign proportion",
+      "challenge_types": [
+        "multi_constraint_single_rule",
+        "accessibility_wayfinding"
+      ],
+      "ncarb_category": "accessibility",
+      "rule_ids": [
+        "ada-2010-703-5-5-font-proportion"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_56",
+      "title": "NCARB-derived emergency address sign sizing for street frontage",
+      "challenge_types": [
+        "multi_constraint_single_rule"
+      ],
+      "ncarb_category": "accessibility",
+      "rule_ids": [
+        "ifc-2021-address-id-min-size"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_57",
+      "title": "NCARB-derived park restroom toilet compartment operation",
+      "challenge_types": [
+        "multi_rule_conjunction",
+        "accessibility_operability"
+      ],
+      "ncarb_category": "accessibility",
+      "rule_ids": [
+        "ada-toilet-compartment-door-latch-side-clearance",
+        "ada-toilet-compartment-door-pull-placement",
+        "ada-toilet-compartment-door-self-closing"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_58",
+      "title": "NCARB-derived accessible park path landing package",
+      "challenge_types": [
+        "multi_constraint_single_rule",
+        "accessibility_route_design",
+        "multi_rule_conjunction"
+      ],
+      "ncarb_category": "accessibility",
+      "rule_ids": [
+        "ada_ramp_landing_min_size_permitted_alt"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_59",
+      "title": "NCARB-derived accessible egress elevator resilience package",
+      "challenge_types": [
+        "multi_rule_conjunction",
+        "life_safety_system_design"
+      ],
+      "ncarb_category": "accessibility",
+      "rule_ids": [
+        "ibc2021_emergency_power_requirement",
+        "ibc_1009_2_1_elevator_requirement"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_60",
+      "title": "NCARB-derived area-of-refuge wheelchair space planning",
+      "challenge_types": [
+        "multi_rule_conjunction"
+      ],
+      "ncarb_category": "accessibility",
+      "rule_ids": [
+        "ifc-2021-1009-6-4-separation",
+        "ifc-2021-1009-6-4-wheelchair-access"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_61",
+      "title": "NCARB-derived patient-bed egress door clear opening",
+      "challenge_types": [
+        "multi_rule_conjunction"
+      ],
+      "ncarb_category": "fire_and_egress",
+      "rule_ids": [
+        "ifc2021-moe-door-patient-bed-min-height",
+        "ifc2021-moe-door-patient-bed-min-width"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_62",
+      "title": "NCARB-derived existing care-unit patient door exception",
+      "challenge_types": [
+        "exception_or_override"
+      ],
+      "ncarb_category": "fire_and_egress",
+      "rule_ids": [
+        "ifc2021-moe-door-patient-bed-exception-i2-condition1"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_63",
+      "title": "NCARB-derived multi-floor fire alarm zone partition",
+      "challenge_types": [
+        "multi_rule_conjunction"
+      ],
+      "ncarb_category": "fire_and_egress",
+      "rule_ids": [
+        "ifc_907_6_4_zone_area_max",
+        "ifc_907_6_4_zone_dimension_max"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_64",
+      "title": "NCARB-derived open office audible alarm setting",
+      "challenge_types": [
+        "formula_propagation",
+        "multi_rule_conjunction"
+      ],
+      "ncarb_category": "fire_and_egress",
+      "rule_ids": [
+        "ifc-2021-907-5-2-1-2-audible-alarm-spl-max",
+        "ifc-2021-907-5-2-1-2-audible-alarm-spl-min"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_65",
+      "title": "NCARB-derived exterior egress door landing clearance",
+      "challenge_types": [
+        "multi_rule_conjunction"
+      ],
+      "ncarb_category": "fire_and_egress",
+      "rule_ids": [
+        "ifc-2021-door-bottom-clearance-max",
+        "ifc_exterior_door_landing_drop_f_h_r2_s"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_66",
+      "title": "NCARB-derived waterfront temporary event tent egress",
+      "challenge_types": [
+        "multi_rule_conjunction"
+      ],
+      "ncarb_category": "fire_and_egress",
+      "rule_ids": [
+        "ifc_tent_aggregate_area_limit",
+        "ifc_tent_clearance_requirement"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_67",
+      "title": "NCARB-derived hazardous materials alarm supervision",
+      "challenge_types": [
+        "multi_rule_conjunction"
+      ],
+      "ncarb_category": "fire_and_egress",
+      "rule_ids": [
+        "ifc-2021-5004-10-local-alarm",
+        "ifc-2021-5004-10-supervision"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_68",
+      "title": "NCARB-derived solvent area extinguisher placement",
+      "challenge_types": [
+        "multi_rule_conjunction"
+      ],
+      "ncarb_category": "fire_and_egress",
+      "rule_ids": [
+        "ifc-2021-5705-4-8-storage-hazardous-residue",
+        "ifc-2021-5705-4-9-portable-fire-extinguishers"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_69",
+      "title": "NCARB-derived indoor dispensing ventilation package",
+      "challenge_types": [
+        "multi_rule_conjunction"
+      ],
+      "ncarb_category": "fire_and_egress",
+      "rule_ids": [
+        "ifc_5505_4_1_1_ventilation_requirement",
+        "ifc_5505_4_1_building_code_compliance"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_70",
+      "title": "NCARB-derived rooftop patio emergency voice precedence",
+      "challenge_types": [
+        "precedence",
+        "override_resolution",
+        "multi_rule_conjunction"
+      ],
+      "ncarb_category": "fire_and_egress",
+      "rule_ids": [
+        "ifc-907.5.2.2.1-paging-zones-capability",
+        "ifc-907.5.2.2.3-precedence-of-fire-alarm-use"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_71",
+      "title": "NCARB-derived single-exit tenant layout documentation",
+      "challenge_types": [
+        "applicability_resolution",
+        "documentation_condition"
+      ],
+      "ncarb_category": "fire_and_egress",
+      "rule_ids": [
+        "ibc_1004_6_occupant_load_increase",
+        "ibc_1006_3_4_single_exit_permitted"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_72",
+      "title": "NCARB-derived assembly room audible alarm formula",
+      "challenge_types": [
+        "formula_propagation",
+        "multi_rule_conjunction",
+        "dependency_or_formula_propagation"
+      ],
+      "ncarb_category": "fire_and_egress",
+      "rule_ids": [
+        "ifc-2021-907-5-2-1-2-audible-alarm-spl-max",
+        "ifc-2021-907-5-2-1-2-audible-alarm-spl-min"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_73",
+      "title": "NCARB-derived egress ramp run-length formula",
+      "challenge_types": [
+        "multi_rule_conjunction",
+        "dependency_or_formula_propagation"
+      ],
+      "ncarb_category": "fire_and_egress",
+      "rule_ids": [
+        "ifc2021_ramp_landing_size_change_in_direction",
+        "ifc_ramp_slope_egress_1012_2"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_74",
+      "title": "NCARB-derived event venue voice-alarm channel precedence",
+      "challenge_types": [
+        "precedence",
+        "override_resolution",
+        "multi_rule_conjunction"
+      ],
+      "ncarb_category": "fire_and_egress",
+      "rule_ids": [
+        "ifc-907.5.2.2.1-paging-zones-capability",
+        "ifc-907.5.2.2.3-precedence-of-fire-alarm-use"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_75",
+      "title": "NCARB-derived fire alarm voice preemption design",
+      "challenge_types": [
+        "precedence",
+        "override_resolution",
+        "multi_rule_conjunction"
+      ],
+      "ncarb_category": "fire_and_egress",
+      "rule_ids": [
+        "ifc-907.5.2.2.1-paging-zones-capability",
+        "ifc-907.5.2.2.3-precedence-of-fire-alarm-use"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_76",
+      "title": "NCARB-derived Type IA building fire-flow reserve",
+      "challenge_types": [
+        "scenario_conditioned_applicability",
+        "multi_constraint_single_rule"
+      ],
+      "ncarb_category": "area_and_height",
+      "rule_ids": [
+        "ifc2021_fire_flow_table_row_1"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_77",
+      "title": "NCARB-derived Type IV fire-flow reserve",
+      "challenge_types": [
+        "scenario_conditioned_applicability"
+      ],
+      "ncarb_category": "area_and_height",
+      "rule_ids": [
+        "ifc2021_fire_flow_table_row_3"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_78",
+      "title": "NCARB-derived Type IA fire-flow table applicability",
+      "challenge_types": [
+        "scenario_conditioned_applicability",
+        "multi_constraint_single_rule"
+      ],
+      "ncarb_category": "area_and_height",
+      "rule_ids": [
+        "ifc2021_fire_flow_table_row_1"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_79",
+      "title": "NCARB-derived Type IV fire-flow duration applicability",
+      "challenge_types": [
+        "scenario_conditioned_applicability"
+      ],
+      "ncarb_category": "area_and_height",
+      "rule_ids": [
+        "ifc2021_fire_flow_table_row_3"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_80",
+      "title": "NCARB-derived roof hatch guard planning",
+      "challenge_types": [
+        "parameter_limit"
+      ],
+      "ncarb_category": "area_and_height",
+      "rule_ids": [
+        "ifc_roof_hatch_guard_requirement"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_81",
+      "title": "NCARB-derived Class 3 oxidizer storage height package",
+      "challenge_types": [
+        "multi_constraint_single_rule"
+      ],
+      "ncarb_category": "area_and_height",
+      "rule_ids": [
+        "ifc_6303_1_5_class3_oxidizer_storage_limit"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_82",
+      "title": "NCARB-derived accessible egress elevator for high-rise option",
+      "challenge_types": [
+        "multi_rule_conjunction",
+        "life_safety_system_design"
+      ],
+      "ncarb_category": "area_and_height",
+      "rule_ids": [
+        "ibc2021_emergency_power_requirement",
+        "ibc_1009_2_1_elevator_requirement"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_83",
+      "title": "NCARB-derived occupant-load increase documentation",
+      "challenge_types": [
+        "applicability_resolution",
+        "documentation_condition"
+      ],
+      "ncarb_category": "area_and_height",
+      "rule_ids": [
+        "ibc_1004_6_occupant_load_increase",
+        "ibc_1006_3_4_single_exit_permitted"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_84",
+      "title": "NCARB-derived pool barrier gate latch height",
+      "challenge_types": [
+        "scenario_conditioned_applicability"
+      ],
+      "ncarb_category": "site_and_zoning_like",
+      "rule_ids": [
+        "ifc-2021-1010-2-4-pool-gate-latch-height"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_85",
+      "title": "NCARB-derived pool gate latch applicability check",
+      "challenge_types": [
+        "scenario_conditioned_applicability"
+      ],
+      "ncarb_category": "site_and_zoning_like",
+      "rule_ids": [
+        "ifc-2021-1010-2-4-pool-gate-latch-height"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_86",
+      "title": "NCARB-derived outdoor control area setback from buildable lot line",
+      "challenge_types": [
+        "scenario_conditioned_applicability",
+        "parameter_limit"
+      ],
+      "ncarb_category": "site_and_zoning_like",
+      "rule_ids": [
+        "ifc-outdoor-control-area-setback-20ft"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_87",
+      "title": "NCARB-derived outdoor control area combustible clearance",
+      "challenge_types": [
+        "scenario_conditioned_applicability",
+        "parameter_limit"
+      ],
+      "ncarb_category": "site_and_zoning_like",
+      "rule_ids": [
+        "ifc-outdoor-control-area-clearance-15ft"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_88",
+      "title": "NCARB-derived fire-wall alternative to outdoor control area setback",
+      "challenge_types": [
+        "exception_or_override",
+        "multi_rule_conjunction"
+      ],
+      "ncarb_category": "site_and_zoning_like",
+      "rule_ids": [
+        "ifc-outdoor-control-area-setback-20ft",
+        "ifc-outdoor-control-area-exception-fire-wall"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_89",
+      "title": "NCARB-derived commercial parking garage sprinkler coverage",
+      "challenge_types": [
+        "scenario_conditioned_applicability",
+        "life_safety_system_design"
+      ],
+      "ncarb_category": "site_and_zoning_like",
+      "rule_ids": [
+        "ifc_903_2_10_1_sprinklers_commercial_garage"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_90",
+      "title": "NCARB-derived mechanical-access parking sprinkler coverage",
+      "challenge_types": [
+        "scenario_conditioned_applicability",
+        "life_safety_system_design"
+      ],
+      "ncarb_category": "site_and_zoning_like",
+      "rule_ids": [
+        "ifc_903_2_10_2_sprinklers_mechanical_access_garage"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_91",
+      "title": "NCARB-derived open parking garage sprinkler threshold",
+      "challenge_types": [
+        "scenario_conditioned_applicability",
+        "life_safety_system_design"
+      ],
+      "ncarb_category": "site_and_zoning_like",
+      "rule_ids": [
+        "ifc_open_parking_garage_sprinkler_threshold_ibc_406_5"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_92",
+      "title": "NCARB-derived occupant-load diagram coordination",
+      "challenge_types": [
+        "applicability_resolution",
+        "documentation_condition"
+      ],
+      "ncarb_category": "construction_documentation",
+      "rule_ids": [
+        "ibc_1004_6_occupant_load_increase",
+        "ibc_1006_3_4_single_exit_permitted"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_93",
+      "title": "NCARB-derived emergency voice specification precedence",
+      "challenge_types": [
+        "precedence",
+        "override_resolution",
+        "multi_rule_conjunction"
+      ],
+      "ncarb_category": "construction_documentation",
+      "rule_ids": [
+        "ifc-907.5.2.2.1-paging-zones-capability",
+        "ifc-907.5.2.2.3-precedence-of-fire-alarm-use"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_94",
+      "title": "NCARB-derived toilet door hardware documentation package",
+      "challenge_types": [
+        "multi_rule_conjunction",
+        "accessibility_operability"
+      ],
+      "ncarb_category": "construction_documentation",
+      "rule_ids": [
+        "ada-toilet-compartment-door-latch-side-clearance",
+        "ada-toilet-compartment-door-pull-placement",
+        "ada-toilet-compartment-door-self-closing"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_95",
+      "title": "NCARB-derived interior signage production criteria",
+      "challenge_types": [
+        "multi_constraint_single_rule",
+        "accessibility_wayfinding"
+      ],
+      "ncarb_category": "construction_documentation",
+      "rule_ids": [
+        "ada-2010-703-5-5-font-proportion"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_96",
+      "title": "NCARB-derived hospital door schedule clear-opening check",
+      "challenge_types": [
+        "multi_rule_conjunction"
+      ],
+      "ncarb_category": "construction_documentation",
+      "rule_ids": [
+        "ifc2021-moe-door-patient-bed-min-height",
+        "ifc2021-moe-door-patient-bed-min-width"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_97",
+      "title": "NCARB-derived existing patient door exception schedule",
+      "challenge_types": [
+        "exception_or_override"
+      ],
+      "ncarb_category": "construction_documentation",
+      "rule_ids": [
+        "ifc2021-moe-door-patient-bed-exception-i2-condition1"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_98",
+      "title": "NCARB-derived fire alarm zone drawing coordination",
+      "challenge_types": [
+        "multi_rule_conjunction"
+      ],
+      "ncarb_category": "construction_documentation",
+      "rule_ids": [
+        "ifc_907_6_4_zone_area_max",
+        "ifc_907_6_4_zone_dimension_max"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_99",
+      "title": "NCARB-derived audible alarm calculation sheet",
+      "challenge_types": [
+        "formula_propagation",
+        "multi_rule_conjunction"
+      ],
+      "ncarb_category": "construction_documentation",
+      "rule_ids": [
+        "ifc-2021-907-5-2-1-2-audible-alarm-spl-max",
+        "ifc-2021-907-5-2-1-2-audible-alarm-spl-min"
+      ]
+    },
+    {
+      "task_id": "ARCH_FKG_100",
+      "title": "NCARB-derived restroom door operation checklist",
+      "challenge_types": [
+        "multi_rule_conjunction",
+        "accessibility_operability"
+      ],
+      "ncarb_category": "construction_documentation",
+      "rule_ids": [
+        "ada-toilet-compartment-door-latch-side-clearance",
+        "ada-toilet-compartment-door-pull-placement",
+        "ada-toilet-compartment-door-self-closing"
+      ]
+    }
+  ],
+  "dataset_characterization": "NCARB practice-theme-derived, paraphrased, parameterized, and manually checked architecture-code semantic extension; not 50 fully independent real project cases.",
+  "source_visibility_policy": "Algorithm-visible files remove exact NCARB question numbers, source file names, answer options, and internal expanded_from_ARCH_FKG clone lineage.",
+  "scenario_variant_policy": "Repeated rule-structure groups are retained only as parameterized variants with substantive differences in scenario facts, variable bounds, objective weights, applicability conditions, or document context.",
+  "scenario_variant_groups": [
+    {
+      "group_id": "ncarb50_scenario_variant_group_01",
+      "task_ids": [
+        "ARCH_FKG_53",
+        "ARCH_FKG_57",
+        "ARCH_FKG_94",
+        "ARCH_FKG_100"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_02",
+      "task_ids": [
+        "ARCH_FKG_70",
+        "ARCH_FKG_74",
+        "ARCH_FKG_75",
+        "ARCH_FKG_93"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_03",
+      "task_ids": [
+        "ARCH_FKG_64",
+        "ARCH_FKG_72",
+        "ARCH_FKG_99"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_04",
+      "task_ids": [
+        "ARCH_FKG_71",
+        "ARCH_FKG_83",
+        "ARCH_FKG_92"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_05",
+      "task_ids": [
+        "ARCH_FKG_51",
+        "ARCH_FKG_73"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_06",
+      "task_ids": [
+        "ARCH_FKG_52",
+        "ARCH_FKG_58"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_07",
+      "task_ids": [
+        "ARCH_FKG_55",
+        "ARCH_FKG_95"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_08",
+      "task_ids": [
+        "ARCH_FKG_59",
+        "ARCH_FKG_82"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_09",
+      "task_ids": [
+        "ARCH_FKG_61",
+        "ARCH_FKG_96"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_10",
+      "task_ids": [
+        "ARCH_FKG_62",
+        "ARCH_FKG_97"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_11",
+      "task_ids": [
+        "ARCH_FKG_63",
+        "ARCH_FKG_98"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_12",
+      "task_ids": [
+        "ARCH_FKG_76",
+        "ARCH_FKG_78"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_13",
+      "task_ids": [
+        "ARCH_FKG_77",
+        "ARCH_FKG_79"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_14",
+      "task_ids": [
+        "ARCH_FKG_84",
+        "ARCH_FKG_85"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    }
+  ],
+  "semantic_indicator_tasks": [
+    "ARCH_FKG_67",
+    "ARCH_FKG_68",
+    "ARCH_FKG_69",
+    "ARCH_FKG_70",
+    "ARCH_FKG_74",
+    "ARCH_FKG_75",
+    "ARCH_FKG_89",
+    "ARCH_FKG_90",
+    "ARCH_FKG_91",
+    "ARCH_FKG_93"
+  ],
+  "semantic_indicator_policy": "Semantic-indicator tasks primarily test textual, categorical, system-capability, applicability, or precedence recovery; they should not be described as continuous numeric optimization cases.",
+  "nonlinear_or_auxiliary_constraint_tasks": [
+    "ARCH_FKG_51",
+    "ARCH_FKG_52",
+    "ARCH_FKG_55",
+    "ARCH_FKG_56",
+    "ARCH_FKG_58",
+    "ARCH_FKG_61",
+    "ARCH_FKG_63",
+    "ARCH_FKG_64",
+    "ARCH_FKG_72",
+    "ARCH_FKG_73",
+    "ARCH_FKG_95",
+    "ARCH_FKG_96",
+    "ARCH_FKG_98",
+    "ARCH_FKG_99"
+  ],
+  "nonlinear_constraint_policy": "Tasks using max(), min(), abs(), symbolic division by decision variables, or variable products require a nonlinear/auxiliary-function constraint checker or an explicit linearized surrogate before pure linear optimization.",
+  "mixed_numeric_semantic_indicator_tasks": [
+    "ARCH_FKG_60"
+  ],
+  "method_visible_input_policy": "Methods may read only core/algorithm_inputs, core/scenario_models, rule_libraries, public_tasks, and public-only compatibility tasks. Hidden references are not method inputs.",
+  "public_task_directory": "public_tasks",
+  "compatibility_public_task_directory": "tasks",
+  "paired_audit_task_directory": "paired_audit_tasks",
+  "hidden_evaluation_artifacts": [
+    "evaluation_references",
+    "core/source_semantic_references",
+    "evaluation_overlays/*/evaluation_references.json",
+    "paired_audit_tasks",
+    "constraint_templates"
+  ],
+  "constraint_templates_visibility": "hidden_evaluation_or_audit_artifact_not_method_input",
+  "last_repaired_at": "2026-06-25T15:43:28+08:00",
+  "last_repair_scope": "Differentiated ARCH_FKG_55 and ARCH_FKG_95, preserving public/hidden input separation and alignment summaries."
+}

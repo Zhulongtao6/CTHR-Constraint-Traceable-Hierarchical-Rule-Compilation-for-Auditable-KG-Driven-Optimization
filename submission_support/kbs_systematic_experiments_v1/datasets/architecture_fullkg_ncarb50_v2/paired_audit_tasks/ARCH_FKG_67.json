@@ -1,0 +1,535 @@
+{
+  "version": "architecture_ncarb50_v2_paired_audit_task_v1",
+  "visibility": "hidden_evaluation_or_offline_audit_only_not_method_input",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_67",
+    "title": "NCARB-derived hazardous materials alarm supervision",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "hazardous_material_alarm_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: brownfield retail site and hazardous material review. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "hazardous_material_use": true,
+      "emergency_alarm_context": "storage_room",
+      "scenario.emergency_type": "hazardous_materials",
+      "emergency_type": "hazardous_materials",
+      "system_type": "emergency_alarm",
+      "application_scope": "Section 5004",
+      "ncarb_scenario_theme": "brownfield retail site and hazardous material review",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "fire_and_egress",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Rule-applicability judgment task for categorical/code-trigger semantics."
+    },
+    "decision_variables": {
+      "local_alarm_provided_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1
+      },
+      "supervision_monitoring_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1
+      },
+      "monitoring_burden_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      },
+      "occupant_alert_coverage_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      }
+    },
+    "objectives": [
+      {
+        "name": "minimize_monitoring_burden",
+        "expression": "monitoring_burden_score"
+      },
+      {
+        "name": "maximize_occupant_alert_coverage",
+        "expression": "occupant_alert_coverage_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.45,
+        0.55
+      ],
+      "meaning": "slightly prioritize occupant alert coverage"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_67_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "brownfield retail site and hazardous material review",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "task_semantics_profile": "semantic_indicator_dominant",
+    "task_semantics_note": "Rule applicability, precedence, categorical, or system-capability semantics dominate this task; it is not a pure continuous numeric optimization task.",
+    "scenario_variant_differentiator": "Rule-applicability judgment task for categorical/code-trigger semantics."
+  },
+  "evaluation_reference": {
+    "omega_id": "ARCH_FKG_67",
+    "title": "NCARB-derived hazardous materials alarm supervision",
+    "rule_structure": {
+      "expected_source_rule_ids": [
+        "ifc-2021-5004-10-local-alarm",
+        "ifc-2021-5004-10-supervision"
+      ],
+      "expected_defeated_rule_ids": [],
+      "expected_surviving_rule_ids": [
+        "ifc-2021-5004-10-local-alarm",
+        "ifc-2021-5004-10-supervision"
+      ],
+      "expected_valid_rule_structures": [
+        [
+          "ifc-2021-5004-10-local-alarm",
+          "ifc-2021-5004-10-supervision"
+        ]
+      ],
+      "expected_rule_behavior": {
+        "should_activate": [
+          "Local alarm activation for hazardous materials emergencies",
+          "Electrical supervision and monitoring of emergency alarm systems"
+        ],
+        "should_exclude": [],
+        "should_resolve": [
+          "multi_rule_conjunction"
+        ]
+      },
+      "challenge_types": [
+        "multi_rule_conjunction"
+      ],
+      "valid_constraint_cell_ids": [
+        "ARCH_FKG_67_cell_1"
+      ],
+      "expected_provenance": {
+        "kg_chunk_ids": [
+          "11f5d123-bac1-595d-826b-50cf974f278f"
+        ],
+        "kg_node_ids": [
+          "40039b06-3fe0-5a8f-b429-366055f70643",
+          "a4bd93fc-716c-599f-91b1-652105d0f06f",
+          "cd912eb4-8966-596a-b257-c382fe642dab"
+        ],
+        "kg_edge_ids": [
+          "kg_edge_15783",
+          "kg_edge_18434",
+          "kg_edge_25292",
+          "kg_edge_26305",
+          "kg_edge_37856",
+          "kg_edge_40503"
+        ],
+        "source_documents": [
+          {
+            "document": "IFC-2021",
+            "section": "5004.10",
+            "page": "unknown",
+            "chunk_id": "11f5d123-bac1-595d-826b-50cf974f278f"
+          },
+          {
+            "document": "ARE-Practice-Exam-Programming-and-Analysis.pdf",
+            "section": "Programming and Analysis",
+            "page": "practice-exam-question",
+            "question_number": "Question 20",
+            "derivation_policy": "Paraphrased and parameterized from an NCARB practice-exam scenario; original question text is not copied."
+          }
+        ]
+      }
+    },
+    "feasible_region": {
+      "executable_constraints": [
+        {
+          "constraint_id": "C1",
+          "expression": "local_alarm_provided_indicator == 1",
+          "role": "local_alarm_activation",
+          "source_type": "rule_library",
+          "source_id": "ifc-2021-5004-10-local-alarm",
+          "executable": true,
+          "checker_expression": "local_alarm_provided_indicator == 1",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "local_alarm_provided_indicator"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "semantic_indicator_encoding": true,
+            "derived_from_text_or_semantic_rule": true,
+            "derived_from_rule_id": "ifc-2021-5004-10-local-alarm",
+            "encoding_note": "This executable predicate is a task-level semantic encoding of a textual or categorical full-KG rule.",
+            "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+          }
+        },
+        {
+          "constraint_id": "C2",
+          "expression": "supervision_monitoring_indicator == 1",
+          "role": "alarm_supervision_monitoring",
+          "source_type": "rule_library",
+          "source_id": "ifc-2021-5004-10-supervision",
+          "executable": true,
+          "checker_expression": "supervision_monitoring_indicator == 1",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "supervision_monitoring_indicator"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "semantic_indicator_encoding": true,
+            "derived_from_text_or_semantic_rule": true,
+            "derived_from_rule_id": "ifc-2021-5004-10-supervision",
+            "encoding_note": "This executable predicate is a task-level semantic encoding of a textual or categorical full-KG rule.",
+            "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+          }
+        },
+        {
+          "constraint_id": "C90",
+          "expression": "monitoring_burden_score >= local_alarm_provided_indicator + supervision_monitoring_indicator",
+          "role": "monitoring_burden_from_alarm_supervision",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "monitoring_burden_score >= local_alarm_provided_indicator + supervision_monitoring_indicator",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "monitoring_burden_score",
+              "local_alarm_provided_indicator",
+              "supervision_monitoring_indicator"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Alarm and supervision requirements increase monitoring burden.",
+            "semantic_indicator_encoding": true,
+            "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+          }
+        },
+        {
+          "constraint_id": "C91",
+          "expression": "occupant_alert_coverage_score <= 5 * (local_alarm_provided_indicator + supervision_monitoring_indicator)",
+          "role": "alert_coverage_from_alarm_supervision",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "occupant_alert_coverage_score <= 5 * (local_alarm_provided_indicator + supervision_monitoring_indicator)",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "occupant_alert_coverage_score",
+              "local_alarm_provided_indicator",
+              "supervision_monitoring_indicator"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Alert coverage depends on local alarm and supervision provision.",
+            "semantic_indicator_encoding": true,
+            "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+          }
+        }
+      ],
+      "structure_only_constraints": [],
+      "valid_constraint_cells": [
+        {
+          "cell_id": "ARCH_FKG_67_cell_1",
+          "cell_type": "single_valid_fullkg_rule_structure",
+          "rule_ids": [
+            "ifc-2021-5004-10-local-alarm",
+            "ifc-2021-5004-10-supervision"
+          ],
+          "constraints": [
+            {
+              "constraint_id": "C1",
+              "expression": "local_alarm_provided_indicator == 1",
+              "role": "local_alarm_activation",
+              "source_type": "rule_library",
+              "source_id": "ifc-2021-5004-10-local-alarm",
+              "executable": true,
+              "checker_expression": "local_alarm_provided_indicator == 1",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "local_alarm_provided_indicator"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "semantic_indicator_encoding": true,
+                "derived_from_text_or_semantic_rule": true,
+                "derived_from_rule_id": "ifc-2021-5004-10-local-alarm",
+                "encoding_note": "This executable predicate is a task-level semantic encoding of a textual or categorical full-KG rule.",
+                "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+              }
+            },
+            {
+              "constraint_id": "C2",
+              "expression": "supervision_monitoring_indicator == 1",
+              "role": "alarm_supervision_monitoring",
+              "source_type": "rule_library",
+              "source_id": "ifc-2021-5004-10-supervision",
+              "executable": true,
+              "checker_expression": "supervision_monitoring_indicator == 1",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "supervision_monitoring_indicator"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "semantic_indicator_encoding": true,
+                "derived_from_text_or_semantic_rule": true,
+                "derived_from_rule_id": "ifc-2021-5004-10-supervision",
+                "encoding_note": "This executable predicate is a task-level semantic encoding of a textual or categorical full-KG rule.",
+                "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+              }
+            },
+            {
+              "constraint_id": "C90",
+              "expression": "monitoring_burden_score >= local_alarm_provided_indicator + supervision_monitoring_indicator",
+              "role": "monitoring_burden_from_alarm_supervision",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "monitoring_burden_score >= local_alarm_provided_indicator + supervision_monitoring_indicator",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "monitoring_burden_score",
+                  "local_alarm_provided_indicator",
+                  "supervision_monitoring_indicator"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Alarm and supervision requirements increase monitoring burden.",
+                "semantic_indicator_encoding": true,
+                "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+              }
+            },
+            {
+              "constraint_id": "C91",
+              "expression": "occupant_alert_coverage_score <= 5 * (local_alarm_provided_indicator + supervision_monitoring_indicator)",
+              "role": "alert_coverage_from_alarm_supervision",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "occupant_alert_coverage_score <= 5 * (local_alarm_provided_indicator + supervision_monitoring_indicator)",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "occupant_alert_coverage_score",
+                  "local_alarm_provided_indicator",
+                  "supervision_monitoring_indicator"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Alert coverage depends on local alarm and supervision provision.",
+                "semantic_indicator_encoding": true,
+                "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+              }
+            }
+          ],
+          "description": "Executable feasible cell induced by the expected full-KG rule structure for this grounded scenario."
+        }
+      ],
+      "reference_semantics": {
+        "positive_membership_condition": "all executable_constraints evaluate true and at least one valid cell holds when cells are present",
+        "structure_only_constraints_usage": "used to check rule resolution, provenance, exceptions, or semantic requirements before numeric membership checking"
+      }
+    },
+    "certificate_targets": {
+      "source_rule_ids": [
+        "ifc-2021-5004-10-local-alarm",
+        "ifc-2021-5004-10-supervision"
+      ],
+      "provenance": [
+        {
+          "document": "IFC-2021",
+          "section": "5004.10",
+          "page": "unknown",
+          "chunk_id": "11f5d123-bac1-595d-826b-50cf974f278f"
+        }
+      ]
+    },
+    "diagnostic_candidate_rule_ids_reference_only": [
+      "ifc-2021-5004-10-local-alarm",
+      "ifc-2021-5004-10-supervision"
+    ],
+    "rule_library_id_bindings": [
+      {
+        "rule_id": "ifc-2021-5004-10-local-alarm",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ifc-2021-5004-10-local-alarm",
+        "rule_name": "Local alarm activation for hazardous materials emergencies",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "11f5d123-bac1-595d-826b-50cf974f278f"
+        ],
+        "source_node_ids": [
+          "a4bd93fc-716c-599f-91b1-652105d0f06f"
+        ],
+        "provenance": [
+          {
+            "document": "IFC-2021",
+            "section": "5004.10",
+            "page": "unknown",
+            "chunk_id": "11f5d123-bac1-595d-826b-50cf974f278f"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "alarm_response",
+            "op": "text",
+            "value": "shall sound a local alarm to alert occupants of an emergency situation involving hazardous materials",
+            "unit": "unknown"
+          }
+        ]
+      },
+      {
+        "rule_id": "ifc-2021-5004-10-supervision",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ifc-2021-5004-10-supervision",
+        "rule_name": "Electrical supervision and monitoring of emergency alarm systems",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "11f5d123-bac1-595d-826b-50cf974f278f"
+        ],
+        "source_node_ids": [
+          "40039b06-3fe0-5a8f-b429-366055f70643",
+          "cd912eb4-8966-596a-b257-c382fe642dab"
+        ],
+        "provenance": [
+          {
+            "document": "IFC-2021",
+            "section": "5004.10",
+            "page": "unknown",
+            "chunk_id": "11f5d123-bac1-595d-826b-50cf974f278f"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "supervision_method",
+            "op": "text",
+            "value": "shall be electrically supervised and monitored by an approved supervising station or, where approved, shall initiate an audible and visual signal at a constantly attended on-site location",
+            "unit": "unknown"
+          }
+        ]
+      }
+    ],
+    "reference_constraint_rule_bindings": [
+      {
+        "reference_container": "feasible_region.executable_constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "local_alarm_activation",
+        "reference_expression": "local_alarm_provided_indicator == 1",
+        "source_rule_id": "ifc-2021-5004-10-local-alarm",
+        "rule_library_rule_id": "ifc-2021-5004-10-local-alarm",
+        "rule_library_rule_name": "Local alarm activation for hazardous materials emergencies",
+        "metadata": {
+          "semantic_indicator_encoding": true,
+          "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+        }
+      },
+      {
+        "reference_container": "feasible_region.executable_constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "alarm_supervision_monitoring",
+        "reference_expression": "supervision_monitoring_indicator == 1",
+        "source_rule_id": "ifc-2021-5004-10-supervision",
+        "rule_library_rule_id": "ifc-2021-5004-10-supervision",
+        "rule_library_rule_name": "Electrical supervision and monitoring of emergency alarm systems",
+        "metadata": {
+          "semantic_indicator_encoding": true,
+          "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+        }
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "local_alarm_activation",
+        "reference_expression": "local_alarm_provided_indicator == 1",
+        "source_rule_id": "ifc-2021-5004-10-local-alarm",
+        "rule_library_rule_id": "ifc-2021-5004-10-local-alarm",
+        "rule_library_rule_name": "Local alarm activation for hazardous materials emergencies",
+        "metadata": {
+          "semantic_indicator_encoding": true,
+          "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+        }
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "alarm_supervision_monitoring",
+        "reference_expression": "supervision_monitoring_indicator == 1",
+        "source_rule_id": "ifc-2021-5004-10-supervision",
+        "rule_library_rule_id": "ifc-2021-5004-10-supervision",
+        "rule_library_rule_name": "Electrical supervision and monitoring of emergency alarm systems",
+        "metadata": {
+          "semantic_indicator_encoding": true,
+          "semantic_indicator_note": "Categorical/textual rule semantics are encoded as indicator or score variables for benchmark evaluation."
+        }
+      }
+    ],
+    "task_derivation_source": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "document": "ARE-Practice-Exam-Programming-and-Analysis.pdf",
+      "division": "Programming and Analysis",
+      "question_number": "Question 20",
+      "theme": "brownfield retail site and hazardous material review",
+      "adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "source_policy": "Hidden provenance only; algorithm-visible inputs expose only generalized NCARB-derived themes."
+    },
+    "benchmark_extension_metadata": {
+      "extension_round": "architecture_ncarb_50_extension",
+      "source_base_task_id": "ARCH_FKG_15",
+      "ncarb_category": "fire_and_egress",
+      "source_policy": "paraphrased_parameterized_not_verbatim",
+      "dataset_characterization": "NCARB practice-topic-derived, paraphrased, and parameterized architecture-code semantic extension task.",
+      "independence_claim": "parameterized_variant_not_fully_independent_real_project_case",
+      "source_visibility_policy": "Exact practice identifiers, original question text, answer choices, and source file names are hidden from algorithm-visible inputs.",
+      "constraint_semantics_class": "semantic_indicator_dominant",
+      "semantic_indicator_note": "Kept to test textual, categorical, system-capability, applicability, or precedence recovery; not a pure numeric optimization case.",
+      "method_visibility": "hidden_evaluation_reference_not_method_input"
+    }
+  }
+}

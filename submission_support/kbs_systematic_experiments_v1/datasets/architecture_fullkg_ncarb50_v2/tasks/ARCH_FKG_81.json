@@ -1,0 +1,78 @@
+{
+  "version": "architecture_ncarb50_v2_public_task_v1",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_81",
+    "title": "NCARB-derived Class 3 oxidizer storage height package",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "oxidizer_storage_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: warehouse code-table lookup for storage conditions. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "hazardous_material": "Class 3 oxidizer",
+      "use_case": "maintenance_operation",
+      "hazard_class": "Class 3 oxidizer",
+      "physical_state": "solid",
+      "ncarb_scenario_theme": "warehouse code-table lookup for storage conditions",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "area_and_height",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized"
+    },
+    "decision_variables": {
+      "solid_oxidizer_storage_lb": {
+        "type": "continuous",
+        "unit": "pound",
+        "lower": 0,
+        "upper": 300
+      },
+      "liquid_oxidizer_storage_gal": {
+        "type": "continuous",
+        "unit": "gallon",
+        "lower": 0,
+        "upper": 40
+      },
+      "cabinet_count": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 1,
+        "upper": 10
+      },
+      "inventory_service_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_inventory_service",
+        "expression": "inventory_service_score"
+      },
+      {
+        "name": "minimize_cabinet_count",
+        "expression": "cabinet_count"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.5,
+        0.5
+      ],
+      "meaning": "balance maintenance inventory and storage burden"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_81_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "warehouse code-table lookup for storage conditions",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    }
+  }
+}

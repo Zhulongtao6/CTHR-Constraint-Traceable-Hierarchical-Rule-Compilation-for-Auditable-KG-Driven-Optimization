@@ -1,0 +1,82 @@
+{
+  "version": "architecture_ncarb50_v2_public_task_v1",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_85",
+    "title": "NCARB-derived pool gate latch applicability check",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "egress_and_pool_barrier_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: aquatic center property planning. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "facility_type": "aquatic_center",
+      "barrier_element": "pool_access_gate",
+      "element_type": "access door",
+      "location_context": "barrier walls and fences protecting pools, spas and hot tubs",
+      "latch_type": "self-latching device",
+      "locking_mechanism": "self_latching_applicability_review",
+      "scenario_variant": "parameterized_variant",
+      "expansion_case_family": "site_and_zoning_like",
+      "ncarb_scenario_theme": "aquatic center property planning",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Pool gate latch applicability and door-type judgment variant.",
+      "latch_review_mode": "applicability_and_door_type_judgment",
+      "applicability_indicator": 1
+    },
+    "decision_variables": {
+      "latch_release_height_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 36,
+        "upper": 54
+      },
+      "child_resistance_margin_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 0,
+        "upper": 24
+      },
+      "operability_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_child_resistance_margin",
+        "expression": "child_resistance_margin_in"
+      },
+      {
+        "name": "maximize_adult_operability",
+        "expression": "operability_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.4,
+        0.6
+      ],
+      "meaning": "prioritize operability while checking latch applicability"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_85_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "aquatic center property planning",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "scenario_variant_status": "parameterized_scenario_variant",
+    "scenario_variant_note": "Parameterized variant with substantive changes in facts, bounds, weights, or document context; not a fully independent real project case.",
+    "scenario_variant_differentiator": "Pool gate latch applicability and door-type judgment variant.",
+    "scenario_variant_group_id": "ncarb50_scenario_variant_group_14"
+  }
+}

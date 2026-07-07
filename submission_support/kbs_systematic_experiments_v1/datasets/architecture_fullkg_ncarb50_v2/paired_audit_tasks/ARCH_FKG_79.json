@@ -1,0 +1,453 @@
+{
+  "version": "architecture_ncarb50_v2_paired_audit_task_v1",
+  "visibility": "hidden_evaluation_or_offline_audit_only_not_method_input",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_79",
+    "title": "NCARB-derived Type IV fire-flow duration applicability",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "fire_flow_supply_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: construction type and allowable area. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "construction_type": "Type IV",
+      "fire_flow_calculation_area_sf": 9800,
+      "building_construction_type": "type iv and v-a",
+      "fire_flow_calculation_area_sqft": 10400,
+      "scenario_variant": "parameterized_variant",
+      "expansion_case_family": "area_and_height",
+      "ncarb_scenario_theme": "construction type and allowable area",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Type IV fire-flow duration applicability variant with changed area and connection-size emphasis.",
+      "structural_context": "type_iv_duration_applicability_review"
+    },
+    "decision_variables": {
+      "available_fire_flow_gpm": {
+        "type": "continuous",
+        "unit": "gpm",
+        "lower": 1000,
+        "upper": 2400
+      },
+      "flow_duration_hours": {
+        "type": "continuous",
+        "unit": "hour",
+        "lower": 2,
+        "upper": 4
+      },
+      "service_connection_size_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      },
+      "duration_margin_hours": {
+        "type": "continuous",
+        "unit": "hour",
+        "lower": 0,
+        "upper": 2
+      }
+    },
+    "objectives": [
+      {
+        "name": "minimize_service_connection_size",
+        "expression": "service_connection_size_score"
+      },
+      {
+        "name": "maximize_duration_margin",
+        "expression": "duration_margin_hours"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.42,
+        0.58
+      ],
+      "meaning": "prioritize duration margin for altered Type IV area"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_79_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "construction type and allowable area",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "scenario_variant_status": "parameterized_scenario_variant",
+    "scenario_variant_note": "Parameterized variant with substantive changes in facts, bounds, weights, or document context; not a fully independent real project case.",
+    "scenario_variant_differentiator": "Type IV fire-flow duration applicability variant with changed area and connection-size emphasis.",
+    "scenario_variant_group_id": "ncarb50_scenario_variant_group_13"
+  },
+  "evaluation_reference": {
+    "omega_id": "ARCH_FKG_79",
+    "title": "NCARB-derived Type IV fire-flow duration applicability",
+    "rule_structure": {
+      "expected_source_rule_ids": [
+        "ifc2021_fire_flow_table_row_3"
+      ],
+      "expected_defeated_rule_ids": [],
+      "expected_surviving_rule_ids": [
+        "ifc2021_fire_flow_table_row_3"
+      ],
+      "expected_valid_rule_structures": [
+        [
+          "ifc2021_fire_flow_table_row_3"
+        ]
+      ],
+      "expected_rule_behavior": {
+        "should_activate": [
+          "Fire flow requirement for Type IV/V-A buildings with fire flow calculation area ≤ 8,200 sq ft"
+        ],
+        "should_exclude": [],
+        "should_resolve": [
+          "scenario_conditioned_applicability"
+        ]
+      },
+      "challenge_types": [
+        "scenario_conditioned_applicability"
+      ],
+      "valid_constraint_cell_ids": [
+        "ARCH_FKG_79_cell_1"
+      ],
+      "expected_provenance": {
+        "kg_chunk_ids": [
+          "015c120c-ad14-58af-b4ce-7b64753ef0d7"
+        ],
+        "kg_node_ids": [
+          "99c515f8-017b-5789-8f59-9e92d1511ba3",
+          "b52491f2-e0a3-5431-8737-d5a766ba3067",
+          "f433a1de-89bf-59f9-b7d7-1728ff9d8cc5",
+          "ffdbde61-343c-5993-b2a6-01a5d65db6eb"
+        ],
+        "kg_edge_ids": [
+          "kg_edge_28228",
+          "kg_edge_49935",
+          "kg_edge_49941"
+        ],
+        "source_documents": [
+          {
+            "document": "IFC 2021",
+            "section": "Appendix B",
+            "page": "unknown",
+            "chunk_id": "015c120c-ad14-58af-b4ce-7b64753ef0d7"
+          },
+          {
+            "document": "ARE-Practice-Exam-Project-Development-and-Documentation.pdf",
+            "section": "Project Development and Documentation",
+            "page": "practice-exam-question",
+            "question_number": "Question 11",
+            "derivation_policy": "Paraphrased and parameterized from an NCARB practice-exam scenario; original question text is not copied."
+          }
+        ]
+      }
+    },
+    "feasible_region": {
+      "executable_constraints": [
+        {
+          "constraint_id": "C1",
+          "expression": "available_fire_flow_gpm >= 1500",
+          "role": "required_fire_flow",
+          "source_type": "rule_library",
+          "source_id": "ifc2021_fire_flow_table_row_3",
+          "executable": true,
+          "checker_expression": "available_fire_flow_gpm >= 1500",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "available_fire_flow_gpm"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C2",
+          "expression": "flow_duration_hours >= 2",
+          "role": "required_flow_duration",
+          "source_type": "rule_library",
+          "source_id": "ifc2021_fire_flow_table_row_3",
+          "executable": true,
+          "checker_expression": "flow_duration_hours >= 2",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "flow_duration_hours"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C3",
+          "expression": "duration_margin_hours == flow_duration_hours - 2",
+          "role": "duration_margin_certificate",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_fire_flow_model",
+          "executable": true,
+          "checker_expression": "duration_margin_hours == flow_duration_hours - 2",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "duration_margin_hours",
+              "flow_duration_hours"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C90",
+          "expression": "service_connection_size_score >= available_fire_flow_gpm / 300 + flow_duration_hours",
+          "role": "service_size_scales_with_fire_flow",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "service_connection_size_score >= available_fire_flow_gpm / 300 + flow_duration_hours",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "service_connection_size_score",
+              "available_fire_flow_gpm",
+              "flow_duration_hours"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Compact service sizing is coupled to selected fire-flow capacity and duration."
+          }
+        }
+      ],
+      "structure_only_constraints": [],
+      "valid_constraint_cells": [
+        {
+          "cell_id": "ARCH_FKG_79_cell_1",
+          "cell_type": "single_valid_fullkg_rule_structure",
+          "rule_ids": [
+            "ifc2021_fire_flow_table_row_3"
+          ],
+          "constraints": [
+            {
+              "constraint_id": "C1",
+              "expression": "available_fire_flow_gpm >= 1500",
+              "role": "required_fire_flow",
+              "source_type": "rule_library",
+              "source_id": "ifc2021_fire_flow_table_row_3",
+              "executable": true,
+              "checker_expression": "available_fire_flow_gpm >= 1500",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "available_fire_flow_gpm"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C2",
+              "expression": "flow_duration_hours >= 2",
+              "role": "required_flow_duration",
+              "source_type": "rule_library",
+              "source_id": "ifc2021_fire_flow_table_row_3",
+              "executable": true,
+              "checker_expression": "flow_duration_hours >= 2",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "flow_duration_hours"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C3",
+              "expression": "duration_margin_hours == flow_duration_hours - 2",
+              "role": "duration_margin_certificate",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_fire_flow_model",
+              "executable": true,
+              "checker_expression": "duration_margin_hours == flow_duration_hours - 2",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "duration_margin_hours",
+                  "flow_duration_hours"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C90",
+              "expression": "service_connection_size_score >= available_fire_flow_gpm / 300 + flow_duration_hours",
+              "role": "service_size_scales_with_fire_flow",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "service_connection_size_score >= available_fire_flow_gpm / 300 + flow_duration_hours",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "service_connection_size_score",
+                  "available_fire_flow_gpm",
+                  "flow_duration_hours"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Compact service sizing is coupled to selected fire-flow capacity and duration."
+              }
+            }
+          ],
+          "description": "Executable feasible cell induced by the expected full-KG rule structure for this grounded scenario."
+        }
+      ],
+      "reference_semantics": {
+        "positive_membership_condition": "all executable_constraints evaluate true and at least one valid cell holds when cells are present",
+        "structure_only_constraints_usage": "used to check rule resolution, provenance, exceptions, or semantic requirements before numeric membership checking"
+      }
+    },
+    "certificate_targets": {
+      "source_rule_ids": [
+        "ifc2021_fire_flow_table_row_3"
+      ],
+      "provenance": [
+        {
+          "document": "IFC 2021",
+          "section": "Appendix B",
+          "page": "unknown",
+          "chunk_id": "015c120c-ad14-58af-b4ce-7b64753ef0d7"
+        }
+      ]
+    },
+    "diagnostic_candidate_rule_ids_reference_only": [
+      "ifc2021_fire_flow_table_row_3"
+    ],
+    "rule_library_id_bindings": [
+      {
+        "rule_id": "ifc2021_fire_flow_table_row_3",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ifc2021_fire_flow_table_row_3",
+        "rule_name": "Fire flow requirement for Type IV/V-A buildings with fire flow calculation area ≤ 8,200 sq ft",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "015c120c-ad14-58af-b4ce-7b64753ef0d7"
+        ],
+        "source_node_ids": [
+          "f433a1de-89bf-59f9-b7d7-1728ff9d8cc5",
+          "99c515f8-017b-5789-8f59-9e92d1511ba3",
+          "ffdbde61-343c-5993-b2a6-01a5d65db6eb",
+          "b52491f2-e0a3-5431-8737-d5a766ba3067"
+        ],
+        "provenance": [
+          {
+            "document": "IFC 2021",
+            "section": "Appendix B",
+            "page": "unknown",
+            "chunk_id": "015c120c-ad14-58af-b4ce-7b64753ef0d7"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "required_fire_flow_gpm",
+            "op": "=",
+            "value": 1500,
+            "unit": "gallons per minute"
+          },
+          {
+            "variable": "flow_duration_hours",
+            "op": "=",
+            "value": 2,
+            "unit": "hours"
+          }
+        ]
+      }
+    ],
+    "reference_constraint_rule_bindings": [
+      {
+        "reference_container": "feasible_region.executable_constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "required_fire_flow",
+        "reference_expression": "available_fire_flow_gpm >= 1500",
+        "source_rule_id": "ifc2021_fire_flow_table_row_3",
+        "rule_library_rule_id": "ifc2021_fire_flow_table_row_3",
+        "rule_library_rule_name": "Fire flow requirement for Type IV/V-A buildings with fire flow calculation area ≤ 8,200 sq ft"
+      },
+      {
+        "reference_container": "feasible_region.executable_constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "required_flow_duration",
+        "reference_expression": "flow_duration_hours >= 2",
+        "source_rule_id": "ifc2021_fire_flow_table_row_3",
+        "rule_library_rule_id": "ifc2021_fire_flow_table_row_3",
+        "rule_library_rule_name": "Fire flow requirement for Type IV/V-A buildings with fire flow calculation area ≤ 8,200 sq ft"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "required_fire_flow",
+        "reference_expression": "available_fire_flow_gpm >= 1500",
+        "source_rule_id": "ifc2021_fire_flow_table_row_3",
+        "rule_library_rule_id": "ifc2021_fire_flow_table_row_3",
+        "rule_library_rule_name": "Fire flow requirement for Type IV/V-A buildings with fire flow calculation area ≤ 8,200 sq ft"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "required_flow_duration",
+        "reference_expression": "flow_duration_hours >= 2",
+        "source_rule_id": "ifc2021_fire_flow_table_row_3",
+        "rule_library_rule_id": "ifc2021_fire_flow_table_row_3",
+        "rule_library_rule_name": "Fire flow requirement for Type IV/V-A buildings with fire flow calculation area ≤ 8,200 sq ft"
+      }
+    ],
+    "expansion_metadata": {
+      "source_task_id": "ARCH_FKG_04",
+      "coverage_focus": "scenario_conditioned_applicability",
+      "target_relation": "scenario_conditioned_applicability",
+      "strict_common_intended": true,
+      "overlay_model": "canonical_source_semantics",
+      "expansion_round": "100_task_extension_v1"
+    },
+    "task_derivation_source": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "document": "ARE-Practice-Exam-Project-Development-and-Documentation.pdf",
+      "division": "Project Development and Documentation",
+      "question_number": "Question 11",
+      "theme": "construction type and allowable area",
+      "adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "source_policy": "Hidden provenance only; algorithm-visible inputs expose only generalized NCARB-derived themes."
+    },
+    "benchmark_extension_metadata": {
+      "extension_round": "architecture_ncarb_50_extension",
+      "source_base_task_id": "ARCH_FKG_48",
+      "ncarb_category": "area_and_height",
+      "source_policy": "paraphrased_parameterized_not_verbatim",
+      "dataset_characterization": "NCARB practice-topic-derived, paraphrased, and parameterized architecture-code semantic extension task.",
+      "independence_claim": "parameterized_variant_not_fully_independent_real_project_case",
+      "source_visibility_policy": "Exact practice identifiers, original question text, answer choices, and source file names are hidden from algorithm-visible inputs.",
+      "scenario_variant_group_id": "ncarb50_scenario_variant_group_13",
+      "scenario_variant_group_members": [
+        "ARCH_FKG_77",
+        "ARCH_FKG_79"
+      ],
+      "scenario_variant_status": "parameterized_scenario_variant",
+      "scenario_variant_differentiator": "Type IV fire-flow duration applicability variant with changed area and connection-size emphasis.",
+      "method_visibility": "hidden_evaluation_reference_not_method_input"
+    }
+  }
+}

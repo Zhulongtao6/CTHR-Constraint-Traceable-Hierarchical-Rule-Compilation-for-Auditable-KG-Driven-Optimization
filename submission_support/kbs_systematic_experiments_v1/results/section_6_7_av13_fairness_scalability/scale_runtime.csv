@@ -1,0 +1,2 @@
+﻿Dataset,Method,Tasks,Rule-library rules,Mean generated candidate rules,Mean filtered candidate rules,Mean predicted valid rules,Mean reference valid rules,Template rules,Compiled templates,Mean executable constraints,Template assembly time (ms),Rule recovery time,Solver time,Certificate generation time
+aviation_rule_relation_balanced_v13_150,当前接地预测,150,111,22.473,2.827,1.920,2.000,50,616,47.380,0.1003,第 6.2 接地结果未单独归档计时,本轮未重新运行连续求解器,本轮未运行证书生成

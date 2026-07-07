@@ -1,0 +1,465 @@
+{
+  "version": "architecture_ncarb50_v2_paired_audit_task_v1",
+  "visibility": "hidden_evaluation_or_offline_audit_only_not_method_input",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_55",
+    "title": "NCARB-derived medical-office visual sign proportion",
+    "domain": "architecture_code_compliance",
+    "source_domain": "ADA",
+    "task_type": "accessible_wayfinding_sign_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: medical office interior wayfinding sign design. The optimizer prioritizes patient and visitor readability while keeping the panel proportion compact.",
+    "scenario_facts": {
+      "sign_type": "visual_wayfinding",
+      "viewer_group": "public_accessible_route",
+      "character_type": "visual",
+      "ncarb_scenario_theme": "medical office interior signage scope",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "accessibility",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Medical-office wayfinding design variant with public-corridor viewing distance and readability-priority objective weights.",
+      "viewing_distance_ft": 18,
+      "sign_location": "medical_office_public_corridor",
+      "patient_public_area": true,
+      "design_review_context": "schematic_wayfinding_design_review",
+      "readability_priority_context": "patient_and_visitor_readability"
+    },
+    "decision_variables": {
+      "font_width_to_height_ratio": {
+        "type": "continuous",
+        "unit": "dimensionless",
+        "lower": 0.4,
+        "upper": 1.25
+      },
+      "sign_panel_width_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      },
+      "readability_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      }
+    },
+    "objectives": [
+      {
+        "name": "minimize_sign_panel_width",
+        "expression": "sign_panel_width_score"
+      },
+      {
+        "name": "maximize_patient_readability",
+        "expression": "readability_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.4,
+        0.6
+      ],
+      "meaning": "prioritize patient and visitor readability over compact sign-panel proportion"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_55_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "medical office interior signage scope",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "scenario_variant_status": "parameterized_scenario_variant",
+    "scenario_variant_note": "Parameterized variant with substantive changes in facts, bounds, weights, or document context; not a fully independent real project case.",
+    "scenario_variant_differentiator": "Medical-office wayfinding design variant with public-corridor viewing distance and readability-priority objective weights.",
+    "scenario_variant_group_id": "ncarb50_scenario_variant_group_07",
+    "constraint_solver_profile": "requires_nonlinear_or_auxiliary_constraint_checker",
+    "nonlinear_or_auxiliary_note": "Contains a helper expression such as max(), abs(), symbolic division, or a variable product."
+  },
+  "evaluation_reference": {
+    "omega_id": "ARCH_FKG_55",
+    "title": "NCARB-derived medical-office visual sign proportion",
+    "rule_structure": {
+      "expected_source_rule_ids": [
+        "ada-2010-703-5-5-font-proportion"
+      ],
+      "expected_defeated_rule_ids": [],
+      "expected_surviving_rule_ids": [
+        "ada-2010-703-5-5-font-proportion"
+      ],
+      "expected_valid_rule_structures": [
+        [
+          "ada-2010-703-5-5-font-proportion"
+        ]
+      ],
+      "expected_rule_behavior": {
+        "should_activate": [
+          "Visual character font proportion requirement (O/I ratio)"
+        ],
+        "should_exclude": [],
+        "should_resolve": [
+          "multi_constraint_single_rule",
+          "accessibility_wayfinding"
+        ]
+      },
+      "challenge_types": [
+        "multi_constraint_single_rule",
+        "accessibility_wayfinding"
+      ],
+      "valid_constraint_cell_ids": [
+        "ARCH_FKG_55_cell_1"
+      ],
+      "expected_provenance": {
+        "kg_chunk_ids": [
+          "801e62dd-4fe3-5b6b-9794-7f00f3bd97b0"
+        ],
+        "kg_node_ids": [
+          "4bb783cb-cde8-5995-a685-3732c2d296db",
+          "77cd9ef3-162f-5469-8c6c-c2c2b2fb9d74"
+        ],
+        "kg_edge_ids": [
+          "kg_edge_59497",
+          "kg_edge_59499"
+        ],
+        "source_documents": [
+          {
+            "document": "2010-design-standards",
+            "section": "CHAPTER 7: COMMUNICATION ELEMENTS AND FEATURES TECHNICAL 703.5.5",
+            "page": 195,
+            "chunk_id": "801e62dd-4fe3-5b6b-9794-7f00f3bd97b0"
+          },
+          {
+            "document": "ARE-Practice-Exam-Project-Development-and-Documentation.pdf",
+            "section": "Project Development and Documentation",
+            "page": "practice-exam-question",
+            "question_number": "Question 34",
+            "derivation_policy": "Paraphrased and parameterized from an NCARB practice-exam scenario; original question text is not copied."
+          }
+        ]
+      }
+    },
+    "feasible_region": {
+      "executable_constraints": [
+        {
+          "constraint_id": "C1",
+          "expression": "font_width_to_height_ratio >= 0.55",
+          "role": "visual_character_minimum_width_to_height_ratio",
+          "source_type": "rule_library",
+          "source_id": "ada-2010-703-5-5-font-proportion",
+          "executable": true,
+          "checker_expression": "font_width_to_height_ratio >= 0.55",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "font_width_to_height_ratio"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C2",
+          "expression": "font_width_to_height_ratio <= 1.1",
+          "role": "visual_character_maximum_width_to_height_ratio",
+          "source_type": "rule_library",
+          "source_id": "ada-2010-703-5-5-font-proportion",
+          "executable": true,
+          "checker_expression": "font_width_to_height_ratio <= 1.1",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "font_width_to_height_ratio"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C90",
+          "expression": "sign_panel_width_score >= 5 * font_width_to_height_ratio",
+          "role": "sign_width_scales_with_font_proportion",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "sign_panel_width_score >= 5 * font_width_to_height_ratio",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "sign_panel_width_score",
+              "font_width_to_height_ratio"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Wider font proportions increase sign-panel width."
+          }
+        },
+        {
+          "constraint_id": "C91",
+          "expression": "readability_score <= 10 - 10 * abs(font_width_to_height_ratio - 0.8)",
+          "role": "readability_from_font_proportion",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "readability_score <= 10 - 10 * abs(font_width_to_height_ratio - 0.8)",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "readability_score",
+              "font_width_to_height_ratio"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Readability peaks near a balanced font proportion and drops near extremes.",
+            "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+            "nonlinear_or_auxiliary_reasons": [
+              "auxiliary_function"
+            ],
+            "linear_backend_note": "Use a nonlinear/auxiliary-function constraint checker or an explicit linearized surrogate before sending this constraint to a pure linear optimizer."
+          }
+        }
+      ],
+      "structure_only_constraints": [],
+      "valid_constraint_cells": [
+        {
+          "cell_id": "ARCH_FKG_55_cell_1",
+          "cell_type": "single_valid_fullkg_rule_structure",
+          "rule_ids": [
+            "ada-2010-703-5-5-font-proportion"
+          ],
+          "constraints": [
+            {
+              "constraint_id": "C1",
+              "expression": "font_width_to_height_ratio >= 0.55",
+              "role": "visual_character_minimum_width_to_height_ratio",
+              "source_type": "rule_library",
+              "source_id": "ada-2010-703-5-5-font-proportion",
+              "executable": true,
+              "checker_expression": "font_width_to_height_ratio >= 0.55",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "font_width_to_height_ratio"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C2",
+              "expression": "font_width_to_height_ratio <= 1.1",
+              "role": "visual_character_maximum_width_to_height_ratio",
+              "source_type": "rule_library",
+              "source_id": "ada-2010-703-5-5-font-proportion",
+              "executable": true,
+              "checker_expression": "font_width_to_height_ratio <= 1.1",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "font_width_to_height_ratio"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C90",
+              "expression": "sign_panel_width_score >= 5 * font_width_to_height_ratio",
+              "role": "sign_width_scales_with_font_proportion",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "sign_panel_width_score >= 5 * font_width_to_height_ratio",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "sign_panel_width_score",
+                  "font_width_to_height_ratio"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Wider font proportions increase sign-panel width."
+              }
+            },
+            {
+              "constraint_id": "C91",
+              "expression": "readability_score <= 10 - 10 * abs(font_width_to_height_ratio - 0.8)",
+              "role": "readability_from_font_proportion",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "readability_score <= 10 - 10 * abs(font_width_to_height_ratio - 0.8)",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "readability_score",
+                  "font_width_to_height_ratio"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Readability peaks near a balanced font proportion and drops near extremes.",
+                "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+                "nonlinear_or_auxiliary_reasons": [
+                  "auxiliary_function"
+                ],
+                "linear_backend_note": "Use a nonlinear/auxiliary-function constraint checker or an explicit linearized surrogate before sending this constraint to a pure linear optimizer."
+              }
+            }
+          ],
+          "description": "Executable feasible cell induced by the expected full-KG rule structure for this grounded scenario."
+        }
+      ],
+      "reference_semantics": {
+        "positive_membership_condition": "all executable_constraints evaluate true and at least one valid cell holds when cells are present",
+        "structure_only_constraints_usage": "used to check rule resolution, provenance, exceptions, or semantic requirements before numeric membership checking"
+      }
+    },
+    "certificate_targets": {
+      "source_rule_ids": [
+        "ada-2010-703-5-5-font-proportion"
+      ],
+      "provenance": [
+        {
+          "document": "2010-design-standards",
+          "section": "CHAPTER 7: COMMUNICATION ELEMENTS AND FEATURES TECHNICAL 703.5.5",
+          "page": 195,
+          "chunk_id": "801e62dd-4fe3-5b6b-9794-7f00f3bd97b0"
+        }
+      ]
+    },
+    "diagnostic_candidate_rule_ids_reference_only": [
+      "ada-2010-703-5-5-font-proportion"
+    ],
+    "rule_library_id_bindings": [
+      {
+        "rule_id": "ada-2010-703-5-5-font-proportion",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ada-2010-703-5-5-font-proportion",
+        "rule_name": "Visual character font proportion requirement (O/I ratio)",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "801e62dd-4fe3-5b6b-9794-7f00f3bd97b0"
+        ],
+        "source_node_ids": [
+          "4bb783cb-cde8-5995-a685-3732c2d296db",
+          "77cd9ef3-162f-5469-8c6c-c2c2b2fb9d74"
+        ],
+        "provenance": [
+          {
+            "document": "2010-design-standards",
+            "section": "CHAPTER 7: COMMUNICATION ELEMENTS AND FEATURES TECHNICAL 703.5.5",
+            "page": 195,
+            "chunk_id": "801e62dd-4fe3-5b6b-9794-7f00f3bd97b0"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "font_width_to_height_ratio",
+            "op": ">=",
+            "value": 0.55,
+            "unit": "dimensionless"
+          },
+          {
+            "variable": "font_width_to_height_ratio",
+            "op": "<=",
+            "value": 1.1,
+            "unit": "dimensionless"
+          }
+        ]
+      }
+    ],
+    "reference_constraint_rule_bindings": [
+      {
+        "reference_container": "feasible_region.executable_constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "visual_character_minimum_width_to_height_ratio",
+        "reference_expression": "font_width_to_height_ratio >= 0.55",
+        "source_rule_id": "ada-2010-703-5-5-font-proportion",
+        "rule_library_rule_id": "ada-2010-703-5-5-font-proportion",
+        "rule_library_rule_name": "Visual character font proportion requirement (O/I ratio)"
+      },
+      {
+        "reference_container": "feasible_region.executable_constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "visual_character_maximum_width_to_height_ratio",
+        "reference_expression": "font_width_to_height_ratio <= 1.1",
+        "source_rule_id": "ada-2010-703-5-5-font-proportion",
+        "rule_library_rule_id": "ada-2010-703-5-5-font-proportion",
+        "rule_library_rule_name": "Visual character font proportion requirement (O/I ratio)"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "visual_character_minimum_width_to_height_ratio",
+        "reference_expression": "font_width_to_height_ratio >= 0.55",
+        "source_rule_id": "ada-2010-703-5-5-font-proportion",
+        "rule_library_rule_id": "ada-2010-703-5-5-font-proportion",
+        "rule_library_rule_name": "Visual character font proportion requirement (O/I ratio)"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "visual_character_maximum_width_to_height_ratio",
+        "reference_expression": "font_width_to_height_ratio <= 1.1",
+        "source_rule_id": "ada-2010-703-5-5-font-proportion",
+        "rule_library_rule_id": "ada-2010-703-5-5-font-proportion",
+        "rule_library_rule_name": "Visual character font proportion requirement (O/I ratio)"
+      }
+    ],
+    "task_derivation_source": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "document": "ARE-Practice-Exam-Project-Development-and-Documentation.pdf",
+      "division": "Project Development and Documentation",
+      "question_number": "Question 34",
+      "theme": "medical office interior signage scope",
+      "adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "source_policy": "Hidden provenance only; algorithm-visible inputs expose only generalized NCARB-derived themes."
+    },
+    "benchmark_extension_metadata": {
+      "extension_round": "architecture_ncarb_50_extension",
+      "source_base_task_id": "ARCH_FKG_27",
+      "ncarb_category": "accessibility",
+      "source_policy": "paraphrased_parameterized_not_verbatim",
+      "dataset_characterization": "NCARB practice-topic-derived, paraphrased, and parameterized architecture-code semantic extension task.",
+      "independence_claim": "parameterized_variant_not_fully_independent_real_project_case",
+      "source_visibility_policy": "Exact practice identifiers, original question text, answer choices, and source file names are hidden from algorithm-visible inputs.",
+      "scenario_variant_group_id": "ncarb50_scenario_variant_group_07",
+      "scenario_variant_group_members": [
+        "ARCH_FKG_55",
+        "ARCH_FKG_95"
+      ],
+      "scenario_variant_status": "parameterized_scenario_variant",
+      "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+      "nonlinear_or_auxiliary_reasons": [
+        "auxiliary_function",
+        "auxiliary_function_or_variable_product"
+      ],
+      "scenario_variant_differentiator": "Medical-office wayfinding design variant with public-corridor viewing distance and readability-priority objective weights.",
+      "method_visibility": "hidden_evaluation_reference_not_method_input"
+    }
+  }
+}

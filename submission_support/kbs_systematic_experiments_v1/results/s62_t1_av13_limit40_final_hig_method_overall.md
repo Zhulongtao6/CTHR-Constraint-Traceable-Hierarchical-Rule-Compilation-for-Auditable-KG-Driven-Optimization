@@ -1,0 +1,12 @@
+| Dataset | Method | Method type | Rule Precision | Rule Recall | Formal CSR | Sem-CSR | False accept | Invalid cases |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Aviation | Flat baseline | flat | 7.9% | 91.7% | 0.0% | 0.0% | 0.0% | 150/150 (100.0%) |
+| Aviation | Native ASP + clingo | native_symbolic | 6.4% | 19.3% | 7.3% | 0.0% | 7.3% | 150/150 (100.0%) |
+| Aviation | Native MILP + HiGHS | native_symbolic | 2.9% | 7.3% | 28.0% | 8.7% | 19.3% | 137/150 (91.3%) (108 unsupported) |
+| Aviation | Native CP-SAT + OR-Tools | native_symbolic | 3.3% | 8.3% | 31.3% | 10.7% | 20.7% | 134/150 (89.3%) (103 unsupported) |
+| Aviation | Native SCIP | native_symbolic | 3.3% | 8.3% | 31.3% | 8.7% | 22.7% | 137/150 (91.3%) (103 unsupported) |
+| Aviation | CTHR default | cthr_semantic_modeling | 74.7% | 70.7% | 96.7% | 88.7% | 8.0% | 17/150 (11.3%) (5 unsupported) |
+| Aviation | CTHR-style ASP + clingo | cthr_semantic_modeling | 74.7% | 70.7% | 1.3% | 0.0% | 1.3% | 150/150 (100.0%) |
+| Aviation | CTHR-style HiGHS | cthr_semantic_modeling | 74.7% | 70.7% | 96.7% | 88.7% | 8.0% | 17/150 (11.3%) (5 unsupported) |
+| Aviation | CTHR-style CP-SAT + OR-Tools | cthr_semantic_modeling | 74.7% | 70.7% | 94.0% | 86.0% | 8.0% | 21/150 (14.0%) (6 unsupported) |
+| Aviation | CTHR-style SCIP | cthr_semantic_modeling | 74.7% | 70.7% | 96.7% | 88.7% | 8.0% | 17/150 (11.3%) (5 unsupported) |

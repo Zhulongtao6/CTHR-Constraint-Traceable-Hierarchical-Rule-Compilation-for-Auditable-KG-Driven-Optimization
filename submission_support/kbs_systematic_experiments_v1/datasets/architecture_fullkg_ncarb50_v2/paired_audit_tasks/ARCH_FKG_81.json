@@ -1,0 +1,443 @@
+{
+  "version": "architecture_ncarb50_v2_paired_audit_task_v1",
+  "visibility": "hidden_evaluation_or_offline_audit_only_not_method_input",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_81",
+    "title": "NCARB-derived Class 3 oxidizer storage height package",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "oxidizer_storage_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: warehouse code-table lookup for storage conditions. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "hazardous_material": "Class 3 oxidizer",
+      "use_case": "maintenance_operation",
+      "hazard_class": "Class 3 oxidizer",
+      "physical_state": "solid",
+      "ncarb_scenario_theme": "warehouse code-table lookup for storage conditions",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "area_and_height",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized"
+    },
+    "decision_variables": {
+      "solid_oxidizer_storage_lb": {
+        "type": "continuous",
+        "unit": "pound",
+        "lower": 0,
+        "upper": 300
+      },
+      "liquid_oxidizer_storage_gal": {
+        "type": "continuous",
+        "unit": "gallon",
+        "lower": 0,
+        "upper": 40
+      },
+      "cabinet_count": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 1,
+        "upper": 10
+      },
+      "inventory_service_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_inventory_service",
+        "expression": "inventory_service_score"
+      },
+      {
+        "name": "minimize_cabinet_count",
+        "expression": "cabinet_count"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.5,
+        0.5
+      ],
+      "meaning": "balance maintenance inventory and storage burden"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_81_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "warehouse code-table lookup for storage conditions",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    }
+  },
+  "evaluation_reference": {
+    "omega_id": "ARCH_FKG_81",
+    "title": "NCARB-derived Class 3 oxidizer storage height package",
+    "rule_structure": {
+      "expected_source_rule_ids": [
+        "ifc_6303_1_5_class3_oxidizer_storage_limit"
+      ],
+      "expected_defeated_rule_ids": [],
+      "expected_surviving_rule_ids": [
+        "ifc_6303_1_5_class3_oxidizer_storage_limit"
+      ],
+      "expected_valid_rule_structures": [
+        [
+          "ifc_6303_1_5_class3_oxidizer_storage_limit"
+        ]
+      ],
+      "expected_rule_behavior": {
+        "should_activate": [
+          "Maximum allowable storage quantity for Class 3 liquid and solid oxidizers"
+        ],
+        "should_exclude": [],
+        "should_resolve": [
+          "multi_constraint_single_rule"
+        ]
+      },
+      "challenge_types": [
+        "multi_constraint_single_rule"
+      ],
+      "valid_constraint_cell_ids": [
+        "ARCH_FKG_81_cell_1"
+      ],
+      "expected_provenance": {
+        "kg_chunk_ids": [
+          "1218fdae-af72-505b-bdae-7b1340eb7035"
+        ],
+        "kg_node_ids": [],
+        "kg_edge_ids": [],
+        "source_documents": [
+          {
+            "document": "IFC 2021",
+            "section": "6303.1.5",
+            "page": "unknown",
+            "chunk_id": "1218fdae-af72-505b-bdae-7b1340eb7035"
+          },
+          {
+            "document": "ARE-Practice-Exam-Project-Development-and-Documentation.pdf",
+            "section": "Project Development and Documentation",
+            "page": "practice-exam-question",
+            "question_number": "Question 28",
+            "derivation_policy": "Paraphrased and parameterized from an NCARB practice-exam scenario; original question text is not copied."
+          }
+        ]
+      }
+    },
+    "feasible_region": {
+      "executable_constraints": [
+        {
+          "constraint_id": "C1",
+          "expression": "solid_oxidizer_storage_lb <= 220",
+          "role": "class3_oxidizer_solid_quantity_limit",
+          "source_type": "rule_library",
+          "source_id": "ifc_6303_1_5_class3_oxidizer_storage_limit",
+          "executable": true,
+          "checker_expression": "solid_oxidizer_storage_lb <= 220",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "solid_oxidizer_storage_lb"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C2",
+          "expression": "liquid_oxidizer_storage_gal <= 22",
+          "role": "class3_oxidizer_liquid_quantity_limit",
+          "source_type": "rule_library",
+          "source_id": "ifc_6303_1_5_class3_oxidizer_storage_limit",
+          "executable": true,
+          "checker_expression": "liquid_oxidizer_storage_gal <= 22",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "liquid_oxidizer_storage_gal"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C90",
+          "expression": "inventory_service_score <= solid_oxidizer_storage_lb / 22 + liquid_oxidizer_storage_gal / 2.2",
+          "role": "inventory_service_from_stored_quantity",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "inventory_service_score <= solid_oxidizer_storage_lb / 22 + liquid_oxidizer_storage_gal / 2.2",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "inventory_service_score",
+              "solid_oxidizer_storage_lb",
+              "liquid_oxidizer_storage_gal"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Inventory service is coupled to selected stored oxidizer quantities."
+          }
+        },
+        {
+          "constraint_id": "C91",
+          "expression": "cabinet_count >= solid_oxidizer_storage_lb / 110 + liquid_oxidizer_storage_gal / 11",
+          "role": "cabinet_count_scales_with_stored_quantity",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "cabinet_count >= solid_oxidizer_storage_lb / 110 + liquid_oxidizer_storage_gal / 11",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "cabinet_count",
+              "solid_oxidizer_storage_lb",
+              "liquid_oxidizer_storage_gal"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Storage cabinet count grows with solid and liquid oxidizer quantity."
+          }
+        }
+      ],
+      "structure_only_constraints": [],
+      "valid_constraint_cells": [
+        {
+          "cell_id": "ARCH_FKG_81_cell_1",
+          "cell_type": "single_valid_fullkg_rule_structure",
+          "rule_ids": [
+            "ifc_6303_1_5_class3_oxidizer_storage_limit"
+          ],
+          "constraints": [
+            {
+              "constraint_id": "C1",
+              "expression": "solid_oxidizer_storage_lb <= 220",
+              "role": "class3_oxidizer_solid_quantity_limit",
+              "source_type": "rule_library",
+              "source_id": "ifc_6303_1_5_class3_oxidizer_storage_limit",
+              "executable": true,
+              "checker_expression": "solid_oxidizer_storage_lb <= 220",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "solid_oxidizer_storage_lb"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C2",
+              "expression": "liquid_oxidizer_storage_gal <= 22",
+              "role": "class3_oxidizer_liquid_quantity_limit",
+              "source_type": "rule_library",
+              "source_id": "ifc_6303_1_5_class3_oxidizer_storage_limit",
+              "executable": true,
+              "checker_expression": "liquid_oxidizer_storage_gal <= 22",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "liquid_oxidizer_storage_gal"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C90",
+              "expression": "inventory_service_score <= solid_oxidizer_storage_lb / 22 + liquid_oxidizer_storage_gal / 2.2",
+              "role": "inventory_service_from_stored_quantity",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "inventory_service_score <= solid_oxidizer_storage_lb / 22 + liquid_oxidizer_storage_gal / 2.2",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "inventory_service_score",
+                  "solid_oxidizer_storage_lb",
+                  "liquid_oxidizer_storage_gal"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Inventory service is coupled to selected stored oxidizer quantities."
+              }
+            },
+            {
+              "constraint_id": "C91",
+              "expression": "cabinet_count >= solid_oxidizer_storage_lb / 110 + liquid_oxidizer_storage_gal / 11",
+              "role": "cabinet_count_scales_with_stored_quantity",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "cabinet_count >= solid_oxidizer_storage_lb / 110 + liquid_oxidizer_storage_gal / 11",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "cabinet_count",
+                  "solid_oxidizer_storage_lb",
+                  "liquid_oxidizer_storage_gal"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Storage cabinet count grows with solid and liquid oxidizer quantity."
+              }
+            }
+          ],
+          "description": "Executable feasible cell induced by the expected full-KG rule structure for this grounded scenario."
+        }
+      ],
+      "reference_semantics": {
+        "positive_membership_condition": "all executable_constraints evaluate true and at least one valid cell holds when cells are present",
+        "structure_only_constraints_usage": "used to check rule resolution, provenance, exceptions, or semantic requirements before numeric membership checking"
+      }
+    },
+    "certificate_targets": {
+      "source_rule_ids": [
+        "ifc_6303_1_5_class3_oxidizer_storage_limit"
+      ],
+      "provenance": [
+        {
+          "document": "IFC 2021",
+          "section": "6303.1.5",
+          "page": "unknown",
+          "chunk_id": "1218fdae-af72-505b-bdae-7b1340eb7035"
+        }
+      ]
+    },
+    "diagnostic_candidate_rule_ids_reference_only": [
+      "ifc_6303_1_5_class3_oxidizer_storage_limit"
+    ],
+    "rule_library_id_bindings": [
+      {
+        "rule_id": "ifc_6303_1_5_class3_oxidizer_storage_limit",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ifc_6303_1_5_class3_oxidizer_storage_limit",
+        "rule_name": "Maximum allowable storage quantity for Class 3 liquid and solid oxidizers",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "1218fdae-af72-505b-bdae-7b1340eb7035"
+        ],
+        "source_node_ids": [],
+        "provenance": [
+          {
+            "document": "IFC 2021",
+            "section": "6303.1.5",
+            "page": "unknown",
+            "chunk_id": "1218fdae-af72-505b-bdae-7b1340eb7035"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "maximum_storage_quantity",
+            "op": "<=",
+            "value": 220,
+            "unit": "pounds"
+          },
+          {
+            "variable": "maximum_storage_quantity",
+            "op": "<=",
+            "value": 22,
+            "unit": "gallons"
+          },
+          {
+            "variable": "storage_condition",
+            "op": "text",
+            "value": "only where necessary for maintenance purposes or operation of equipment",
+            "unit": null
+          },
+          {
+            "variable": "storage_method",
+            "op": "text",
+            "value": "approved containers and approved manner",
+            "unit": null
+          }
+        ]
+      }
+    ],
+    "reference_constraint_rule_bindings": [
+      {
+        "reference_container": "feasible_region.executable_constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "class3_oxidizer_solid_quantity_limit",
+        "reference_expression": "solid_oxidizer_storage_lb <= 220",
+        "source_rule_id": "ifc_6303_1_5_class3_oxidizer_storage_limit",
+        "rule_library_rule_id": "ifc_6303_1_5_class3_oxidizer_storage_limit",
+        "rule_library_rule_name": "Maximum allowable storage quantity for Class 3 liquid and solid oxidizers"
+      },
+      {
+        "reference_container": "feasible_region.executable_constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "class3_oxidizer_liquid_quantity_limit",
+        "reference_expression": "liquid_oxidizer_storage_gal <= 22",
+        "source_rule_id": "ifc_6303_1_5_class3_oxidizer_storage_limit",
+        "rule_library_rule_id": "ifc_6303_1_5_class3_oxidizer_storage_limit",
+        "rule_library_rule_name": "Maximum allowable storage quantity for Class 3 liquid and solid oxidizers"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "class3_oxidizer_solid_quantity_limit",
+        "reference_expression": "solid_oxidizer_storage_lb <= 220",
+        "source_rule_id": "ifc_6303_1_5_class3_oxidizer_storage_limit",
+        "rule_library_rule_id": "ifc_6303_1_5_class3_oxidizer_storage_limit",
+        "rule_library_rule_name": "Maximum allowable storage quantity for Class 3 liquid and solid oxidizers"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "class3_oxidizer_liquid_quantity_limit",
+        "reference_expression": "liquid_oxidizer_storage_gal <= 22",
+        "source_rule_id": "ifc_6303_1_5_class3_oxidizer_storage_limit",
+        "rule_library_rule_id": "ifc_6303_1_5_class3_oxidizer_storage_limit",
+        "rule_library_rule_name": "Maximum allowable storage quantity for Class 3 liquid and solid oxidizers"
+      }
+    ],
+    "task_derivation_source": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "document": "ARE-Practice-Exam-Project-Development-and-Documentation.pdf",
+      "division": "Project Development and Documentation",
+      "question_number": "Question 28",
+      "theme": "warehouse code-table lookup for storage conditions",
+      "adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "source_policy": "Hidden provenance only; algorithm-visible inputs expose only generalized NCARB-derived themes."
+    },
+    "benchmark_extension_metadata": {
+      "extension_round": "architecture_ncarb_50_extension",
+      "source_base_task_id": "ARCH_FKG_18",
+      "ncarb_category": "area_and_height",
+      "source_policy": "paraphrased_parameterized_not_verbatim",
+      "dataset_characterization": "NCARB practice-topic-derived, paraphrased, and parameterized architecture-code semantic extension task.",
+      "independence_claim": "parameterized_variant_not_fully_independent_real_project_case",
+      "source_visibility_policy": "Exact practice identifiers, original question text, answer choices, and source file names are hidden from algorithm-visible inputs.",
+      "method_visibility": "hidden_evaluation_reference_not_method_input"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+You are converting architecture and building-code knowledge graph evidence into a CTHR rule library. The input is a batch of source-linked KG chunks from ADA accessibility, IBC egress/building-code, and IFC fire-safety knowledge graph exports.
+
+Extract only rules that are explicitly supported by the provided chunks or KG neighbors. If a chunk contains table of contents, headings, definitions without a usable rule, or non-normative background, return no rules for that chunk.
+
+Return only valid JSON with this schema:
+
+{
+  "batch_id": "...",
+  "rules": [
+    {
+      "rule_id": "stable_short_id",
+      "name": "human-readable rule name",
+      "domain": "architecture",
+      "rule_type": "requirement|definition|calculation|parameter|exception|precedence|applicability|design_template",
+      "source_chunk_ids": ["existing chunk id"],
+      "source_node_ids": ["existing KG node id if relevant"],
+      "guard": {
+        "all": [
+          {"field": "scenario/property name", "op": "eq|neq|gt|gte|lt|lte|in", "value": "condition value"}
+        ]
+      },
+      "constraints": [
+        {
+          "variable": "decision or regulatory quantity name",
+          "op": ">=|<=|=|>|<|formula|text",
+          "value": "number, expression, or text condition",
+          "unit": "unit if stated, otherwise unknown",
+          "source_quote": "short source phrase supporting the constraint",
+          "evidence": {
+            "chunk_ids": ["existing chunk id"],
+            "kg_node_ids": ["existing KG node id if relevant"],
+            "kg_edge_ids": ["existing KG edge id if relevant"]
+          }
+        }
+      ],
+      "relations": [
+        {
+          "type": "overrides|precedes|excludes|depends_on|applies_to|defines|uses_parameter|requires|allows_alternative",
+          "target": "target rule, entity, parameter, template, source, or condition",
+          "source_quote": "short source phrase supporting the relation",
+          "evidence": {
+            "chunk_ids": ["existing chunk id"],
+            "kg_node_ids": ["existing KG node id if relevant"],
+            "kg_edge_ids": ["existing KG edge id if relevant"]
+          }
+        }
+      ],
+      "provenance": [
+        {
+          "document": "ADA 2010|IBC 2021|IFC 2021|document name if known",
+          "section": "section, chapter, table, or page marker if known",
+          "page": "page number if stated, otherwise unknown",
+          "chunk_id": "existing chunk id"
+        }
+      ],
+      "extraction_notes": "brief note explaining how the rule was grounded",
+      "confidence": 0.0
+    }
+  ],
+  "non_rule_chunk_ids": ["chunk ids with no extractable normative rule"]
+}
+
+Rules:
+- Do not invent numeric values, units, source chunks, sections, pages, or cross-code priorities.
+- Use only existing chunk IDs, KG node IDs, and KG edge IDs from the input.
+- Preserve official building-code terminology when it is the clearest variable name.
+- If a condition changes whether a rule applies, put it in guard or relations.
+- If alternatives are allowed, keep them as separate rules and use allows_alternative or excludes when supported.
+- If an exception, override, precedence, or cross-code relationship is explicit in the evidence, keep it as a separate rule relation.
+- If a formula is stated but not reducible to a linear inequality, use op="formula".
+- If the evidence only states a qualitative requirement, use op="text".
+- Use confidence between 0 and 1 based on how explicit the evidence is.

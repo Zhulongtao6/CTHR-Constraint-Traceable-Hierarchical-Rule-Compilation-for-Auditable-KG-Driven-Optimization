@@ -1,0 +1,325 @@
+{
+  "version": "aviation_rule_relation_balanced_v13_150",
+  "algorithm_input": {
+    "omega_id": "AVI_SMIX_003",
+    "title": "传统程序几何：扇区边界缓冲区宽度",
+    "domain": "aviation_procedure_design",
+    "task_type": "conventional_procedure_strong_business_geometry_design",
+    "strong_business_third_type": true,
+    "business_domain": "conventional",
+    "design_intent": "执行传统定位、测距弧、导航角、保护区几何或定位容差设计中的程序设计或审查。任务先判断业务前提，再编译距离、半径或空域尺度相关数值约束，最后在安全裕度、空域或公布误差、运行风险之间求解多目标可行折中。 第七版进一步加入反向业务变量和反向约束，使任务不能通过直接取规范阈值边界求解。",
+    "scenario_facts": {
+      "benchmark_round": "aviation_strong_mixed_v5_150",
+      "business_domain": "conventional",
+      "program_design_context": "传统定位、测距弧、导航角、保护区几何或定位容差设计",
+      "review_question": "传统程序构型是否成立，以及定位容差、测距弧半径或保护区几何是否满足设计要求。",
+      "case_variant_index": 3,
+      "operation_context": "障碍物资料更新后复核",
+      "traffic_and_terrain_variant": "多机场终端区",
+      "source_policy": "由 v4 来源规则语义重构，未新增规则编号或来源页码",
+      "boundary_degeneracy_repair_round": "v7",
+      "original_degeneracy_type": "边界区间题",
+      "counter_constraint_policy": "增加同业务域反向变量，使最优解不能由单一规范阈值直接决定",
+      "v7_business_counter_explanation": "传统程序题加入导航台覆盖、定位容差、保护区宽度、航段长度和障碍物净空；较小定位容差有利于缩窄保护区，但更大净空和覆盖要求会拉长航段或扩大保护区。",
+      "obstacle_point_set_003": [
+        {
+          "obstacle_id": "OBS_003_1",
+          "along_track_distance_nm": 3.45,
+          "lateral_offset_m": 409,
+          "ground_elevation_m": 226,
+          "obstacle_height_m": 44,
+          "obstacle_top_height_m": 270,
+          "segment": "传统程序保护区",
+          "protection_half_width_m": 1170,
+          "zone": "主区",
+          "primary_zone_indicator": 1,
+          "secondary_zone_indicator": 0,
+          "clearance_reduction_factor": 1.0
+        },
+        {
+          "obstacle_id": "OBS_003_2",
+          "along_track_distance_nm": 5.95,
+          "lateral_offset_m": 842,
+          "ground_elevation_m": 265,
+          "obstacle_height_m": 39,
+          "obstacle_top_height_m": 304,
+          "segment": "传统程序保护区",
+          "protection_half_width_m": 1170,
+          "zone": "次区",
+          "primary_zone_indicator": 0,
+          "secondary_zone_indicator": 1,
+          "clearance_reduction_factor": 0.64
+        }
+      ],
+      "minimum_required_obstacle_clearance_m_003": 75,
+      "reference_procedure_altitude_m_003": 414,
+      "obstacle_assessment_segment_length_nm_003": 8.8,
+      "controlling_obstacle_id_003": "OBS_003_2",
+      "obstacle_business_chain_note_003": "障碍物位置进入传统保护区宽度和程序高度约束，靠近中心线的障碍物使用完整越障余度。",
+      "v11_obstacle_specific_realism_patch": "适用题已补充具体障碍物点，障碍物顶高、横向偏距、主区或次区判断进入公开场景模型约束。",
+      "obstacle_along_track_distance_nm_003_1": 3.45,
+      "obstacle_lateral_offset_m_003_1": 409,
+      "obstacle_ground_elevation_m_003_1": 226,
+      "obstacle_structure_height_m_003_1": 44,
+      "obstacle_top_height_reference_m_003_1": 270,
+      "obstacle_protection_half_width_m_003_1": 1170,
+      "obstacle_primary_zone_indicator_003_1": 1,
+      "obstacle_secondary_zone_indicator_003_1": 0,
+      "obstacle_along_track_distance_nm_003_2": 5.95,
+      "obstacle_lateral_offset_m_003_2": 842,
+      "obstacle_ground_elevation_m_003_2": 265,
+      "obstacle_structure_height_m_003_2": 39,
+      "obstacle_top_height_reference_m_003_2": 304,
+      "obstacle_protection_half_width_m_003_2": 1170,
+      "obstacle_primary_zone_indicator_003_2": 0,
+      "obstacle_secondary_zone_indicator_003_2": 1,
+      "rule_query_focus": "business_multi_constraint",
+      "relation_balanced_version": "aviation_rule_relation_balanced_v13_150",
+      "method_visible_relation_positioning": "业务真实多约束优化：保留速度、距离、坡度、半径、越障余度、时间或空域占用等真实程序设计折中；规则语义仍决定可行域单元。",
+      "business_multi_constraint_context": "当前场景保留真实飞行程序设计多约束折中，但规则语义仍决定有效可行域。",
+      "solver_mechanism_profile": "complex_continuous_multi_constraint",
+      "method_visible_focus_note": "业务真实多约束优化：保留障碍物几何、连续变量、必要非线性关系和多目标折中，用于展示复杂可行域构造能力。"
+    },
+    "decision_variables": {
+      "procedure_geometry_applicability_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1,
+        "description": "公开输入中的程序适用性、类别、例外或公布前提变量；不包含参考规则编号。"
+      },
+      "buffer_zone_width_km": {
+        "type": "continuous",
+        "unit": "km",
+        "lower": 1.6,
+        "upper": 16.4,
+        "description": "原规则库数值变量。"
+      },
+      "fix_tolerance_risk_003": {
+        "type": "continuous",
+        "unit": "km",
+        "lower": 0,
+        "upper": 100.0,
+        "description": "由公开场景模型计算的航空业务派生设计量，用于多目标求解，不包含隐藏规则答案。"
+      },
+      "procedure_geometry_margin_003": {
+        "type": "continuous",
+        "unit": "km",
+        "lower": 0,
+        "upper": 100.0,
+        "description": "由公开场景模型计算的航空业务派生设计量，用于多目标求解，不包含隐藏规则答案。"
+      },
+      "conventional_airspace_extent_003": {
+        "type": "continuous",
+        "unit": "risk_or_extent_index",
+        "lower": 0,
+        "upper": 100.0,
+        "description": "由公开场景模型计算的航空业务派生设计量，用于多目标求解，不包含隐藏规则答案。"
+      },
+      "navigation_coverage_radius_nm_003": {
+        "type": "continuous",
+        "unit": "NM",
+        "lower": 8,
+        "upper": 80,
+        "description": "导航台或定位设施覆盖半径。"
+      },
+      "fix_tolerance_km_003": {
+        "type": "continuous",
+        "unit": "km",
+        "lower": 0,
+        "upper": 8,
+        "description": "定位容差或定位相关几何偏差。"
+      },
+      "protected_area_width_km_003": {
+        "type": "continuous",
+        "unit": "km",
+        "lower": 0,
+        "upper": 40,
+        "description": "传统程序保护区宽度。"
+      },
+      "segment_length_nm_003": {
+        "type": "continuous",
+        "unit": "NM",
+        "lower": 0,
+        "upper": 80,
+        "description": "障碍物位置和定位容差共同影响的传统程序航段长度。"
+      },
+      "obstacle_clearance_m_003": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 800,
+        "description": "障碍物净空。"
+      },
+      "dme_arc_radius_nm_003": {
+        "type": "continuous",
+        "unit": "NM",
+        "lower": 3,
+        "upper": 35,
+        "description": "测距弧半径。"
+      },
+      "cone_half_angle_deg_003": {
+        "type": "continuous",
+        "unit": "degree",
+        "lower": 2,
+        "upper": 20,
+        "description": "倒锥半角或角度容差。"
+      },
+      "procedure_design_altitude_m_003": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 3000,
+        "description": "由具体障碍物顶高和所需越障余度共同约束的程序设计高度。"
+      },
+      "procedure_altitude_increase_m_003": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 2000,
+        "description": "相对参考程序高度的增加量，用于体现提高程序高度带来的运行代价。"
+      },
+      "controlling_obstacle_clearance_margin_m_003": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": -200,
+        "upper": 1000,
+        "description": "所有障碍物点中的控制净空裕度，最大化该量会与程序高度和空域占用代价冲突。"
+      },
+      "obstacle_driven_protection_half_width_m_003": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 4000,
+        "description": "由障碍物横向偏距驱动的保护区半宽。"
+      },
+      "obstacle_related_protected_area_km2_003": {
+        "type": "continuous",
+        "unit": "km2",
+        "lower": 0,
+        "upper": 80,
+        "description": "由保护区半宽和障碍物评估航段长度形成的保护空域面积。"
+      },
+      "obstacle_top_height_m_003_1": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 3000,
+        "description": "OBS_003_1 的计算顶高。"
+      },
+      "required_obstacle_clearance_m_003_1": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 500,
+        "description": "OBS_003_1 按主区或次区位置计算的所需越障余度。"
+      },
+      "actual_obstacle_clearance_m_003_1": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": -300,
+        "upper": 3000,
+        "description": "OBS_003_1 的实际净空。"
+      },
+      "obstacle_clearance_margin_m_003_1": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": -400,
+        "upper": 2000,
+        "description": "OBS_003_1 的净空裕度。"
+      },
+      "obstacle_top_height_m_003_2": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 3000,
+        "description": "OBS_003_2 的计算顶高。"
+      },
+      "required_obstacle_clearance_m_003_2": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 500,
+        "description": "OBS_003_2 按主区或次区位置计算的所需越障余度。"
+      },
+      "actual_obstacle_clearance_m_003_2": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": -300,
+        "upper": 3000,
+        "description": "OBS_003_2 的实际净空。"
+      },
+      "obstacle_clearance_margin_m_003_2": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": -400,
+        "upper": 2000,
+        "description": "OBS_003_2 的净空裕度。"
+      },
+      "conventional_obstacle_geometry_margin_m_003": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": -400,
+        "upper": 1500,
+        "description": "传统程序几何约束下的控制障碍物裕度。"
+      },
+      "conventional_obstacle_airspace_cost_003": {
+        "type": "continuous",
+        "unit": "cost_index",
+        "lower": 0,
+        "upper": 200,
+        "description": "定位容差、保护区宽度和航段长度形成的空域代价。"
+      }
+    },
+    "objectives": [
+      {
+        "name": "minimize_conventional_segment_length",
+        "expression": "segment_length_nm_003",
+        "sense": "minimize",
+        "business_meaning": "控制障碍物和定位容差带来的传统程序航段长度。"
+      },
+      {
+        "name": "maximize_conventional_obstacle_geometry_margin",
+        "expression": "conventional_obstacle_geometry_margin_m_003",
+        "sense": "maximize",
+        "business_meaning": "提高传统程序几何条件下的控制障碍物裕度。"
+      },
+      {
+        "name": "minimize_conventional_airspace_cost",
+        "expression": "conventional_obstacle_airspace_cost_003",
+        "sense": "minimize",
+        "business_meaning": "控制保护区宽度和航段长度造成的空域代价。"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.34,
+        0.33,
+        0.33
+      ],
+      "meaning": "优先保持程序适用性和安全裕度，同时控制空域、航段、速度、角度或公布误差带来的业务代价。"
+    },
+    "public_scenario_model": {
+      "model_id": "AVI_SMIX_003_v5_scenario_model",
+      "path": "scenario_models/aviation_strong_mixed_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "公开的非规范业务闭环模型；用于把规则变量、设计变量和多目标求解连接起来，不含隐藏参考规则编号或证书答案。"
+    },
+    "visible_input_note": "算法只能读取公开任务输入、公开场景模型和规则库；隐藏参考和来源证据只供评估器使用。",
+    "strong_mixed_subtype": "业务均衡混合",
+    "v8_strong_coupling_summary": {
+      "original_numeric_rule_variable": "buffer_zone_width_km",
+      "business_counter_template_id": "conventional_fix_tolerance_protection",
+      "coupling_policy": "原规则数值变量至少进入一个反向业务约束；非航图公布题还进入目标函数。"
+    },
+    "v11_obstacle_specific_realism_summary": {
+      "obstacle_point_count": 2,
+      "controlling_obstacle_id": "OBS_003_2",
+      "business_conflict": "提高程序高度可增加控制障碍物净空裕度，但会增加高度增量和保护空域面积；扩大保护区半宽可覆盖横向偏移障碍物，但会增加空域占用。"
+    },
+    "task_focus": "business_multi_constraint",
+    "task_focus_description": "业务真实多约束优化：保留障碍物几何、连续变量、必要非线性关系和多目标折中，用于展示复杂可行域构造能力。",
+    "objective_interpretation": "目标函数用于可行解排序；本题主要挑战由 task_focus 决定，不应把全部任务理解为同一种非线性连续优化问题。",
+    "solver_mechanism_profile": "complex_continuous_multi_constraint"
+  }
+}

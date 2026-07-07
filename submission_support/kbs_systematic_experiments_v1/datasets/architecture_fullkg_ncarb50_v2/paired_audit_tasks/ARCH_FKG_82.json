@@ -1,0 +1,515 @@
+{
+  "version": "architecture_ncarb50_v2_paired_audit_task_v1",
+  "visibility": "hidden_evaluation_or_offline_audit_only_not_method_input",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_82",
+    "title": "NCARB-derived accessible egress elevator for high-rise option",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IBC",
+    "task_type": "accessible_means_of_egress_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: multi-story office option evaluation. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "occupied_floors_above_exit_discharge": 18,
+      "accessible_means_of_egress_required": true,
+      "building.occupied_floor_stories_from_exit_discharge": 18,
+      "occupied_floor_stories_from_exit_discharge": 18,
+      "scenario.has_life_safety_risk": true,
+      "has_life_safety_risk": true,
+      "ncarb_scenario_theme": "multi-story office option evaluation",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "area_and_height",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "High-rise accessible egress elevator context with more occupied stories and emergency power emphasis.",
+      "elevator_context": "high_rise_vertical_evacuation",
+      "emergency_power_redundancy_required": true
+    },
+    "decision_variables": {
+      "accessible_egress_elevator_count": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 0,
+        "upper": 4
+      },
+      "emergency_power_system_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1
+      },
+      "elevator_core_impact_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      },
+      "life_safety_resilience_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      }
+    },
+    "objectives": [
+      {
+        "name": "minimize_elevator_core_impact",
+        "expression": "elevator_core_impact_score"
+      },
+      {
+        "name": "maximize_life_safety_resilience",
+        "expression": "life_safety_resilience_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.32,
+        0.68
+      ],
+      "meaning": "prioritize high-rise life-safety resilience and emergency power continuity"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_82_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "multi-story office option evaluation",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "scenario_variant_status": "parameterized_scenario_variant",
+    "scenario_variant_note": "Parameterized variant with substantive changes in facts, bounds, weights, or document context; not a fully independent real project case.",
+    "scenario_variant_differentiator": "High-rise accessible egress elevator context with more occupied stories and emergency power emphasis.",
+    "scenario_variant_group_id": "ncarb50_scenario_variant_group_08"
+  },
+  "evaluation_reference": {
+    "omega_id": "ARCH_FKG_82",
+    "title": "NCARB-derived accessible egress elevator for high-rise option",
+    "rule_structure": {
+      "expected_source_rule_ids": [
+        "ibc_1009_2_1_elevator_requirement",
+        "ibc2021_emergency_power_requirement"
+      ],
+      "expected_defeated_rule_ids": [],
+      "expected_surviving_rule_ids": [
+        "ibc2021_emergency_power_requirement",
+        "ibc_1009_2_1_elevator_requirement"
+      ],
+      "expected_valid_rule_structures": [
+        [
+          "ibc2021_emergency_power_requirement",
+          "ibc_1009_2_1_elevator_requirement"
+        ]
+      ],
+      "expected_rule_behavior": {
+        "should_activate": [
+          "Emergency power system requirement for life-safety loads",
+          "Elevator required as accessible means of egress for buildings with occupied floors ≥4 stories from level of exit discharge"
+        ],
+        "should_exclude": [],
+        "should_resolve": [
+          "multi_rule_conjunction",
+          "life_safety_system_design"
+        ]
+      },
+      "challenge_types": [
+        "multi_rule_conjunction",
+        "life_safety_system_design"
+      ],
+      "valid_constraint_cell_ids": [
+        "ARCH_FKG_82_cell_1"
+      ],
+      "expected_provenance": {
+        "kg_chunk_ids": [
+          "20b4e520-19a6-5b09-ab74-c5b47405d7f9",
+          "23d0672e-5449-50a0-8be3-0c34f67bbf7f"
+        ],
+        "kg_node_ids": [
+          "3b07e311-f713-57fe-ab9c-2bef76b41be3",
+          "9b011549-36b4-5fce-b8bc-ebcd43b7aefb",
+          "a9a3997a-ffb3-5ae6-bf7d-5b686545d55f"
+        ],
+        "kg_edge_ids": [
+          "kg_edge_19083",
+          "kg_edge_28679",
+          "kg_edge_57698"
+        ],
+        "source_documents": [
+          {
+            "document": "IFC-2021",
+            "section": "1009.2.1",
+            "page": "unknown",
+            "chunk_id": "20b4e520-19a6-5b09-ab74-c5b47405d7f9"
+          },
+          {
+            "document": "IBC 2021",
+            "section": "Definitions (Emergency power systems)",
+            "page": "unknown",
+            "chunk_id": "23d0672e-5449-50a0-8be3-0c34f67bbf7f"
+          },
+          {
+            "document": "ARE-Practice-Exam-Project-Planning-and-Design.pdf",
+            "section": "Project Planning and Design",
+            "page": "practice-exam-question",
+            "question_number": "Question 30",
+            "derivation_policy": "Paraphrased and parameterized from an NCARB practice-exam scenario; original question text is not copied."
+          }
+        ]
+      }
+    },
+    "feasible_region": {
+      "executable_constraints": [
+        {
+          "constraint_id": "C1",
+          "expression": "accessible_egress_elevator_count >= 1",
+          "role": "accessible_means_egress_elevator_minimum",
+          "source_type": "rule_library",
+          "source_id": "ibc_1009_2_1_elevator_requirement",
+          "executable": true,
+          "checker_expression": "accessible_egress_elevator_count >= 1",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "accessible_egress_elevator_count"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C2",
+          "expression": "emergency_power_system_indicator == 1",
+          "role": "emergency_power_for_life_safety_loads",
+          "source_type": "rule_library",
+          "source_id": "ibc2021_emergency_power_requirement",
+          "executable": true,
+          "checker_expression": "emergency_power_system_indicator == 1",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "emergency_power_system_indicator"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "semantic_indicator_encoding": true,
+            "derived_from_text_or_semantic_rule": true,
+            "derived_from_rule_id": "ibc2021_emergency_power_requirement",
+            "encoding_note": "This executable predicate is a task-level semantic encoding of a textual or categorical full-KG rule."
+          }
+        },
+        {
+          "constraint_id": "C90",
+          "expression": "elevator_core_impact_score >= 3 * accessible_egress_elevator_count + 2 * emergency_power_system_indicator",
+          "role": "core_impact_from_elevator_and_power",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "elevator_core_impact_score >= 3 * accessible_egress_elevator_count + 2 * emergency_power_system_indicator",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "elevator_core_impact_score",
+              "accessible_egress_elevator_count",
+              "emergency_power_system_indicator"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Elevator and emergency power provisions increase core impact."
+          }
+        },
+        {
+          "constraint_id": "C91",
+          "expression": "life_safety_resilience_score <= 5 * accessible_egress_elevator_count + 5 * emergency_power_system_indicator",
+          "role": "resilience_from_elevator_and_power",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "life_safety_resilience_score <= 5 * accessible_egress_elevator_count + 5 * emergency_power_system_indicator",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "life_safety_resilience_score",
+              "accessible_egress_elevator_count",
+              "emergency_power_system_indicator"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Life-safety resilience is tied to accessible egress elevators and emergency power."
+          }
+        }
+      ],
+      "structure_only_constraints": [],
+      "valid_constraint_cells": [
+        {
+          "cell_id": "ARCH_FKG_82_cell_1",
+          "cell_type": "single_valid_fullkg_rule_structure",
+          "rule_ids": [
+            "ibc2021_emergency_power_requirement",
+            "ibc_1009_2_1_elevator_requirement"
+          ],
+          "constraints": [
+            {
+              "constraint_id": "C1",
+              "expression": "accessible_egress_elevator_count >= 1",
+              "role": "accessible_means_egress_elevator_minimum",
+              "source_type": "rule_library",
+              "source_id": "ibc_1009_2_1_elevator_requirement",
+              "executable": true,
+              "checker_expression": "accessible_egress_elevator_count >= 1",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "accessible_egress_elevator_count"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C2",
+              "expression": "emergency_power_system_indicator == 1",
+              "role": "emergency_power_for_life_safety_loads",
+              "source_type": "rule_library",
+              "source_id": "ibc2021_emergency_power_requirement",
+              "executable": true,
+              "checker_expression": "emergency_power_system_indicator == 1",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "emergency_power_system_indicator"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "semantic_indicator_encoding": true,
+                "derived_from_text_or_semantic_rule": true,
+                "derived_from_rule_id": "ibc2021_emergency_power_requirement",
+                "encoding_note": "This executable predicate is a task-level semantic encoding of a textual or categorical full-KG rule."
+              }
+            },
+            {
+              "constraint_id": "C90",
+              "expression": "elevator_core_impact_score >= 3 * accessible_egress_elevator_count + 2 * emergency_power_system_indicator",
+              "role": "core_impact_from_elevator_and_power",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "elevator_core_impact_score >= 3 * accessible_egress_elevator_count + 2 * emergency_power_system_indicator",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "elevator_core_impact_score",
+                  "accessible_egress_elevator_count",
+                  "emergency_power_system_indicator"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Elevator and emergency power provisions increase core impact."
+              }
+            },
+            {
+              "constraint_id": "C91",
+              "expression": "life_safety_resilience_score <= 5 * accessible_egress_elevator_count + 5 * emergency_power_system_indicator",
+              "role": "resilience_from_elevator_and_power",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "life_safety_resilience_score <= 5 * accessible_egress_elevator_count + 5 * emergency_power_system_indicator",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "life_safety_resilience_score",
+                  "accessible_egress_elevator_count",
+                  "emergency_power_system_indicator"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Life-safety resilience is tied to accessible egress elevators and emergency power."
+              }
+            }
+          ],
+          "description": "Executable feasible cell induced by the expected full-KG rule structure for this grounded scenario."
+        }
+      ],
+      "reference_semantics": {
+        "positive_membership_condition": "all executable_constraints evaluate true and at least one valid cell holds when cells are present",
+        "structure_only_constraints_usage": "used to check rule resolution, provenance, exceptions, or semantic requirements before numeric membership checking"
+      }
+    },
+    "certificate_targets": {
+      "source_rule_ids": [
+        "ibc_1009_2_1_elevator_requirement",
+        "ibc2021_emergency_power_requirement"
+      ],
+      "provenance": [
+        {
+          "document": "IFC-2021",
+          "section": "1009.2.1",
+          "page": "unknown",
+          "chunk_id": "20b4e520-19a6-5b09-ab74-c5b47405d7f9"
+        },
+        {
+          "document": "IBC 2021",
+          "section": "Definitions (Emergency power systems)",
+          "page": "unknown",
+          "chunk_id": "23d0672e-5449-50a0-8be3-0c34f67bbf7f"
+        }
+      ]
+    },
+    "diagnostic_candidate_rule_ids_reference_only": [
+      "ibc_1009_2_1_elevator_requirement",
+      "ibc2021_emergency_power_requirement"
+    ],
+    "rule_library_id_bindings": [
+      {
+        "rule_id": "ibc2021_emergency_power_requirement",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ibc2021_emergency_power_requirement",
+        "rule_name": "Emergency power system requirement for life-safety loads",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "23d0672e-5449-50a0-8be3-0c34f67bbf7f"
+        ],
+        "source_node_ids": [
+          "9b011549-36b4-5fce-b8bc-ebcd43b7aefb"
+        ],
+        "provenance": [
+          {
+            "document": "IBC 2021",
+            "section": "Definitions (Emergency power systems)",
+            "page": "unknown",
+            "chunk_id": "23d0672e-5449-50a0-8be3-0c34f67bbf7f"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "emergency_power_systems_required",
+            "op": "=",
+            "value": true,
+            "unit": "boolean"
+          }
+        ]
+      },
+      {
+        "rule_id": "ibc_1009_2_1_elevator_requirement",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ibc_1009_2_1_elevator_requirement",
+        "rule_name": "Elevator required as accessible means of egress for buildings with occupied floors ≥4 stories from level of exit discharge",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "20b4e520-19a6-5b09-ab74-c5b47405d7f9"
+        ],
+        "source_node_ids": [
+          "3b07e311-f713-57fe-ab9c-2bef76b41be3",
+          "a9a3997a-ffb3-5ae6-bf7d-5b686545d55f"
+        ],
+        "provenance": [
+          {
+            "document": "IFC-2021",
+            "section": "1009.2.1",
+            "page": "unknown",
+            "chunk_id": "20b4e520-19a6-5b09-ab74-c5b47405d7f9"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "accessible_means_of_egress.elevator_count_minimum",
+            "op": ">=",
+            "value": 1,
+            "unit": "unit"
+          }
+        ]
+      }
+    ],
+    "reference_constraint_rule_bindings": [
+      {
+        "reference_container": "feasible_region.executable_constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "accessible_means_egress_elevator_minimum",
+        "reference_expression": "accessible_egress_elevator_count >= 1",
+        "source_rule_id": "ibc_1009_2_1_elevator_requirement",
+        "rule_library_rule_id": "ibc_1009_2_1_elevator_requirement",
+        "rule_library_rule_name": "Elevator required as accessible means of egress for buildings with occupied floors ≥4 stories from level of exit discharge"
+      },
+      {
+        "reference_container": "feasible_region.executable_constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "emergency_power_for_life_safety_loads",
+        "reference_expression": "emergency_power_system_indicator == 1",
+        "source_rule_id": "ibc2021_emergency_power_requirement",
+        "rule_library_rule_id": "ibc2021_emergency_power_requirement",
+        "rule_library_rule_name": "Emergency power system requirement for life-safety loads"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "accessible_means_egress_elevator_minimum",
+        "reference_expression": "accessible_egress_elevator_count >= 1",
+        "source_rule_id": "ibc_1009_2_1_elevator_requirement",
+        "rule_library_rule_id": "ibc_1009_2_1_elevator_requirement",
+        "rule_library_rule_name": "Elevator required as accessible means of egress for buildings with occupied floors ≥4 stories from level of exit discharge"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "emergency_power_for_life_safety_loads",
+        "reference_expression": "emergency_power_system_indicator == 1",
+        "source_rule_id": "ibc2021_emergency_power_requirement",
+        "rule_library_rule_id": "ibc2021_emergency_power_requirement",
+        "rule_library_rule_name": "Emergency power system requirement for life-safety loads"
+      }
+    ],
+    "task_derivation_source": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "document": "ARE-Practice-Exam-Project-Planning-and-Design.pdf",
+      "division": "Project Planning and Design",
+      "question_number": "Question 30",
+      "theme": "multi-story office option evaluation",
+      "adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "source_policy": "Hidden provenance only; algorithm-visible inputs expose only generalized NCARB-derived themes."
+    },
+    "benchmark_extension_metadata": {
+      "extension_round": "architecture_ncarb_50_extension",
+      "source_base_task_id": "ARCH_FKG_29",
+      "ncarb_category": "area_and_height",
+      "source_policy": "paraphrased_parameterized_not_verbatim",
+      "dataset_characterization": "NCARB practice-topic-derived, paraphrased, and parameterized architecture-code semantic extension task.",
+      "independence_claim": "parameterized_variant_not_fully_independent_real_project_case",
+      "source_visibility_policy": "Exact practice identifiers, original question text, answer choices, and source file names are hidden from algorithm-visible inputs.",
+      "scenario_variant_group_id": "ncarb50_scenario_variant_group_08",
+      "scenario_variant_group_members": [
+        "ARCH_FKG_59",
+        "ARCH_FKG_82"
+      ],
+      "scenario_variant_status": "parameterized_scenario_variant",
+      "scenario_variant_differentiator": "High-rise accessible egress elevator context with more occupied stories and emergency power emphasis.",
+      "method_visibility": "hidden_evaluation_reference_not_method_input"
+    }
+  }
+}

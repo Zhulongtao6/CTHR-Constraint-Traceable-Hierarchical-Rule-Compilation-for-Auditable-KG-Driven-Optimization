@@ -1,0 +1,475 @@
+{
+  "version": "architecture_ncarb50_v2_paired_audit_task_v1",
+  "visibility": "hidden_evaluation_or_offline_audit_only_not_method_input",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_73",
+    "title": "NCARB-derived egress ramp run-length formula",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "egress_ramp_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: ramp for elevation change in construction documents. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "egress_component": "ramp",
+      "change_in_direction": true,
+      "ramp_usage": "means_of_egress",
+      "ramp.landing_has_change_in_direction": true,
+      "landing_has_change_in_direction": true,
+      "scenario_variant": "parameterized_variant",
+      "expansion_case_family": "fire_and_egress",
+      "ncarb_scenario_theme": "ramp for elevation change in construction documents",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "rise_ft": 1.8,
+      "ramp_run_model": "fixed_rise_running_slope_relation",
+      "ramp_run_model_note": "Public scenario model uses ramp_run_length_ft >= rise_ft / running_slope.",
+      "scenario_variant_differentiator": "Construction drawing ramp review variant: documentation context, fixed rise_ft 1.8, wider available run and landing-review weight.",
+      "scenario_use": "construction_drawing_ramp_run_check"
+    },
+    "decision_variables": {
+      "running_slope": {
+        "type": "continuous",
+        "unit": "ratio",
+        "lower": 0.02,
+        "upper": 0.12
+      },
+      "landing_minimum_dimension_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 36,
+        "upper": 84
+      },
+      "ramp_run_length_ft": {
+        "type": "continuous",
+        "unit": "ft",
+        "lower": 10,
+        "upper": 145
+      }
+    },
+    "objectives": [
+      {
+        "name": "minimize_ramp_run_length",
+        "expression": "ramp_run_length_ft"
+      },
+      {
+        "name": "maximize_landing_dimension",
+        "expression": "landing_minimum_dimension_in"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.42,
+        0.58
+      ],
+      "meaning": "prefer documentation-compliant generous landing while checking run length"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_73_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "ramp for elevation change in construction documents",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "scenario_variant_status": "parameterized_scenario_variant",
+    "scenario_variant_note": "Parameterized variant with substantive changes in facts, bounds, weights, or document context; not a fully independent real project case.",
+    "scenario_variant_differentiator": "Construction drawing ramp review variant: documentation context, fixed rise_ft 1.8, wider available run and landing-review weight.",
+    "scenario_variant_group_id": "ncarb50_scenario_variant_group_05",
+    "constraint_solver_profile": "requires_nonlinear_or_auxiliary_constraint_checker",
+    "nonlinear_or_auxiliary_note": "Contains a helper expression such as max(), abs(), symbolic division, or a variable product."
+  },
+  "evaluation_reference": {
+    "omega_id": "ARCH_FKG_73",
+    "title": "NCARB-derived egress ramp run-length formula",
+    "rule_structure": {
+      "expected_source_rule_ids": [
+        "ifc_ramp_slope_egress_1012_2",
+        "ifc2021_ramp_landing_size_change_in_direction"
+      ],
+      "expected_defeated_rule_ids": [],
+      "expected_surviving_rule_ids": [
+        "ifc2021_ramp_landing_size_change_in_direction",
+        "ifc_ramp_slope_egress_1012_2"
+      ],
+      "expected_valid_rule_structures": [
+        [
+          "ifc2021_ramp_landing_size_change_in_direction",
+          "ifc_ramp_slope_egress_1012_2"
+        ]
+      ],
+      "expected_rule_behavior": {
+        "should_activate": [
+          "Ramp landing size at change in direction",
+          "Maximum running slope for ramps used as part of a means of egress"
+        ],
+        "should_exclude": [],
+        "should_resolve": [
+          "multi_rule_conjunction",
+          "dependency_or_formula_propagation"
+        ]
+      },
+      "challenge_types": [
+        "multi_rule_conjunction",
+        "dependency_or_formula_propagation"
+      ],
+      "valid_constraint_cell_ids": [
+        "ARCH_FKG_73_cell_1"
+      ],
+      "expected_provenance": {
+        "kg_chunk_ids": [
+          "274cbdd1-5951-5579-8a9a-a9ac44d0f276",
+          "80f4f5b6-ffed-52dd-8fab-40cd4739f9a6"
+        ],
+        "kg_node_ids": [
+          "23f1d40b-afc8-58e1-a6d8-13ea7302ed2b",
+          "3b07e311-f713-57fe-ab9c-2bef76b41be3"
+        ],
+        "kg_edge_ids": [
+          "kg_edge_19090",
+          "kg_edge_35402"
+        ],
+        "source_documents": [
+          {
+            "document": "IFC-2021",
+            "section": "1012.2",
+            "page": "unknown",
+            "chunk_id": "274cbdd1-5951-5579-8a9a-a9ac44d0f276"
+          },
+          {
+            "document": "IFC-2021",
+            "section": "1012.6.4",
+            "page": "unknown",
+            "chunk_id": "80f4f5b6-ffed-52dd-8fab-40cd4739f9a6"
+          },
+          {
+            "document": "ARE-Practice-Exam-Project-Development-and-Documentation.pdf",
+            "section": "Project Development and Documentation",
+            "page": "practice-exam-question",
+            "question_number": "Question 10",
+            "derivation_policy": "Paraphrased and parameterized from an NCARB practice-exam scenario; original question text is not copied."
+          }
+        ]
+      }
+    },
+    "feasible_region": {
+      "executable_constraints": [
+        {
+          "constraint_id": "C1",
+          "expression": "running_slope <= 0.08333333333333333",
+          "role": "egress_ramp_running_slope_limit",
+          "source_type": "rule_library",
+          "source_id": "ifc_ramp_slope_egress_1012_2",
+          "executable": true,
+          "checker_expression": "running_slope <= 0.08333333333333333",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "running_slope"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C2",
+          "expression": "landing_minimum_dimension_in >= 60",
+          "role": "ramp_landing_change_in_direction_dimension",
+          "source_type": "rule_library",
+          "source_id": "ifc2021_ramp_landing_size_change_in_direction",
+          "executable": true,
+          "checker_expression": "landing_minimum_dimension_in >= 60",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "landing_minimum_dimension_in"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C90",
+          "expression": "ramp_run_length_ft >= rise_ft / running_slope",
+          "role": "ramp_run_length_from_fixed_rise_and_slope",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "ramp_run_length_ft >= rise_ft / running_slope",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "ramp_run_length_ft",
+              "running_slope"
+            ],
+            "scenario_fields": [
+              "rise_ft"
+            ],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Ramp run length is coupled to a fixed public rise and selected running slope.",
+            "dimensional_model": "ramp_run_length_ft >= rise_ft / running_slope",
+            "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+            "nonlinear_or_auxiliary_reasons": [
+              "division_by_variable_or_symbol"
+            ],
+            "linear_backend_note": "Use a nonlinear checker for the ratio form, or fix/discretize running_slope before linear optimization."
+          }
+        }
+      ],
+      "structure_only_constraints": [],
+      "valid_constraint_cells": [
+        {
+          "cell_id": "ARCH_FKG_73_cell_1",
+          "cell_type": "single_valid_fullkg_rule_structure",
+          "rule_ids": [
+            "ifc2021_ramp_landing_size_change_in_direction",
+            "ifc_ramp_slope_egress_1012_2"
+          ],
+          "constraints": [
+            {
+              "constraint_id": "C1",
+              "expression": "running_slope <= 0.08333333333333333",
+              "role": "egress_ramp_running_slope_limit",
+              "source_type": "rule_library",
+              "source_id": "ifc_ramp_slope_egress_1012_2",
+              "executable": true,
+              "checker_expression": "running_slope <= 0.08333333333333333",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "running_slope"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C2",
+              "expression": "landing_minimum_dimension_in >= 60",
+              "role": "ramp_landing_change_in_direction_dimension",
+              "source_type": "rule_library",
+              "source_id": "ifc2021_ramp_landing_size_change_in_direction",
+              "executable": true,
+              "checker_expression": "landing_minimum_dimension_in >= 60",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "landing_minimum_dimension_in"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C90",
+              "expression": "ramp_run_length_ft >= rise_ft / running_slope",
+              "role": "ramp_run_length_from_fixed_rise_and_slope",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "ramp_run_length_ft >= rise_ft / running_slope",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "ramp_run_length_ft",
+                  "running_slope"
+                ],
+                "scenario_fields": [
+                  "rise_ft"
+                ],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Ramp run length is coupled to a fixed public rise and selected running slope.",
+                "dimensional_model": "ramp_run_length_ft >= rise_ft / running_slope",
+                "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+                "nonlinear_or_auxiliary_reasons": [
+                  "division_by_variable_or_symbol"
+                ],
+                "linear_backend_note": "Use a nonlinear checker for the ratio form, or fix/discretize running_slope before linear optimization."
+              }
+            }
+          ],
+          "description": "Executable feasible cell induced by the expected full-KG rule structure for this grounded scenario."
+        }
+      ],
+      "reference_semantics": {
+        "positive_membership_condition": "all executable_constraints evaluate true and at least one valid cell holds when cells are present",
+        "structure_only_constraints_usage": "used to check rule resolution, provenance, exceptions, or semantic requirements before numeric membership checking"
+      }
+    },
+    "certificate_targets": {
+      "source_rule_ids": [
+        "ifc_ramp_slope_egress_1012_2",
+        "ifc2021_ramp_landing_size_change_in_direction"
+      ],
+      "provenance": [
+        {
+          "document": "IFC-2021",
+          "section": "1012.2",
+          "page": "unknown",
+          "chunk_id": "274cbdd1-5951-5579-8a9a-a9ac44d0f276"
+        },
+        {
+          "document": "IFC-2021",
+          "section": "1012.6.4",
+          "page": "unknown",
+          "chunk_id": "80f4f5b6-ffed-52dd-8fab-40cd4739f9a6"
+        }
+      ]
+    },
+    "diagnostic_candidate_rule_ids_reference_only": [
+      "ifc_ramp_slope_egress_1012_2",
+      "ifc2021_ramp_landing_size_change_in_direction"
+    ],
+    "rule_library_id_bindings": [
+      {
+        "rule_id": "ifc2021_ramp_landing_size_change_in_direction",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ifc2021_ramp_landing_size_change_in_direction",
+        "rule_name": "Ramp landing size at change in direction",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "80f4f5b6-ffed-52dd-8fab-40cd4739f9a6"
+        ],
+        "source_node_ids": [
+          "23f1d40b-afc8-58e1-a6d8-13ea7302ed2b"
+        ],
+        "provenance": [
+          {
+            "document": "IFC-2021",
+            "section": "1012.6.4",
+            "page": "unknown",
+            "chunk_id": "80f4f5b6-ffed-52dd-8fab-40cd4739f9a6"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "ramp_landing.minimum_dimension",
+            "op": ">=",
+            "value": 60,
+            "unit": "inches"
+          }
+        ]
+      },
+      {
+        "rule_id": "ifc_ramp_slope_egress_1012_2",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ifc_ramp_slope_egress_1012_2",
+        "rule_name": "Maximum running slope for ramps used as part of a means of egress",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "274cbdd1-5951-5579-8a9a-a9ac44d0f276"
+        ],
+        "source_node_ids": [
+          "3b07e311-f713-57fe-ab9c-2bef76b41be3"
+        ],
+        "provenance": [
+          {
+            "document": "IFC-2021",
+            "section": "1012.2",
+            "page": "unknown",
+            "chunk_id": "274cbdd1-5951-5579-8a9a-a9ac44d0f276"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "running_slope",
+            "op": "<=",
+            "value": 0.08333333333333333,
+            "unit": "unitless (vertical:horizontal ratio)"
+          }
+        ]
+      }
+    ],
+    "reference_constraint_rule_bindings": [
+      {
+        "reference_container": "feasible_region.executable_constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "egress_ramp_running_slope_limit",
+        "reference_expression": "running_slope <= 0.08333333333333333",
+        "source_rule_id": "ifc_ramp_slope_egress_1012_2",
+        "rule_library_rule_id": "ifc_ramp_slope_egress_1012_2",
+        "rule_library_rule_name": "Maximum running slope for ramps used as part of a means of egress"
+      },
+      {
+        "reference_container": "feasible_region.executable_constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "ramp_landing_change_in_direction_dimension",
+        "reference_expression": "landing_minimum_dimension_in >= 60",
+        "source_rule_id": "ifc2021_ramp_landing_size_change_in_direction",
+        "rule_library_rule_id": "ifc2021_ramp_landing_size_change_in_direction",
+        "rule_library_rule_name": "Ramp landing size at change in direction"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "egress_ramp_running_slope_limit",
+        "reference_expression": "running_slope <= 0.08333333333333333",
+        "source_rule_id": "ifc_ramp_slope_egress_1012_2",
+        "rule_library_rule_id": "ifc_ramp_slope_egress_1012_2",
+        "rule_library_rule_name": "Maximum running slope for ramps used as part of a means of egress"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "ramp_landing_change_in_direction_dimension",
+        "reference_expression": "landing_minimum_dimension_in >= 60",
+        "source_rule_id": "ifc2021_ramp_landing_size_change_in_direction",
+        "rule_library_rule_id": "ifc2021_ramp_landing_size_change_in_direction",
+        "rule_library_rule_name": "Ramp landing size at change in direction"
+      }
+    ],
+    "expansion_metadata": {
+      "source_task_id": "ARCH_FKG_20",
+      "coverage_focus": "dependency_or_formula_propagation",
+      "target_relation": "multi_rule_conjunction",
+      "strict_common_intended": true,
+      "overlay_model": "canonical_source_semantics",
+      "expansion_round": "100_task_extension_v1"
+    },
+    "task_derivation_source": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "document": "ARE-Practice-Exam-Project-Development-and-Documentation.pdf",
+      "division": "Project Development and Documentation",
+      "question_number": "Question 10",
+      "theme": "ramp for elevation change in construction documents",
+      "adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "source_policy": "Hidden provenance only; algorithm-visible inputs expose only generalized NCARB-derived themes."
+    },
+    "benchmark_extension_metadata": {
+      "extension_round": "architecture_ncarb_50_extension",
+      "source_base_task_id": "ARCH_FKG_40",
+      "ncarb_category": "fire_and_egress",
+      "source_policy": "paraphrased_parameterized_not_verbatim",
+      "dataset_characterization": "NCARB practice-topic-derived, paraphrased, and parameterized architecture-code semantic extension task.",
+      "independence_claim": "parameterized_variant_not_fully_independent_real_project_case",
+      "source_visibility_policy": "Exact practice identifiers, original question text, answer choices, and source file names are hidden from algorithm-visible inputs.",
+      "scenario_variant_group_id": "ncarb50_scenario_variant_group_05",
+      "scenario_variant_group_members": [
+        "ARCH_FKG_51",
+        "ARCH_FKG_73"
+      ],
+      "scenario_variant_status": "parameterized_scenario_variant",
+      "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+      "nonlinear_or_auxiliary_reasons": [
+        "auxiliary_function_or_variable_product",
+        "division_by_variable_or_symbol"
+      ],
+      "scenario_variant_differentiator": "Construction drawing ramp review variant: documentation context, fixed rise_ft 1.8, wider available run and landing-review weight.",
+      "method_visibility": "hidden_evaluation_reference_not_method_input"
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "version": "architecture_ncarb50_v2_public_task_v1",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_87",
+    "title": "NCARB-derived outdoor control area combustible clearance",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "site_hazard_control_area_layout",
+    "design_intent": "Set combustible-material clearance around an outdoor control area while balancing site compactness and hazard separation.",
+    "scenario_facts": {
+      "entity_type": "outdoor control area",
+      "adjacent_combustible_materials": true,
+      "ncarb_scenario_theme": "public park material selection and site infiltration",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "site_and_zoning_like",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized"
+    },
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "public park material selection and site infiltration",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "decision_variables": {
+      "combustible_clearance_ft": {
+        "type": "continuous",
+        "unit": "ft",
+        "lower": 0,
+        "upper": 30
+      },
+      "site_compactness_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 15
+      },
+      "hazard_separation_margin_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 15
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_site_compactness",
+        "expression": "site_compactness_score"
+      },
+      {
+        "name": "maximize_hazard_separation_margin",
+        "expression": "hazard_separation_margin_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.45,
+        0.55
+      ],
+      "meaning": "balance compact site use and combustible clearance"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_87_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references."
+  }
+}

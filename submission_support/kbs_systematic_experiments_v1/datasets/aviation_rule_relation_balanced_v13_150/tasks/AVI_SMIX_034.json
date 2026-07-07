@@ -1,0 +1,400 @@
+{
+  "version": "aviation_rule_relation_balanced_v13_150",
+  "algorithm_input": {
+    "omega_id": "AVI_SMIX_034",
+    "title": "直升机程序：直升机等待速度上限",
+    "domain": "aviation_procedure_design",
+    "task_type": "helicopter_procedure_strong_business_design",
+    "strong_business_third_type": true,
+    "business_domain": "helicopter",
+    "design_intent": "执行点进近、目视航段、直升机等待或直升机中间进近段设计中的程序设计或审查。任务先判断业务前提，再编译速度限制相关数值约束，最后在安全裕度、空域或公布误差、运行风险之间求解多目标可行折中。 第七版进一步加入反向业务变量和反向约束，使任务不能通过直接取规范阈值边界求解。",
+    "scenario_facts": {
+      "benchmark_round": "aviation_strong_mixed_v5_150",
+      "business_domain": "helicopter",
+      "program_design_context": "点进近、目视航段、直升机等待或直升机中间进近段设计",
+      "review_question": "程序是否属于直升机专用运行场景，以及速度、航段长度或高度裕度是否满足直升机运行限制。",
+      "case_variant_index": 34,
+      "operation_context": "航图公布前检查",
+      "traffic_and_terrain_variant": "复杂空域",
+      "source_policy": "由 v4 来源规则语义重构，未新增规则编号或来源页码",
+      "boundary_degeneracy_repair_round": "v7",
+      "original_degeneracy_type": "单上限题",
+      "counter_constraint_policy": "增加同业务域反向变量，使最优解不能由单一规范阈值直接决定",
+      "v7_business_counter_explanation": "等待和直升机题加入速度下限、转弯半径、出航时间、保护区范围、航段长度和障碍物裕度；降低速度和范围有利于紧凑设计，但会影响转弯半径、航段长度和障碍物裕度。",
+      "obstacle_point_set_034": [
+        {
+          "obstacle_id": "OBS_034_1",
+          "along_track_distance_nm": 3.8,
+          "lateral_offset_m": 273,
+          "ground_elevation_m": 232,
+          "obstacle_height_m": 48,
+          "obstacle_top_height_m": 280,
+          "segment": "直升机低高度保护区",
+          "protection_half_width_m": 780,
+          "zone": "主区",
+          "primary_zone_indicator": 1,
+          "secondary_zone_indicator": 0,
+          "clearance_reduction_factor": 1.0
+        },
+        {
+          "obstacle_id": "OBS_034_2",
+          "along_track_distance_nm": 6.4,
+          "lateral_offset_m": 561,
+          "ground_elevation_m": 245,
+          "obstacle_height_m": 34,
+          "obstacle_top_height_m": 279,
+          "segment": "直升机低高度保护区",
+          "protection_half_width_m": 780,
+          "zone": "次区",
+          "primary_zone_indicator": 0,
+          "secondary_zone_indicator": 1,
+          "clearance_reduction_factor": 0.64
+        }
+      ],
+      "minimum_required_obstacle_clearance_m_034": 65,
+      "reference_procedure_altitude_m_034": 380,
+      "obstacle_assessment_segment_length_nm_034": 4.4,
+      "controlling_obstacle_id_034": "OBS_034_1",
+      "obstacle_business_chain_note_034": "低高度航段障碍物同时影响实际净空、风修正后的航迹偏离风险和保护区面积。",
+      "v11_obstacle_specific_realism_patch": "适用题已补充具体障碍物点，障碍物顶高、横向偏距、主区或次区判断进入公开场景模型约束。",
+      "obstacle_along_track_distance_nm_034_1": 3.8,
+      "obstacle_lateral_offset_m_034_1": 273,
+      "obstacle_ground_elevation_m_034_1": 232,
+      "obstacle_structure_height_m_034_1": 48,
+      "obstacle_top_height_reference_m_034_1": 280,
+      "obstacle_protection_half_width_m_034_1": 780,
+      "obstacle_primary_zone_indicator_034_1": 1,
+      "obstacle_secondary_zone_indicator_034_1": 0,
+      "obstacle_along_track_distance_nm_034_2": 6.4,
+      "obstacle_lateral_offset_m_034_2": 561,
+      "obstacle_ground_elevation_m_034_2": 245,
+      "obstacle_structure_height_m_034_2": 34,
+      "obstacle_top_height_reference_m_034_2": 279,
+      "obstacle_protection_half_width_m_034_2": 780,
+      "obstacle_primary_zone_indicator_034_2": 0,
+      "obstacle_secondary_zone_indicator_034_2": 1,
+      "helicopter_wind_correction_offset_m_034": 108,
+      "rule_query_focus": "business_multi_constraint",
+      "relation_balanced_version": "aviation_rule_relation_balanced_v13_150",
+      "method_visible_relation_positioning": "业务真实多约束优化：保留速度、距离、坡度、半径、越障余度、时间或空域占用等真实程序设计折中；规则语义仍决定可行域单元。",
+      "business_multi_constraint_context": "当前场景保留真实飞行程序设计多约束折中，但规则语义仍决定有效可行域。",
+      "solver_mechanism_profile": "complex_continuous_multi_constraint",
+      "method_visible_focus_note": "业务真实多约束优化：保留障碍物几何、连续变量、必要非线性关系和多目标折中，用于展示复杂可行域构造能力。"
+    },
+    "decision_variables": {
+      "helicopter_procedure_applicability_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1,
+        "description": "公开输入中的程序适用性、类别、例外或公布前提变量；不包含参考规则编号。"
+      },
+      "holding_indicated_airspeed_km_h": {
+        "type": "continuous",
+        "unit": "km_h",
+        "lower": 72,
+        "upper": 298,
+        "description": "原规则库数值变量。"
+      },
+      "holding_indicated_airspeed_km_h_available_margin": {
+        "type": "continuous",
+        "unit": "km_h",
+        "lower": 0,
+        "upper": 298.0,
+        "description": "由速度限制压力计算的可用裕度变量，用于衡量规则边界内的设计余量。"
+      },
+      "helicopter_speed_or_length_risk_034": {
+        "type": "continuous",
+        "unit": "km_h",
+        "lower": 0,
+        "upper": 100.0,
+        "description": "由公开场景模型计算的航空业务派生设计量，用于多目标求解，不包含隐藏规则答案。"
+      },
+      "visual_segment_height_margin_034": {
+        "type": "continuous",
+        "unit": "km_h",
+        "lower": 0,
+        "upper": 100.0,
+        "description": "由公开场景模型计算的航空业务派生设计量，用于多目标求解，不包含隐藏规则答案。"
+      },
+      "helicopter_airspace_extent_034": {
+        "type": "continuous",
+        "unit": "risk_or_extent_index",
+        "lower": 0,
+        "upper": 100.0,
+        "description": "由公开场景模型计算的航空业务派生设计量，用于多目标求解，不包含隐藏规则答案。"
+      },
+      "procedure_speed_kmh_034": {
+        "type": "continuous",
+        "unit": "km/h",
+        "lower": 60,
+        "upper": 220,
+        "description": "等待或直升机程序速度。"
+      },
+      "turn_radius_m_034": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 100,
+        "upper": 3000,
+        "description": "速度和坡度共同决定的转弯半径。"
+      },
+      "outbound_time_s_034": {
+        "type": "continuous",
+        "unit": "s",
+        "lower": 30,
+        "upper": 240,
+        "description": "等待或目视航段出航时间。"
+      },
+      "holding_or_helicopter_area_width_km_034": {
+        "type": "continuous",
+        "unit": "km",
+        "lower": 0.2,
+        "upper": 12.0,
+        "description": "等待区或直升机保护区范围。"
+      },
+      "helicopter_segment_length_km_034": {
+        "type": "continuous",
+        "unit": "km",
+        "lower": 0.5,
+        "upper": 30,
+        "description": "直升机实际采用航段长度。"
+      },
+      "helicopter_obstacle_margin_m_034": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 500,
+        "description": "障碍物裕度。"
+      },
+      "helicopter_or_holding_speed_km_h_034": {
+        "type": "continuous",
+        "unit": "km/h",
+        "lower": 60,
+        "upper": 220,
+        "description": "等待或直升机程序设计速度。"
+      },
+      "holding_or_visual_segment_area_km2_034": {
+        "type": "continuous",
+        "unit": "km2",
+        "lower": 0.5,
+        "upper": 80,
+        "description": "等待区或目视航段保护范围。"
+      },
+      "holding_track_stability_margin_034": {
+        "type": "continuous",
+        "unit": "margin_index",
+        "lower": 0,
+        "upper": 100,
+        "description": "等待航迹稳定裕度。"
+      },
+      "wind_correction_margin_034": {
+        "type": "continuous",
+        "unit": "margin_index",
+        "lower": 0,
+        "upper": 100,
+        "description": "抗风修正裕度。"
+      },
+      "sequencing_capacity_margin_034": {
+        "type": "continuous",
+        "unit": "capacity_index",
+        "lower": 0,
+        "upper": 100,
+        "description": "交通交通排序容量裕度指标。"
+      },
+      "minimum_stabilized_outbound_time_s_034": {
+        "type": "continuous",
+        "unit": "s",
+        "lower": 45,
+        "upper": 120,
+        "description": "最低稳定建立出航时间。"
+      },
+      "minimum_operational_speed_km_h_034": {
+        "type": "continuous",
+        "unit": "km/h",
+        "lower": 90,
+        "upper": 90,
+        "description": "固定场景参数式决策变量，用于声明最低可操作速度；上下界相同，不能被优化器自由压低。"
+      },
+      "procedure_design_altitude_m_034": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 3000,
+        "description": "由具体障碍物顶高和所需越障余度共同约束的程序设计高度。"
+      },
+      "procedure_altitude_increase_m_034": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 2000,
+        "description": "相对参考程序高度的增加量，用于体现提高程序高度带来的运行代价。"
+      },
+      "controlling_obstacle_clearance_margin_m_034": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": -200,
+        "upper": 1000,
+        "description": "所有障碍物点中的控制净空裕度，最大化该量会与程序高度和空域占用代价冲突。"
+      },
+      "obstacle_driven_protection_half_width_m_034": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 4000,
+        "description": "由障碍物横向偏距驱动的保护区半宽。"
+      },
+      "obstacle_related_protected_area_km2_034": {
+        "type": "continuous",
+        "unit": "km2",
+        "lower": 0,
+        "upper": 80,
+        "description": "由保护区半宽和障碍物评估航段长度形成的保护空域面积。"
+      },
+      "obstacle_top_height_m_034_1": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 3000,
+        "description": "OBS_034_1 的计算顶高。"
+      },
+      "required_obstacle_clearance_m_034_1": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 500,
+        "description": "OBS_034_1 按主区或次区位置计算的所需越障余度。"
+      },
+      "actual_obstacle_clearance_m_034_1": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": -300,
+        "upper": 3000,
+        "description": "OBS_034_1 的实际净空。"
+      },
+      "obstacle_clearance_margin_m_034_1": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": -400,
+        "upper": 2000,
+        "description": "OBS_034_1 的净空裕度。"
+      },
+      "obstacle_top_height_m_034_2": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 3000,
+        "description": "OBS_034_2 的计算顶高。"
+      },
+      "required_obstacle_clearance_m_034_2": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0,
+        "upper": 500,
+        "description": "OBS_034_2 按主区或次区位置计算的所需越障余度。"
+      },
+      "actual_obstacle_clearance_m_034_2": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": -300,
+        "upper": 3000,
+        "description": "OBS_034_2 的实际净空。"
+      },
+      "obstacle_clearance_margin_m_034_2": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": -400,
+        "upper": 2000,
+        "description": "OBS_034_2 的净空裕度。"
+      },
+      "helicopter_stable_entry_margin_km_034": {
+        "type": "continuous",
+        "unit": "km",
+        "lower": -10,
+        "upper": 30,
+        "description": "直升机稳定进入裕度。"
+      },
+      "helicopter_wind_corrected_deviation_risk_034": {
+        "type": "continuous",
+        "unit": "risk_index",
+        "lower": 0,
+        "upper": 100,
+        "description": "风修正后航迹偏离风险。"
+      },
+      "helicopter_wind_corrected_lateral_clearance_m_034": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": -500,
+        "upper": 2500,
+        "description": "风修正后障碍物横向净距。"
+      },
+      "helicopter_obstacle_protected_area_km2_034": {
+        "type": "continuous",
+        "unit": "km2",
+        "lower": 0,
+        "upper": 80,
+        "description": "直升机低高度航段保护区面积。"
+      },
+      "helicopter_obstacle_flight_time_min_034": {
+        "type": "continuous",
+        "unit": "min",
+        "lower": 0,
+        "upper": 60,
+        "description": "障碍物避让和航段长度带来的飞行时间。"
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_helicopter_stable_entry_margin",
+        "expression": "helicopter_stable_entry_margin_km_034",
+        "sense": "maximize",
+        "business_meaning": "提高直升机低高度航段稳定进入裕度。"
+      },
+      {
+        "name": "maximize_controlling_obstacle_clearance_margin",
+        "expression": "controlling_obstacle_clearance_margin_m_034",
+        "sense": "maximize",
+        "business_meaning": "提高控制障碍物净空裕度。"
+      },
+      {
+        "name": "minimize_helicopter_protected_area_time_and_wind_risk",
+        "expression": "helicopter_obstacle_protected_area_km2_034 + helicopter_obstacle_flight_time_min_034 + 0.2 * helicopter_wind_corrected_deviation_risk_034",
+        "sense": "minimize",
+        "business_meaning": "控制保护区面积、飞行时间和风修正后偏离风险。"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.34,
+        0.33,
+        0.33
+      ],
+      "meaning": "优先保持程序适用性和安全裕度，同时控制空域、航段、速度、角度或公布误差带来的业务代价。"
+    },
+    "public_scenario_model": {
+      "model_id": "AVI_SMIX_034_v5_scenario_model",
+      "path": "scenario_models/aviation_strong_mixed_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "公开的非规范业务闭环模型；用于把规则变量、设计变量和多目标求解连接起来，不含隐藏参考规则编号或证书答案。"
+    },
+    "visible_input_note": "算法只能读取公开任务输入、公开场景模型和规则库；隐藏参考和来源证据只供评估器使用。",
+    "strong_mixed_subtype": "业务均衡混合",
+    "v8_strong_coupling_summary": {
+      "original_numeric_rule_variable": "holding_indicated_airspeed_km_h",
+      "business_counter_template_id": "helicopter_outbound_time_margin",
+      "coupling_policy": "原规则数值变量至少进入一个反向业务约束；非航图公布题还进入目标函数。"
+    },
+    "v9_final_business_repair": {
+      "template_id": "helicopter_speed_stability_two_sided",
+      "note": "等待和直升机速度题增加稳定性、抗风修正和交通排序裕度，避免速度、时间和范围同向取低。"
+    },
+    "v11_obstacle_specific_realism_summary": {
+      "obstacle_point_count": 2,
+      "controlling_obstacle_id": "OBS_034_1",
+      "business_conflict": "提高程序高度可增加控制障碍物净空裕度，但会增加高度增量和保护空域面积；扩大保护区半宽可覆盖横向偏移障碍物，但会增加空域占用。"
+    },
+    "task_focus": "business_multi_constraint",
+    "task_focus_description": "业务真实多约束优化：保留障碍物几何、连续变量、必要非线性关系和多目标折中，用于展示复杂可行域构造能力。",
+    "objective_interpretation": "目标函数用于可行解排序；本题主要挑战由 task_focus 决定，不应把全部任务理解为同一种非线性连续优化问题。",
+    "solver_mechanism_profile": "complex_continuous_multi_constraint"
+  }
+}

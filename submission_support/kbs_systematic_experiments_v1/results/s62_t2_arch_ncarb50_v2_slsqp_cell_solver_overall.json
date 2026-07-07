@@ -1,0 +1,67 @@
+{
+  "generated_at": "2026-07-03 15:36:49",
+  "experiment": "Section 6.2 Table 2: Solver backends over CTHR compiled cells",
+  "datasets": {
+    "Architecture-NCARB50-v2": {
+      "tasks": 50,
+      "path": "submission_support\\kbs_systematic_experiments_v1\\datasets\\architecture_fullkg_ncarb50_v2",
+      "grounding_full": "submission_support\\kbs_systematic_experiments_v1\\results\\n50auto40\\section_6_3_architecture_ncarb50_v2_old_candidate_profile_auto_resolver_candidate_to_valid_full.json"
+    }
+  },
+  "settings": {
+    "cell_source": "latest CTHR predicted_valid_rule_ids + compiled_rule_constraint_templates",
+    "default_solver": "differential_evolution + SLSQP local refinement",
+    "asp_clingo_solver": "ASP cell-selection with clingo + continuous SLSQP refinement inside selected CTHR cells",
+    "cp_sat_solver": "OR-Tools CP-SAT over integer-scaled CTHR compiled constraints",
+    "scip_solver": "SCIP over CTHR compiled constraints",
+    "de_maxiter": 80,
+    "feasibility_tolerance": 0.0001
+  },
+  "summary": [
+    {
+      "Dataset": "Architecture-NCARB50-v2",
+      "Solver over CTHR cells": "CTHR default solver",
+      "Solve": 100.0,
+      "Cell CSR": 100.0,
+      "Objective gap": "1.999532%",
+      "Task count": 50,
+      "Gap count": 50
+    },
+    {
+      "Dataset": "Architecture-NCARB50-v2",
+      "Solver over CTHR cells": "ASP/clingo over CTHR cells",
+      "Solve": 100.0,
+      "Cell CSR": 100.0,
+      "Objective gap": "2.003102%",
+      "Task count": 50,
+      "Gap count": 50
+    },
+    {
+      "Dataset": "Architecture-NCARB50-v2",
+      "Solver over CTHR cells": "SLSQP over CTHR cells",
+      "Solve": 100.0,
+      "Cell CSR": 100.0,
+      "Objective gap": "2.003342%",
+      "Task count": 50,
+      "Gap count": 50
+    },
+    {
+      "Dataset": "Architecture-NCARB50-v2",
+      "Solver over CTHR cells": "CP-SAT + OR-Tools over CTHR cells",
+      "Solve": 100.0,
+      "Cell CSR": 100.0,
+      "Objective gap": "2.004783%",
+      "Task count": 50,
+      "Gap count": 50
+    },
+    {
+      "Dataset": "Architecture-NCARB50-v2",
+      "Solver over CTHR cells": "SCIP over CTHR cells",
+      "Solve": 100.0,
+      "Cell CSR": 100.0,
+      "Objective gap": "0.003819%",
+      "Task count": 50,
+      "Gap count": 50
+    }
+  ]
+}

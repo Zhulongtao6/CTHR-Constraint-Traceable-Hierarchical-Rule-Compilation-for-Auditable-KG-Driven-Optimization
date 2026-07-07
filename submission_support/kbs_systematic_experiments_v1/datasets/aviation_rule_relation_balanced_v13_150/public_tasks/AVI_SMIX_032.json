@@ -1,0 +1,262 @@
+{
+  "version": "aviation_rule_relation_balanced_v13_150",
+  "algorithm_input": {
+    "omega_id": "AVI_SMIX_032",
+    "title": "精密进近最终进近航段数据块频道号引用一致性审查 032",
+    "domain": "aviation_procedure_design",
+    "task_type": "precision_approach_data_block_consistency_review",
+    "strong_business_third_type": true,
+    "business_domain": "precision",
+    "design_intent": "在给定导航设备频道号的条件下，审查最终进近航段数据块、航图拟公布资料和导航数据库记录是否一致。频道号不是程序设计人员自由优化的变量，任务只优化编码冲突风险、资料一致性裕度、字段完整性和人工校核工作量。",
+    "scenario_facts": {
+      "benchmark_round": "aviation_strong_mixed_v5_150",
+      "business_domain": "precision",
+      "program_design_context": "仪表着陆系统、卫星增强、垂直引导或最终进近数据块审查",
+      "review_question": "程序是否属于需要垂直引导或最终进近数据公布的类别，以及相应垂直参数是否可接受。",
+      "case_variant_index": 32,
+      "operation_context": "程序初设",
+      "traffic_and_terrain_variant": "山区或高原",
+      "source_policy": "由 v4 来源规则语义重构，未新增规则编号或来源页码",
+      "boundary_degeneracy_repair_round": "v7",
+      "original_degeneracy_type": "边界区间题",
+      "counter_constraint_policy": "增加同业务域反向变量，使最优解不能由单一规范阈值直接决定",
+      "v7_business_counter_explanation": "精密进近题加入下滑角、下降率、稳定距离、跑道入口距离、保护面裕度和最终进近数据块完整性；降低下降率、增大保护面裕度和提升字段完整性之间存在垂直引导与公布数据的真实冲突。",
+      "channel_number_role": "given_navigation_system_reference_parameter",
+      "channel_review_context": "final_approach_segment_data_block_publication_review",
+      "channel_number_source": "navigation_facility_or_system_assignment",
+      "channel_number_unitless": 40032,
+      "assigned_equipment_channel_number_unitless_032": 40032,
+      "fas_data_block_channel_number_unitless_032": 40032,
+      "chart_published_channel_number_unitless_032": 40033,
+      "navigation_database_channel_number_unitless_032": 40033,
+      "nearest_lower_occupied_channel_number_unitless_032": 40022,
+      "nearest_upper_occupied_channel_number_unitless_032": 40042,
+      "required_channel_spacing_unitless_032": 8,
+      "required_fas_fields_count_032": 12,
+      "completed_fas_fields_count_032": 12,
+      "missing_fas_field_count_reference_032": 0,
+      "occupied_channel_review_context_032": "同机场或邻近程序频道号占用集合用于最小间隔审查。",
+      "v11_channel_realism_patch": "频道号作为设备和资料记录比较对象，不作为自由优化设计量。",
+      "rule_query_focus": "business_multi_constraint",
+      "relation_balanced_version": "aviation_rule_relation_balanced_v13_150",
+      "method_visible_relation_positioning": "业务真实多约束优化：保留速度、距离、坡度、半径、越障余度、时间或空域占用等真实程序设计折中；规则语义仍决定可行域单元。",
+      "business_multi_constraint_context": "当前场景保留真实飞行程序设计多约束折中，但规则语义仍决定有效可行域。",
+      "solver_mechanism_profile": "complex_continuous_multi_constraint",
+      "method_visible_focus_note": "业务真实多约束优化：保留障碍物几何、连续变量、必要非线性关系和多目标折中，用于展示复杂可行域构造能力。"
+    },
+    "decision_variables": {
+      "precision_approach_applicability_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1,
+        "description": "公开输入中的程序适用性、类别、例外或公布前提变量；不包含参考规则编号。"
+      },
+      "channel_number_unitless_available_margin": {
+        "type": "continuous",
+        "unit": "unitless",
+        "lower": 0,
+        "upper": 72005.0,
+        "description": "由航空程序关键设计参数计算的可用裕度变量，用于衡量规则边界内的设计余量。"
+      },
+      "vertical_guidance_deviation_032": {
+        "type": "continuous",
+        "unit": "unitless",
+        "lower": 0,
+        "upper": 100.0,
+        "description": "由公开场景模型计算的航空业务派生设计量，用于多目标求解，不包含隐藏规则答案。"
+      },
+      "glidepath_safety_margin_032": {
+        "type": "continuous",
+        "unit": "unitless",
+        "lower": 0,
+        "upper": 100.0,
+        "description": "由公开场景模型计算的航空业务派生设计量，用于多目标求解，不包含隐藏规则答案。"
+      },
+      "final_approach_data_margin_032": {
+        "type": "continuous",
+        "unit": "risk_or_extent_index",
+        "lower": 0,
+        "upper": 100.0,
+        "description": "由公开场景模型计算的航空业务派生设计量，用于多目标求解，不包含隐藏规则答案。"
+      },
+      "glide_path_angle_deg_032": {
+        "type": "continuous",
+        "unit": "degree",
+        "lower": 2.0,
+        "upper": 4.0,
+        "description": "垂直引导或下滑航径角。"
+      },
+      "descent_rate_ft_min_032": {
+        "type": "continuous",
+        "unit": "ft/min",
+        "lower": 250,
+        "upper": 1300,
+        "description": "由地速和下降梯度共同决定的下降率。"
+      },
+      "vertical_guidance_stabilization_distance_nm_032": {
+        "type": "continuous",
+        "unit": "NM",
+        "lower": 0.5,
+        "upper": 20.0,
+        "description": "垂直引导稳定建立距离。"
+      },
+      "threshold_distance_nm_032": {
+        "type": "continuous",
+        "unit": "NM",
+        "lower": 0.0,
+        "upper": 15.0,
+        "description": "相对跑道入口的几何距离。"
+      },
+      "protection_surface_margin_m_032": {
+        "type": "continuous",
+        "unit": "m",
+        "lower": 0.0,
+        "upper": 300.0,
+        "description": "保护面净空裕度。"
+      },
+      "fas_data_field_completeness_count_032": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 0,
+        "upper": 20,
+        "description": "最终进近航段数据块已完整填写字段数量。"
+      },
+      "ground_speed_kt_032": {
+        "type": "continuous",
+        "unit": "kt",
+        "lower": 80,
+        "upper": 180,
+        "description": "程序设计采用的进近地速，用于把下降梯度转换为下降率。"
+      },
+      "descent_gradient_percent_032": {
+        "type": "continuous",
+        "unit": "percent",
+        "lower": 3.0,
+        "upper": 8.0,
+        "description": "最终进近垂直下降梯度。"
+      },
+      "fas_channel_encoding_conflict_risk_032": {
+        "type": "continuous",
+        "unit": "risk_index",
+        "lower": 0,
+        "upper": 100,
+        "description": "由频道号差异、邻近占用间隔和字段缺失共同形成的编码冲突风险。"
+      },
+      "fas_data_consistency_margin_032": {
+        "type": "continuous",
+        "unit": "margin_index",
+        "lower": 0,
+        "upper": 100,
+        "description": "设备、数据块、航图和数据库记录一致性形成的资料一致性裕度。"
+      },
+      "fas_data_verification_minutes_032": {
+        "type": "continuous",
+        "unit": "minute",
+        "lower": 0,
+        "upper": 180,
+        "description": "人工校核最终进近航段数据块和航图公布字段所需时间。"
+      },
+      "channel_number_normalized_offset_032": {
+        "type": "continuous",
+        "unit": "normalized_index",
+        "lower": 0,
+        "upper": 20,
+        "description": "频道号相对四万的归一化偏离量，用于编码冲突风险和一致性审查。"
+      },
+      "published_data_inconsistency_risk_032": {
+        "type": "continuous",
+        "unit": "risk_index",
+        "lower": 0,
+        "upper": 100,
+        "description": "航图拟公布资料与设备、数据块、数据库记录不一致的风险。"
+      },
+      "equipment_data_block_channel_delta_032": {
+        "type": "continuous",
+        "unit": "channel_number_delta",
+        "lower": 0,
+        "upper": 50,
+        "description": "设备分配频道号与最终进近航段数据块记录频道号之间的差异。"
+      },
+      "equipment_chart_channel_delta_032": {
+        "type": "continuous",
+        "unit": "channel_number_delta",
+        "lower": 0,
+        "upper": 50,
+        "description": "设备分配频道号与航图拟公布频道号之间的差异。"
+      },
+      "database_chart_channel_delta_032": {
+        "type": "continuous",
+        "unit": "channel_number_delta",
+        "lower": 0,
+        "upper": 50,
+        "description": "导航数据库记录频道号与航图拟公布频道号之间的差异。"
+      },
+      "fas_field_missing_count_032": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 0,
+        "upper": 12,
+        "description": "最终进近航段数据块必填字段缺失数。"
+      },
+      "channel_spacing_margin_unitless_032": {
+        "type": "continuous",
+        "unit": "channel_number_delta",
+        "lower": 0,
+        "upper": 80,
+        "description": "拟公布频道号与邻近已占用频道号之间的最小间隔裕度。"
+      }
+    },
+    "objectives": [
+      {
+        "name": "minimize_channel_encoding_conflict_risk",
+        "expression": "fas_channel_encoding_conflict_risk_032",
+        "sense": "minimize",
+        "business_meaning": "降低设备、数据块、航图和邻近已占用频道号之间的编码冲突风险。"
+      },
+      {
+        "name": "maximize_fas_data_consistency_margin",
+        "expression": "fas_data_consistency_margin_032",
+        "sense": "maximize",
+        "business_meaning": "提高最终进近航段数据块、航图和导航数据库之间的资料一致性裕度。"
+      },
+      {
+        "name": "minimize_publication_review_burden",
+        "expression": "published_data_inconsistency_risk_032 + 0.05 * fas_data_verification_minutes_032",
+        "sense": "minimize",
+        "business_meaning": "降低公布资料不一致风险和人工校核工作量。"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.4,
+        0.35,
+        0.25
+      ],
+      "meaning": "优先降低编码冲突风险，其次提高最终进近数据块一致性，并控制公布资料校验负担。"
+    },
+    "public_scenario_model": {
+      "model_id": "AVI_SMIX_032_v5_scenario_model",
+      "path": "scenario_models/aviation_strong_mixed_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "公开的非规范业务闭环模型；用于把规则变量、设计变量和多目标求解连接起来，不含隐藏参考规则编号或证书答案。"
+    },
+    "visible_input_note": "算法只能读取公开任务输入、公开场景模型和规则库；隐藏参考和来源证据只供评估器使用。",
+    "strong_mixed_subtype": "业务均衡混合",
+    "v8_strong_coupling_summary": {
+      "original_numeric_rule_variable": "channel_number_unitless",
+      "business_counter_template_id": "precision_intermediate_stabilization",
+      "coupling_policy": "原规则数值变量至少进入一个反向业务约束；非航图公布题还进入目标函数。"
+    },
+    "v9_final_business_repair": {
+      "template_id": "precision_channel_data_integrity",
+      "note": "频道号从保护面裕度公式中移除，只影响数据块唯一性、编码冲突、公布一致性和校验工作量。"
+    },
+    "v10_channel_scale_repair": "频道号风险采用 (channel_number_unitless - 40000) / 1000 归一化尺度，避免与风险变量上界不匹配。",
+    "channel_number_role_repair": "给定导航设备或系统分配的引用参数，只用于范围校验、数据块一致性、编码冲突和公布资料审查，不作为自由优化设计量。",
+    "task_focus": "business_multi_constraint",
+    "task_focus_description": "业务真实多约束优化：保留障碍物几何、连续变量、必要非线性关系和多目标折中，用于展示复杂可行域构造能力。",
+    "objective_interpretation": "目标函数用于可行解排序；本题主要挑战由 task_focus 决定，不应把全部任务理解为同一种非线性连续优化问题。",
+    "solver_mechanism_profile": "complex_continuous_multi_constraint"
+  }
+}

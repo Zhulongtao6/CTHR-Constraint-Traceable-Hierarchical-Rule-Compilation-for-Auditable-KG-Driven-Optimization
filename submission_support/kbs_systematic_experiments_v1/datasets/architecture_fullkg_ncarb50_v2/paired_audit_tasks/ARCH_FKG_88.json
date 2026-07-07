@@ -1,0 +1,282 @@
+{
+  "version": "architecture_ncarb50_v2_paired_audit_task_v1",
+  "visibility": "hidden_evaluation_or_offline_audit_only_not_method_input",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_88",
+    "title": "NCARB-derived fire-wall alternative to outdoor control area setback",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "site_hazard_control_area_layout",
+    "design_intent": "Evaluate a fire-wall alternative for an outdoor control area where site constraints make full separation costly.",
+    "scenario_facts": {
+      "entity_type": "outdoor control area",
+      "hazardous_material_state": "solid_or_liquid",
+      "public_way_or_buildable_lot_line": true,
+      "alternative_fire_wall_considered": true,
+      "ncarb_scenario_theme": "brownfield retail site planning",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "site_and_zoning_like",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized"
+    },
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "brownfield retail site planning",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "decision_variables": {
+      "minimum_setback_distance_ft": {
+        "type": "continuous",
+        "unit": "ft",
+        "lower": 0,
+        "upper": 40
+      },
+      "fire_wall_rating_hr": {
+        "type": "continuous",
+        "unit": "hour",
+        "lower": 0,
+        "upper": 4
+      },
+      "site_efficiency_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 15
+      },
+      "protection_redundancy_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 15
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_site_efficiency",
+        "expression": "site_efficiency_score"
+      },
+      {
+        "name": "maximize_protection_redundancy",
+        "expression": "protection_redundancy_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.5,
+        0.5
+      ],
+      "meaning": "balance site efficiency and fire-resistance protection"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_88_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references."
+  },
+  "evaluation_reference": {
+    "omega_id": "ARCH_FKG_88",
+    "title": "NCARB-derived fire-wall alternative to outdoor control area setback",
+    "rule_structure": {
+      "expected_source_rule_ids": [
+        "ifc-outdoor-control-area-setback-20ft",
+        "ifc-outdoor-control-area-exception-fire-wall"
+      ],
+      "expected_defeated_rule_ids": [],
+      "expected_surviving_rule_ids": [
+        "ifc-outdoor-control-area-setback-20ft",
+        "ifc-outdoor-control-area-exception-fire-wall"
+      ],
+      "expected_valid_rule_structures": [
+        [
+          "ifc-outdoor-control-area-setback-20ft",
+          "ifc-outdoor-control-area-exception-fire-wall"
+        ]
+      ],
+      "expected_rule_behavior": {
+        "should_activate": [
+          "20-foot minimum setback of outdoor control areas from public streets, alleys, ways, or buildable lot lines",
+          "2-hour fire-resistance-rated wall permitted as alternative to 20-ft setback for solid/liquid hazardous materials"
+        ],
+        "should_exclude": [
+          "Do not treat site efficiency alone as satisfying the fire-wall alternative without applying the two-hour wall requirement."
+        ],
+        "should_resolve": [
+          "exception_or_override",
+          "multi_rule_conjunction"
+        ]
+      },
+      "challenge_types": [
+        "exception_or_override",
+        "multi_rule_conjunction"
+      ],
+      "valid_constraint_cell_ids": [
+        "ARCH_FKG_88_cell_1"
+      ],
+      "expected_provenance": {
+        "kg_chunk_ids": [
+          "cb5fc283-0c09-5504-ad67-330f4bed993f"
+        ],
+        "kg_node_ids": [
+          "33fa6e1f-643c-5fcb-b44c-a46be1e75b4f",
+          "ec8d0f96-6fa3-58c3-8bb3-7b74a0327eab"
+        ],
+        "kg_edge_ids": [
+          "kg_edge_44258",
+          "kg_edge_24383",
+          "kg_edge_44420"
+        ],
+        "source_documents": [
+          {
+            "document": "IFC 2021",
+            "section": "source_chunk",
+            "page": "unknown",
+            "chunk_id": "cb5fc283-0c09-5504-ad67-330f4bed993f",
+            "rule_id": "ifc-outdoor-control-area-setback-20ft"
+          },
+          {
+            "document": "IFC 2021",
+            "section": "source_chunk",
+            "page": "unknown",
+            "chunk_id": "cb5fc283-0c09-5504-ad67-330f4bed993f",
+            "rule_id": "ifc-outdoor-control-area-exception-fire-wall"
+          },
+          {
+            "document": "ARE-Practice-Exam-Programming-and-Analysis.pdf",
+            "section": "Programming and Analysis",
+            "page": "practice-exam-question",
+            "question_number": "Question 20",
+            "derivation_policy": "Paraphrased and parameterized from an NCARB practice-exam scenario; original question text is not copied."
+          }
+        ]
+      }
+    },
+    "task_derivation_source": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "document": "ARE-Practice-Exam-Programming-and-Analysis.pdf",
+      "division": "Programming and Analysis",
+      "question_number": "Question 20",
+      "theme": "brownfield retail site planning",
+      "adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "source_policy": "Hidden provenance only; algorithm-visible inputs expose only generalized NCARB-derived themes."
+    },
+    "benchmark_extension_metadata": {
+      "extension_round": "architecture_ncarb_50_extension",
+      "source_base_task_id": null,
+      "ncarb_category": "site_and_zoning_like",
+      "source_policy": "paraphrased_parameterized_not_verbatim",
+      "dataset_characterization": "NCARB practice-topic-derived, paraphrased, and parameterized architecture-code semantic extension task.",
+      "independence_claim": "parameterized_variant_not_fully_independent_real_project_case",
+      "source_visibility_policy": "Exact practice identifiers, original question text, answer choices, and source file names are hidden from algorithm-visible inputs.",
+      "method_visibility": "hidden_evaluation_reference_not_method_input"
+    },
+    "feasible_region": {
+      "executable_constraints": [
+        {
+          "constraint_id": "C1",
+          "expression": "minimum_setback_distance_ft >= 20",
+          "role": "outdoor_control_area_base_setback",
+          "source_type": "rule_library",
+          "source_id": "ifc-outdoor-control-area-setback-20ft",
+          "executable": true,
+          "checker_expression": "minimum_setback_distance_ft >= 20",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "minimum_setback_distance_ft"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C2",
+          "expression": "fire_wall_rating_hr >= 2",
+          "role": "two_hour_fire_wall_alternative",
+          "source_type": "rule_library",
+          "source_id": "ifc-outdoor-control-area-exception-fire-wall",
+          "executable": true,
+          "checker_expression": "fire_wall_rating_hr >= 2",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "fire_wall_rating_hr"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C90",
+          "expression": "site_efficiency_score <= 12 - 0.2 * minimum_setback_distance_ft - fire_wall_rating_hr",
+          "role": "site_efficiency_from_setback_and_wall",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "site_efficiency_score <= 12 - 0.2 * minimum_setback_distance_ft - fire_wall_rating_hr",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "fire_wall_rating_hr",
+              "minimum_setback_distance_ft",
+              "site_efficiency_score"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Setback and fire-wall construction both affect site efficiency."
+          }
+        },
+        {
+          "constraint_id": "C91",
+          "expression": "protection_redundancy_score <= (minimum_setback_distance_ft - 20) + 3 * fire_wall_rating_hr",
+          "role": "protection_redundancy_from_setback_and_wall",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "protection_redundancy_score <= (minimum_setback_distance_ft - 20) + 3 * fire_wall_rating_hr",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "fire_wall_rating_hr",
+              "minimum_setback_distance_ft",
+              "protection_redundancy_score"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Protection redundancy combines setback margin and fire-wall rating."
+          }
+        }
+      ],
+      "structure_only_constraints": [],
+      "valid_constraint_cells": [
+        {
+          "cell_id": "ARCH_FKG_88_cell_1",
+          "description": "Single source-grounded feasible cell after applying applicable rules and public scenario model constraints.",
+          "constraint_ids": [
+            "C1",
+            "C2",
+            "C90",
+            "C91"
+          ],
+          "source_rule_ids": [
+            "ifc-outdoor-control-area-setback-20ft",
+            "ifc-outdoor-control-area-exception-fire-wall"
+          ]
+        }
+      ]
+    },
+    "evaluation_usage_note": "Hidden reference only. Algorithms must not receive rule IDs, feasible-region answers, provenance targets, defeated/surviving labels, or valid-cell labels during prediction."
+  }
+}

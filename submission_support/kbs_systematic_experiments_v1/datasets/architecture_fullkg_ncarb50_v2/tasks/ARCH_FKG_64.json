@@ -1,0 +1,80 @@
+{
+  "version": "architecture_ncarb50_v2_public_task_v1",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_64",
+    "title": "NCARB-derived open office audible alarm setting",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "fire_alarm_audibility_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: office building occupied-floor alarm setting. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "ambient_avg_dba": 55,
+      "ambient_max_60s_dba": 70,
+      "space_type": "open_office",
+      "system.type": "audible alarm notification appliance",
+      "type": "audible alarm notification appliance",
+      "ncarb_scenario_theme": "office building occupied-floor alarm setting",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "fire_and_egress",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Open-office audible alarm variant with office noise background."
+    },
+    "decision_variables": {
+      "sound_pressure_level_dba": {
+        "type": "continuous",
+        "unit": "dBA",
+        "lower": 60,
+        "upper": 115
+      },
+      "audibility_margin_dba": {
+        "type": "continuous",
+        "unit": "dBA",
+        "lower": 0,
+        "upper": 40
+      },
+      "occupant_discomfort_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_audibility_margin",
+        "expression": "audibility_margin_dba"
+      },
+      {
+        "name": "minimize_occupant_discomfort",
+        "expression": "occupant_discomfort_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.57,
+        0.43
+      ],
+      "meaning": "balance office audibility margin and occupant comfort"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_64_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "office building occupied-floor alarm setting",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "scenario_variant_status": "parameterized_scenario_variant",
+    "scenario_variant_note": "Parameterized variant with substantive changes in facts, bounds, weights, or document context; not a fully independent real project case.",
+    "scenario_variant_differentiator": "Open-office audible alarm variant with office noise background.",
+    "scenario_variant_group_id": "ncarb50_scenario_variant_group_03",
+    "constraint_solver_profile": "requires_nonlinear_or_auxiliary_constraint_checker",
+    "nonlinear_or_auxiliary_note": "Contains a helper expression such as max(), abs(), symbolic division, or a variable product."
+  }
+}

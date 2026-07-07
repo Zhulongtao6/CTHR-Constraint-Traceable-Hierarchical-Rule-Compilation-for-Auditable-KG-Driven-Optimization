@@ -1,0 +1,91 @@
+{
+  "version": "architecture_ncarb50_v2_public_task_v1",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_57",
+    "title": "NCARB-derived park restroom toilet compartment operation",
+    "domain": "architecture_code_compliance",
+    "source_domain": "ADA",
+    "task_type": "accessible_toilet_compartment_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: accessible path and public restroom support spaces. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "facility_type": "public_park_restroom",
+      "compartment_type": "accessible_toilet_compartment",
+      "element_type": "toilet compartment door",
+      "approach_side": "latch side",
+      "scenario_variant": "parameterized_variant",
+      "expansion_case_family": "accessibility",
+      "ncarb_scenario_theme": "accessible path and public restroom support spaces",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Public park restroom variant with outdoor facility context and higher accessibility-operation weight.",
+      "review_context": "outdoor_public_facility_restroom"
+    },
+    "decision_variables": {
+      "latch_side_clearance_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 30,
+        "upper": 66
+      },
+      "self_closing_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1
+      },
+      "dual_side_pull_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1
+      },
+      "partition_footprint_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      },
+      "accessible_operation_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      }
+    },
+    "objectives": [
+      {
+        "name": "minimize_partition_footprint",
+        "expression": "partition_footprint_score"
+      },
+      {
+        "name": "maximize_accessible_operation",
+        "expression": "accessible_operation_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.38,
+        0.62
+      ],
+      "meaning": "prioritize accessible operation in park restroom context"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_57_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "accessible path and public restroom support spaces",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "scenario_variant_status": "parameterized_scenario_variant",
+    "scenario_variant_note": "Parameterized variant with substantive changes in facts, bounds, weights, or document context; not a fully independent real project case.",
+    "scenario_variant_differentiator": "Public park restroom variant with outdoor facility context and higher accessibility-operation weight.",
+    "scenario_variant_group_id": "ncarb50_scenario_variant_group_01"
+  }
+}

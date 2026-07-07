@@ -1,0 +1,8 @@
+﻿Dataset,Variant,Component removed,Candidate source,Solved,Formal CSR,Sem-CSR,Rule-ID Precision,Rule-ID Recall,Exact Rule Match
+Architecture NCARB50 v2,CTHR default,None,predicted_valid_rule_ids,48/50 (96.0%),86.0%,72.0%,81.5%,95.0%,37/50 (74.0%)
+Architecture NCARB50 v2,w/o Candidate-to-Valid Profiling,profile-based candidate-to-valid resolver,candidate_rule_ids_generated,48/50 (96.0%),86.0%,72.0%,81.5%,95.0%,37/50 (74.0%)
+Architecture NCARB50 v2,w/o Scenario Applicability,scenario applicability filtering,candidate_rule_ids_generated,50/50 (100.0%),90.0%,76.0%,77.5%,97.0%,33/50 (66.0%)
+Architecture NCARB50 v2,w/o Positive Closure,dependency closure + parameter/formula propagation,candidate_rule_ids_generated,48/50 (96.0%),86.0%,72.0%,81.5%,95.0%,37/50 (74.0%)
+Architecture NCARB50 v2,w/o Negative Resolution,exclusion + override + precedence resolution,candidate_rule_ids_generated,48/50 (96.0%),86.0%,72.0%,80.1%,95.0%,35/50 (70.0%)
+Architecture NCARB50 v2,w/o Relation-Aware Recovery,CTHR symbolic valid-rule recovery,candidate_rule_ids_after_llm_relation_filter,50/50 (100.0%),90.0%,76.0%,77.1%,99.0%,31/50 (62.0%)
+Architecture NCARB50 v2,w/o Compiled Templates,compiled rule-to-constraint templates,predicted_valid_rule_ids,48/50 (96.0%),80.0%,66.0%,81.5%,95.0%,37/50 (74.0%)

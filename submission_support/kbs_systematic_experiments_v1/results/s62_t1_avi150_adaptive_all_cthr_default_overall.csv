@@ -1,0 +1,2 @@
+﻿Dataset,Method,Method type,Rule Precision,Rule Recall,Formal CSR,Sem-CSR,False accept,Invalid cases
+Aviation,CTHR default,cthr_semantic_modeling,74.7%,70.7%,89.3%,81.3%,8.0%,28/150 (18.7%) (16 unsupported)

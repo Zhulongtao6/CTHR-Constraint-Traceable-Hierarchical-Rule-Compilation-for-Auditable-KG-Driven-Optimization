@@ -1,0 +1,589 @@
+{
+  "version": "architecture_ncarb50_v2_paired_audit_task_v1",
+  "visibility": "hidden_evaluation_or_offline_audit_only_not_method_input",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_92",
+    "title": "NCARB-derived occupant-load diagram coordination",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IBC",
+    "task_type": "egress_layout_and_occupant_load_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: construction document discrepancy before bidding. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "tenant_area_type": "small residential suite",
+      "occupancy_group": "group r-2 occupancy",
+      "scenario.occupancy_group": "group r-2 occupancy",
+      "story_condition": "first story with diagram coordination",
+      "exit_discharge_or_public_way_continuity_required": true,
+      "single_exit_strategy_requested": true,
+      "code_context": "IBC",
+      "ncarb_scenario_theme": "construction document discrepancy before bidding",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "construction_documentation",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Egress diagram coordination variant with drawing-consistency emphasis.",
+      "occupant_load": 36,
+      "tenant_area_sf": 2800,
+      "egress_diagram_consistency_score": 7
+    },
+    "decision_variables": {
+      "exit_count": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 1,
+        "upper": 3
+      },
+      "proposed_occupant_load_factor": {
+        "type": "continuous",
+        "unit": "occupant_per_sf",
+        "lower": 0.1,
+        "upper": 1.5
+      },
+      "approved_diagram_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1
+      },
+      "usable_area_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      },
+      "egress_verification_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_usable_area",
+        "expression": "usable_area_score"
+      },
+      {
+        "name": "maximize_egress_verification",
+        "expression": "egress_verification_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.36,
+        0.64
+      ],
+      "meaning": "prioritize egress diagram consistency and verification"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_92_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "construction document discrepancy before bidding",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "scenario_variant_status": "parameterized_scenario_variant",
+    "scenario_variant_note": "Parameterized variant with substantive changes in facts, bounds, weights, or document context; not a fully independent real project case.",
+    "scenario_variant_differentiator": "Egress diagram coordination variant with drawing-consistency emphasis.",
+    "scenario_variant_group_id": "ncarb50_scenario_variant_group_04"
+  },
+  "evaluation_reference": {
+    "omega_id": "ARCH_FKG_92",
+    "title": "NCARB-derived occupant-load diagram coordination",
+    "rule_structure": {
+      "expected_source_rule_ids": [
+        "ibc_1006_3_4_single_exit_permitted",
+        "ibc_1004_6_occupant_load_increase"
+      ],
+      "expected_defeated_rule_ids": [],
+      "expected_surviving_rule_ids": [
+        "ibc_1004_6_occupant_load_increase",
+        "ibc_1006_3_4_single_exit_permitted"
+      ],
+      "expected_valid_rule_structures": [
+        [
+          "ibc_1004_6_occupant_load_increase",
+          "ibc_1006_3_4_single_exit_permitted"
+        ]
+      ],
+      "expected_rule_behavior": {
+        "should_activate": [
+          "Permitted increase in occupant load beyond Table 1004.5",
+          "Single exit or access to single exit permitted under specified conditions"
+        ],
+        "should_exclude": [],
+        "should_resolve": [
+          "applicability_resolution",
+          "documentation_condition"
+        ]
+      },
+      "challenge_types": [
+        "applicability_resolution",
+        "documentation_condition"
+      ],
+      "valid_constraint_cell_ids": [
+        "ARCH_FKG_92_cell_1"
+      ],
+      "expected_provenance": {
+        "kg_chunk_ids": [
+          "4c5d21de-366f-5d60-b393-6136779710b3",
+          "f80e3deb-7477-5974-a84b-cd2138e84fa4"
+        ],
+        "kg_node_ids": [
+          "8b285436-cc1d-54b6-846d-f95554acfddd",
+          "ff963a9e-3389-55f5-b716-ac5a71a9907f"
+        ],
+        "kg_edge_ids": [
+          "kg_edge_11300",
+          "kg_edge_20782",
+          "kg_edge_24597",
+          "kg_edge_33929",
+          "kg_edge_33945"
+        ],
+        "source_documents": [
+          {
+            "document": "IFC 2021",
+            "section": "1006.3.4",
+            "page": "unknown",
+            "chunk_id": "f80e3deb-7477-5974-a84b-cd2138e84fa4"
+          },
+          {
+            "document": "IBC 2021",
+            "section": "1004.6",
+            "page": "unknown",
+            "chunk_id": "4c5d21de-366f-5d60-b393-6136779710b3"
+          },
+          {
+            "document": "ARE-Practice-Exam-Project-Development-and-Documentation.pdf",
+            "section": "Project Development and Documentation",
+            "page": "practice-exam-question",
+            "question_number": "Question 20",
+            "derivation_policy": "Paraphrased and parameterized from an NCARB practice-exam scenario; original question text is not copied."
+          }
+        ]
+      }
+    },
+    "feasible_region": {
+      "executable_constraints": [
+        {
+          "constraint_id": "C1",
+          "expression": "exit_count == 1",
+          "role": "single_exit_strategy",
+          "source_type": "rule_library",
+          "source_id": "ibc_1006_3_4_single_exit_permitted",
+          "executable": true,
+          "checker_expression": "exit_count == 1",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "exit_count"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C2",
+          "expression": "proposed_occupant_load_factor <= 1",
+          "role": "occupant_load_factor_limit",
+          "source_type": "rule_library",
+          "source_id": "ibc_1004_6_occupant_load_increase",
+          "executable": true,
+          "checker_expression": "proposed_occupant_load_factor <= 1",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "proposed_occupant_load_factor"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C3",
+          "expression": "approved_diagram_indicator == 1",
+          "role": "occupant_load_diagram_substantiation",
+          "source_type": "rule_library",
+          "source_id": "ibc_1004_6_occupant_load_increase",
+          "executable": true,
+          "checker_expression": "approved_diagram_indicator == 1",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "approved_diagram_indicator"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "semantic_indicator_encoding": true,
+            "derived_from_text_or_semantic_rule": true,
+            "derived_from_rule_id": "ibc_1004_6_occupant_load_increase",
+            "encoding_note": "This executable predicate is a task-level semantic encoding of a textual or categorical full-KG rule."
+          }
+        },
+        {
+          "constraint_id": "C90",
+          "expression": "usable_area_score <= 10 - 2 * exit_count - proposed_occupant_load_factor",
+          "role": "usable_area_from_exit_and_load_strategy",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "usable_area_score <= 10 - 2 * exit_count - proposed_occupant_load_factor",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "usable_area_score",
+              "exit_count",
+              "proposed_occupant_load_factor"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Single-exit and occupant-load choices constrain usable-area score."
+          }
+        },
+        {
+          "constraint_id": "C91",
+          "expression": "egress_verification_score <= 4 * exit_count + 4 * approved_diagram_indicator + 2 * (1 - proposed_occupant_load_factor)",
+          "role": "egress_verification_from_exit_and_documentation",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "egress_verification_score <= 4 * exit_count + 4 * approved_diagram_indicator + 2 * (1 - proposed_occupant_load_factor)",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "egress_verification_score",
+              "exit_count",
+              "approved_diagram_indicator",
+              "proposed_occupant_load_factor"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Egress verification is tied to exit count, approved documentation, and occupant-load factor."
+          }
+        }
+      ],
+      "structure_only_constraints": [],
+      "valid_constraint_cells": [
+        {
+          "cell_id": "ARCH_FKG_92_cell_1",
+          "cell_type": "single_valid_fullkg_rule_structure",
+          "rule_ids": [
+            "ibc_1004_6_occupant_load_increase",
+            "ibc_1006_3_4_single_exit_permitted"
+          ],
+          "constraints": [
+            {
+              "constraint_id": "C1",
+              "expression": "exit_count == 1",
+              "role": "single_exit_strategy",
+              "source_type": "rule_library",
+              "source_id": "ibc_1006_3_4_single_exit_permitted",
+              "executable": true,
+              "checker_expression": "exit_count == 1",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "exit_count"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C2",
+              "expression": "proposed_occupant_load_factor <= 1",
+              "role": "occupant_load_factor_limit",
+              "source_type": "rule_library",
+              "source_id": "ibc_1004_6_occupant_load_increase",
+              "executable": true,
+              "checker_expression": "proposed_occupant_load_factor <= 1",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "proposed_occupant_load_factor"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C3",
+              "expression": "approved_diagram_indicator == 1",
+              "role": "occupant_load_diagram_substantiation",
+              "source_type": "rule_library",
+              "source_id": "ibc_1004_6_occupant_load_increase",
+              "executable": true,
+              "checker_expression": "approved_diagram_indicator == 1",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "approved_diagram_indicator"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "semantic_indicator_encoding": true,
+                "derived_from_text_or_semantic_rule": true,
+                "derived_from_rule_id": "ibc_1004_6_occupant_load_increase",
+                "encoding_note": "This executable predicate is a task-level semantic encoding of a textual or categorical full-KG rule."
+              }
+            },
+            {
+              "constraint_id": "C90",
+              "expression": "usable_area_score <= 10 - 2 * exit_count - proposed_occupant_load_factor",
+              "role": "usable_area_from_exit_and_load_strategy",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "usable_area_score <= 10 - 2 * exit_count - proposed_occupant_load_factor",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "usable_area_score",
+                  "exit_count",
+                  "proposed_occupant_load_factor"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Single-exit and occupant-load choices constrain usable-area score."
+              }
+            },
+            {
+              "constraint_id": "C91",
+              "expression": "egress_verification_score <= 4 * exit_count + 4 * approved_diagram_indicator + 2 * (1 - proposed_occupant_load_factor)",
+              "role": "egress_verification_from_exit_and_documentation",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "egress_verification_score <= 4 * exit_count + 4 * approved_diagram_indicator + 2 * (1 - proposed_occupant_load_factor)",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "egress_verification_score",
+                  "exit_count",
+                  "approved_diagram_indicator",
+                  "proposed_occupant_load_factor"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Egress verification is tied to exit count, approved documentation, and occupant-load factor."
+              }
+            }
+          ],
+          "description": "Executable feasible cell induced by the expected full-KG rule structure for this grounded scenario."
+        }
+      ],
+      "reference_semantics": {
+        "positive_membership_condition": "all executable_constraints evaluate true and at least one valid cell holds when cells are present",
+        "structure_only_constraints_usage": "used to check rule resolution, provenance, exceptions, or semantic requirements before numeric membership checking"
+      }
+    },
+    "certificate_targets": {
+      "source_rule_ids": [
+        "ibc_1006_3_4_single_exit_permitted",
+        "ibc_1004_6_occupant_load_increase"
+      ],
+      "provenance": [
+        {
+          "document": "IFC 2021",
+          "section": "1006.3.4",
+          "page": "unknown",
+          "chunk_id": "f80e3deb-7477-5974-a84b-cd2138e84fa4"
+        },
+        {
+          "document": "IBC 2021",
+          "section": "1004.6",
+          "page": "unknown",
+          "chunk_id": "4c5d21de-366f-5d60-b393-6136779710b3"
+        }
+      ]
+    },
+    "diagnostic_candidate_rule_ids_reference_only": [
+      "ibc_1006_3_4_single_exit_permitted",
+      "ibc_1004_6_occupant_load_increase"
+    ],
+    "rule_library_id_bindings": [
+      {
+        "rule_id": "ibc_1004_6_occupant_load_increase",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ibc_1004_6_occupant_load_increase",
+        "rule_name": "Permitted increase in occupant load beyond Table 1004.5",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "4c5d21de-366f-5d60-b393-6136779710b3"
+        ],
+        "source_node_ids": [
+          "8b285436-cc1d-54b6-846d-f95554acfddd",
+          "ff963a9e-3389-55f5-b716-ac5a71a9907f"
+        ],
+        "provenance": [
+          {
+            "document": "IBC 2021",
+            "section": "1004.6",
+            "page": "unknown",
+            "chunk_id": "4c5d21de-366f-5d60-b393-6136779710b3"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "maximum_occupant_load_factor",
+            "op": "<=",
+            "value": 1,
+            "unit": "occupant per square foot"
+          },
+          {
+            "variable": "occupant_load_factor_unit",
+            "op": "=",
+            "value": "0.65 m² per occupant",
+            "unit": "square meter per occupant"
+          },
+          {
+            "variable": "occupant_load_basis",
+            "op": "text",
+            "value": "must be substantiated by an approved aisle, seating or fixed equipment diagram when required by the fire code official",
+            "unit": null
+          }
+        ]
+      },
+      {
+        "rule_id": "ibc_1006_3_4_single_exit_permitted",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ibc_1006_3_4_single_exit_permitted",
+        "rule_name": "Single exit or access to single exit permitted under specified conditions",
+        "rule_type": "applicability",
+        "source_chunk_ids": [
+          "f80e3deb-7477-5974-a84b-cd2138e84fa4"
+        ],
+        "source_node_ids": [],
+        "provenance": [
+          {
+            "document": "IFC 2021",
+            "section": "1006.3.4",
+            "page": "unknown",
+            "chunk_id": "f80e3deb-7477-5974-a84b-cd2138e84fa4"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "exit_count",
+            "op": "=",
+            "value": 1,
+            "unit": "unknown"
+          }
+        ]
+      }
+    ],
+    "reference_constraint_rule_bindings": [
+      {
+        "reference_container": "feasible_region.executable_constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "single_exit_strategy",
+        "reference_expression": "exit_count == 1",
+        "source_rule_id": "ibc_1006_3_4_single_exit_permitted",
+        "rule_library_rule_id": "ibc_1006_3_4_single_exit_permitted",
+        "rule_library_rule_name": "Single exit or access to single exit permitted under specified conditions"
+      },
+      {
+        "reference_container": "feasible_region.executable_constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "occupant_load_factor_limit",
+        "reference_expression": "proposed_occupant_load_factor <= 1",
+        "source_rule_id": "ibc_1004_6_occupant_load_increase",
+        "rule_library_rule_id": "ibc_1004_6_occupant_load_increase",
+        "rule_library_rule_name": "Permitted increase in occupant load beyond Table 1004.5"
+      },
+      {
+        "reference_container": "feasible_region.executable_constraints[2]",
+        "reference_constraint_id": "C3",
+        "reference_role": "occupant_load_diagram_substantiation",
+        "reference_expression": "approved_diagram_indicator == 1",
+        "source_rule_id": "ibc_1004_6_occupant_load_increase",
+        "rule_library_rule_id": "ibc_1004_6_occupant_load_increase",
+        "rule_library_rule_name": "Permitted increase in occupant load beyond Table 1004.5"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "single_exit_strategy",
+        "reference_expression": "exit_count == 1",
+        "source_rule_id": "ibc_1006_3_4_single_exit_permitted",
+        "rule_library_rule_id": "ibc_1006_3_4_single_exit_permitted",
+        "rule_library_rule_name": "Single exit or access to single exit permitted under specified conditions"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "occupant_load_factor_limit",
+        "reference_expression": "proposed_occupant_load_factor <= 1",
+        "source_rule_id": "ibc_1004_6_occupant_load_increase",
+        "rule_library_rule_id": "ibc_1004_6_occupant_load_increase",
+        "rule_library_rule_name": "Permitted increase in occupant load beyond Table 1004.5"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[2]",
+        "reference_constraint_id": "C3",
+        "reference_role": "occupant_load_diagram_substantiation",
+        "reference_expression": "approved_diagram_indicator == 1",
+        "source_rule_id": "ibc_1004_6_occupant_load_increase",
+        "rule_library_rule_id": "ibc_1004_6_occupant_load_increase",
+        "rule_library_rule_name": "Permitted increase in occupant load beyond Table 1004.5"
+      }
+    ],
+    "task_derivation_source": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "document": "ARE-Practice-Exam-Project-Development-and-Documentation.pdf",
+      "division": "Project Development and Documentation",
+      "question_number": "Question 20",
+      "theme": "construction document discrepancy before bidding",
+      "adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "source_policy": "Hidden provenance only; algorithm-visible inputs expose only generalized NCARB-derived themes."
+    },
+    "benchmark_extension_metadata": {
+      "extension_round": "architecture_ncarb_50_extension",
+      "source_base_task_id": "ARCH_FKG_30",
+      "ncarb_category": "construction_documentation",
+      "source_policy": "paraphrased_parameterized_not_verbatim",
+      "dataset_characterization": "NCARB practice-topic-derived, paraphrased, and parameterized architecture-code semantic extension task.",
+      "independence_claim": "parameterized_variant_not_fully_independent_real_project_case",
+      "source_visibility_policy": "Exact practice identifiers, original question text, answer choices, and source file names are hidden from algorithm-visible inputs.",
+      "scenario_variant_group_id": "ncarb50_scenario_variant_group_04",
+      "scenario_variant_group_members": [
+        "ARCH_FKG_71",
+        "ARCH_FKG_83",
+        "ARCH_FKG_92"
+      ],
+      "scenario_variant_status": "parameterized_scenario_variant",
+      "scenario_variant_differentiator": "Egress diagram coordination variant with drawing-consistency emphasis.",
+      "method_visibility": "hidden_evaluation_reference_not_method_input"
+    }
+  }
+}

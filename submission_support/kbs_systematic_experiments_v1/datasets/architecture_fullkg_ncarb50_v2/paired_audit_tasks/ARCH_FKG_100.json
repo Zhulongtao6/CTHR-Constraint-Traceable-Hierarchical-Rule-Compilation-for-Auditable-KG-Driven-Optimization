@@ -1,0 +1,615 @@
+{
+  "version": "architecture_ncarb50_v2_paired_audit_task_v1",
+  "visibility": "hidden_evaluation_or_offline_audit_only_not_method_input",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_100",
+    "title": "NCARB-derived restroom door operation checklist",
+    "domain": "architecture_code_compliance",
+    "source_domain": "ADA",
+    "task_type": "accessible_toilet_compartment_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: fixture count and accessible restroom checklist. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "facility_type": "final_restroom_operation_checklist",
+      "compartment_type": "accessible_toilet_compartment",
+      "element_type": "toilet compartment door",
+      "approach_side": "latch side",
+      "scenario_variant": "parameterized_variant",
+      "expansion_case_family": "construction_documentation",
+      "ncarb_scenario_theme": "fixture count and accessible restroom checklist",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Final construction-document checklist variant for restroom door operation.",
+      "review_context": "final_construction_document_checklist"
+    },
+    "decision_variables": {
+      "latch_side_clearance_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 24,
+        "upper": 60
+      },
+      "self_closing_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1
+      },
+      "dual_side_pull_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1
+      },
+      "partition_footprint_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      },
+      "accessible_operation_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 12
+      }
+    },
+    "objectives": [
+      {
+        "name": "minimize_partition_footprint",
+        "expression": "partition_footprint_score"
+      },
+      {
+        "name": "maximize_accessible_operation",
+        "expression": "accessible_operation_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.35,
+        0.65
+      ],
+      "meaning": "prioritize final checklist accessibility operation confirmation"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_100_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "fixture count and accessible restroom checklist",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "scenario_variant_status": "parameterized_scenario_variant",
+    "scenario_variant_note": "Parameterized variant with substantive changes in facts, bounds, weights, or document context; not a fully independent real project case.",
+    "scenario_variant_differentiator": "Final construction-document checklist variant for restroom door operation.",
+    "scenario_variant_group_id": "ncarb50_scenario_variant_group_01"
+  },
+  "evaluation_reference": {
+    "omega_id": "ARCH_FKG_100",
+    "title": "NCARB-derived restroom door operation checklist",
+    "rule_structure": {
+      "expected_source_rule_ids": [
+        "ada-toilet-compartment-door-latch-side-clearance",
+        "ada-toilet-compartment-door-self-closing",
+        "ada-toilet-compartment-door-pull-placement"
+      ],
+      "expected_defeated_rule_ids": [],
+      "expected_surviving_rule_ids": [
+        "ada-toilet-compartment-door-latch-side-clearance",
+        "ada-toilet-compartment-door-pull-placement",
+        "ada-toilet-compartment-door-self-closing"
+      ],
+      "expected_valid_rule_structures": [
+        [
+          "ada-toilet-compartment-door-latch-side-clearance",
+          "ada-toilet-compartment-door-pull-placement",
+          "ada-toilet-compartment-door-self-closing"
+        ]
+      ],
+      "expected_rule_behavior": {
+        "should_activate": [
+          "Minimum latch-side clearance for toilet compartment doors",
+          "Dual-side door pull placement for toilet compartment doors",
+          "Self-closing requirement for toilet compartment doors"
+        ],
+        "should_exclude": [],
+        "should_resolve": [
+          "multi_rule_conjunction",
+          "accessibility_operability"
+        ]
+      },
+      "challenge_types": [
+        "multi_rule_conjunction",
+        "accessibility_operability"
+      ],
+      "valid_constraint_cell_ids": [
+        "ARCH_FKG_100_cell_1"
+      ],
+      "expected_provenance": {
+        "kg_chunk_ids": [
+          "080b397c-1a5f-5364-a1c2-7077c52e8e33"
+        ],
+        "kg_node_ids": [
+          "98f39e69-32d1-5de2-bdd2-82d08559a50e"
+        ],
+        "kg_edge_ids": [
+          "kg_edge_60453"
+        ],
+        "source_documents": [
+          {
+            "document": "2010-design-standards",
+            "section": "604.8.2.2",
+            "page": 172,
+            "chunk_id": "080b397c-1a5f-5364-a1c2-7077c52e8e33"
+          },
+          {
+            "document": "ARE-Practice-Exam-Project-Planning-and-Design.pdf",
+            "section": "Project Planning and Design",
+            "page": "practice-exam-question",
+            "question_number": "Question 15",
+            "derivation_policy": "Paraphrased and parameterized from an NCARB practice-exam scenario; original question text is not copied."
+          }
+        ]
+      }
+    },
+    "feasible_region": {
+      "executable_constraints": [
+        {
+          "constraint_id": "C1",
+          "expression": "latch_side_clearance_in >= 42",
+          "role": "toilet_compartment_latch_side_clearance",
+          "source_type": "rule_library",
+          "source_id": "ada-toilet-compartment-door-latch-side-clearance",
+          "executable": true,
+          "checker_expression": "latch_side_clearance_in >= 42",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "latch_side_clearance_in"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C2",
+          "expression": "self_closing_indicator == 1",
+          "role": "toilet_compartment_self_closing_door",
+          "source_type": "rule_library",
+          "source_id": "ada-toilet-compartment-door-self-closing",
+          "executable": true,
+          "checker_expression": "self_closing_indicator == 1",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "self_closing_indicator"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "semantic_indicator_encoding": true,
+            "derived_from_text_or_semantic_rule": true,
+            "derived_from_rule_id": "ada-toilet-compartment-door-self-closing",
+            "encoding_note": "This executable predicate is a task-level semantic encoding of a textual or categorical full-KG rule."
+          }
+        },
+        {
+          "constraint_id": "C3",
+          "expression": "dual_side_pull_indicator == 1",
+          "role": "toilet_compartment_dual_side_door_pull",
+          "source_type": "rule_library",
+          "source_id": "ada-toilet-compartment-door-pull-placement",
+          "executable": true,
+          "checker_expression": "dual_side_pull_indicator == 1",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "dual_side_pull_indicator"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "semantic_indicator_encoding": true,
+            "derived_from_text_or_semantic_rule": true,
+            "derived_from_rule_id": "ada-toilet-compartment-door-pull-placement",
+            "encoding_note": "This executable predicate is a task-level semantic encoding of a textual or categorical full-KG rule."
+          }
+        },
+        {
+          "constraint_id": "C90",
+          "expression": "partition_footprint_score >= 0.1 * latch_side_clearance_in + 2 * self_closing_indicator + 2 * dual_side_pull_indicator",
+          "role": "partition_footprint_from_accessible_door_features",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "partition_footprint_score >= 0.1 * latch_side_clearance_in + 2 * self_closing_indicator + 2 * dual_side_pull_indicator",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "partition_footprint_score",
+              "latch_side_clearance_in",
+              "self_closing_indicator",
+              "dual_side_pull_indicator"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Accessible door features and clearance increase partition footprint."
+          }
+        },
+        {
+          "constraint_id": "C91",
+          "expression": "accessible_operation_score <= latch_side_clearance_in / 6 + 2 * self_closing_indicator + 2 * dual_side_pull_indicator",
+          "role": "accessible_operation_from_clearance_and_door_features",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "accessible_operation_score <= latch_side_clearance_in / 6 + 2 * self_closing_indicator + 2 * dual_side_pull_indicator",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "accessible_operation_score",
+              "latch_side_clearance_in",
+              "self_closing_indicator",
+              "dual_side_pull_indicator"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Accessible operation score is tied to clearance and required door features."
+          }
+        }
+      ],
+      "structure_only_constraints": [],
+      "valid_constraint_cells": [
+        {
+          "cell_id": "ARCH_FKG_100_cell_1",
+          "cell_type": "single_valid_fullkg_rule_structure",
+          "rule_ids": [
+            "ada-toilet-compartment-door-latch-side-clearance",
+            "ada-toilet-compartment-door-pull-placement",
+            "ada-toilet-compartment-door-self-closing"
+          ],
+          "constraints": [
+            {
+              "constraint_id": "C1",
+              "expression": "latch_side_clearance_in >= 42",
+              "role": "toilet_compartment_latch_side_clearance",
+              "source_type": "rule_library",
+              "source_id": "ada-toilet-compartment-door-latch-side-clearance",
+              "executable": true,
+              "checker_expression": "latch_side_clearance_in >= 42",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "latch_side_clearance_in"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C2",
+              "expression": "self_closing_indicator == 1",
+              "role": "toilet_compartment_self_closing_door",
+              "source_type": "rule_library",
+              "source_id": "ada-toilet-compartment-door-self-closing",
+              "executable": true,
+              "checker_expression": "self_closing_indicator == 1",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "self_closing_indicator"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "semantic_indicator_encoding": true,
+                "derived_from_text_or_semantic_rule": true,
+                "derived_from_rule_id": "ada-toilet-compartment-door-self-closing",
+                "encoding_note": "This executable predicate is a task-level semantic encoding of a textual or categorical full-KG rule."
+              }
+            },
+            {
+              "constraint_id": "C3",
+              "expression": "dual_side_pull_indicator == 1",
+              "role": "toilet_compartment_dual_side_door_pull",
+              "source_type": "rule_library",
+              "source_id": "ada-toilet-compartment-door-pull-placement",
+              "executable": true,
+              "checker_expression": "dual_side_pull_indicator == 1",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "dual_side_pull_indicator"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "semantic_indicator_encoding": true,
+                "derived_from_text_or_semantic_rule": true,
+                "derived_from_rule_id": "ada-toilet-compartment-door-pull-placement",
+                "encoding_note": "This executable predicate is a task-level semantic encoding of a textual or categorical full-KG rule."
+              }
+            },
+            {
+              "constraint_id": "C90",
+              "expression": "partition_footprint_score >= 0.1 * latch_side_clearance_in + 2 * self_closing_indicator + 2 * dual_side_pull_indicator",
+              "role": "partition_footprint_from_accessible_door_features",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "partition_footprint_score >= 0.1 * latch_side_clearance_in + 2 * self_closing_indicator + 2 * dual_side_pull_indicator",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "partition_footprint_score",
+                  "latch_side_clearance_in",
+                  "self_closing_indicator",
+                  "dual_side_pull_indicator"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Accessible door features and clearance increase partition footprint."
+              }
+            },
+            {
+              "constraint_id": "C91",
+              "expression": "accessible_operation_score <= latch_side_clearance_in / 6 + 2 * self_closing_indicator + 2 * dual_side_pull_indicator",
+              "role": "accessible_operation_from_clearance_and_door_features",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "accessible_operation_score <= latch_side_clearance_in / 6 + 2 * self_closing_indicator + 2 * dual_side_pull_indicator",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "accessible_operation_score",
+                  "latch_side_clearance_in",
+                  "self_closing_indicator",
+                  "dual_side_pull_indicator"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Accessible operation score is tied to clearance and required door features."
+              }
+            }
+          ],
+          "description": "Executable feasible cell induced by the expected full-KG rule structure for this grounded scenario."
+        }
+      ],
+      "reference_semantics": {
+        "positive_membership_condition": "all executable_constraints evaluate true and at least one valid cell holds when cells are present",
+        "structure_only_constraints_usage": "used to check rule resolution, provenance, exceptions, or semantic requirements before numeric membership checking"
+      }
+    },
+    "certificate_targets": {
+      "source_rule_ids": [
+        "ada-toilet-compartment-door-latch-side-clearance",
+        "ada-toilet-compartment-door-self-closing",
+        "ada-toilet-compartment-door-pull-placement"
+      ],
+      "provenance": [
+        {
+          "document": "2010-design-standards",
+          "section": "604.8.2.2",
+          "page": 172,
+          "chunk_id": "080b397c-1a5f-5364-a1c2-7077c52e8e33"
+        }
+      ]
+    },
+    "diagnostic_candidate_rule_ids_reference_only": [
+      "ada-toilet-compartment-door-latch-side-clearance",
+      "ada-toilet-compartment-door-self-closing",
+      "ada-toilet-compartment-door-pull-placement"
+    ],
+    "rule_library_id_bindings": [
+      {
+        "rule_id": "ada-toilet-compartment-door-latch-side-clearance",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ada-toilet-compartment-door-latch-side-clearance",
+        "rule_name": "Minimum latch-side clearance for toilet compartment doors",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "080b397c-1a5f-5364-a1c2-7077c52e8e33"
+        ],
+        "source_node_ids": [
+          "98f39e69-32d1-5de2-bdd2-82d08559a50e"
+        ],
+        "provenance": [
+          {
+            "document": "2010-design-standards",
+            "section": "604.8.2.2",
+            "page": 172,
+            "chunk_id": "080b397c-1a5f-5364-a1c2-7077c52e8e33"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "minimum_clearance_from_door_side_to_obstruction",
+            "op": ">=",
+            "value": 42,
+            "unit": "inches"
+          }
+        ]
+      },
+      {
+        "rule_id": "ada-toilet-compartment-door-pull-placement",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ada-toilet-compartment-door-pull-placement",
+        "rule_name": "Dual-side door pull placement for toilet compartment doors",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "080b397c-1a5f-5364-a1c2-7077c52e8e33"
+        ],
+        "source_node_ids": [
+          "98f39e69-32d1-5de2-bdd2-82d08559a50e"
+        ],
+        "provenance": [
+          {
+            "document": "2010-design-standards",
+            "section": "604.8.2.2",
+            "page": 172,
+            "chunk_id": "080b397c-1a5f-5364-a1c2-7077c52e8e33"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "door_pull_location",
+            "op": "text",
+            "value": "on both sides of the door near the latch",
+            "unit": "unknown"
+          }
+        ]
+      },
+      {
+        "rule_id": "ada-toilet-compartment-door-self-closing",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ada-toilet-compartment-door-self-closing",
+        "rule_name": "Self-closing requirement for toilet compartment doors",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "080b397c-1a5f-5364-a1c2-7077c52e8e33"
+        ],
+        "source_node_ids": [
+          "98f39e69-32d1-5de2-bdd2-82d08559a50e"
+        ],
+        "provenance": [
+          {
+            "document": "2010-design-standards",
+            "section": "604.8.2.2",
+            "page": 172,
+            "chunk_id": "080b397c-1a5f-5364-a1c2-7077c52e8e33"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "door_operation_requirement",
+            "op": "=",
+            "value": "self-closing",
+            "unit": "unknown"
+          }
+        ]
+      }
+    ],
+    "reference_constraint_rule_bindings": [
+      {
+        "reference_container": "feasible_region.executable_constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "toilet_compartment_latch_side_clearance",
+        "reference_expression": "latch_side_clearance_in >= 42",
+        "source_rule_id": "ada-toilet-compartment-door-latch-side-clearance",
+        "rule_library_rule_id": "ada-toilet-compartment-door-latch-side-clearance",
+        "rule_library_rule_name": "Minimum latch-side clearance for toilet compartment doors"
+      },
+      {
+        "reference_container": "feasible_region.executable_constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "toilet_compartment_self_closing_door",
+        "reference_expression": "self_closing_indicator == 1",
+        "source_rule_id": "ada-toilet-compartment-door-self-closing",
+        "rule_library_rule_id": "ada-toilet-compartment-door-self-closing",
+        "rule_library_rule_name": "Self-closing requirement for toilet compartment doors"
+      },
+      {
+        "reference_container": "feasible_region.executable_constraints[2]",
+        "reference_constraint_id": "C3",
+        "reference_role": "toilet_compartment_dual_side_door_pull",
+        "reference_expression": "dual_side_pull_indicator == 1",
+        "source_rule_id": "ada-toilet-compartment-door-pull-placement",
+        "rule_library_rule_id": "ada-toilet-compartment-door-pull-placement",
+        "rule_library_rule_name": "Dual-side door pull placement for toilet compartment doors"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "toilet_compartment_latch_side_clearance",
+        "reference_expression": "latch_side_clearance_in >= 42",
+        "source_rule_id": "ada-toilet-compartment-door-latch-side-clearance",
+        "rule_library_rule_id": "ada-toilet-compartment-door-latch-side-clearance",
+        "rule_library_rule_name": "Minimum latch-side clearance for toilet compartment doors"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "toilet_compartment_self_closing_door",
+        "reference_expression": "self_closing_indicator == 1",
+        "source_rule_id": "ada-toilet-compartment-door-self-closing",
+        "rule_library_rule_id": "ada-toilet-compartment-door-self-closing",
+        "rule_library_rule_name": "Self-closing requirement for toilet compartment doors"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[2]",
+        "reference_constraint_id": "C3",
+        "reference_role": "toilet_compartment_dual_side_door_pull",
+        "reference_expression": "dual_side_pull_indicator == 1",
+        "source_rule_id": "ada-toilet-compartment-door-pull-placement",
+        "rule_library_rule_id": "ada-toilet-compartment-door-pull-placement",
+        "rule_library_rule_name": "Dual-side door pull placement for toilet compartment doors"
+      }
+    ],
+    "expansion_metadata": {
+      "source_task_id": "ARCH_FKG_24",
+      "coverage_focus": "multi_rule_conjunction",
+      "target_relation": "accessibility_operability",
+      "strict_common_intended": true,
+      "overlay_model": "canonical_source_semantics",
+      "expansion_round": "100_task_extension_v1"
+    },
+    "task_derivation_source": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "document": "ARE-Practice-Exam-Project-Planning-and-Design.pdf",
+      "division": "Project Planning and Design",
+      "question_number": "Question 15",
+      "theme": "fixture count and accessible restroom checklist",
+      "adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "source_policy": "Hidden provenance only; algorithm-visible inputs expose only generalized NCARB-derived themes."
+    },
+    "benchmark_extension_metadata": {
+      "extension_round": "architecture_ncarb_50_extension",
+      "source_base_task_id": "ARCH_FKG_49",
+      "ncarb_category": "construction_documentation",
+      "source_policy": "paraphrased_parameterized_not_verbatim",
+      "dataset_characterization": "NCARB practice-topic-derived, paraphrased, and parameterized architecture-code semantic extension task.",
+      "independence_claim": "parameterized_variant_not_fully_independent_real_project_case",
+      "source_visibility_policy": "Exact practice identifiers, original question text, answer choices, and source file names are hidden from algorithm-visible inputs.",
+      "scenario_variant_group_id": "ncarb50_scenario_variant_group_01",
+      "scenario_variant_group_members": [
+        "ARCH_FKG_53",
+        "ARCH_FKG_57",
+        "ARCH_FKG_94",
+        "ARCH_FKG_100"
+      ],
+      "scenario_variant_status": "parameterized_scenario_variant",
+      "scenario_variant_differentiator": "Final construction-document checklist variant for restroom door operation.",
+      "method_visibility": "hidden_evaluation_reference_not_method_input"
+    }
+  }
+}

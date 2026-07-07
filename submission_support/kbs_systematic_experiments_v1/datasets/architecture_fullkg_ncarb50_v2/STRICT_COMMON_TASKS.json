@@ -1,0 +1,258 @@
+{
+  "version": "architecture_ncarb50_v2_strict_common_tasks_v1",
+  "generated_at": "2026-06-24T20:59:29",
+  "selection_policy": "A task is included only when every canonical expected surviving rule has exact_or_strong_alignment in Qwen, DeepSeek, and Xiaomi MIMO overlays.",
+  "task_count": 50,
+  "task_ids": [
+    "ARCH_FKG_51",
+    "ARCH_FKG_52",
+    "ARCH_FKG_53",
+    "ARCH_FKG_54",
+    "ARCH_FKG_55",
+    "ARCH_FKG_56",
+    "ARCH_FKG_57",
+    "ARCH_FKG_58",
+    "ARCH_FKG_59",
+    "ARCH_FKG_60",
+    "ARCH_FKG_61",
+    "ARCH_FKG_62",
+    "ARCH_FKG_63",
+    "ARCH_FKG_64",
+    "ARCH_FKG_65",
+    "ARCH_FKG_66",
+    "ARCH_FKG_67",
+    "ARCH_FKG_68",
+    "ARCH_FKG_69",
+    "ARCH_FKG_70",
+    "ARCH_FKG_71",
+    "ARCH_FKG_72",
+    "ARCH_FKG_73",
+    "ARCH_FKG_74",
+    "ARCH_FKG_75",
+    "ARCH_FKG_76",
+    "ARCH_FKG_77",
+    "ARCH_FKG_78",
+    "ARCH_FKG_79",
+    "ARCH_FKG_80",
+    "ARCH_FKG_81",
+    "ARCH_FKG_82",
+    "ARCH_FKG_83",
+    "ARCH_FKG_84",
+    "ARCH_FKG_85",
+    "ARCH_FKG_86",
+    "ARCH_FKG_87",
+    "ARCH_FKG_88",
+    "ARCH_FKG_89",
+    "ARCH_FKG_90",
+    "ARCH_FKG_91",
+    "ARCH_FKG_92",
+    "ARCH_FKG_93",
+    "ARCH_FKG_94",
+    "ARCH_FKG_95",
+    "ARCH_FKG_96",
+    "ARCH_FKG_97",
+    "ARCH_FKG_98",
+    "ARCH_FKG_99",
+    "ARCH_FKG_100"
+  ],
+  "excluded_task_ids": [],
+  "source_dataset": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\datasets\\architecture_fullkg_clean",
+  "dataset_characterization": "NCARB practice-theme-derived, paraphrased, parameterized, and manually checked architecture-code semantic extension; not 50 fully independent real project cases.",
+  "source_visibility_policy": "Algorithm-visible files remove exact NCARB question numbers, source file names, answer options, and internal expanded_from_ARCH_FKG clone lineage.",
+  "scenario_variant_policy": "Repeated rule-structure groups are retained only as parameterized variants with substantive differences in scenario facts, variable bounds, objective weights, applicability conditions, or document context.",
+  "scenario_variant_groups": [
+    {
+      "group_id": "ncarb50_scenario_variant_group_01",
+      "task_ids": [
+        "ARCH_FKG_53",
+        "ARCH_FKG_57",
+        "ARCH_FKG_94",
+        "ARCH_FKG_100"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_02",
+      "task_ids": [
+        "ARCH_FKG_70",
+        "ARCH_FKG_74",
+        "ARCH_FKG_75",
+        "ARCH_FKG_93"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_03",
+      "task_ids": [
+        "ARCH_FKG_64",
+        "ARCH_FKG_72",
+        "ARCH_FKG_99"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_04",
+      "task_ids": [
+        "ARCH_FKG_71",
+        "ARCH_FKG_83",
+        "ARCH_FKG_92"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_05",
+      "task_ids": [
+        "ARCH_FKG_51",
+        "ARCH_FKG_73"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_06",
+      "task_ids": [
+        "ARCH_FKG_52",
+        "ARCH_FKG_58"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_07",
+      "task_ids": [
+        "ARCH_FKG_55",
+        "ARCH_FKG_95"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_08",
+      "task_ids": [
+        "ARCH_FKG_59",
+        "ARCH_FKG_82"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_09",
+      "task_ids": [
+        "ARCH_FKG_61",
+        "ARCH_FKG_96"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_10",
+      "task_ids": [
+        "ARCH_FKG_62",
+        "ARCH_FKG_97"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_11",
+      "task_ids": [
+        "ARCH_FKG_63",
+        "ARCH_FKG_98"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_12",
+      "task_ids": [
+        "ARCH_FKG_76",
+        "ARCH_FKG_78"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_13",
+      "task_ids": [
+        "ARCH_FKG_77",
+        "ARCH_FKG_79"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    },
+    {
+      "group_id": "ncarb50_scenario_variant_group_14",
+      "task_ids": [
+        "ARCH_FKG_84",
+        "ARCH_FKG_85"
+      ],
+      "status": "parameterized_scenario_variants",
+      "difference_policy": "Each task in the group has at least one substantive difference in scenario facts, variable bounds, objective weights, applicability/document context, or review phase.",
+      "independence_note": "These are not claimed as fully independent real project cases."
+    }
+  ],
+  "semantic_indicator_tasks": [
+    "ARCH_FKG_67",
+    "ARCH_FKG_68",
+    "ARCH_FKG_69",
+    "ARCH_FKG_70",
+    "ARCH_FKG_74",
+    "ARCH_FKG_75",
+    "ARCH_FKG_89",
+    "ARCH_FKG_90",
+    "ARCH_FKG_91",
+    "ARCH_FKG_93"
+  ],
+  "semantic_indicator_policy": "Semantic-indicator tasks primarily test textual, categorical, system-capability, applicability, or precedence recovery; they should not be described as continuous numeric optimization cases.",
+  "nonlinear_or_auxiliary_constraint_tasks": [
+    "ARCH_FKG_51",
+    "ARCH_FKG_52",
+    "ARCH_FKG_55",
+    "ARCH_FKG_56",
+    "ARCH_FKG_58",
+    "ARCH_FKG_61",
+    "ARCH_FKG_63",
+    "ARCH_FKG_64",
+    "ARCH_FKG_72",
+    "ARCH_FKG_73",
+    "ARCH_FKG_95",
+    "ARCH_FKG_96",
+    "ARCH_FKG_98",
+    "ARCH_FKG_99"
+  ],
+  "nonlinear_constraint_policy": "Tasks using max(), min(), abs(), symbolic division by decision variables, or variable products require a nonlinear/auxiliary-function constraint checker or an explicit linearized surrogate before pure linear optimization.",
+  "mixed_numeric_semantic_indicator_tasks": [
+    "ARCH_FKG_60"
+  ],
+  "method_visible_input_policy": "Methods may read only core/algorithm_inputs, core/scenario_models, rule_libraries, public_tasks, and public-only compatibility tasks. Hidden references are not method inputs.",
+  "public_task_directory": "public_tasks",
+  "compatibility_public_task_directory": "tasks",
+  "paired_audit_task_directory": "paired_audit_tasks",
+  "hidden_evaluation_artifacts": [
+    "evaluation_references",
+    "core/source_semantic_references",
+    "evaluation_overlays/*/evaluation_references.json",
+    "paired_audit_tasks",
+    "constraint_templates"
+  ],
+  "constraint_templates_visibility": "hidden_evaluation_or_audit_artifact_not_method_input",
+  "last_repaired_at": "2026-06-25T15:43:28+08:00",
+  "last_repair_scope": "Differentiated ARCH_FKG_55 and ARCH_FKG_95, preserving public/hidden input separation and alignment summaries."
+}

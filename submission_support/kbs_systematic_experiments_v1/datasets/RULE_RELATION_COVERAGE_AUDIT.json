@@ -1,0 +1,1936 @@
+{
+  "version": "rule_relation_coverage_audit_v1",
+  "counting_policy": {
+    "six_relations": {
+      "applicability": "rule applicability",
+      "dependency": "rule dependency",
+      "exclusion": "mutual exclusion / branch exclusion",
+      "override": "override / exception coverage",
+      "precedence": "rule precedence",
+      "parameter_propagation": "scenario parameter propagation"
+    },
+    "declared_challenge_tag_counts": "Counts only relation labels mapped from rule_structure.challenge_types. A task may count in multiple columns.",
+    "evidence_or_tag_counts": "Union of declared tags and evidence inferred from referenced full-KG rule guards, rule relations, defeated-rule labels, and public task_or_scenario_model constraints. A task may count in multiple columns.",
+    "precedence_note": "The current fullkg_clean main splits contain no task whose referenced full-KG rules or challenge labels instantiate precedence."
+  },
+  "domains": {
+    "aviation_fullkg_clean": {
+      "task_count": 30,
+      "declared_challenge_tag_counts": {
+        "applicability": 11,
+        "dependency": 2,
+        "exclusion": 11,
+        "override": 2,
+        "precedence": 0,
+        "parameter_propagation": 15
+      },
+      "evidence_or_tag_counts": {
+        "applicability": 29,
+        "dependency": 13,
+        "exclusion": 15,
+        "override": 3,
+        "precedence": 0,
+        "parameter_propagation": 30
+      },
+      "declared_task_ids_by_relation": {
+        "applicability": [
+          "AVI_OPT_02",
+          "AVI_OPT_04",
+          "AVI_OPT_07",
+          "AVI_OPT_10",
+          "AVI_OPT_11",
+          "AVI_OPT_17",
+          "AVI_OPT_21",
+          "AVI_OPT_24",
+          "AVI_OPT_25",
+          "AVI_OPT_28",
+          "AVI_OPT_29"
+        ],
+        "dependency": [
+          "AVI_OPT_27",
+          "AVI_OPT_30"
+        ],
+        "exclusion": [
+          "AVI_OPT_05",
+          "AVI_OPT_08",
+          "AVI_OPT_09",
+          "AVI_OPT_13",
+          "AVI_OPT_14",
+          "AVI_OPT_15",
+          "AVI_OPT_16",
+          "AVI_OPT_22",
+          "AVI_OPT_24",
+          "AVI_OPT_25",
+          "AVI_OPT_28"
+        ],
+        "override": [
+          "AVI_OPT_17",
+          "AVI_OPT_18"
+        ],
+        "precedence": [],
+        "parameter_propagation": [
+          "AVI_OPT_01",
+          "AVI_OPT_03",
+          "AVI_OPT_05",
+          "AVI_OPT_06",
+          "AVI_OPT_07",
+          "AVI_OPT_10",
+          "AVI_OPT_11",
+          "AVI_OPT_12",
+          "AVI_OPT_17",
+          "AVI_OPT_18",
+          "AVI_OPT_19",
+          "AVI_OPT_22",
+          "AVI_OPT_23",
+          "AVI_OPT_26",
+          "AVI_OPT_29"
+        ]
+      },
+      "evidence_or_tag_task_ids_by_relation": {
+        "applicability": [
+          "AVI_OPT_01",
+          "AVI_OPT_02",
+          "AVI_OPT_03",
+          "AVI_OPT_04",
+          "AVI_OPT_05",
+          "AVI_OPT_06",
+          "AVI_OPT_07",
+          "AVI_OPT_08",
+          "AVI_OPT_09",
+          "AVI_OPT_10",
+          "AVI_OPT_11",
+          "AVI_OPT_12",
+          "AVI_OPT_13",
+          "AVI_OPT_14",
+          "AVI_OPT_15",
+          "AVI_OPT_16",
+          "AVI_OPT_17",
+          "AVI_OPT_18",
+          "AVI_OPT_19",
+          "AVI_OPT_20",
+          "AVI_OPT_21",
+          "AVI_OPT_22",
+          "AVI_OPT_23",
+          "AVI_OPT_24",
+          "AVI_OPT_25",
+          "AVI_OPT_27",
+          "AVI_OPT_28",
+          "AVI_OPT_29",
+          "AVI_OPT_30"
+        ],
+        "dependency": [
+          "AVI_OPT_05",
+          "AVI_OPT_10",
+          "AVI_OPT_12",
+          "AVI_OPT_13",
+          "AVI_OPT_16",
+          "AVI_OPT_19",
+          "AVI_OPT_20",
+          "AVI_OPT_21",
+          "AVI_OPT_22",
+          "AVI_OPT_23",
+          "AVI_OPT_25",
+          "AVI_OPT_27",
+          "AVI_OPT_30"
+        ],
+        "exclusion": [
+          "AVI_OPT_05",
+          "AVI_OPT_06",
+          "AVI_OPT_07",
+          "AVI_OPT_08",
+          "AVI_OPT_09",
+          "AVI_OPT_13",
+          "AVI_OPT_14",
+          "AVI_OPT_15",
+          "AVI_OPT_16",
+          "AVI_OPT_18",
+          "AVI_OPT_22",
+          "AVI_OPT_23",
+          "AVI_OPT_24",
+          "AVI_OPT_25",
+          "AVI_OPT_28"
+        ],
+        "override": [
+          "AVI_OPT_17",
+          "AVI_OPT_18",
+          "AVI_OPT_28"
+        ],
+        "precedence": [],
+        "parameter_propagation": [
+          "AVI_OPT_01",
+          "AVI_OPT_02",
+          "AVI_OPT_03",
+          "AVI_OPT_04",
+          "AVI_OPT_05",
+          "AVI_OPT_06",
+          "AVI_OPT_07",
+          "AVI_OPT_08",
+          "AVI_OPT_09",
+          "AVI_OPT_10",
+          "AVI_OPT_11",
+          "AVI_OPT_12",
+          "AVI_OPT_13",
+          "AVI_OPT_14",
+          "AVI_OPT_15",
+          "AVI_OPT_16",
+          "AVI_OPT_17",
+          "AVI_OPT_18",
+          "AVI_OPT_19",
+          "AVI_OPT_20",
+          "AVI_OPT_21",
+          "AVI_OPT_22",
+          "AVI_OPT_23",
+          "AVI_OPT_24",
+          "AVI_OPT_25",
+          "AVI_OPT_26",
+          "AVI_OPT_27",
+          "AVI_OPT_28",
+          "AVI_OPT_29",
+          "AVI_OPT_30"
+        ]
+      },
+      "per_task": [
+        {
+          "omega_id": "AVI_OPT_01",
+          "declared_relations": [
+            "parameter_propagation"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "dependency_or_formula_propagation"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_02",
+          "declared_relations": [
+            "applicability"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "generic_rule_selection"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_03",
+          "declared_relations": [
+            "parameter_propagation"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "dependency_or_formula_propagation"
+          ],
+          "expected_source_rule_count": 1,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_04",
+          "declared_relations": [
+            "applicability"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "generic_rule_selection"
+          ],
+          "expected_source_rule_count": 1,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_05",
+          "declared_relations": [
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "dependency",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "branch_or_exclusion",
+            "dependency_or_formula_propagation"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_06",
+          "declared_relations": [
+            "parameter_propagation"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "dependency_or_formula_propagation",
+            "provenance_traceability"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_07",
+          "declared_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "dependency_or_formula_propagation",
+            "scenario_conditioned_applicability"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_08",
+          "declared_relations": [
+            "exclusion"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "branch_or_exclusion"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_09",
+          "declared_relations": [
+            "exclusion"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "branch_or_exclusion"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_10",
+          "declared_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "dependency_or_formula_propagation",
+            "scenario_conditioned_applicability"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_11",
+          "declared_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "evidence_relations": [
+            "applicability"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "dependency_or_formula_propagation",
+            "scenario_conditioned_applicability"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_12",
+          "declared_relations": [
+            "parameter_propagation"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "dependency_or_formula_propagation"
+          ],
+          "expected_source_rule_count": 1,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_13",
+          "declared_relations": [
+            "exclusion"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "dependency",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "branch_or_exclusion"
+          ],
+          "expected_source_rule_count": 3,
+          "expected_defeated_rule_count": 1
+        },
+        {
+          "omega_id": "AVI_OPT_14",
+          "declared_relations": [
+            "exclusion"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "branch_or_exclusion"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 1
+        },
+        {
+          "omega_id": "AVI_OPT_15",
+          "declared_relations": [
+            "exclusion"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "branch_or_exclusion"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 1
+        },
+        {
+          "omega_id": "AVI_OPT_16",
+          "declared_relations": [
+            "exclusion"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "dependency",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "branch_or_exclusion"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_17",
+          "declared_relations": [
+            "applicability",
+            "override",
+            "parameter_propagation"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "override",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "override",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "dependency_or_formula_propagation",
+            "exception_or_override",
+            "scenario_conditioned_applicability"
+          ],
+          "expected_source_rule_count": 3,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_18",
+          "declared_relations": [
+            "override",
+            "parameter_propagation"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "exclusion",
+            "override",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "exclusion",
+            "override",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "dependency_or_formula_propagation",
+            "exception_or_override"
+          ],
+          "expected_source_rule_count": 4,
+          "expected_defeated_rule_count": 1
+        },
+        {
+          "omega_id": "AVI_OPT_19",
+          "declared_relations": [
+            "parameter_propagation"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "dependency"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "dependency_or_formula_propagation"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_20",
+          "declared_relations": [],
+          "evidence_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "provenance_traceability"
+          ],
+          "expected_source_rule_count": 1,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_21",
+          "declared_relations": [
+            "applicability"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "generic_rule_selection",
+            "scenario_conditioned_applicability"
+          ],
+          "expected_source_rule_count": 5,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_22",
+          "declared_relations": [
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "dependency",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "dependency_or_formula_propagation",
+            "branch_or_exclusion"
+          ],
+          "expected_source_rule_count": 5,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_23",
+          "declared_relations": [
+            "parameter_propagation"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "dependency",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "dependency_or_formula_propagation",
+            "provenance_traceability"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_24",
+          "declared_relations": [
+            "applicability",
+            "exclusion"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "scenario_conditioned_applicability",
+            "branch_or_exclusion"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_25",
+          "declared_relations": [
+            "applicability",
+            "exclusion"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "dependency",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "branch_or_exclusion",
+            "scenario_conditioned_applicability"
+          ],
+          "expected_source_rule_count": 3,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_26",
+          "declared_relations": [
+            "parameter_propagation"
+          ],
+          "evidence_relations": [
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "dependency_or_formula_propagation"
+          ],
+          "expected_source_rule_count": 3,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_27",
+          "declared_relations": [
+            "dependency"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "multi_rule_conjunction",
+            "provenance_traceability"
+          ],
+          "expected_source_rule_count": 6,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_28",
+          "declared_relations": [
+            "applicability",
+            "exclusion"
+          ],
+          "evidence_relations": [
+            "exclusion",
+            "override",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "exclusion",
+            "override",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "branch_or_exclusion",
+            "generic_rule_selection"
+          ],
+          "expected_source_rule_count": 4,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_29",
+          "declared_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "dependency_or_formula_propagation",
+            "scenario_conditioned_applicability"
+          ],
+          "expected_source_rule_count": 4,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "AVI_OPT_30",
+          "declared_relations": [
+            "dependency"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "multi_rule_conjunction",
+            "provenance_traceability"
+          ],
+          "expected_source_rule_count": 4,
+          "expected_defeated_rule_count": 0
+        }
+      ]
+    },
+    "architecture_fullkg_clean": {
+      "task_count": 30,
+      "declared_challenge_tag_counts": {
+        "applicability": 4,
+        "dependency": 22,
+        "exclusion": 0,
+        "override": 1,
+        "precedence": 0,
+        "parameter_propagation": 1
+      },
+      "evidence_or_tag_counts": {
+        "applicability": 29,
+        "dependency": 26,
+        "exclusion": 5,
+        "override": 3,
+        "precedence": 0,
+        "parameter_propagation": 30
+      },
+      "declared_task_ids_by_relation": {
+        "applicability": [
+          "ARCH_FKG_01",
+          "ARCH_FKG_03",
+          "ARCH_FKG_04",
+          "ARCH_FKG_30"
+        ],
+        "dependency": [
+          "ARCH_FKG_02",
+          "ARCH_FKG_03",
+          "ARCH_FKG_06",
+          "ARCH_FKG_07",
+          "ARCH_FKG_09",
+          "ARCH_FKG_10",
+          "ARCH_FKG_11",
+          "ARCH_FKG_12",
+          "ARCH_FKG_13",
+          "ARCH_FKG_14",
+          "ARCH_FKG_15",
+          "ARCH_FKG_16",
+          "ARCH_FKG_17",
+          "ARCH_FKG_18",
+          "ARCH_FKG_20",
+          "ARCH_FKG_23",
+          "ARCH_FKG_24",
+          "ARCH_FKG_25",
+          "ARCH_FKG_26",
+          "ARCH_FKG_27",
+          "ARCH_FKG_28",
+          "ARCH_FKG_29"
+        ],
+        "exclusion": [],
+        "override": [
+          "ARCH_FKG_08"
+        ],
+        "precedence": [],
+        "parameter_propagation": [
+          "ARCH_FKG_11"
+        ]
+      },
+      "evidence_or_tag_task_ids_by_relation": {
+        "applicability": [
+          "ARCH_FKG_01",
+          "ARCH_FKG_02",
+          "ARCH_FKG_03",
+          "ARCH_FKG_04",
+          "ARCH_FKG_05",
+          "ARCH_FKG_06",
+          "ARCH_FKG_07",
+          "ARCH_FKG_08",
+          "ARCH_FKG_09",
+          "ARCH_FKG_10",
+          "ARCH_FKG_11",
+          "ARCH_FKG_12",
+          "ARCH_FKG_13",
+          "ARCH_FKG_14",
+          "ARCH_FKG_15",
+          "ARCH_FKG_16",
+          "ARCH_FKG_17",
+          "ARCH_FKG_18",
+          "ARCH_FKG_19",
+          "ARCH_FKG_20",
+          "ARCH_FKG_21",
+          "ARCH_FKG_23",
+          "ARCH_FKG_24",
+          "ARCH_FKG_25",
+          "ARCH_FKG_26",
+          "ARCH_FKG_27",
+          "ARCH_FKG_28",
+          "ARCH_FKG_29",
+          "ARCH_FKG_30"
+        ],
+        "dependency": [
+          "ARCH_FKG_02",
+          "ARCH_FKG_03",
+          "ARCH_FKG_05",
+          "ARCH_FKG_06",
+          "ARCH_FKG_07",
+          "ARCH_FKG_09",
+          "ARCH_FKG_10",
+          "ARCH_FKG_11",
+          "ARCH_FKG_12",
+          "ARCH_FKG_13",
+          "ARCH_FKG_14",
+          "ARCH_FKG_15",
+          "ARCH_FKG_16",
+          "ARCH_FKG_17",
+          "ARCH_FKG_18",
+          "ARCH_FKG_20",
+          "ARCH_FKG_21",
+          "ARCH_FKG_22",
+          "ARCH_FKG_23",
+          "ARCH_FKG_24",
+          "ARCH_FKG_25",
+          "ARCH_FKG_26",
+          "ARCH_FKG_27",
+          "ARCH_FKG_28",
+          "ARCH_FKG_29",
+          "ARCH_FKG_30"
+        ],
+        "exclusion": [
+          "ARCH_FKG_01",
+          "ARCH_FKG_08",
+          "ARCH_FKG_10",
+          "ARCH_FKG_12",
+          "ARCH_FKG_19"
+        ],
+        "override": [
+          "ARCH_FKG_01",
+          "ARCH_FKG_08",
+          "ARCH_FKG_23"
+        ],
+        "precedence": [],
+        "parameter_propagation": [
+          "ARCH_FKG_01",
+          "ARCH_FKG_02",
+          "ARCH_FKG_03",
+          "ARCH_FKG_04",
+          "ARCH_FKG_05",
+          "ARCH_FKG_06",
+          "ARCH_FKG_07",
+          "ARCH_FKG_08",
+          "ARCH_FKG_09",
+          "ARCH_FKG_10",
+          "ARCH_FKG_11",
+          "ARCH_FKG_12",
+          "ARCH_FKG_13",
+          "ARCH_FKG_14",
+          "ARCH_FKG_15",
+          "ARCH_FKG_16",
+          "ARCH_FKG_17",
+          "ARCH_FKG_18",
+          "ARCH_FKG_19",
+          "ARCH_FKG_20",
+          "ARCH_FKG_21",
+          "ARCH_FKG_22",
+          "ARCH_FKG_23",
+          "ARCH_FKG_24",
+          "ARCH_FKG_25",
+          "ARCH_FKG_26",
+          "ARCH_FKG_27",
+          "ARCH_FKG_28",
+          "ARCH_FKG_29",
+          "ARCH_FKG_30"
+        ]
+      },
+      "per_task": [
+        {
+          "omega_id": "ARCH_FKG_01",
+          "declared_relations": [
+            "applicability"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "exclusion",
+            "override",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "exclusion",
+            "override",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "scenario_conditioned_applicability"
+          ],
+          "expected_source_rule_count": 1,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_02",
+          "declared_relations": [
+            "dependency"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "multi_constraint_single_rule"
+          ],
+          "expected_source_rule_count": 1,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_03",
+          "declared_relations": [
+            "applicability",
+            "dependency"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "scenario_conditioned_applicability",
+            "multi_constraint_single_rule"
+          ],
+          "expected_source_rule_count": 1,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_04",
+          "declared_relations": [
+            "applicability"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "scenario_conditioned_applicability"
+          ],
+          "expected_source_rule_count": 1,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_05",
+          "declared_relations": [],
+          "evidence_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "parameter_limit"
+          ],
+          "expected_source_rule_count": 1,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_06",
+          "declared_relations": [
+            "dependency"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "multi_rule_conjunction"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_07",
+          "declared_relations": [
+            "dependency"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "multi_rule_conjunction"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_08",
+          "declared_relations": [
+            "override"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "exclusion",
+            "override",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "exclusion",
+            "override",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "exception_or_override"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 1
+        },
+        {
+          "omega_id": "ARCH_FKG_09",
+          "declared_relations": [
+            "dependency"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "multi_rule_conjunction"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_10",
+          "declared_relations": [
+            "dependency"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "multi_rule_conjunction"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_11",
+          "declared_relations": [
+            "dependency",
+            "parameter_propagation"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "formula_propagation",
+            "multi_rule_conjunction"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_12",
+          "declared_relations": [
+            "dependency"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "multi_rule_conjunction"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_13",
+          "declared_relations": [
+            "dependency"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "multi_rule_conjunction"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_14",
+          "declared_relations": [
+            "dependency"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "multi_rule_conjunction"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_15",
+          "declared_relations": [
+            "dependency"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "multi_rule_conjunction"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_16",
+          "declared_relations": [
+            "dependency"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "multi_rule_conjunction"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_17",
+          "declared_relations": [
+            "dependency"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "multi_rule_conjunction"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_18",
+          "declared_relations": [
+            "dependency"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "multi_constraint_single_rule"
+          ],
+          "expected_source_rule_count": 1,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_19",
+          "declared_relations": [],
+          "evidence_relations": [
+            "applicability",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "exclusion",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "parameter_limit"
+          ],
+          "expected_source_rule_count": 1,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_20",
+          "declared_relations": [
+            "dependency"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "multi_rule_conjunction"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_21",
+          "declared_relations": [],
+          "evidence_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "parameter_limit"
+          ],
+          "expected_source_rule_count": 1,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_22",
+          "declared_relations": [],
+          "evidence_relations": [
+            "dependency",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "parameter_limit"
+          ],
+          "expected_source_rule_count": 1,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_23",
+          "declared_relations": [
+            "dependency"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "override",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "override",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "multi_rule_conjunction"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_24",
+          "declared_relations": [
+            "dependency"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "multi_rule_conjunction",
+            "accessibility_operability"
+          ],
+          "expected_source_rule_count": 3,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_25",
+          "declared_relations": [
+            "dependency"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "multi_rule_conjunction",
+            "accessibility_reach_range"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_26",
+          "declared_relations": [
+            "dependency"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "multi_rule_conjunction",
+            "accessibility_space_planning"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_27",
+          "declared_relations": [
+            "dependency"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "multi_constraint_single_rule",
+            "accessibility_wayfinding"
+          ],
+          "expected_source_rule_count": 1,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_28",
+          "declared_relations": [
+            "dependency"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "multi_constraint_single_rule",
+            "accessibility_route_design"
+          ],
+          "expected_source_rule_count": 1,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_29",
+          "declared_relations": [
+            "dependency"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "multi_rule_conjunction",
+            "life_safety_system_design"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        },
+        {
+          "omega_id": "ARCH_FKG_30",
+          "declared_relations": [
+            "applicability"
+          ],
+          "evidence_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "coverage_relations": [
+            "applicability",
+            "dependency",
+            "parameter_propagation"
+          ],
+          "challenge_types": [
+            "applicability_resolution",
+            "documentation_condition"
+          ],
+          "expected_source_rule_count": 2,
+          "expected_defeated_rule_count": 0
+        }
+      ]
+    }
+  },
+  "combined": {
+    "task_count": 60,
+    "declared_challenge_tag_counts": {
+      "applicability": 15,
+      "dependency": 24,
+      "exclusion": 11,
+      "override": 3,
+      "precedence": 0,
+      "parameter_propagation": 16
+    },
+    "evidence_or_tag_counts": {
+      "applicability": 58,
+      "dependency": 39,
+      "exclusion": 20,
+      "override": 6,
+      "precedence": 0,
+      "parameter_propagation": 60
+    },
+    "declared_task_ids_by_relation": {
+      "applicability": [
+        "AVI_OPT_02",
+        "AVI_OPT_04",
+        "AVI_OPT_07",
+        "AVI_OPT_10",
+        "AVI_OPT_11",
+        "AVI_OPT_17",
+        "AVI_OPT_21",
+        "AVI_OPT_24",
+        "AVI_OPT_25",
+        "AVI_OPT_28",
+        "AVI_OPT_29",
+        "ARCH_FKG_01",
+        "ARCH_FKG_03",
+        "ARCH_FKG_04",
+        "ARCH_FKG_30"
+      ],
+      "dependency": [
+        "AVI_OPT_27",
+        "AVI_OPT_30",
+        "ARCH_FKG_02",
+        "ARCH_FKG_03",
+        "ARCH_FKG_06",
+        "ARCH_FKG_07",
+        "ARCH_FKG_09",
+        "ARCH_FKG_10",
+        "ARCH_FKG_11",
+        "ARCH_FKG_12",
+        "ARCH_FKG_13",
+        "ARCH_FKG_14",
+        "ARCH_FKG_15",
+        "ARCH_FKG_16",
+        "ARCH_FKG_17",
+        "ARCH_FKG_18",
+        "ARCH_FKG_20",
+        "ARCH_FKG_23",
+        "ARCH_FKG_24",
+        "ARCH_FKG_25",
+        "ARCH_FKG_26",
+        "ARCH_FKG_27",
+        "ARCH_FKG_28",
+        "ARCH_FKG_29"
+      ],
+      "exclusion": [
+        "AVI_OPT_05",
+        "AVI_OPT_08",
+        "AVI_OPT_09",
+        "AVI_OPT_13",
+        "AVI_OPT_14",
+        "AVI_OPT_15",
+        "AVI_OPT_16",
+        "AVI_OPT_22",
+        "AVI_OPT_24",
+        "AVI_OPT_25",
+        "AVI_OPT_28"
+      ],
+      "override": [
+        "AVI_OPT_17",
+        "AVI_OPT_18",
+        "ARCH_FKG_08"
+      ],
+      "precedence": [],
+      "parameter_propagation": [
+        "AVI_OPT_01",
+        "AVI_OPT_03",
+        "AVI_OPT_05",
+        "AVI_OPT_06",
+        "AVI_OPT_07",
+        "AVI_OPT_10",
+        "AVI_OPT_11",
+        "AVI_OPT_12",
+        "AVI_OPT_17",
+        "AVI_OPT_18",
+        "AVI_OPT_19",
+        "AVI_OPT_22",
+        "AVI_OPT_23",
+        "AVI_OPT_26",
+        "AVI_OPT_29",
+        "ARCH_FKG_11"
+      ]
+    },
+    "evidence_or_tag_task_ids_by_relation": {
+      "applicability": [
+        "AVI_OPT_01",
+        "AVI_OPT_02",
+        "AVI_OPT_03",
+        "AVI_OPT_04",
+        "AVI_OPT_05",
+        "AVI_OPT_06",
+        "AVI_OPT_07",
+        "AVI_OPT_08",
+        "AVI_OPT_09",
+        "AVI_OPT_10",
+        "AVI_OPT_11",
+        "AVI_OPT_12",
+        "AVI_OPT_13",
+        "AVI_OPT_14",
+        "AVI_OPT_15",
+        "AVI_OPT_16",
+        "AVI_OPT_17",
+        "AVI_OPT_18",
+        "AVI_OPT_19",
+        "AVI_OPT_20",
+        "AVI_OPT_21",
+        "AVI_OPT_22",
+        "AVI_OPT_23",
+        "AVI_OPT_24",
+        "AVI_OPT_25",
+        "AVI_OPT_27",
+        "AVI_OPT_28",
+        "AVI_OPT_29",
+        "AVI_OPT_30",
+        "ARCH_FKG_01",
+        "ARCH_FKG_02",
+        "ARCH_FKG_03",
+        "ARCH_FKG_04",
+        "ARCH_FKG_05",
+        "ARCH_FKG_06",
+        "ARCH_FKG_07",
+        "ARCH_FKG_08",
+        "ARCH_FKG_09",
+        "ARCH_FKG_10",
+        "ARCH_FKG_11",
+        "ARCH_FKG_12",
+        "ARCH_FKG_13",
+        "ARCH_FKG_14",
+        "ARCH_FKG_15",
+        "ARCH_FKG_16",
+        "ARCH_FKG_17",
+        "ARCH_FKG_18",
+        "ARCH_FKG_19",
+        "ARCH_FKG_20",
+        "ARCH_FKG_21",
+        "ARCH_FKG_23",
+        "ARCH_FKG_24",
+        "ARCH_FKG_25",
+        "ARCH_FKG_26",
+        "ARCH_FKG_27",
+        "ARCH_FKG_28",
+        "ARCH_FKG_29",
+        "ARCH_FKG_30"
+      ],
+      "dependency": [
+        "AVI_OPT_05",
+        "AVI_OPT_10",
+        "AVI_OPT_12",
+        "AVI_OPT_13",
+        "AVI_OPT_16",
+        "AVI_OPT_19",
+        "AVI_OPT_20",
+        "AVI_OPT_21",
+        "AVI_OPT_22",
+        "AVI_OPT_23",
+        "AVI_OPT_25",
+        "AVI_OPT_27",
+        "AVI_OPT_30",
+        "ARCH_FKG_02",
+        "ARCH_FKG_03",
+        "ARCH_FKG_05",
+        "ARCH_FKG_06",
+        "ARCH_FKG_07",
+        "ARCH_FKG_09",
+        "ARCH_FKG_10",
+        "ARCH_FKG_11",
+        "ARCH_FKG_12",
+        "ARCH_FKG_13",
+        "ARCH_FKG_14",
+        "ARCH_FKG_15",
+        "ARCH_FKG_16",
+        "ARCH_FKG_17",
+        "ARCH_FKG_18",
+        "ARCH_FKG_20",
+        "ARCH_FKG_21",
+        "ARCH_FKG_22",
+        "ARCH_FKG_23",
+        "ARCH_FKG_24",
+        "ARCH_FKG_25",
+        "ARCH_FKG_26",
+        "ARCH_FKG_27",
+        "ARCH_FKG_28",
+        "ARCH_FKG_29",
+        "ARCH_FKG_30"
+      ],
+      "exclusion": [
+        "AVI_OPT_05",
+        "AVI_OPT_06",
+        "AVI_OPT_07",
+        "AVI_OPT_08",
+        "AVI_OPT_09",
+        "AVI_OPT_13",
+        "AVI_OPT_14",
+        "AVI_OPT_15",
+        "AVI_OPT_16",
+        "AVI_OPT_18",
+        "AVI_OPT_22",
+        "AVI_OPT_23",
+        "AVI_OPT_24",
+        "AVI_OPT_25",
+        "AVI_OPT_28",
+        "ARCH_FKG_01",
+        "ARCH_FKG_08",
+        "ARCH_FKG_10",
+        "ARCH_FKG_12",
+        "ARCH_FKG_19"
+      ],
+      "override": [
+        "AVI_OPT_17",
+        "AVI_OPT_18",
+        "AVI_OPT_28",
+        "ARCH_FKG_01",
+        "ARCH_FKG_08",
+        "ARCH_FKG_23"
+      ],
+      "precedence": [],
+      "parameter_propagation": [
+        "AVI_OPT_01",
+        "AVI_OPT_02",
+        "AVI_OPT_03",
+        "AVI_OPT_04",
+        "AVI_OPT_05",
+        "AVI_OPT_06",
+        "AVI_OPT_07",
+        "AVI_OPT_08",
+        "AVI_OPT_09",
+        "AVI_OPT_10",
+        "AVI_OPT_11",
+        "AVI_OPT_12",
+        "AVI_OPT_13",
+        "AVI_OPT_14",
+        "AVI_OPT_15",
+        "AVI_OPT_16",
+        "AVI_OPT_17",
+        "AVI_OPT_18",
+        "AVI_OPT_19",
+        "AVI_OPT_20",
+        "AVI_OPT_21",
+        "AVI_OPT_22",
+        "AVI_OPT_23",
+        "AVI_OPT_24",
+        "AVI_OPT_25",
+        "AVI_OPT_26",
+        "AVI_OPT_27",
+        "AVI_OPT_28",
+        "AVI_OPT_29",
+        "AVI_OPT_30",
+        "ARCH_FKG_01",
+        "ARCH_FKG_02",
+        "ARCH_FKG_03",
+        "ARCH_FKG_04",
+        "ARCH_FKG_05",
+        "ARCH_FKG_06",
+        "ARCH_FKG_07",
+        "ARCH_FKG_08",
+        "ARCH_FKG_09",
+        "ARCH_FKG_10",
+        "ARCH_FKG_11",
+        "ARCH_FKG_12",
+        "ARCH_FKG_13",
+        "ARCH_FKG_14",
+        "ARCH_FKG_15",
+        "ARCH_FKG_16",
+        "ARCH_FKG_17",
+        "ARCH_FKG_18",
+        "ARCH_FKG_19",
+        "ARCH_FKG_20",
+        "ARCH_FKG_21",
+        "ARCH_FKG_22",
+        "ARCH_FKG_23",
+        "ARCH_FKG_24",
+        "ARCH_FKG_25",
+        "ARCH_FKG_26",
+        "ARCH_FKG_27",
+        "ARCH_FKG_28",
+        "ARCH_FKG_29",
+        "ARCH_FKG_30"
+      ]
+    }
+  }
+}

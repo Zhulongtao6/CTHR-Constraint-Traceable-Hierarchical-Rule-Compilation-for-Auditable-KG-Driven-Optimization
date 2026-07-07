@@ -1,0 +1,3 @@
+| Dataset | Method | Method type | Rule Precision | Rule Recall | Formal CSR | Sem-CSR | False accept | Invalid cases |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Aviation | CTHR-style CP-SAT + OR-Tools | cthr_semantic_modeling | 74.7% | 70.7% | 71.3% | 63.3% | 8.0% | 55/150 (36.7%) (31 unsupported) |

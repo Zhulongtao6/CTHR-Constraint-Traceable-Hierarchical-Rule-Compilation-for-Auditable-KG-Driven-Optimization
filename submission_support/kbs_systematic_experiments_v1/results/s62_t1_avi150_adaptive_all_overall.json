@@ -1,0 +1,90 @@
+[
+  {
+    "Dataset": "Aviation",
+    "Method": "Flat baseline",
+    "Method type": "flat",
+    "Rule Precision": "8.9%",
+    "Rule Recall": "91.7%",
+    "Formal CSR": "0.0%",
+    "Sem-CSR": "0.0%",
+    "False accept": "0.0%",
+    "Invalid cases": "150/150 (100.0%)"
+  },
+  {
+    "Dataset": "Aviation",
+    "Method": "Native ASP + clingo",
+    "Method type": "native_symbolic",
+    "Rule Precision": "7.5%",
+    "Rule Recall": "19.3%",
+    "Formal CSR": "0.0%",
+    "Sem-CSR": "0.0%",
+    "False accept": "0.0%",
+    "Invalid cases": "150/150 (100.0%)"
+  },
+  {
+    "Dataset": "Aviation",
+    "Method": "Native CP-SAT + OR-Tools",
+    "Method type": "native_symbolic",
+    "Rule Precision": "3.4%",
+    "Rule Recall": "8.3%",
+    "Formal CSR": "36.0%",
+    "Sem-CSR": "10.7%",
+    "False accept": "25.3%",
+    "Invalid cases": "134/150 (89.3%) (96 unsupported)"
+  },
+  {
+    "Dataset": "Aviation",
+    "Method": "Native SCIP",
+    "Method type": "native_symbolic",
+    "Rule Precision": "3.4%",
+    "Rule Recall": "8.3%",
+    "Formal CSR": "36.0%",
+    "Sem-CSR": "8.0%",
+    "False accept": "28.0%",
+    "Invalid cases": "138/150 (92.0%) (96 unsupported)"
+  },
+  {
+    "Dataset": "Aviation",
+    "Method": "CTHR default",
+    "Method type": "cthr_semantic_modeling",
+    "Rule Precision": "74.7%",
+    "Rule Recall": "70.7%",
+    "Formal CSR": "89.3%",
+    "Sem-CSR": "81.3%",
+    "False accept": "8.0%",
+    "Invalid cases": "28/150 (18.7%) (16 unsupported)"
+  },
+  {
+    "Dataset": "Aviation",
+    "Method": "CTHR-style ASP + clingo",
+    "Method type": "cthr_semantic_modeling",
+    "Rule Precision": "74.7%",
+    "Rule Recall": "70.7%",
+    "Formal CSR": "0.0%",
+    "Sem-CSR": "0.0%",
+    "False accept": "0.0%",
+    "Invalid cases": "150/150 (100.0%)"
+  },
+  {
+    "Dataset": "Aviation",
+    "Method": "CTHR-style CP-SAT + OR-Tools",
+    "Method type": "cthr_semantic_modeling",
+    "Rule Precision": "74.7%",
+    "Rule Recall": "70.7%",
+    "Formal CSR": "71.3%",
+    "Sem-CSR": "63.3%",
+    "False accept": "8.0%",
+    "Invalid cases": "55/150 (36.7%) (31 unsupported)"
+  },
+  {
+    "Dataset": "Aviation",
+    "Method": "CTHR-style SCIP",
+    "Method type": "cthr_semantic_modeling",
+    "Rule Precision": "74.7%",
+    "Rule Recall": "70.7%",
+    "Formal CSR": "89.3%",
+    "Sem-CSR": "81.3%",
+    "False accept": "8.0%",
+    "Invalid cases": "28/150 (18.7%) (16 unsupported)"
+  }
+]

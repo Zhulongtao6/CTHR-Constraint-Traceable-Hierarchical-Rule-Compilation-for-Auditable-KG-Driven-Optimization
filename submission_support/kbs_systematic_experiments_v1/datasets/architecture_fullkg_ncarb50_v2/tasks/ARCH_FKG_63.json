@@ -1,0 +1,87 @@
+{
+  "version": "architecture_ncarb50_v2_public_task_v1",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_63",
+    "title": "NCARB-derived multi-floor fire alarm zone partition",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "fire_alarm_zone_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: IBC table lookup and fire alarm zoning. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "building_use": "mixed_use",
+      "alarm_zone_layout": "floor_by_floor",
+      "system_type": "fire_alarm_system",
+      "zone_origin": "IFC-2021",
+      "ncarb_scenario_theme": "IBC table lookup and fire alarm zoning",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "fire_and_egress",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Alarm zone design variant; helper divides zone area by decision variable zone_count.",
+      "alarm_zone_design_context": "new_alarm_zone_design",
+      "zone_coordination_document": "design_basis_narrative"
+    },
+    "decision_variables": {
+      "zone_area_sf": {
+        "type": "continuous",
+        "unit": "sf",
+        "lower": 4000,
+        "upper": 26000
+      },
+      "zone_length_ft": {
+        "type": "continuous",
+        "unit": "ft",
+        "lower": 90,
+        "upper": 360
+      },
+      "zone_count": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 1,
+        "upper": 10
+      },
+      "coverage_per_zone_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      }
+    },
+    "objectives": [
+      {
+        "name": "minimize_zone_count",
+        "expression": "zone_count"
+      },
+      {
+        "name": "maximize_coverage_per_zone",
+        "expression": "coverage_per_zone_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.58,
+        0.42
+      ],
+      "meaning": "prefer fewer alarm zones while preserving coverage per zone"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_63_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "IBC table lookup and fire alarm zoning",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "scenario_variant_status": "parameterized_scenario_variant",
+    "scenario_variant_note": "Parameterized variant with substantive changes in facts, bounds, weights, or document context; not a fully independent real project case.",
+    "scenario_variant_differentiator": "Alarm zone design variant; helper divides zone area by decision variable zone_count.",
+    "scenario_variant_group_id": "ncarb50_scenario_variant_group_11",
+    "constraint_solver_profile": "requires_nonlinear_or_auxiliary_constraint_checker",
+    "nonlinear_or_auxiliary_note": "Contains coverage_per_zone_score <= zone_area_sf / (1000 * zone_count), where the denominator includes decision variable zone_count."
+  }
+}

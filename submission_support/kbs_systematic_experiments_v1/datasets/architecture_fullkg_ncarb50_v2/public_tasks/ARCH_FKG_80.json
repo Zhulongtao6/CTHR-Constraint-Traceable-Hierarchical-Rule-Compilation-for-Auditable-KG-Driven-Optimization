@@ -1,0 +1,72 @@
+{
+  "version": "architecture_ncarb50_v2_public_task_v1",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_80",
+    "title": "NCARB-derived roof hatch guard planning",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "roof_access_fall_protection_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: roof detail and access coordination. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "roof_hatch_near_edge": true,
+      "height_differential_present": true,
+      "roof_hatch_proximity_to_edge_ft": 10,
+      "edge_height_above_floor_in": 42,
+      "ncarb_scenario_theme": "roof detail and access coordination",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "area_and_height",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized"
+    },
+    "decision_variables": {
+      "guard_extension_beyond_hatch_end_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 0,
+        "upper": 60
+      },
+      "circulation_clearance_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      },
+      "fall_protection_margin_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 0,
+        "upper": 30
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_fall_protection_margin",
+        "expression": "fall_protection_margin_in"
+      },
+      {
+        "name": "maximize_rooftop_circulation_clearance",
+        "expression": "circulation_clearance_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.55,
+        0.45
+      ],
+      "meaning": "slightly prioritize fall-protection margin"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_80_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "roof detail and access coordination",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    }
+  }
+}

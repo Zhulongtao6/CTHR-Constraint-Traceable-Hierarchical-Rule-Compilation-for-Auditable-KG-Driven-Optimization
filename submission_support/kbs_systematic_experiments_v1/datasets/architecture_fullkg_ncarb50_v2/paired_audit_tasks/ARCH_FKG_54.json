@@ -1,0 +1,545 @@
+{
+  "version": "architecture_ncarb50_v2_paired_audit_task_v1",
+  "visibility": "hidden_evaluation_or_offline_audit_only_not_method_input",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_54",
+    "title": "NCARB-derived accessible storage room clear-floor layout",
+    "domain": "architecture_code_compliance",
+    "source_domain": "ADA",
+    "task_type": "accessible_storage_layout_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: bike storage room and public storage planning. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "room_type": "accessible_mobility_guest_room",
+      "storage_elements_provided": true,
+      "location": "accessible spaces",
+      "ncarb_scenario_theme": "bike storage room and public storage planning",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "accessibility",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized"
+    },
+    "decision_variables": {
+      "clear_floor_width_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 24,
+        "upper": 60
+      },
+      "clear_floor_depth_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 36,
+        "upper": 72
+      },
+      "accessible_storage_type_count": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 0,
+        "upper": 6
+      },
+      "storage_capacity_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      },
+      "maneuvering_quality_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_storage_capacity",
+        "expression": "storage_capacity_score"
+      },
+      {
+        "name": "maximize_maneuvering_quality",
+        "expression": "maneuvering_quality_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.5,
+        0.5
+      ],
+      "meaning": "balance storage capacity and accessible maneuvering space"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_54_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "bike storage room and public storage planning",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    }
+  },
+  "evaluation_reference": {
+    "omega_id": "ARCH_FKG_54",
+    "title": "NCARB-derived accessible storage room clear-floor layout",
+    "rule_structure": {
+      "expected_source_rule_ids": [
+        "ada-305-3-clear-floor-space-min-dimensions",
+        "ada_225_2_storage_accessibility"
+      ],
+      "expected_defeated_rule_ids": [],
+      "expected_surviving_rule_ids": [
+        "ada-305-3-clear-floor-space-min-dimensions",
+        "ada_225_2_storage_accessibility"
+      ],
+      "expected_valid_rule_structures": [
+        [
+          "ada-305-3-clear-floor-space-min-dimensions",
+          "ada_225_2_storage_accessibility"
+        ]
+      ],
+      "expected_rule_behavior": {
+        "should_activate": [
+          "Minimum clear floor or ground space dimensions",
+          "At least one of each type of storage provided in accessible spaces shall comply with Section 811"
+        ],
+        "should_exclude": [],
+        "should_resolve": [
+          "multi_rule_conjunction",
+          "accessibility_space_planning"
+        ]
+      },
+      "challenge_types": [
+        "multi_rule_conjunction",
+        "accessibility_space_planning"
+      ],
+      "valid_constraint_cell_ids": [
+        "ARCH_FKG_54_cell_1"
+      ],
+      "expected_provenance": {
+        "kg_chunk_ids": [
+          "4277d8ab-cd93-5256-9add-99a84ca96871",
+          "f77843ea-34cc-5368-9c43-6ed7f7d91cd3"
+        ],
+        "kg_node_ids": [
+          "b6c39888-175a-53df-831f-49880e68976a"
+        ],
+        "kg_edge_ids": [
+          "kg_edge_60081"
+        ],
+        "source_documents": [
+          {
+            "document": "ADA 2010",
+            "section": "Chapter 3, Section 305.3",
+            "page": 112,
+            "chunk_id": "4277d8ab-cd93-5256-9add-99a84ca96871"
+          },
+          {
+            "document": "ADA 2010",
+            "section": "225.2",
+            "page": "unknown",
+            "chunk_id": "f77843ea-34cc-5368-9c43-6ed7f7d91cd3"
+          },
+          {
+            "document": "ARE-Practice-Exam-Programming-and-Analysis.pdf",
+            "section": "Programming and Analysis",
+            "page": "practice-exam-question",
+            "question_number": "Question 5",
+            "derivation_policy": "Paraphrased and parameterized from an NCARB practice-exam scenario; original question text is not copied."
+          }
+        ]
+      }
+    },
+    "feasible_region": {
+      "executable_constraints": [
+        {
+          "constraint_id": "C1",
+          "expression": "clear_floor_width_in >= 30",
+          "role": "clear_floor_space_width",
+          "source_type": "rule_library",
+          "source_id": "ada-305-3-clear-floor-space-min-dimensions",
+          "executable": true,
+          "checker_expression": "clear_floor_width_in >= 30",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "clear_floor_width_in"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C2",
+          "expression": "clear_floor_depth_in >= 48",
+          "role": "clear_floor_space_depth",
+          "source_type": "rule_library",
+          "source_id": "ada-305-3-clear-floor-space-min-dimensions",
+          "executable": true,
+          "checker_expression": "clear_floor_depth_in >= 48",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "clear_floor_depth_in"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C3",
+          "expression": "accessible_storage_type_count >= 1",
+          "role": "accessible_storage_type_minimum",
+          "source_type": "rule_library",
+          "source_id": "ada_225_2_storage_accessibility",
+          "executable": true,
+          "checker_expression": "accessible_storage_type_count >= 1",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "accessible_storage_type_count"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C90",
+          "expression": "storage_capacity_score <= 2 * accessible_storage_type_count - 0.02 * (clear_floor_width_in + clear_floor_depth_in)",
+          "role": "storage_capacity_trades_with_clear_floor_space",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "storage_capacity_score <= 2 * accessible_storage_type_count - 0.02 * (clear_floor_width_in + clear_floor_depth_in)",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "storage_capacity_score",
+              "accessible_storage_type_count",
+              "clear_floor_width_in",
+              "clear_floor_depth_in"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Accessible clear floor space consumes storage capacity."
+          }
+        },
+        {
+          "constraint_id": "C91",
+          "expression": "maneuvering_quality_score <= 0.1 * (clear_floor_width_in - 30) + 0.1 * (clear_floor_depth_in - 48)",
+          "role": "maneuvering_quality_from_clear_floor_space",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "maneuvering_quality_score <= 0.1 * (clear_floor_width_in - 30) + 0.1 * (clear_floor_depth_in - 48)",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "maneuvering_quality_score",
+              "clear_floor_width_in",
+              "clear_floor_depth_in"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Maneuvering quality is tied to clear floor width and depth beyond minimums."
+          }
+        }
+      ],
+      "structure_only_constraints": [],
+      "valid_constraint_cells": [
+        {
+          "cell_id": "ARCH_FKG_54_cell_1",
+          "cell_type": "single_valid_fullkg_rule_structure",
+          "rule_ids": [
+            "ada-305-3-clear-floor-space-min-dimensions",
+            "ada_225_2_storage_accessibility"
+          ],
+          "constraints": [
+            {
+              "constraint_id": "C1",
+              "expression": "clear_floor_width_in >= 30",
+              "role": "clear_floor_space_width",
+              "source_type": "rule_library",
+              "source_id": "ada-305-3-clear-floor-space-min-dimensions",
+              "executable": true,
+              "checker_expression": "clear_floor_width_in >= 30",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "clear_floor_width_in"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C2",
+              "expression": "clear_floor_depth_in >= 48",
+              "role": "clear_floor_space_depth",
+              "source_type": "rule_library",
+              "source_id": "ada-305-3-clear-floor-space-min-dimensions",
+              "executable": true,
+              "checker_expression": "clear_floor_depth_in >= 48",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "clear_floor_depth_in"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C3",
+              "expression": "accessible_storage_type_count >= 1",
+              "role": "accessible_storage_type_minimum",
+              "source_type": "rule_library",
+              "source_id": "ada_225_2_storage_accessibility",
+              "executable": true,
+              "checker_expression": "accessible_storage_type_count >= 1",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "accessible_storage_type_count"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C90",
+              "expression": "storage_capacity_score <= 2 * accessible_storage_type_count - 0.02 * (clear_floor_width_in + clear_floor_depth_in)",
+              "role": "storage_capacity_trades_with_clear_floor_space",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "storage_capacity_score <= 2 * accessible_storage_type_count - 0.02 * (clear_floor_width_in + clear_floor_depth_in)",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "storage_capacity_score",
+                  "accessible_storage_type_count",
+                  "clear_floor_width_in",
+                  "clear_floor_depth_in"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Accessible clear floor space consumes storage capacity."
+              }
+            },
+            {
+              "constraint_id": "C91",
+              "expression": "maneuvering_quality_score <= 0.1 * (clear_floor_width_in - 30) + 0.1 * (clear_floor_depth_in - 48)",
+              "role": "maneuvering_quality_from_clear_floor_space",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "maneuvering_quality_score <= 0.1 * (clear_floor_width_in - 30) + 0.1 * (clear_floor_depth_in - 48)",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "maneuvering_quality_score",
+                  "clear_floor_width_in",
+                  "clear_floor_depth_in"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Maneuvering quality is tied to clear floor width and depth beyond minimums."
+              }
+            }
+          ],
+          "description": "Executable feasible cell induced by the expected full-KG rule structure for this grounded scenario."
+        }
+      ],
+      "reference_semantics": {
+        "positive_membership_condition": "all executable_constraints evaluate true and at least one valid cell holds when cells are present",
+        "structure_only_constraints_usage": "used to check rule resolution, provenance, exceptions, or semantic requirements before numeric membership checking"
+      }
+    },
+    "certificate_targets": {
+      "source_rule_ids": [
+        "ada-305-3-clear-floor-space-min-dimensions",
+        "ada_225_2_storage_accessibility"
+      ],
+      "provenance": [
+        {
+          "document": "ADA 2010",
+          "section": "Chapter 3, Section 305.3",
+          "page": 112,
+          "chunk_id": "4277d8ab-cd93-5256-9add-99a84ca96871"
+        },
+        {
+          "document": "ADA 2010",
+          "section": "225.2",
+          "page": "unknown",
+          "chunk_id": "f77843ea-34cc-5368-9c43-6ed7f7d91cd3"
+        }
+      ]
+    },
+    "diagnostic_candidate_rule_ids_reference_only": [
+      "ada-305-3-clear-floor-space-min-dimensions",
+      "ada_225_2_storage_accessibility"
+    ],
+    "rule_library_id_bindings": [
+      {
+        "rule_id": "ada-305-3-clear-floor-space-min-dimensions",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ada-305-3-clear-floor-space-min-dimensions",
+        "rule_name": "Minimum clear floor or ground space dimensions",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "4277d8ab-cd93-5256-9add-99a84ca96871"
+        ],
+        "source_node_ids": [],
+        "provenance": [
+          {
+            "document": "ADA 2010",
+            "section": "Chapter 3, Section 305.3",
+            "page": 112,
+            "chunk_id": "4277d8ab-cd93-5256-9add-99a84ca96871"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "clear_floor_or_ground_space_minimum_width",
+            "op": ">=",
+            "value": 30,
+            "unit": "inches"
+          },
+          {
+            "variable": "clear_floor_or_ground_space_minimum_depth",
+            "op": ">=",
+            "value": 48,
+            "unit": "inches"
+          }
+        ]
+      },
+      {
+        "rule_id": "ada_225_2_storage_accessibility",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ada_225_2_storage_accessibility",
+        "rule_name": "At least one of each type of storage provided in accessible spaces shall comply with Section 811",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "f77843ea-34cc-5368-9c43-6ed7f7d91cd3"
+        ],
+        "source_node_ids": [
+          "b6c39888-175a-53df-831f-49880e68976a"
+        ],
+        "provenance": [
+          {
+            "document": "ADA 2010",
+            "section": "225.2",
+            "page": "unknown",
+            "chunk_id": "f77843ea-34cc-5368-9c43-6ed7f7d91cd3"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "accessible_storage_minimum",
+            "op": ">=",
+            "value": 1,
+            "unit": "unit"
+          }
+        ]
+      }
+    ],
+    "reference_constraint_rule_bindings": [
+      {
+        "reference_container": "feasible_region.executable_constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "clear_floor_space_width",
+        "reference_expression": "clear_floor_width_in >= 30",
+        "source_rule_id": "ada-305-3-clear-floor-space-min-dimensions",
+        "rule_library_rule_id": "ada-305-3-clear-floor-space-min-dimensions",
+        "rule_library_rule_name": "Minimum clear floor or ground space dimensions"
+      },
+      {
+        "reference_container": "feasible_region.executable_constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "clear_floor_space_depth",
+        "reference_expression": "clear_floor_depth_in >= 48",
+        "source_rule_id": "ada-305-3-clear-floor-space-min-dimensions",
+        "rule_library_rule_id": "ada-305-3-clear-floor-space-min-dimensions",
+        "rule_library_rule_name": "Minimum clear floor or ground space dimensions"
+      },
+      {
+        "reference_container": "feasible_region.executable_constraints[2]",
+        "reference_constraint_id": "C3",
+        "reference_role": "accessible_storage_type_minimum",
+        "reference_expression": "accessible_storage_type_count >= 1",
+        "source_rule_id": "ada_225_2_storage_accessibility",
+        "rule_library_rule_id": "ada_225_2_storage_accessibility",
+        "rule_library_rule_name": "At least one of each type of storage provided in accessible spaces shall comply with Section 811"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "clear_floor_space_width",
+        "reference_expression": "clear_floor_width_in >= 30",
+        "source_rule_id": "ada-305-3-clear-floor-space-min-dimensions",
+        "rule_library_rule_id": "ada-305-3-clear-floor-space-min-dimensions",
+        "rule_library_rule_name": "Minimum clear floor or ground space dimensions"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "clear_floor_space_depth",
+        "reference_expression": "clear_floor_depth_in >= 48",
+        "source_rule_id": "ada-305-3-clear-floor-space-min-dimensions",
+        "rule_library_rule_id": "ada-305-3-clear-floor-space-min-dimensions",
+        "rule_library_rule_name": "Minimum clear floor or ground space dimensions"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[2]",
+        "reference_constraint_id": "C3",
+        "reference_role": "accessible_storage_type_minimum",
+        "reference_expression": "accessible_storage_type_count >= 1",
+        "source_rule_id": "ada_225_2_storage_accessibility",
+        "rule_library_rule_id": "ada_225_2_storage_accessibility",
+        "rule_library_rule_name": "At least one of each type of storage provided in accessible spaces shall comply with Section 811"
+      }
+    ],
+    "task_derivation_source": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "document": "ARE-Practice-Exam-Programming-and-Analysis.pdf",
+      "division": "Programming and Analysis",
+      "question_number": "Question 5",
+      "theme": "bike storage room and public storage planning",
+      "adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "source_policy": "Hidden provenance only; algorithm-visible inputs expose only generalized NCARB-derived themes."
+    },
+    "benchmark_extension_metadata": {
+      "extension_round": "architecture_ncarb_50_extension",
+      "source_base_task_id": "ARCH_FKG_26",
+      "ncarb_category": "accessibility",
+      "source_policy": "paraphrased_parameterized_not_verbatim",
+      "dataset_characterization": "NCARB practice-topic-derived, paraphrased, and parameterized architecture-code semantic extension task.",
+      "independence_claim": "parameterized_variant_not_fully_independent_real_project_case",
+      "source_visibility_policy": "Exact practice identifiers, original question text, answer choices, and source file names are hidden from algorithm-visible inputs.",
+      "method_visibility": "hidden_evaluation_reference_not_method_input"
+    }
+  }
+}

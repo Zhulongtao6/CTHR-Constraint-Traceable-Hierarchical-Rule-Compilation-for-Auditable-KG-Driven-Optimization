@@ -1,0 +1,85 @@
+{
+  "version": "architecture_ncarb50_v2_public_task_v1",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_78",
+    "title": "NCARB-derived Type IA fire-flow table applicability",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "fire_flow_supply_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: maximum buildable area and code table calculation. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "construction_type": "Type IA",
+      "fire_flow_calculation_area_sf": 28500,
+      "building_construction_type": "type ia and ib",
+      "fire_flow_calculation_area_sqft": 30400,
+      "scenario_variant": "parameterized_variant",
+      "expansion_case_family": "area_and_height",
+      "ncarb_scenario_theme": "maximum buildable area and code table calculation",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Type IA fire-flow table applicability variant with changed calculation area and reserve target.",
+      "water_supply_context": "larger_table_applicability_review"
+    },
+    "decision_variables": {
+      "available_fire_flow_gpm": {
+        "type": "continuous",
+        "unit": "gpm",
+        "lower": 1200,
+        "upper": 2800
+      },
+      "flow_duration_hours": {
+        "type": "continuous",
+        "unit": "hour",
+        "lower": 1,
+        "upper": 4
+      },
+      "site_loop_length_ft": {
+        "type": "continuous",
+        "unit": "ft",
+        "lower": 200,
+        "upper": 2000
+      },
+      "fire_flow_margin_gpm": {
+        "type": "continuous",
+        "unit": "gpm",
+        "lower": 0,
+        "upper": 1000
+      }
+    },
+    "objectives": [
+      {
+        "name": "minimize_site_loop_length",
+        "expression": "site_loop_length_ft"
+      },
+      {
+        "name": "maximize_fire_flow_margin",
+        "expression": "fire_flow_margin_gpm"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.4,
+        0.6
+      ],
+      "meaning": "prioritize fire-flow reserve for larger Type IA calculation area"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_78_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "maximum buildable area and code table calculation",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "scenario_variant_status": "parameterized_scenario_variant",
+    "scenario_variant_note": "Parameterized variant with substantive changes in facts, bounds, weights, or document context; not a fully independent real project case.",
+    "scenario_variant_differentiator": "Type IA fire-flow table applicability variant with changed calculation area and reserve target.",
+    "scenario_variant_group_id": "ncarb50_scenario_variant_group_12"
+  }
+}

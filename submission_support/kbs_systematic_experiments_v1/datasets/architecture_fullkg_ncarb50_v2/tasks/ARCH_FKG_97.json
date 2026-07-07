@@ -1,0 +1,82 @@
+{
+  "version": "architecture_ncarb50_v2_public_task_v1",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_97",
+    "title": "NCARB-derived existing patient door exception schedule",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "exception_resolution",
+    "design_intent": "Paraphrased NCARB-derived scenario: hospital pharmacy renovation phasing. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "occupancy_group": "I-2",
+      "condition": "Condition 1",
+      "door_status": "existing",
+      "occupancy_type": "Group I-2",
+      "door_usage": "movement of patients in beds",
+      "status": "existing",
+      "ncarb_scenario_theme": "hospital pharmacy renovation phasing",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "construction_documentation",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Existing patient-door exception schedule review variant.",
+      "existing_condition": "door_schedule_exception_review",
+      "exception_trigger_condition": "existing_i2_condition_1_documented",
+      "door_schedule_exception_review_indicator": 1
+    },
+    "decision_variables": {
+      "door_clear_width_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 30,
+        "upper": 50
+      },
+      "retrofit_cost_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      },
+      "usable_width_margin_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 0,
+        "upper": 16
+      }
+    },
+    "objectives": [
+      {
+        "name": "minimize_retrofit_cost",
+        "expression": "retrofit_cost_score"
+      },
+      {
+        "name": "maximize_usable_width_margin",
+        "expression": "usable_width_margin_in"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.45,
+        0.55
+      ],
+      "meaning": "prioritize usable width margin in documented exception review"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_97_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "hospital pharmacy renovation phasing",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "scenario_variant_status": "parameterized_scenario_variant",
+    "scenario_variant_note": "Parameterized variant with substantive changes in facts, bounds, weights, or document context; not a fully independent real project case.",
+    "scenario_variant_differentiator": "Existing patient-door exception schedule review variant.",
+    "scenario_variant_group_id": "ncarb50_scenario_variant_group_10"
+  }
+}

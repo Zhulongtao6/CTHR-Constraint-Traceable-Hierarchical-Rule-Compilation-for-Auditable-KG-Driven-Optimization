@@ -1,0 +1,6 @@
+﻿Dataset,Solver over CTHR cells,Solve,Cell CSR,Objective gap
+Architecture-NCARB50-v2,CTHR default solver,100.0,100.0,1.999532%
+Architecture-NCARB50-v2,ASP/clingo over CTHR cells,100.0,100.0,2.003102%
+Architecture-NCARB50-v2,SLSQP over CTHR cells,100.0,100.0,2.003342%
+Architecture-NCARB50-v2,CP-SAT + OR-Tools over CTHR cells,100.0,100.0,2.004783%
+Architecture-NCARB50-v2,SCIP over CTHR cells,100.0,100.0,0.003819%

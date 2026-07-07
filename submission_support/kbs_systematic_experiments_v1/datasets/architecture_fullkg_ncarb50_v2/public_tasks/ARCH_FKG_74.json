@@ -1,0 +1,104 @@
+{
+  "version": "architecture_ncarb50_v2_public_task_v1",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_74",
+    "title": "NCARB-derived event venue voice-alarm channel precedence",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "emergency_voice_alarm_precedence_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: restaurant event configuration and alarm priority. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "system_type": "emergency_voice_alarm_communication_system",
+      "alternative_announcement_use_requested": true,
+      "shared_voice_alarm_channel_capacity": 8,
+      "scenario_variant": "parameterized_variant",
+      "expansion_case_family": "fire_and_egress",
+      "ncarb_scenario_theme": "restaurant event configuration and alarm priority",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Event venue voice channel capacity variant.",
+      "voice_alarm_context": "event_venue_channel_planning"
+    },
+    "decision_variables": {
+      "selective_paging_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1
+      },
+      "all_call_paging_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1
+      },
+      "manual_fire_alarm_priority_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1
+      },
+      "reserved_alarm_priority_channels": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 2,
+        "upper": 8
+      },
+      "alternative_announcement_channel_count": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 1,
+        "upper": 8
+      },
+      "operator_flexibility_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 12
+      },
+      "alarm_preemption_reliability_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 16
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_operator_flexibility",
+        "expression": "operator_flexibility_score"
+      },
+      {
+        "name": "maximize_alarm_preemption_reliability",
+        "expression": "alarm_preemption_reliability_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.56,
+        0.44
+      ],
+      "meaning": "allow event-venue operator flexibility while keeping alarm priority"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_74_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "restaurant event configuration and alarm priority",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "scenario_variant_status": "parameterized_scenario_variant",
+    "scenario_variant_note": "Parameterized variant with substantive changes in facts, bounds, weights, or document context; not a fully independent real project case.",
+    "task_semantics_profile": "semantic_indicator_dominant",
+    "task_semantics_note": "Rule applicability, precedence, categorical, or system-capability semantics dominate this task; it is not a pure continuous numeric optimization task.",
+    "scenario_variant_differentiator": "Event venue voice channel capacity variant.",
+    "scenario_variant_group_id": "ncarb50_scenario_variant_group_02"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "dataset_root": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\datasets\\aviation_strong_mixed_v11_150",
+  "grounding_full": "submission_support\\kbs_systematic_experiments_v1\\results\\section_6_3_aviation_strong_mixed_v11_150_latest_slot_profile_candidate_to_valid_full.json",
+  "grounding_source_label": "latest slot-constrained aviation profile grounding",
+  "methods_requested": [
+    "Flat baseline",
+    "Native ASP + clingo",
+    "Native CP-SAT + OR-Tools",
+    "Native SCIP",
+    "CTHR default",
+    "CTHR-style ASP + clingo",
+    "CTHR-style CP-SAT + OR-Tools",
+    "CTHR-style SCIP"
+  ],
+  "methods_completed": [
+    "Flat baseline",
+    "Native ASP + clingo",
+    "Native CP-SAT + OR-Tools",
+    "Native SCIP",
+    "CTHR default",
+    "CTHR-style ASP + clingo",
+    "CTHR-style CP-SAT + OR-Tools",
+    "CTHR-style SCIP"
+  ],
+  "failures": [],
+  "outputs": {
+    "overall_csv": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\results\\s62_t1_avi150_adaptive_all_overall.csv",
+    "overall_md": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\results\\s62_t1_avi150_adaptive_all_overall.md",
+    "overall_json": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\results\\s62_t1_avi150_adaptive_all_overall.json",
+    "per_task_csv": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\results\\s62_t1_avi150_adaptive_all_per_task.csv",
+    "summary_json": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\results\\s62_t1_avi150_adaptive_all_summary.json"
+  }
+}

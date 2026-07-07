@@ -1,0 +1,111 @@
+{
+  "dataset": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\datasets\\aviation_rule_relation_balanced_v13_150",
+  "grounding_full_reference": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\results\\section_6_3_aviation_smix_v11_150_old_candidate_recall_guard_profile_auto_resolver_candidate_to_valid_full.json",
+  "mode": {
+    "mode": "backend_complete_oracle_valid_upper",
+    "description": "Use strong-aligned valid rules, backend-complete compiled templates, linear feasibility solving, and local nonlinear polish.",
+    "pass_as_valid": true,
+    "extend_relation_templates": true,
+    "linear_programming_feasibility": true,
+    "local_nonlinear_polish_default": true
+  },
+  "alignment_summaries": {
+    "qwen": {
+      "canonical_rule_count": 50,
+      "aligned_canonical_rule_count": 50,
+      "exact_or_strong_aligned_canonical_rule_count": 50,
+      "unresolved_canonical_rule_count": 0,
+      "unresolved_canonical_rule_ids": []
+    },
+    "deepseek": {
+      "canonical_rule_count": 50,
+      "aligned_canonical_rule_count": 50,
+      "exact_or_strong_aligned_canonical_rule_count": 50,
+      "unresolved_canonical_rule_count": 0,
+      "unresolved_canonical_rule_ids": []
+    },
+    "xiaomi_mimo": {
+      "canonical_rule_count": 50,
+      "aligned_canonical_rule_count": 50,
+      "exact_or_strong_aligned_canonical_rule_count": 50,
+      "unresolved_canonical_rule_count": 0,
+      "unresolved_canonical_rule_ids": []
+    }
+  },
+  "quality_rows": [
+    {
+      "Domain": "Aviation rule relation balanced v13 150",
+      "Generator": "Qwen-plus",
+      "Rules": 111,
+      "Provenance valid": "100.0%",
+      "Constraint grounding": "100.0%",
+      "Relation grounding": "100.0%"
+    },
+    {
+      "Domain": "Aviation rule relation balanced v13 150",
+      "Generator": "DeepSeek-Pro",
+      "Rules": 142,
+      "Provenance valid": "100.0%",
+      "Constraint grounding": "99.1%",
+      "Relation grounding": "99.6%"
+    },
+    {
+      "Domain": "Aviation rule relation balanced v13 150",
+      "Generator": "Xiaomi MIMO",
+      "Rules": 186,
+      "Provenance valid": "100.0%",
+      "Constraint grounding": "100.0%",
+      "Relation grounding": "100.0%"
+    }
+  ],
+  "downstream_rows": [
+    {
+      "Domain": "Aviation rule relation balanced v13 150",
+      "Generator": "Qwen-plus",
+      "Rule Precision": "100.0%",
+      "Rule Recall": "100.0%",
+      "Formal CSR": "96.7%",
+      "Sem-CSR": "96.7%",
+      "False accept": "0.0%",
+      "Candidate zero": 0,
+      "CTHR no valid": 0,
+      "Invalid cases": "5/150",
+      "Unsupported tasks": 0,
+      "Relation templates added": 616
+    },
+    {
+      "Domain": "Aviation rule relation balanced v13 150",
+      "Generator": "DeepSeek-Pro",
+      "Rule Precision": "86.8%",
+      "Rule Recall": "100.0%",
+      "Formal CSR": "96.7%",
+      "Sem-CSR": "96.7%",
+      "False accept": "0.0%",
+      "Candidate zero": 0,
+      "CTHR no valid": 0,
+      "Invalid cases": "5/150",
+      "Unsupported tasks": 0,
+      "Relation templates added": 616
+    },
+    {
+      "Domain": "Aviation rule relation balanced v13 150",
+      "Generator": "Xiaomi MIMO",
+      "Rule Precision": "88.9%",
+      "Rule Recall": "100.0%",
+      "Formal CSR": "94.0%",
+      "Sem-CSR": "94.0%",
+      "False accept": "0.0%",
+      "Candidate zero": 0,
+      "CTHR no valid": 0,
+      "Invalid cases": "9/150",
+      "Unsupported tasks": 0,
+      "Relation templates added": 616
+    }
+  ],
+  "outputs": {
+    "quality_table": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\results\\section_6_4_aviation_rule_relation_balanced_v13_150_library_table.csv",
+    "downstream_table": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\results\\section_6_4_aviation_rule_relation_balanced_v13_150_downstream_table.csv",
+    "task_rows": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\results\\section_6_4_aviation_rule_relation_balanced_v13_150_task_rows.csv",
+    "report": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\results\\section_6_4_aviation_rule_relation_balanced_v13_150_report.md"
+  }
+}

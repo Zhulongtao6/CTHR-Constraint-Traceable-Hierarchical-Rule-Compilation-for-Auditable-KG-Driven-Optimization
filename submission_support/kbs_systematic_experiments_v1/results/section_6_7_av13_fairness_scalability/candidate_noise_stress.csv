@@ -1,0 +1,5 @@
+﻿Dataset,Candidate factor,Mean candidate rules,Mean compiled constraints,Template assembly time (ms),Probe evals,Source feasible,Noisy-candidate accepts,Semantic consistency,False accept,False reject,Accepted-point Sem-CSR
+航空规则关系均衡第十三版 150 题,1x,2.827,52.093,0.2010,25253,508/25253 (2.0%),641/25253 (2.5%),99.3%,0.6%,0.1%,76.0%
+航空规则关系均衡第十三版 150 题,2x,5.653,52.707,0.8487,25253,508/25253 (2.0%),563/25253 (2.2%),99.0%,0.6%,0.4%,72.6%
+航空规则关系均衡第十三版 150 题,4x,11.307,54.233,2.2296,25253,508/25253 (2.0%),468/25253 (1.9%),98.7%,0.6%,0.7%,68.2%
+航空规则关系均衡第十三版 150 题,8x,22.613,56.047,4.7000,25253,508/25253 (2.0%),174/25253 (0.7%),98.7%,0.0%,1.3%,99.4%

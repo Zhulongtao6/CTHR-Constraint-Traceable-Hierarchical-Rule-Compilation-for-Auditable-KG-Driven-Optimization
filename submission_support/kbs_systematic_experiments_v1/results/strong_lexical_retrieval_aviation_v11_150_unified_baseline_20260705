@@ -1,0 +1,106 @@
+{
+  "generated_at": "2026-07-05 18:21:44",
+  "dataset_selection": "aviation-v11-150",
+  "compile_adapter": {
+    "name": "strong_after_compile_fix",
+    "template_context_matching": "run_section_6_2_table1_fullkg_pipeline.context_matches",
+    "raw_rule_fallback": "safe_explicit_numeric_only",
+    "generic_text_numeric_extraction": false,
+    "continuous_default_solver": "uses run_section_6_2_table1_pipeline.optimize_default when invoked; CP-SAT/SCIP rows do not use the continuous solver"
+  },
+  "default_config": "top16_tau4",
+  "min_k": 3,
+  "configs": [
+    {
+      "name": "top8_tau4",
+      "top_k": 8,
+      "threshold": 4.0
+    },
+    {
+      "name": "top12_tau4",
+      "top_k": 12,
+      "threshold": 4.0
+    },
+    {
+      "name": "top16_tau4",
+      "top_k": 16,
+      "threshold": 4.0
+    },
+    {
+      "name": "top24_tau4",
+      "top_k": 24,
+      "threshold": 4.0
+    },
+    {
+      "name": "top32_tau4",
+      "top_k": 32,
+      "threshold": 4.0
+    },
+    {
+      "name": "top40_tau4",
+      "top_k": 40,
+      "threshold": 4.0
+    },
+    {
+      "name": "top60_tau4",
+      "top_k": 60,
+      "threshold": 4.0
+    },
+    {
+      "name": "top16_tau2",
+      "top_k": 16,
+      "threshold": 2.0
+    },
+    {
+      "name": "top16_tau6",
+      "top_k": 16,
+      "threshold": 6.0
+    },
+    {
+      "name": "top24_tau2",
+      "top_k": 24,
+      "threshold": 2.0
+    },
+    {
+      "name": "top32_tau2",
+      "top_k": 32,
+      "threshold": 2.0
+    },
+    {
+      "name": "top40_tau2",
+      "top_k": 40,
+      "threshold": 2.0
+    },
+    {
+      "name": "top60_tau2",
+      "top_k": 60,
+      "threshold": 2.0
+    }
+  ],
+  "selected_configs": [
+    "top60_tau2"
+  ],
+  "selected_backends": [
+    "scip"
+  ],
+  "task_ids": null,
+  "task_start": 125,
+  "task_limit": 25,
+  "datasets": {
+    "Aviation-StrongMixed-v11-150": {
+      "dataset": "Aviation-StrongMixed-v11-150",
+      "domain": "aviation",
+      "rule_library": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\datasets\\aviation_strong_mixed_v11_150\\rule_libraries\\qwen\\full_aviation_rule_library_qwen.json",
+      "algorithm_inputs": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\datasets\\aviation_strong_mixed_v11_150\\algorithm_inputs\\aviation_strong_mixed_algorithm_inputs.json",
+      "scenario_models": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\datasets\\aviation_strong_mixed_v11_150\\scenario_models\\aviation_strong_mixed_public_scenario_models.json",
+      "evaluation_references": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\datasets\\aviation_strong_mixed_v11_150\\evaluation_references\\aviation_strong_mixed_evaluation_references.json",
+      "constraint_templates": "D:\\paper\\Neurosymbolic\\neurosymbolic-research\\cthr\\submission_support\\kbs_systematic_experiments_v1\\datasets\\aviation_strong_mixed_v11_150\\constraint_templates\\compiled_rule_constraint_templates.json"
+    }
+  },
+  "outputs": {
+    "per_task": "submission_support\\kbs_systematic_experiments_v1\\results\\strong_lexical_retrieval_aviation_v11_150_unified_baseline_20260705\\_c\\k12s05\\lexical_retrieval_per_task.csv",
+    "sensitivity_overall": "submission_support\\kbs_systematic_experiments_v1\\results\\strong_lexical_retrieval_aviation_v11_150_unified_baseline_20260705\\_c\\k12s05\\lexical_retrieval_sensitivity_overall.csv",
+    "default_overall": "submission_support\\kbs_systematic_experiments_v1\\results\\strong_lexical_retrieval_aviation_v11_150_unified_baseline_20260705\\_c\\k12s05\\lexical_retrieval_default_overall.csv",
+    "default_failures": "submission_support\\kbs_systematic_experiments_v1\\results\\strong_lexical_retrieval_aviation_v11_150_unified_baseline_20260705\\_c\\k12s05\\lexical_retrieval_default_failures.csv"
+  }
+}

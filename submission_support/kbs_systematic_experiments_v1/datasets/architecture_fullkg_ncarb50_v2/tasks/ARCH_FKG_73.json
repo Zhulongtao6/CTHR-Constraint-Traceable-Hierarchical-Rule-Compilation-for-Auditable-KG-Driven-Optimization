@@ -1,0 +1,85 @@
+{
+  "version": "architecture_ncarb50_v2_public_task_v1",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_73",
+    "title": "NCARB-derived egress ramp run-length formula",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "egress_ramp_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: ramp for elevation change in construction documents. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "egress_component": "ramp",
+      "change_in_direction": true,
+      "ramp_usage": "means_of_egress",
+      "ramp.landing_has_change_in_direction": true,
+      "landing_has_change_in_direction": true,
+      "scenario_variant": "parameterized_variant",
+      "expansion_case_family": "fire_and_egress",
+      "ncarb_scenario_theme": "ramp for elevation change in construction documents",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "rise_ft": 1.8,
+      "ramp_run_model": "fixed_rise_running_slope_relation",
+      "ramp_run_model_note": "Public scenario model uses ramp_run_length_ft >= rise_ft / running_slope.",
+      "scenario_variant_differentiator": "Construction drawing ramp review variant: documentation context, fixed rise_ft 1.8, wider available run and landing-review weight.",
+      "scenario_use": "construction_drawing_ramp_run_check"
+    },
+    "decision_variables": {
+      "running_slope": {
+        "type": "continuous",
+        "unit": "ratio",
+        "lower": 0.02,
+        "upper": 0.12
+      },
+      "landing_minimum_dimension_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 36,
+        "upper": 84
+      },
+      "ramp_run_length_ft": {
+        "type": "continuous",
+        "unit": "ft",
+        "lower": 10,
+        "upper": 145
+      }
+    },
+    "objectives": [
+      {
+        "name": "minimize_ramp_run_length",
+        "expression": "ramp_run_length_ft"
+      },
+      {
+        "name": "maximize_landing_dimension",
+        "expression": "landing_minimum_dimension_in"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.42,
+        0.58
+      ],
+      "meaning": "prefer documentation-compliant generous landing while checking run length"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_73_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "ramp for elevation change in construction documents",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "scenario_variant_status": "parameterized_scenario_variant",
+    "scenario_variant_note": "Parameterized variant with substantive changes in facts, bounds, weights, or document context; not a fully independent real project case.",
+    "scenario_variant_differentiator": "Construction drawing ramp review variant: documentation context, fixed rise_ft 1.8, wider available run and landing-review weight.",
+    "scenario_variant_group_id": "ncarb50_scenario_variant_group_05",
+    "constraint_solver_profile": "requires_nonlinear_or_auxiliary_constraint_checker",
+    "nonlinear_or_auxiliary_note": "Contains a helper expression such as max(), abs(), symbolic division, or a variable product."
+  }
+}

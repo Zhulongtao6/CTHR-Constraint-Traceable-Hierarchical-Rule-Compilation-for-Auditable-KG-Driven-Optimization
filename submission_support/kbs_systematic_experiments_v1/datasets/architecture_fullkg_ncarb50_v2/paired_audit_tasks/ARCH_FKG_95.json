@@ -1,0 +1,549 @@
+{
+  "version": "architecture_ncarb50_v2_paired_audit_task_v1",
+  "visibility": "hidden_evaluation_or_offline_audit_only_not_method_input",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_95",
+    "title": "NCARB-derived interior signage production criteria",
+    "domain": "architecture_code_compliance",
+    "source_domain": "ADA",
+    "task_type": "accessible_wayfinding_sign_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: construction-document signage schedule and fabrication review. The optimizer emphasizes production control and schedule compliance while retaining the source-grounded visual character proportion rule.",
+    "scenario_facts": {
+      "sign_type": "visual_wayfinding",
+      "viewer_group": "public_accessible_route",
+      "character_type": "visual",
+      "ncarb_scenario_theme": "medical office signage production scope",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "construction_documentation",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "scenario_variant_differentiator": "Construction-document signage fabrication review variant with production tolerance score and schedule-review context.",
+      "signage_schedule_context": "door_and_room_signage_schedule",
+      "shop_drawing_review_indicator": true,
+      "production_tolerance_in": 0.0625,
+      "construction_document_review_context": "shop_drawing_and_signage_schedule_review",
+      "fabrication_tolerance_context": "fabrication_submittal_review",
+      "sign_location": "fabrication_submittal_package",
+      "viewing_distance_ft": 12
+    },
+    "decision_variables": {
+      "font_width_to_height_ratio": {
+        "type": "continuous",
+        "unit": "dimensionless",
+        "lower": 0.5,
+        "upper": 1.2
+      },
+      "sign_panel_width_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      },
+      "readability_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      },
+      "production_tolerance_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      }
+    },
+    "objectives": [
+      {
+        "name": "minimize_fabrication_control_burden",
+        "expression": "sign_panel_width_score + production_tolerance_score"
+      },
+      {
+        "name": "maximize_schedule_readability_confirmation",
+        "expression": "readability_score"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.65,
+        0.35
+      ],
+      "meaning": "prioritize fabrication control and signage schedule review over general readability optimization"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_95_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "medical office signage production scope",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    },
+    "scenario_variant_status": "parameterized_scenario_variant",
+    "scenario_variant_note": "Parameterized variant with substantive changes in facts, bounds, weights, or document context; not a fully independent real project case.",
+    "scenario_variant_differentiator": "Construction-document signage fabrication review variant with production tolerance score and schedule-review context.",
+    "scenario_variant_group_id": "ncarb50_scenario_variant_group_07",
+    "constraint_solver_profile": "requires_nonlinear_or_auxiliary_constraint_checker",
+    "nonlinear_or_auxiliary_note": "Contains abs() readability and fabrication-tolerance helper expressions."
+  },
+  "evaluation_reference": {
+    "omega_id": "ARCH_FKG_95",
+    "title": "NCARB-derived interior signage production criteria",
+    "rule_structure": {
+      "expected_source_rule_ids": [
+        "ada-2010-703-5-5-font-proportion"
+      ],
+      "expected_defeated_rule_ids": [],
+      "expected_surviving_rule_ids": [
+        "ada-2010-703-5-5-font-proportion"
+      ],
+      "expected_valid_rule_structures": [
+        [
+          "ada-2010-703-5-5-font-proportion"
+        ]
+      ],
+      "expected_rule_behavior": {
+        "should_activate": [
+          "Visual character font proportion requirement (O/I ratio)"
+        ],
+        "should_exclude": [],
+        "should_resolve": [
+          "multi_constraint_single_rule",
+          "accessibility_wayfinding"
+        ]
+      },
+      "challenge_types": [
+        "multi_constraint_single_rule",
+        "accessibility_wayfinding"
+      ],
+      "valid_constraint_cell_ids": [
+        "ARCH_FKG_95_cell_1"
+      ],
+      "expected_provenance": {
+        "kg_chunk_ids": [
+          "801e62dd-4fe3-5b6b-9794-7f00f3bd97b0"
+        ],
+        "kg_node_ids": [
+          "4bb783cb-cde8-5995-a685-3732c2d296db",
+          "77cd9ef3-162f-5469-8c6c-c2c2b2fb9d74"
+        ],
+        "kg_edge_ids": [
+          "kg_edge_59497",
+          "kg_edge_59499"
+        ],
+        "source_documents": [
+          {
+            "document": "2010-design-standards",
+            "section": "CHAPTER 7: COMMUNICATION ELEMENTS AND FEATURES TECHNICAL 703.5.5",
+            "page": 195,
+            "chunk_id": "801e62dd-4fe3-5b6b-9794-7f00f3bd97b0"
+          },
+          {
+            "document": "ARE-Practice-Exam-Project-Development-and-Documentation.pdf",
+            "section": "Project Development and Documentation",
+            "page": "practice-exam-question",
+            "question_number": "Question 34",
+            "derivation_policy": "Paraphrased and parameterized from an NCARB practice-exam scenario; original question text is not copied."
+          }
+        ]
+      }
+    },
+    "feasible_region": {
+      "executable_constraints": [
+        {
+          "constraint_id": "C1",
+          "expression": "font_width_to_height_ratio >= 0.55",
+          "role": "visual_character_minimum_width_to_height_ratio",
+          "source_type": "rule_library",
+          "source_id": "ada-2010-703-5-5-font-proportion",
+          "executable": true,
+          "checker_expression": "font_width_to_height_ratio >= 0.55",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "font_width_to_height_ratio"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C2",
+          "expression": "font_width_to_height_ratio <= 1.1",
+          "role": "visual_character_maximum_width_to_height_ratio",
+          "source_type": "rule_library",
+          "source_id": "ada-2010-703-5-5-font-proportion",
+          "executable": true,
+          "checker_expression": "font_width_to_height_ratio <= 1.1",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "font_width_to_height_ratio"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C90",
+          "expression": "sign_panel_width_score >= 5 * font_width_to_height_ratio",
+          "role": "sign_width_scales_with_font_proportion",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "sign_panel_width_score >= 5 * font_width_to_height_ratio",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "sign_panel_width_score",
+              "font_width_to_height_ratio"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Wider font proportions increase sign-panel width."
+          }
+        },
+        {
+          "constraint_id": "C91",
+          "expression": "readability_score <= 10 - 10 * abs(font_width_to_height_ratio - 0.8)",
+          "role": "readability_from_font_proportion",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "readability_score <= 10 - 10 * abs(font_width_to_height_ratio - 0.8)",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "readability_score",
+              "font_width_to_height_ratio"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Readability peaks near a balanced font proportion and drops near extremes.",
+            "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+            "nonlinear_or_auxiliary_reasons": [
+              "auxiliary_function"
+            ],
+            "linear_backend_note": "Use a nonlinear/auxiliary-function constraint checker or an explicit linearized surrogate before sending this constraint to a pure linear optimizer."
+          }
+        },
+        {
+          "constraint_id": "C92",
+          "expression": "production_tolerance_score >= 8 * abs(font_width_to_height_ratio - 0.8) + 20 * production_tolerance_in",
+          "role": "fabrication_tolerance_control_from_font_proportion",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "production_tolerance_score >= 8 * abs(font_width_to_height_ratio - 0.8) + 20 * production_tolerance_in",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "production_tolerance_score",
+              "font_width_to_height_ratio"
+            ],
+            "scenario_fields": [
+              "production_tolerance_in"
+            ],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Fabrication review burden increases when the selected font proportion moves away from the preferred production target and when the tolerance allowance is tight.",
+            "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+            "nonlinear_or_auxiliary_reasons": [
+              "auxiliary_function"
+            ],
+            "linear_backend_note": "Use a nonlinear/auxiliary-function checker or an explicit linearized surrogate before sending this constraint to a pure linear optimizer."
+          }
+        }
+      ],
+      "structure_only_constraints": [],
+      "valid_constraint_cells": [
+        {
+          "cell_id": "ARCH_FKG_95_cell_1",
+          "cell_type": "single_valid_fullkg_rule_structure",
+          "rule_ids": [
+            "ada-2010-703-5-5-font-proportion"
+          ],
+          "constraints": [
+            {
+              "constraint_id": "C1",
+              "expression": "font_width_to_height_ratio >= 0.55",
+              "role": "visual_character_minimum_width_to_height_ratio",
+              "source_type": "rule_library",
+              "source_id": "ada-2010-703-5-5-font-proportion",
+              "executable": true,
+              "checker_expression": "font_width_to_height_ratio >= 0.55",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "font_width_to_height_ratio"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C2",
+              "expression": "font_width_to_height_ratio <= 1.1",
+              "role": "visual_character_maximum_width_to_height_ratio",
+              "source_type": "rule_library",
+              "source_id": "ada-2010-703-5-5-font-proportion",
+              "executable": true,
+              "checker_expression": "font_width_to_height_ratio <= 1.1",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "font_width_to_height_ratio"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C90",
+              "expression": "sign_panel_width_score >= 5 * font_width_to_height_ratio",
+              "role": "sign_width_scales_with_font_proportion",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "sign_panel_width_score >= 5 * font_width_to_height_ratio",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "sign_panel_width_score",
+                  "font_width_to_height_ratio"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Wider font proportions increase sign-panel width."
+              }
+            },
+            {
+              "constraint_id": "C91",
+              "expression": "readability_score <= 10 - 10 * abs(font_width_to_height_ratio - 0.8)",
+              "role": "readability_from_font_proportion",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "readability_score <= 10 - 10 * abs(font_width_to_height_ratio - 0.8)",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "readability_score",
+                  "font_width_to_height_ratio"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Readability peaks near a balanced font proportion and drops near extremes.",
+                "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+                "nonlinear_or_auxiliary_reasons": [
+                  "auxiliary_function"
+                ],
+                "linear_backend_note": "Use a nonlinear/auxiliary-function constraint checker or an explicit linearized surrogate before sending this constraint to a pure linear optimizer."
+              }
+            },
+            {
+              "constraint_id": "C92",
+              "expression": "production_tolerance_score >= 8 * abs(font_width_to_height_ratio - 0.8) + 20 * production_tolerance_in",
+              "role": "fabrication_tolerance_control_from_font_proportion",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "production_tolerance_score >= 8 * abs(font_width_to_height_ratio - 0.8) + 20 * production_tolerance_in",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "production_tolerance_score",
+                  "font_width_to_height_ratio"
+                ],
+                "scenario_fields": [
+                  "production_tolerance_in"
+                ],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Fabrication review burden increases when the selected font proportion moves away from the preferred production target and when the tolerance allowance is tight.",
+                "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+                "nonlinear_or_auxiliary_reasons": [
+                  "auxiliary_function"
+                ],
+                "linear_backend_note": "Use a nonlinear/auxiliary-function checker or an explicit linearized surrogate before sending this constraint to a pure linear optimizer."
+              }
+            }
+          ],
+          "description": "Executable feasible cell induced by the expected full-KG rule structure for this grounded scenario."
+        }
+      ],
+      "reference_semantics": {
+        "positive_membership_condition": "all executable_constraints evaluate true and at least one valid cell holds when cells are present",
+        "structure_only_constraints_usage": "used to check rule resolution, provenance, exceptions, or semantic requirements before numeric membership checking"
+      }
+    },
+    "certificate_targets": {
+      "source_rule_ids": [
+        "ada-2010-703-5-5-font-proportion"
+      ],
+      "provenance": [
+        {
+          "document": "2010-design-standards",
+          "section": "CHAPTER 7: COMMUNICATION ELEMENTS AND FEATURES TECHNICAL 703.5.5",
+          "page": 195,
+          "chunk_id": "801e62dd-4fe3-5b6b-9794-7f00f3bd97b0"
+        }
+      ]
+    },
+    "diagnostic_candidate_rule_ids_reference_only": [
+      "ada-2010-703-5-5-font-proportion"
+    ],
+    "rule_library_id_bindings": [
+      {
+        "rule_id": "ada-2010-703-5-5-font-proportion",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ada-2010-703-5-5-font-proportion",
+        "rule_name": "Visual character font proportion requirement (O/I ratio)",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "801e62dd-4fe3-5b6b-9794-7f00f3bd97b0"
+        ],
+        "source_node_ids": [
+          "4bb783cb-cde8-5995-a685-3732c2d296db",
+          "77cd9ef3-162f-5469-8c6c-c2c2b2fb9d74"
+        ],
+        "provenance": [
+          {
+            "document": "2010-design-standards",
+            "section": "CHAPTER 7: COMMUNICATION ELEMENTS AND FEATURES TECHNICAL 703.5.5",
+            "page": 195,
+            "chunk_id": "801e62dd-4fe3-5b6b-9794-7f00f3bd97b0"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "font_width_to_height_ratio",
+            "op": ">=",
+            "value": 0.55,
+            "unit": "dimensionless"
+          },
+          {
+            "variable": "font_width_to_height_ratio",
+            "op": "<=",
+            "value": 1.1,
+            "unit": "dimensionless"
+          }
+        ]
+      }
+    ],
+    "reference_constraint_rule_bindings": [
+      {
+        "reference_container": "feasible_region.executable_constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "visual_character_minimum_width_to_height_ratio",
+        "reference_expression": "font_width_to_height_ratio >= 0.55",
+        "source_rule_id": "ada-2010-703-5-5-font-proportion",
+        "rule_library_rule_id": "ada-2010-703-5-5-font-proportion",
+        "rule_library_rule_name": "Visual character font proportion requirement (O/I ratio)"
+      },
+      {
+        "reference_container": "feasible_region.executable_constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "visual_character_maximum_width_to_height_ratio",
+        "reference_expression": "font_width_to_height_ratio <= 1.1",
+        "source_rule_id": "ada-2010-703-5-5-font-proportion",
+        "rule_library_rule_id": "ada-2010-703-5-5-font-proportion",
+        "rule_library_rule_name": "Visual character font proportion requirement (O/I ratio)"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "visual_character_minimum_width_to_height_ratio",
+        "reference_expression": "font_width_to_height_ratio >= 0.55",
+        "source_rule_id": "ada-2010-703-5-5-font-proportion",
+        "rule_library_rule_id": "ada-2010-703-5-5-font-proportion",
+        "rule_library_rule_name": "Visual character font proportion requirement (O/I ratio)"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "visual_character_maximum_width_to_height_ratio",
+        "reference_expression": "font_width_to_height_ratio <= 1.1",
+        "source_rule_id": "ada-2010-703-5-5-font-proportion",
+        "rule_library_rule_id": "ada-2010-703-5-5-font-proportion",
+        "rule_library_rule_name": "Visual character font proportion requirement (O/I ratio)"
+      },
+      {
+        "reference_container": "feasible_region.executable_constraints",
+        "reference_constraint_id": "C92",
+        "reference_role": "fabrication_tolerance_control_from_font_proportion",
+        "reference_expression": "production_tolerance_score >= 8 * abs(font_width_to_height_ratio - 0.8) + 20 * production_tolerance_in",
+        "source_rule_id": "scenario_objective_model",
+        "rule_library_rule_id": null,
+        "rule_library_rule_name": null,
+        "source_type": "task_or_scenario_model",
+        "metadata": {
+          "visibility": "public_algorithm_input",
+          "canonical_rule_binding": "none_task_or_scenario_model"
+        }
+      }
+    ],
+    "task_derivation_source": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "document": "ARE-Practice-Exam-Project-Development-and-Documentation.pdf",
+      "division": "Project Development and Documentation",
+      "question_number": "Question 34",
+      "theme": "medical office signage production scope",
+      "adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "source_policy": "Hidden provenance only; algorithm-visible inputs expose only generalized NCARB-derived themes."
+    },
+    "benchmark_extension_metadata": {
+      "extension_round": "architecture_ncarb_50_extension",
+      "source_base_task_id": "ARCH_FKG_27",
+      "ncarb_category": "construction_documentation",
+      "source_policy": "paraphrased_parameterized_not_verbatim",
+      "dataset_characterization": "NCARB practice-topic-derived, paraphrased, and parameterized architecture-code semantic extension task.",
+      "independence_claim": "parameterized_variant_not_fully_independent_real_project_case",
+      "source_visibility_policy": "Exact practice identifiers, original question text, answer choices, and source file names are hidden from algorithm-visible inputs.",
+      "scenario_variant_group_id": "ncarb50_scenario_variant_group_07",
+      "scenario_variant_group_members": [
+        "ARCH_FKG_55",
+        "ARCH_FKG_95"
+      ],
+      "scenario_variant_status": "parameterized_scenario_variant",
+      "constraint_checker_profile": "requires_general_nonlinear_or_auxiliary_function_checker",
+      "nonlinear_or_auxiliary_reasons": [
+        "auxiliary_function",
+        "auxiliary_function_or_variable_product"
+      ],
+      "scenario_variant_differentiator": "Construction-document signage fabrication review variant with production tolerance score and schedule-review context.",
+      "method_visibility": "hidden_evaluation_reference_not_method_input"
+    }
+  }
+}

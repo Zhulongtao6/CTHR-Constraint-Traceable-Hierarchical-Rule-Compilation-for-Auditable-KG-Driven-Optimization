@@ -1,0 +1,4 @@
+﻿Dataset,Method,Method type,Probe evals,Source feasible,Method accepts,Semantic consistency,False accept,False reject,Accepted-point Sem-CSR
+航空规则关系均衡第十三版 150 题,参考有效规则上界,reference_valid_upper,25253,508/25253 (2.0%),508/25253 (2.0%),100.0%,0.0%,0.0%,100.0%
+航空规则关系均衡第十三版 150 题,当前接地预测,current_grounding_prediction,25253,508/25253 (2.0%),662/25253 (2.6%),99.4%,0.6%,0.0%,76.7%
+航空规则关系均衡第十三版 150 题,过滤候选直编译,filtered_candidate_direct,25253,508/25253 (2.0%),641/25253 (2.5%),99.3%,0.6%,0.1%,76.0%

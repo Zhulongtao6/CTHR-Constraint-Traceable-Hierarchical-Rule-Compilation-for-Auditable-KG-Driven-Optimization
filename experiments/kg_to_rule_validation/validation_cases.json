@@ -1,0 +1,302 @@
+{
+  "version": "pilot-v1",
+  "description": "Pilot validation set for LLM-assisted KG-to-CTHR-rule construction. The LLM sees only input_evidence, allowed variables, relation types, and schema instructions. expected_behavior is used only by the evaluator.",
+  "cases": [
+    {
+      "case_id": "ARCH_S1_SHOWER_ALTERNATIVES",
+      "domain": "architecture",
+      "interaction_type": "exclusion_alternative_paths",
+      "input_evidence": {
+        "kg_nodes": [
+          {"id": "arch_s1_n_general", "name": "accessible roll-in shower", "type": "facility_requirement"},
+          {"id": "arch_s1_n_standard", "name": "standard roll-in shower template", "type": "compliance_template"},
+          {"id": "arch_s1_n_alternate", "name": "alternate roll-in shower template", "type": "compliance_template"},
+          {"id": "arch_var_width", "name": "shower_width", "type": "decision_variable"},
+          {"id": "arch_var_depth", "name": "shower_depth", "type": "decision_variable"}
+        ],
+        "kg_edges": [
+          {"id": "arch_s1_e_standard_width", "source": "arch_s1_n_standard", "relation": "requires_minimum", "target": "arch_var_width", "value": 30, "unit": "inch", "chunk_id": "arch_s1_c1"},
+          {"id": "arch_s1_e_standard_depth", "source": "arch_s1_n_standard", "relation": "requires_minimum", "target": "arch_var_depth", "value": 60, "unit": "inch", "chunk_id": "arch_s1_c1"},
+          {"id": "arch_s1_e_alt_width", "source": "arch_s1_n_alternate", "relation": "requires_minimum", "target": "arch_var_width", "value": 36, "unit": "inch", "chunk_id": "arch_s1_c2"},
+          {"id": "arch_s1_e_alt_depth", "source": "arch_s1_n_alternate", "relation": "requires_minimum", "target": "arch_var_depth", "value": 36, "unit": "inch", "chunk_id": "arch_s1_c2"},
+          {"id": "arch_s1_e_excludes", "source": "arch_s1_n_standard", "relation": "excludes", "target": "arch_s1_n_alternate", "chunk_id": "arch_s1_c3"}
+        ],
+        "source_chunks": [
+          {"chunk_id": "arch_s1_c1", "document": "2010 ADA Standards for Accessible Design", "section": "608.2.2", "page": 165, "text": "A standard roll-in shower compartment provides a 30 inch by 60 inch minimum clearance."},
+          {"chunk_id": "arch_s1_c2", "document": "2010 ADA Standards for Accessible Design", "section": "608.2.3", "page": 166, "text": "An alternate roll-in shower compartment provides a 36 inch by 36 inch minimum clearance."},
+          {"chunk_id": "arch_s1_c3", "document": "2010 ADA Standards for Accessible Design", "section": "608.2", "page": 165, "text": "The standard and alternate roll-in shower templates are alternative compliance paths and shall not be conjoined as simultaneous requirements."}
+        ]
+      },
+      "allowed_variables": ["shower_width", "shower_depth"],
+      "scenario_omega": {
+        "domain": "architecture",
+        "facility_type": "shower",
+        "accessibility_required": true,
+        "shower_type": "roll_in",
+        "template_policy": "standard_or_alternate"
+      },
+      "expected_behavior": {
+        "required_relation_types": ["excludes"],
+        "min_valid_structures": 2,
+        "candidate_decisions": [
+          {"id": "standard_30x60", "x": {"shower_width": 30, "shower_depth": 60}, "expected_valid": true},
+          {"id": "alternate_36x36", "x": {"shower_width": 36, "shower_depth": 36}, "expected_valid": true},
+          {"id": "mixed_35x48", "x": {"shower_width": 35, "shower_depth": 48}, "expected_valid": false}
+        ]
+      }
+    },
+    {
+      "case_id": "ARCH_S2_TOILET_STALL_STABLE",
+      "domain": "architecture",
+      "interaction_type": "low_ambiguity_template",
+      "input_evidence": {
+        "kg_nodes": [
+          {"id": "arch_s2_n_stall", "name": "accessible toilet stall", "type": "facility_requirement"},
+          {"id": "arch_s2_n_standard", "name": "standard accessible toilet stall", "type": "compliance_template"},
+          {"id": "arch_var_stall_width", "name": "stall_width", "type": "decision_variable"},
+          {"id": "arch_var_stall_depth", "name": "stall_depth", "type": "decision_variable"}
+        ],
+        "kg_edges": [
+          {"id": "arch_s2_e_width", "source": "arch_s2_n_standard", "relation": "requires_minimum", "target": "arch_var_stall_width", "value": 60, "unit": "inch", "chunk_id": "arch_s2_c1"},
+          {"id": "arch_s2_e_depth", "source": "arch_s2_n_standard", "relation": "requires_minimum", "target": "arch_var_stall_depth", "value": 56, "unit": "inch", "chunk_id": "arch_s2_c1"}
+        ],
+        "source_chunks": [
+          {"chunk_id": "arch_s2_c1", "document": "2010 ADA Standards for Accessible Design", "section": "604.8.1.1", "page": 154, "text": "A standard accessible toilet compartment shall be at least 60 inches wide and 56 inches deep for wall-hung water closets."}
+        ]
+      },
+      "allowed_variables": ["stall_width", "stall_depth"],
+      "scenario_omega": {
+        "domain": "architecture",
+        "facility_type": "toilet_stall",
+        "accessibility_required": true,
+        "stall_type": "standard"
+      },
+      "expected_behavior": {
+        "required_relation_types": [],
+        "min_valid_structures": 1,
+        "candidate_decisions": [
+          {"id": "valid_stall", "x": {"stall_width": 60, "stall_depth": 56}, "expected_valid": true},
+          {"id": "too_narrow", "x": {"stall_width": 58, "stall_depth": 56}, "expected_valid": false}
+        ]
+      }
+    },
+    {
+      "case_id": "ARCH_S3_FAR_PRECEDENCE",
+      "domain": "architecture",
+      "interaction_type": "cross_code_precedence",
+      "input_evidence": {
+        "kg_nodes": [
+          {"id": "arch_s3_n_baseline_far", "name": "baseline FAR allowance", "type": "rule"},
+          {"id": "arch_s3_n_overlay_far", "name": "historic overlay FAR allowance", "type": "rule"},
+          {"id": "arch_var_far", "name": "floor_area_ratio", "type": "decision_variable"}
+        ],
+        "kg_edges": [
+          {"id": "arch_s3_e_baseline", "source": "arch_s3_n_baseline_far", "relation": "requires_maximum", "target": "arch_var_far", "value": 3.0, "unit": "ratio", "chunk_id": "arch_s3_c1"},
+          {"id": "arch_s3_e_overlay", "source": "arch_s3_n_overlay_far", "relation": "requires_maximum", "target": "arch_var_far", "value": 2.2, "unit": "ratio", "chunk_id": "arch_s3_c2"},
+          {"id": "arch_s3_e_precedence", "source": "arch_s3_n_overlay_far", "relation": "precedes", "target": "arch_s3_n_baseline_far", "chunk_id": "arch_s3_c3"}
+        ],
+        "source_chunks": [
+          {"chunk_id": "arch_s3_c1", "document": "2021 International Building Code", "section": "506", "page": 148, "text": "The baseline floor area ratio allowance for this occupancy group shall not exceed 3.0."},
+          {"chunk_id": "arch_s3_c2", "document": "Historic Overlay Supplement", "section": "HO-4.2", "page": 22, "text": "Within the historic overlay, the governing floor area ratio shall not exceed 2.2."},
+          {"chunk_id": "arch_s3_c3", "document": "Historic Overlay Supplement", "section": "HO-1.1", "page": 3, "text": "Where overlay requirements conflict with the baseline building code, the more restrictive overlay requirement governs."}
+        ]
+      },
+      "allowed_variables": ["floor_area_ratio"],
+      "scenario_omega": {
+        "domain": "architecture",
+        "facility_type": "mixed_use",
+        "historic_overlay": true
+      },
+      "expected_behavior": {
+        "required_relation_types": ["precedes"],
+        "min_valid_structures": 1,
+        "candidate_decisions": [
+          {"id": "overlay_valid", "x": {"floor_area_ratio": 2.1}, "expected_valid": true},
+          {"id": "baseline_only_invalid", "x": {"floor_area_ratio": 2.6}, "expected_valid": false}
+        ]
+      }
+    },
+    {
+      "case_id": "ARCH_S4_HAZARD_STORAGE_EXCEPTION",
+      "domain": "architecture",
+      "interaction_type": "exception_override",
+      "input_evidence": {
+        "kg_nodes": [
+          {"id": "arch_s4_n_baseline", "name": "hazardous storage baseline cap", "type": "rule"},
+          {"id": "arch_s4_n_closed_exception", "name": "closed-container exception", "type": "exception_rule"},
+          {"id": "arch_var_hazard_qty", "name": "hazard_storage_quantity", "type": "decision_variable"}
+        ],
+        "kg_edges": [
+          {"id": "arch_s4_e_baseline", "source": "arch_s4_n_baseline", "relation": "requires_maximum", "target": "arch_var_hazard_qty", "value": 10, "unit": "unit", "chunk_id": "arch_s4_c1"},
+          {"id": "arch_s4_e_exception", "source": "arch_s4_n_closed_exception", "relation": "requires_maximum", "target": "arch_var_hazard_qty", "value": 18, "unit": "unit", "chunk_id": "arch_s4_c2"},
+          {"id": "arch_s4_e_override", "source": "arch_s4_n_closed_exception", "relation": "overrides", "target": "arch_s4_n_baseline", "chunk_id": "arch_s4_c2"}
+        ],
+        "source_chunks": [
+          {"chunk_id": "arch_s4_c1", "document": "2021 International Fire Code", "section": "5003", "page": 404, "text": "Hazardous storage quantity shall not exceed 10 units under the baseline storage rule."},
+          {"chunk_id": "arch_s4_c2", "document": "2021 International Fire Code", "section": "5003 Exception", "page": 405, "text": "Where materials are stored in approved closed containers, the exception permits storage quantity up to 18 units and overrides the baseline cap for this condition."}
+        ]
+      },
+      "allowed_variables": ["hazard_storage_quantity"],
+      "scenario_omega": {
+        "domain": "architecture",
+        "storage_type": "closed_container",
+        "hazardous_material": true
+      },
+      "expected_behavior": {
+        "required_relation_types": ["overrides"],
+        "min_valid_structures": 1,
+        "candidate_decisions": [
+          {"id": "exception_valid", "x": {"hazard_storage_quantity": 16}, "expected_valid": true},
+          {"id": "above_exception_invalid", "x": {"hazard_storage_quantity": 20}, "expected_valid": false}
+        ]
+      }
+    },
+    {
+      "case_id": "ARCH_S5_MIXED_EGRESS_STRESS",
+      "domain": "architecture",
+      "interaction_type": "multi_rule_stress",
+      "input_evidence": {
+        "kg_nodes": [
+          {"id": "arch_s5_n_unsprinklered", "name": "unsprinklered mixed-use egress", "type": "rule"},
+          {"id": "arch_s5_n_separation", "name": "fire separation requirement", "type": "rule"},
+          {"id": "arch_var_travel", "name": "travel_distance", "type": "decision_variable"},
+          {"id": "arch_var_width", "name": "egress_width", "type": "decision_variable"},
+          {"id": "arch_var_sep", "name": "fire_separation_rating", "type": "decision_variable"}
+        ],
+        "kg_edges": [
+          {"id": "arch_s5_e_travel", "source": "arch_s5_n_unsprinklered", "relation": "requires_maximum", "target": "arch_var_travel", "value": 200, "unit": "foot", "chunk_id": "arch_s5_c1"},
+          {"id": "arch_s5_e_width", "source": "arch_s5_n_unsprinklered", "relation": "requires_minimum", "target": "arch_var_width", "value": 44, "unit": "inch", "chunk_id": "arch_s5_c2"},
+          {"id": "arch_s5_e_sep", "source": "arch_s5_n_separation", "relation": "requires_minimum", "target": "arch_var_sep", "value": 2, "unit": "hour", "chunk_id": "arch_s5_c3"},
+          {"id": "arch_s5_e_dep", "source": "arch_s5_n_separation", "relation": "depends_on", "target": "arch_s5_n_unsprinklered", "chunk_id": "arch_s5_c3"}
+        ],
+        "source_chunks": [
+          {"chunk_id": "arch_s5_c1", "document": "2021 International Building Code", "section": "1017", "page": 296, "text": "For unsprinklered mixed-use egress, exit access travel distance shall not exceed 200 feet."},
+          {"chunk_id": "arch_s5_c2", "document": "2021 International Building Code", "section": "1005", "page": 281, "text": "Required egress width shall be at least 44 inches for the evaluated occupant load."},
+          {"chunk_id": "arch_s5_c3", "document": "2021 International Building Code", "section": "508", "page": 168, "text": "Where mixed occupancies are unsprinklered, fire separation with a rating of at least 2 hours is required and depends on the mixed-use egress condition."}
+        ]
+      },
+      "allowed_variables": ["travel_distance", "egress_width", "fire_separation_rating"],
+      "scenario_omega": {
+        "domain": "architecture",
+        "occupancy": "mixed_use",
+        "sprinklered": false
+      },
+      "expected_behavior": {
+        "required_relation_types": ["depends_on"],
+        "min_valid_structures": 1,
+        "candidate_decisions": [
+          {"id": "all_ok", "x": {"travel_distance": 180, "egress_width": 46, "fire_separation_rating": 2}, "expected_valid": true},
+          {"id": "travel_too_long", "x": {"travel_distance": 230, "egress_width": 46, "fire_separation_rating": 2}, "expected_valid": false},
+          {"id": "missing_separation", "x": {"travel_distance": 180, "egress_width": 46, "fire_separation_rating": 1}, "expected_valid": false}
+        ]
+      }
+    },
+    {
+      "case_id": "AVI_A1_STANDARD_ILS_APPLICABILITY",
+      "domain": "aviation",
+      "interaction_type": "simple_applicability",
+      "input_evidence": {
+        "kg_nodes": [
+          {"id": "avi_a1_n_standard_ils", "name": "standard ILS approach angle", "type": "rule"},
+          {"id": "avi_var_theta", "name": "theta", "type": "decision_variable"},
+          {"id": "avi_var_speed", "name": "v", "type": "decision_variable"}
+        ],
+        "kg_edges": [
+          {"id": "avi_a1_e_theta_min", "source": "avi_a1_n_standard_ils", "relation": "requires_minimum", "target": "avi_var_theta", "value": 0.25, "unit": "normalized", "chunk_id": "avi_a1_c1"},
+          {"id": "avi_a1_e_theta_max", "source": "avi_a1_n_standard_ils", "relation": "requires_maximum", "target": "avi_var_theta", "value": 0.32, "unit": "normalized", "chunk_id": "avi_a1_c1"}
+        ],
+        "source_chunks": [
+          {"chunk_id": "avi_a1_c1", "document": "CAAC AC-97-FS-005R1", "section": "ILS standard approach", "page": 42, "text": "For a standard ILS approach, the normalized descent-angle surrogate theta shall be no less than 0.25 and no greater than 0.32."}
+        ]
+      },
+      "allowed_variables": ["theta", "v"],
+      "scenario_omega": {
+        "domain": "aviation",
+        "procedure_type": "approach",
+        "approach_type": "ILS",
+        "aircraft_category": "A_B",
+        "steep_approach_allowed": false
+      },
+      "expected_behavior": {
+        "required_relation_types": [],
+        "min_valid_structures": 1,
+        "candidate_decisions": [
+          {"id": "standard_valid", "x": {"theta": 0.30, "v": 0.50}, "expected_valid": true},
+          {"id": "too_steep_invalid", "x": {"theta": 0.38, "v": 0.50}, "expected_valid": false}
+        ]
+      }
+    },
+    {
+      "case_id": "AVI_A2_STEEP_APPROACH_OVERRIDE",
+      "domain": "aviation",
+      "interaction_type": "override_exception",
+      "input_evidence": {
+        "kg_nodes": [
+          {"id": "avi_a2_n_standard_ils", "name": "standard ILS approach angle", "type": "rule"},
+          {"id": "avi_a2_n_steep", "name": "steep approach exception for Category C/D", "type": "exception_rule"},
+          {"id": "avi_var_theta", "name": "theta", "type": "decision_variable"}
+        ],
+        "kg_edges": [
+          {"id": "avi_a2_e_standard_max", "source": "avi_a2_n_standard_ils", "relation": "requires_maximum", "target": "avi_var_theta", "value": 0.32, "unit": "normalized", "chunk_id": "avi_a2_c1"},
+          {"id": "avi_a2_e_steep_min", "source": "avi_a2_n_steep", "relation": "requires_minimum", "target": "avi_var_theta", "value": 0.40, "unit": "normalized", "chunk_id": "avi_a2_c2"},
+          {"id": "avi_a2_e_override", "source": "avi_a2_n_steep", "relation": "overrides", "target": "avi_a2_n_standard_ils", "chunk_id": "avi_a2_c2"}
+        ],
+        "source_chunks": [
+          {"chunk_id": "avi_a2_c1", "document": "CAAC AC-97-FS-005R1", "section": "ILS standard approach", "page": 42, "text": "The standard ILS descent-angle surrogate theta shall not exceed 0.32."},
+          {"chunk_id": "avi_a2_c2", "document": "CAAC AC-97-FS-005R1", "section": "4.3.2 steep approach", "page": 57, "text": "For Category C/D aircraft with steep approach approval, the steep-approach exception overrides the standard ILS angle rule and requires theta no less than 0.40."}
+        ]
+      },
+      "allowed_variables": ["theta"],
+      "scenario_omega": {
+        "domain": "aviation",
+        "procedure_type": "approach",
+        "aircraft_category": "C_D",
+        "steep_approach_allowed": true
+      },
+      "expected_behavior": {
+        "required_relation_types": ["overrides"],
+        "min_valid_structures": 1,
+        "candidate_decisions": [
+          {"id": "steep_valid", "x": {"theta": 0.421}, "expected_valid": true},
+          {"id": "forbidden_band_invalid", "x": {"theta": 0.350}, "expected_valid": false}
+        ]
+      }
+    },
+    {
+      "case_id": "AVI_A3_TEMPERATURE_COMPENSATION",
+      "domain": "aviation",
+      "interaction_type": "scenario_parameter_override",
+      "input_evidence": {
+        "kg_nodes": [
+          {"id": "avi_a3_n_speed_base", "name": "minimum published speed", "type": "rule"},
+          {"id": "avi_a3_n_isa_comp", "name": "ISA temperature compensation", "type": "parameter_rule"},
+          {"id": "avi_var_speed", "name": "v", "type": "decision_variable"}
+        ],
+        "kg_edges": [
+          {"id": "avi_a3_e_base", "source": "avi_a3_n_speed_base", "relation": "requires_minimum", "target": "avi_var_speed", "value": 0.40, "unit": "normalized", "chunk_id": "avi_a3_c1"},
+          {"id": "avi_a3_e_comp", "source": "avi_a3_n_isa_comp", "relation": "requires_minimum", "target": "avi_var_speed", "value": 0.60, "unit": "normalized", "chunk_id": "avi_a3_c2"},
+          {"id": "avi_a3_e_override", "source": "avi_a3_n_isa_comp", "relation": "overrides", "target": "avi_a3_n_speed_base", "chunk_id": "avi_a3_c2"}
+        ],
+        "source_chunks": [
+          {"chunk_id": "avi_a3_c1", "document": "CAAC AC-97-FS-005R1", "section": "minimum published speed", "page": 61, "text": "The baseline minimum published speed surrogate v shall be at least 0.40."},
+          {"chunk_id": "avi_a3_c2", "document": "CAAC AC-97-FS-005R1", "section": "temperature compensation", "page": 63, "text": "When ISA deviation is greater than +15 degrees C, temperature compensation overrides the baseline speed bound and requires v at least 0.60."}
+        ]
+      },
+      "allowed_variables": ["v"],
+      "scenario_omega": {
+        "domain": "aviation",
+        "procedure_type": "approach",
+        "isa_deviation_gt_15": true,
+        "temperature_compensation_required": true
+      },
+      "expected_behavior": {
+        "required_relation_types": ["overrides"],
+        "min_valid_structures": 1,
+        "candidate_decisions": [
+          {"id": "old_bound_only_invalid", "x": {"v": 0.50}, "expected_valid": false},
+          {"id": "compensated_valid", "x": {"v": 0.62}, "expected_valid": true}
+        ]
+      }
+    }
+  ]
+}

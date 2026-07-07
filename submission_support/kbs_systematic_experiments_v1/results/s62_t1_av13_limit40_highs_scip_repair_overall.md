@@ -1,0 +1,5 @@
+| Dataset | Method | Method type | Rule Precision | Rule Recall | Formal CSR | Sem-CSR | False accept | Invalid cases |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Aviation | CTHR-style MILP + HiGHS | cthr_semantic_modeling | 74.7% | 70.7% | 84.7% | 76.7% | 8.0% | 35/150 (23.3%) (23 unsupported) |
+| Aviation | CTHR-style MILP + HiGHS + SCIP repair | cthr_semantic_modeling | 74.7% | 70.7% | 96.7% | 88.7% | 8.0% | 17/150 (11.3%) (5 unsupported) |
+| Aviation | CTHR-style SCIP | cthr_semantic_modeling | 74.7% | 70.7% | 96.7% | 88.7% | 8.0% | 17/150 (11.3%) (5 unsupported) |

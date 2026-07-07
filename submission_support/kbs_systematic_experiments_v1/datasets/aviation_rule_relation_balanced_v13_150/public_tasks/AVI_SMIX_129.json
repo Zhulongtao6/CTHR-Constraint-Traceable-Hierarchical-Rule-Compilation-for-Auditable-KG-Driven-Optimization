@@ -1,0 +1,259 @@
+{
+  "version": "aviation_rule_relation_balanced_v13_150",
+  "algorithm_input": {
+    "omega_id": "AVI_SMIX_129",
+    "title": "航图资料公布定稿审查：距离公布修约增量",
+    "domain": "aviation_procedure_design",
+    "task_type": "chart_publication_final_strong_business_review",
+    "strong_business_third_type": true,
+    "business_domain": "publication",
+    "design_intent": "围绕航图资料定稿前的公布一致性审查，先确认 `chart_required_supplementary_data` 对应的数据项确实需要进入航图公布，再按 `rule_distance_rounding_rule` 检查距离公布修约增量。优化目标在公布精度、字段完整性和修约误差之间折中。 第七版进一步加入反向业务变量和反向约束，使任务不能通过直接取规范阈值边界求解。",
+    "scenario_facts": {
+      "benchmark_round": "aviation_strong_mixed_v5_150",
+      "business_domain": "publication",
+      "program_design_context": "航图、数据块、最低高度、下降梯度或程序资料公布审查",
+      "review_question": "资料是否进入正式公布流程，以及哪些字段、修约和唯一性要求必须同时满足。",
+      "case_variant_index": 129,
+      "operation_context": "专家复核前检查",
+      "traffic_and_terrain_variant": "复杂空域",
+      "source_policy": "由 v4 来源规则语义重构，未新增规则编号或来源页码",
+      "chart_publication_revision_focus": "距离公布修约增量",
+      "publication_data_item_requires_charting": true,
+      "field_or_rounding_rule_applies": true,
+      "final_revision_note": "该题聚焦航图资料公布、字段完整性和修约一致性，不作为程序几何设计题。",
+      "boundary_degeneracy_repair_round": "v7",
+      "original_degeneracy_type": "边界区间题",
+      "counter_constraint_policy": "增加同业务域反向变量，使最优解不能由单一规范阈值直接决定",
+      "v7_business_counter_explanation": "航图公布题把固定修约或字段格式作为约束，优化修约误差、字段完整性、图幅拥挤度和人工校核代价；提高字段完整性会增加图幅和校核负担，因此不能把固定公布精度当作最优解。",
+      "rule_query_focus": "alternative_exclusion",
+      "relation_balanced_version": "aviation_rule_relation_balanced_v13_150",
+      "method_visible_relation_positioning": "互斥替代合规路径查询：重点保留完整候选路径，避免把互斥路径的局部约束混合成错误可行域。",
+      "alternative_path_context": "当前场景存在互斥候选合规路径，方法只能选择完整有效路径，不能混合路径局部约束。",
+      "solver_mechanism_profile": "lightweight_linear_or_boolean_rule_cell",
+      "method_visible_focus_note": "互斥候选规则判断：核心是从多个语义相近但不能混用的规则路径中选择一条完整有效路径。",
+      "incompatible_condition_indicator_129": 1
+    },
+    "decision_variables": {
+      "publication_requirement_applicability_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1,
+        "description": "公开输入中的程序适用性、类别、例外或公布前提变量；不包含参考规则编号。"
+      },
+      "distance_to_runway_threshold_km": {
+        "type": "continuous",
+        "unit": "km",
+        "lower": 0,
+        "upper": 29.975
+      },
+      "distance_to_runway_threshold_km_available_margin": {
+        "type": "continuous",
+        "unit": "km",
+        "lower": 0,
+        "upper": 29.975,
+        "description": "由距离、半径或空域占用计算的可用裕度变量，用于衡量规则边界内的设计余量。"
+      },
+      "publication_error_129": {
+        "type": "continuous",
+        "unit": "km",
+        "lower": 0,
+        "upper": 100.0,
+        "description": "由公开场景模型计算的航空业务派生设计量，用于多目标求解，不包含隐藏规则答案。"
+      },
+      "publication_completeness_margin_129": {
+        "type": "continuous",
+        "unit": "km",
+        "lower": 0,
+        "upper": 100.0,
+        "description": "由公开场景模型计算的航空业务派生设计量，用于多目标求解，不包含隐藏规则答案。"
+      },
+      "rounding_resolution_risk_129": {
+        "type": "continuous",
+        "unit": "risk_or_extent_index",
+        "lower": 0,
+        "upper": 100.0,
+        "description": "由公开场景模型计算的航空业务派生设计量，用于多目标求解，不包含隐藏规则答案。"
+      },
+      "distance_rounding_increment_km": {
+        "type": "continuous",
+        "unit": "km",
+        "lower": 0,
+        "upper": 2.7,
+        "description": "原规则库数值变量。"
+      },
+      "source_procedure_value_129": {
+        "type": "continuous",
+        "unit": "published_unit",
+        "lower": 0,
+        "upper": 100000,
+        "description": "源程序参数值。"
+      },
+      "published_chart_value_129": {
+        "type": "continuous",
+        "unit": "published_unit",
+        "lower": 0,
+        "upper": 100000,
+        "description": "航图公布值。"
+      },
+      "publication_rounding_error_129": {
+        "type": "continuous",
+        "unit": "published_parameter_unit",
+        "lower": 0.0,
+        "upper": 50.0,
+        "description": "公布修约误差。"
+      },
+      "required_publication_field_count_129": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 0,
+        "upper": 20,
+        "description": "航图或数据块需要完整公布的字段数量。"
+      },
+      "chart_congestion_index_129": {
+        "type": "continuous",
+        "unit": "chart_index",
+        "lower": 0.0,
+        "upper": 100.0,
+        "description": "图幅拥挤度或数据块排版压力。"
+      },
+      "manual_verification_minutes_129": {
+        "type": "continuous",
+        "unit": "min",
+        "lower": 0.0,
+        "upper": 120.0,
+        "description": "人工校核工作量。"
+      },
+      "source_publication_value_129": {
+        "type": "continuous",
+        "unit": "published_parameter_unit",
+        "lower": 0.0,
+        "upper": 2000.0,
+        "description": "源程序参数值，用于和公布值比较。"
+      },
+      "published_publication_value_129": {
+        "type": "continuous",
+        "unit": "published_parameter_unit",
+        "lower": 0.0,
+        "upper": 2000.0,
+        "description": "拟公布的航图参数值。"
+      },
+      "coding_conflict_risk_129": {
+        "type": "continuous",
+        "unit": "risk_index",
+        "lower": 0.0,
+        "upper": 100.0,
+        "description": "编码或命名冲突风险。"
+      },
+      "source_publication_consistency_margin_129": {
+        "type": "continuous",
+        "unit": "margin_index",
+        "lower": 0.0,
+        "upper": 100.0,
+        "description": "源程序参数与公布参数的一致性裕度。"
+      },
+      "candidate_rule_A_selected_129": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1,
+        "business_meaning": "候选规则路径 A 是否被选中。"
+      },
+      "candidate_rule_B_selected_129": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1,
+        "business_meaning": "候选规则路径 B 是否被选中。"
+      },
+      "selected_effective_rule_count_129": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 0,
+        "upper": 2,
+        "business_meaning": "被选中的有效候选路径数量。"
+      },
+      "excluded_rule_indicator_129": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1,
+        "business_meaning": "不兼容候选路径是否被排除。"
+      },
+      "excluded_candidate_violation_count_129": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 0,
+        "upper": 2,
+        "business_meaning": "错误候选路径违反数量。"
+      },
+      "wrong_alternative_risk_129": {
+        "type": "continuous",
+        "unit": "risk",
+        "lower": 0,
+        "upper": 2,
+        "business_meaning": "替代规则误选风险。"
+      },
+      "correct_candidate_selection_score_129": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 1,
+        "business_meaning": "正确候选规则选择得分。"
+      },
+      "exclusion_explanation_completeness_129": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 1,
+        "business_meaning": "排除解释完整度。"
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_correct_candidate_rule_selection",
+        "expression": "correct_candidate_selection_score_129",
+        "sense": "maximize",
+        "business_meaning": "选择正确候选规则路径。"
+      },
+      {
+        "name": "minimize_wrong_alternative_risk",
+        "expression": "wrong_alternative_risk_129",
+        "sense": "minimize",
+        "business_meaning": "降低互斥替代路径误选风险。"
+      },
+      {
+        "name": "maximize_exclusion_explanation",
+        "expression": "exclusion_explanation_completeness_129",
+        "sense": "maximize",
+        "business_meaning": "提高排除解释完整度。"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.34,
+        0.33,
+        0.33
+      ],
+      "meaning": "优先保持程序适用性和安全裕度，同时控制空域、航段、速度、角度或公布误差带来的业务代价。"
+    },
+    "public_scenario_model": {
+      "model_id": "AVI_SMIX_129_v5_scenario_model",
+      "path": "scenario_models/aviation_strong_mixed_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "公开的非规范业务闭环模型；用于把规则变量、设计变量和多目标求解连接起来，不含隐藏参考规则编号或证书答案。"
+    },
+    "visible_input_note": "算法只能读取公开任务输入、公开场景模型和规则库；隐藏参考和来源证据只供评估器使用。",
+    "strong_mixed_subtype": "业务均衡混合",
+    "v8_strong_coupling_summary": {
+      "original_numeric_rule_variable": "distance_rounding_increment_km",
+      "business_counter_template_id": "publication_rounding_consistency",
+      "coupling_policy": "原规则数值变量至少进入一个反向业务约束；非航图公布题还进入目标函数。"
+    },
+    "task_focus": "alternative_exclusion",
+    "task_focus_description": "互斥候选规则判断：核心是从多个语义相近但不能混用的规则路径中选择一条完整有效路径。",
+    "objective_interpretation": "目标函数用于可行解排序；本题主要挑战由 task_focus 决定，不应把全部任务理解为同一种非线性连续优化问题。",
+    "solver_mechanism_profile": "lightweight_linear_or_boolean_rule_cell",
+    "v13_lightweight_cell_note": "本题公开场景模型已降级为线性或布尔轻量规则可行域单元，避免把规则关系题误变成障碍物连续几何优化题。"
+  }
+}

@@ -1,0 +1,439 @@
+{
+  "version": "architecture_ncarb50_v2_paired_audit_task_v1",
+  "visibility": "hidden_evaluation_or_offline_audit_only_not_method_input",
+  "algorithm_input": {
+    "omega_id": "ARCH_FKG_65",
+    "title": "NCARB-derived exterior egress door landing clearance",
+    "domain": "architecture_code_compliance",
+    "source_domain": "IFC",
+    "task_type": "egress_door_threshold_design",
+    "design_intent": "Paraphrased NCARB-derived scenario: clinic door swing and access-control coordination. The optimizer uses fixed source-grounded code semantics while tuning visible design parameters and public scenario-model trade-offs.",
+    "scenario_facts": {
+      "occupancy_group": "group f",
+      "accessible_route": false,
+      "exterior_door": true,
+      "is_part_of_accessible_route": false,
+      "door_type": "not_exterior storm or screen door",
+      "door_swing_over_landing": false,
+      "ncarb_scenario_theme": "clinic door swing and access-control coordination",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "expansion_case_family": "fire_and_egress",
+      "ncarb_source_summary": "NCARB-practice-derived, paraphrased and parameterized"
+    },
+    "decision_variables": {
+      "landing_height_differential_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 0,
+        "upper": 10
+      },
+      "door_bottom_clearance_in": {
+        "type": "continuous",
+        "unit": "inch",
+        "lower": 0,
+        "upper": 2
+      },
+      "weather_resilience_score": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 10
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_weather_resilience",
+        "expression": "weather_resilience_score"
+      },
+      {
+        "name": "minimize_landing_height_differential",
+        "expression": "landing_height_differential_in"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.45,
+        0.55
+      ],
+      "meaning": "slightly prioritize egress smoothness"
+    },
+    "public_scenario_model": {
+      "model_id": "ARCH_FKG_65_scenario_model",
+      "path": "scenario_models/architecture_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "Non-normative task physics/objective-closure constraints visible to optimizers; contains no expected rule IDs or labels."
+    },
+    "visible_input_note": "Visible task input only. Algorithms may also read the public scenario model and rule library. Rule labels, rule-derived feasible-region answers, and rule-id bindings remain hidden evaluation references.",
+    "source_task_origin": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "source_summary": "NCARB-practice-derived, paraphrased and parameterized",
+      "ncarb_scenario_theme": "clinic door swing and access-control coordination",
+      "ncarb_adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "visible_source_granularity": "generalized_theme_only_no_exact_source_identifier_or_file_name"
+    }
+  },
+  "evaluation_reference": {
+    "omega_id": "ARCH_FKG_65",
+    "title": "NCARB-derived exterior egress door landing clearance",
+    "rule_structure": {
+      "expected_source_rule_ids": [
+        "ifc_exterior_door_landing_drop_f_h_r2_s",
+        "ifc-2021-door-bottom-clearance-max"
+      ],
+      "expected_defeated_rule_ids": [],
+      "expected_surviving_rule_ids": [
+        "ifc-2021-door-bottom-clearance-max",
+        "ifc_exterior_door_landing_drop_f_h_r2_s"
+      ],
+      "expected_valid_rule_structures": [
+        [
+          "ifc-2021-door-bottom-clearance-max",
+          "ifc_exterior_door_landing_drop_f_h_r2_s"
+        ]
+      ],
+      "expected_rule_behavior": {
+        "should_activate": [
+          "Maximum clearance between bottom of door and floor",
+          "Maximum landing height differential at exterior doors for Groups F, H, R-2, and S where not on accessible route"
+        ],
+        "should_exclude": [],
+        "should_resolve": [
+          "multi_rule_conjunction"
+        ]
+      },
+      "challenge_types": [
+        "multi_rule_conjunction"
+      ],
+      "valid_constraint_cell_ids": [
+        "ARCH_FKG_65_cell_1"
+      ],
+      "expected_provenance": {
+        "kg_chunk_ids": [
+          "0f1d8e52-1e79-51bb-8735-d25bb7ab60e8",
+          "2e808a7c-a17f-5ab5-84af-e426e1627802"
+        ],
+        "kg_node_ids": [
+          "096179e5-72dc-569f-a407-67280c904e07",
+          "1fd2bb1b-e57f-5bfb-95d3-01918361bc45",
+          "3a826ae1-1e55-5c55-9aa0-dfe7e8397cce",
+          "b4af1dad-baa9-57d9-a074-193093966b0c",
+          "e7d3997c-ae06-586f-a333-d9851ca4a46e",
+          "f797abe2-8c6f-50b0-aa73-aabea72ef3a9"
+        ],
+        "kg_edge_ids": [
+          "kg_edge_23339",
+          "kg_edge_23373",
+          "kg_edge_24048",
+          "kg_edge_24114",
+          "kg_edge_37032"
+        ],
+        "source_documents": [
+          {
+            "document": "IFC 2021",
+            "section": "unknown",
+            "page": "unknown",
+            "chunk_id": "0f1d8e52-1e79-51bb-8735-d25bb7ab60e8"
+          },
+          {
+            "document": "IFC-2021",
+            "section": "unknown",
+            "page": "unknown",
+            "chunk_id": "2e808a7c-a17f-5ab5-84af-e426e1627802"
+          },
+          {
+            "document": "ARE-Practice-Exam-Project-Development-and-Documentation.pdf",
+            "section": "Project Development and Documentation",
+            "page": "practice-exam-question",
+            "question_number": "Question 16",
+            "derivation_policy": "Paraphrased and parameterized from an NCARB practice-exam scenario; original question text is not copied."
+          }
+        ]
+      }
+    },
+    "feasible_region": {
+      "executable_constraints": [
+        {
+          "constraint_id": "C1",
+          "expression": "landing_height_differential_in <= 7",
+          "role": "exterior_door_landing_drop_limit",
+          "source_type": "rule_library",
+          "source_id": "ifc_exterior_door_landing_drop_f_h_r2_s",
+          "executable": true,
+          "checker_expression": "landing_height_differential_in <= 7",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "landing_height_differential_in"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C2",
+          "expression": "door_bottom_clearance_in <= 1",
+          "role": "door_bottom_clearance_limit",
+          "source_type": "rule_library",
+          "source_id": "ifc-2021-door-bottom-clearance-max",
+          "executable": true,
+          "checker_expression": "door_bottom_clearance_in <= 1",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "door_bottom_clearance_in"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          }
+        },
+        {
+          "constraint_id": "C90",
+          "expression": "weather_resilience_score <= landing_height_differential_in + (1 - door_bottom_clearance_in)",
+          "role": "weather_resilience_from_threshold_geometry",
+          "source_type": "task_or_scenario_model",
+          "source_id": "scenario_objective_model",
+          "executable": true,
+          "checker_expression": "weather_resilience_score <= landing_height_differential_in + (1 - door_bottom_clearance_in)",
+          "expression_language": "python_safe_arithmetic_predicate",
+          "symbols": {
+            "decision_variables": [
+              "weather_resilience_score",
+              "landing_height_differential_in",
+              "door_bottom_clearance_in"
+            ],
+            "scenario_fields": [],
+            "unresolved_symbols": []
+          },
+          "metadata": {
+            "objective_closure": true,
+            "closure_source": "task_or_scenario_model",
+            "closure_visibility": "public_algorithm_input",
+            "closure_note": "Weather resilience is tied to threshold differential and door-bottom clearance choices."
+          }
+        }
+      ],
+      "structure_only_constraints": [],
+      "valid_constraint_cells": [
+        {
+          "cell_id": "ARCH_FKG_65_cell_1",
+          "cell_type": "single_valid_fullkg_rule_structure",
+          "rule_ids": [
+            "ifc-2021-door-bottom-clearance-max",
+            "ifc_exterior_door_landing_drop_f_h_r2_s"
+          ],
+          "constraints": [
+            {
+              "constraint_id": "C1",
+              "expression": "landing_height_differential_in <= 7",
+              "role": "exterior_door_landing_drop_limit",
+              "source_type": "rule_library",
+              "source_id": "ifc_exterior_door_landing_drop_f_h_r2_s",
+              "executable": true,
+              "checker_expression": "landing_height_differential_in <= 7",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "landing_height_differential_in"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C2",
+              "expression": "door_bottom_clearance_in <= 1",
+              "role": "door_bottom_clearance_limit",
+              "source_type": "rule_library",
+              "source_id": "ifc-2021-door-bottom-clearance-max",
+              "executable": true,
+              "checker_expression": "door_bottom_clearance_in <= 1",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "door_bottom_clearance_in"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              }
+            },
+            {
+              "constraint_id": "C90",
+              "expression": "weather_resilience_score <= landing_height_differential_in + (1 - door_bottom_clearance_in)",
+              "role": "weather_resilience_from_threshold_geometry",
+              "source_type": "task_or_scenario_model",
+              "source_id": "scenario_objective_model",
+              "executable": true,
+              "checker_expression": "weather_resilience_score <= landing_height_differential_in + (1 - door_bottom_clearance_in)",
+              "expression_language": "python_safe_arithmetic_predicate",
+              "symbols": {
+                "decision_variables": [
+                  "weather_resilience_score",
+                  "landing_height_differential_in",
+                  "door_bottom_clearance_in"
+                ],
+                "scenario_fields": [],
+                "unresolved_symbols": []
+              },
+              "metadata": {
+                "objective_closure": true,
+                "closure_source": "task_or_scenario_model",
+                "closure_visibility": "public_algorithm_input",
+                "closure_note": "Weather resilience is tied to threshold differential and door-bottom clearance choices."
+              }
+            }
+          ],
+          "description": "Executable feasible cell induced by the expected full-KG rule structure for this grounded scenario."
+        }
+      ],
+      "reference_semantics": {
+        "positive_membership_condition": "all executable_constraints evaluate true and at least one valid cell holds when cells are present",
+        "structure_only_constraints_usage": "used to check rule resolution, provenance, exceptions, or semantic requirements before numeric membership checking"
+      }
+    },
+    "certificate_targets": {
+      "source_rule_ids": [
+        "ifc_exterior_door_landing_drop_f_h_r2_s",
+        "ifc-2021-door-bottom-clearance-max"
+      ],
+      "provenance": [
+        {
+          "document": "IFC 2021",
+          "section": "unknown",
+          "page": "unknown",
+          "chunk_id": "0f1d8e52-1e79-51bb-8735-d25bb7ab60e8"
+        },
+        {
+          "document": "IFC-2021",
+          "section": "unknown",
+          "page": "unknown",
+          "chunk_id": "2e808a7c-a17f-5ab5-84af-e426e1627802"
+        }
+      ]
+    },
+    "diagnostic_candidate_rule_ids_reference_only": [
+      "ifc_exterior_door_landing_drop_f_h_r2_s",
+      "ifc-2021-door-bottom-clearance-max"
+    ],
+    "rule_library_id_bindings": [
+      {
+        "rule_id": "ifc-2021-door-bottom-clearance-max",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ifc-2021-door-bottom-clearance-max",
+        "rule_name": "Maximum clearance between bottom of door and floor",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "2e808a7c-a17f-5ab5-84af-e426e1627802"
+        ],
+        "source_node_ids": [
+          "096179e5-72dc-569f-a407-67280c904e07"
+        ],
+        "provenance": [
+          {
+            "document": "IFC-2021",
+            "section": "unknown",
+            "page": "unknown",
+            "chunk_id": "2e808a7c-a17f-5ab5-84af-e426e1627802"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "door bottom clearance",
+            "op": "<=",
+            "value": 1,
+            "unit": "inch"
+          }
+        ]
+      },
+      {
+        "rule_id": "ifc_exterior_door_landing_drop_f_h_r2_s",
+        "exists_in_rule_library": true,
+        "rule_library_rule_id": "ifc_exterior_door_landing_drop_f_h_r2_s",
+        "rule_name": "Maximum landing height differential at exterior doors for Groups F, H, R-2, and S where not on accessible route",
+        "rule_type": "requirement",
+        "source_chunk_ids": [
+          "0f1d8e52-1e79-51bb-8735-d25bb7ab60e8"
+        ],
+        "source_node_ids": [
+          "b4af1dad-baa9-57d9-a074-193093966b0c",
+          "1fd2bb1b-e57f-5bfb-95d3-01918361bc45",
+          "f797abe2-8c6f-50b0-aa73-aabea72ef3a9",
+          "3a826ae1-1e55-5c55-9aa0-dfe7e8397cce",
+          "e7d3997c-ae06-586f-a333-d9851ca4a46e"
+        ],
+        "provenance": [
+          {
+            "document": "IFC 2021",
+            "section": "unknown",
+            "page": "unknown",
+            "chunk_id": "0f1d8e52-1e79-51bb-8735-d25bb7ab60e8"
+          }
+        ],
+        "rule_library_constraints": [
+          {
+            "variable": "landing_height_differential_egress_side",
+            "op": "<=",
+            "value": 7,
+            "unit": "inches"
+          }
+        ]
+      }
+    ],
+    "reference_constraint_rule_bindings": [
+      {
+        "reference_container": "feasible_region.executable_constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "exterior_door_landing_drop_limit",
+        "reference_expression": "landing_height_differential_in <= 7",
+        "source_rule_id": "ifc_exterior_door_landing_drop_f_h_r2_s",
+        "rule_library_rule_id": "ifc_exterior_door_landing_drop_f_h_r2_s",
+        "rule_library_rule_name": "Maximum landing height differential at exterior doors for Groups F, H, R-2, and S where not on accessible route"
+      },
+      {
+        "reference_container": "feasible_region.executable_constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "door_bottom_clearance_limit",
+        "reference_expression": "door_bottom_clearance_in <= 1",
+        "source_rule_id": "ifc-2021-door-bottom-clearance-max",
+        "rule_library_rule_id": "ifc-2021-door-bottom-clearance-max",
+        "rule_library_rule_name": "Maximum clearance between bottom of door and floor"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[0]",
+        "reference_constraint_id": "C1",
+        "reference_role": "exterior_door_landing_drop_limit",
+        "reference_expression": "landing_height_differential_in <= 7",
+        "source_rule_id": "ifc_exterior_door_landing_drop_f_h_r2_s",
+        "rule_library_rule_id": "ifc_exterior_door_landing_drop_f_h_r2_s",
+        "rule_library_rule_name": "Maximum landing height differential at exterior doors for Groups F, H, R-2, and S where not on accessible route"
+      },
+      {
+        "reference_container": "feasible_region.valid_constraint_cells[0].constraints[1]",
+        "reference_constraint_id": "C2",
+        "reference_role": "door_bottom_clearance_limit",
+        "reference_expression": "door_bottom_clearance_in <= 1",
+        "source_rule_id": "ifc-2021-door-bottom-clearance-max",
+        "rule_library_rule_id": "ifc-2021-door-bottom-clearance-max",
+        "rule_library_rule_name": "Maximum clearance between bottom of door and floor"
+      }
+    ],
+    "task_derivation_source": {
+      "source_family": "NCARB_ARE_practice_exam",
+      "document": "ARE-Practice-Exam-Project-Development-and-Documentation.pdf",
+      "division": "Project Development and Documentation",
+      "question_number": "Question 16",
+      "theme": "clinic door swing and access-control coordination",
+      "adaptation_policy": "paraphrased_parameterized_not_verbatim",
+      "source_policy": "Hidden provenance only; algorithm-visible inputs expose only generalized NCARB-derived themes."
+    },
+    "benchmark_extension_metadata": {
+      "extension_round": "architecture_ncarb_50_extension",
+      "source_base_task_id": "ARCH_FKG_12",
+      "ncarb_category": "fire_and_egress",
+      "source_policy": "paraphrased_parameterized_not_verbatim",
+      "dataset_characterization": "NCARB practice-topic-derived, paraphrased, and parameterized architecture-code semantic extension task.",
+      "independence_claim": "parameterized_variant_not_fully_independent_real_project_case",
+      "source_visibility_policy": "Exact practice identifiers, original question text, answer choices, and source file names are hidden from algorithm-visible inputs.",
+      "method_visibility": "hidden_evaluation_reference_not_method_input"
+    }
+  }
+}

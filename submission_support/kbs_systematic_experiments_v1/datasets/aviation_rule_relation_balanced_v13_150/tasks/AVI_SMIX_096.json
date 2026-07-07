@@ -1,0 +1,323 @@
+{
+  "version": "aviation_rule_relation_balanced_v13_150",
+  "algorithm_input": {
+    "omega_id": "AVI_SMIX_096",
+    "title": "航图资料公布：最终进近航段数据块字段完整性与频道号公布一致性审查 096",
+    "domain": "aviation_procedure_design",
+    "task_type": "chart_publication_final_strong_business_review",
+    "strong_business_third_type": true,
+    "business_domain": "publication",
+    "design_intent": "审查最终进近航段数据块、航图拟公布资料和导航数据库记录中的频道号是否与设备分配值一致，并同时检查必填字段完整性、源程序值与公布值的修约误差、图幅拥挤度和人工校核工作量。频道号不作为自由优化变量，编码冲突风险只由记录差异、邻近占用频道号间隔和字段缺失共同形成。",
+    "scenario_facts": {
+      "benchmark_round": "aviation_strong_mixed_v5_150",
+      "business_domain": "publication",
+      "program_design_context": "航图、数据块、最低高度、下降梯度或程序资料公布审查",
+      "review_question": "资料是否进入正式公布流程，以及哪些字段、修约和唯一性要求必须同时满足。",
+      "case_variant_index": 96,
+      "operation_context": "程序初设",
+      "traffic_and_terrain_variant": "丘陵终端区",
+      "source_policy": "由 v4 来源规则语义重构，未新增规则编号或来源页码",
+      "chart_publication_revision_focus": "最终进近数据块字段和频道号公布要求",
+      "publication_data_item_requires_charting": true,
+      "field_or_rounding_rule_applies": true,
+      "final_revision_note": "该题聚焦航图资料公布、字段完整性和修约一致性，不作为程序几何设计题。",
+      "boundary_degeneracy_repair_round": "v7",
+      "original_degeneracy_type": "边界区间题",
+      "counter_constraint_policy": "增加同业务域反向变量，使最优解不能由单一规范阈值直接决定",
+      "v7_business_counter_explanation": "航图公布题把固定修约或字段格式作为约束，优化修约误差、字段完整性、图幅拥挤度和人工校核代价；提高字段完整性会增加图幅和校核负担，因此不能把固定公布精度当作最优解。",
+      "channel_number_unitless": 40096,
+      "assigned_equipment_channel_number_unitless_096": 40096,
+      "fas_data_block_channel_number_unitless_096": 40097,
+      "chart_published_channel_number_unitless_096": 40097,
+      "navigation_database_channel_number_unitless_096": 40097,
+      "nearest_lower_occupied_channel_number_unitless_096": 40087,
+      "nearest_upper_occupied_channel_number_unitless_096": 40106,
+      "required_channel_spacing_unitless_096": 8,
+      "required_publication_field_count_reference_096": 12,
+      "completed_publication_field_count_096": 10,
+      "publication_channel_reference_status_096": "频道号由设备、最终进近航段数据块、航图和导航数据库记录共同校核。",
+      "v11_publication_channel_realism_patch": "航图公布类频道号题改为多来源记录一致性审查，禁止使用四万量级频道号直接推导拥挤度或冲突风险。",
+      "original_channel_number_variable_spec_096": {
+        "status": "moved_to_scenario_fact",
+        "reason": "频道号是给定引用参数，不是自由优化设计量。",
+        "previous_bounds": {
+          "lower": 26000,
+          "upper": 72005,
+          "unit": "unitless"
+        }
+      },
+      "rule_query_focus": "override_precedence",
+      "relation_balanced_version": "aviation_rule_relation_balanced_v13_150",
+      "method_visible_relation_positioning": "例外、覆盖或优先级查询：重点处理一般规则、特殊规则、例外条件或来源层级之间的胜出关系。",
+      "conflict_resolution_context": "当前场景包含一般规则和特殊条件，需要保留胜出规则链并排除被覆盖候选。",
+      "solver_mechanism_profile": "lightweight_linear_or_boolean_rule_cell",
+      "method_visible_focus_note": "覆盖和优先级判断：核心是判断一般规则、特殊规则、例外条件或来源层级之间谁胜出。",
+      "special_condition_active_096": 1,
+      "general_rule_candidate_indicator_096": 1
+    },
+    "decision_variables": {
+      "publication_requirement_applicability_indicator": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1,
+        "description": "公开输入中的程序适用性、类别、例外或公布前提变量；不包含参考规则编号。"
+      },
+      "position_tolerance_km": {
+        "type": "continuous",
+        "unit": "km",
+        "lower": 0,
+        "upper": 3.5
+      },
+      "publication_error_096": {
+        "type": "continuous",
+        "unit": "km",
+        "lower": 0,
+        "upper": 100.0,
+        "description": "由公开场景模型计算的航空业务派生设计量，用于多目标求解，不包含隐藏规则答案。"
+      },
+      "publication_completeness_margin_096": {
+        "type": "continuous",
+        "unit": "km",
+        "lower": 0,
+        "upper": 100.0,
+        "description": "由公开场景模型计算的航空业务派生设计量，用于多目标求解，不包含隐藏规则答案。"
+      },
+      "rounding_resolution_risk_096": {
+        "type": "continuous",
+        "unit": "risk_or_extent_index",
+        "lower": 0,
+        "upper": 100.0,
+        "description": "由公开场景模型计算的航空业务派生设计量，用于多目标求解，不包含隐藏规则答案。"
+      },
+      "channel_number_unitless_available_margin": {
+        "type": "continuous",
+        "unit": "unitless",
+        "lower": 0,
+        "upper": 72005.0,
+        "description": "由航空程序关键设计参数计算的可用裕度变量，用于衡量规则边界内的设计余量。"
+      },
+      "source_procedure_value_096": {
+        "type": "continuous",
+        "unit": "published_unit",
+        "lower": 0,
+        "upper": 100000,
+        "description": "源程序参数值。"
+      },
+      "published_chart_value_096": {
+        "type": "continuous",
+        "unit": "published_unit",
+        "lower": 0,
+        "upper": 100000,
+        "description": "航图公布值。"
+      },
+      "publication_rounding_error_096": {
+        "type": "continuous",
+        "unit": "published_parameter_unit",
+        "lower": 0.0,
+        "upper": 50.0,
+        "description": "公布修约误差。"
+      },
+      "required_publication_field_count_096": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 0,
+        "upper": 20,
+        "description": "航图或数据块需要完整公布的字段数量。"
+      },
+      "chart_congestion_index_096": {
+        "type": "continuous",
+        "unit": "chart_index",
+        "lower": 0.0,
+        "upper": 100.0,
+        "description": "图幅拥挤度或数据块排版压力。"
+      },
+      "manual_verification_minutes_096": {
+        "type": "continuous",
+        "unit": "min",
+        "lower": 0.0,
+        "upper": 120.0,
+        "description": "人工校核工作量。"
+      },
+      "source_publication_value_096": {
+        "type": "continuous",
+        "unit": "published_parameter_unit",
+        "lower": 0.0,
+        "upper": 2000.0,
+        "description": "源程序参数值，用于和公布值比较。"
+      },
+      "published_publication_value_096": {
+        "type": "continuous",
+        "unit": "published_parameter_unit",
+        "lower": 0.0,
+        "upper": 2000.0,
+        "description": "拟公布的航图参数值。"
+      },
+      "coding_conflict_risk_096": {
+        "type": "continuous",
+        "unit": "risk_index",
+        "lower": 0.0,
+        "upper": 100.0,
+        "description": "编码或命名冲突风险。"
+      },
+      "source_publication_consistency_margin_096": {
+        "type": "continuous",
+        "unit": "margin_index",
+        "lower": 0.0,
+        "upper": 100.0,
+        "description": "源程序参数与公布参数的一致性裕度。"
+      },
+      "equipment_data_block_channel_delta_096": {
+        "type": "continuous",
+        "unit": "channel_number_delta",
+        "lower": 0,
+        "upper": 50,
+        "description": "设备分配频道号与最终进近航段数据块记录频道号之间的差异。"
+      },
+      "equipment_chart_channel_delta_096": {
+        "type": "continuous",
+        "unit": "channel_number_delta",
+        "lower": 0,
+        "upper": 50,
+        "description": "设备分配频道号与航图拟公布频道号之间的差异。"
+      },
+      "database_chart_channel_delta_096": {
+        "type": "continuous",
+        "unit": "channel_number_delta",
+        "lower": 0,
+        "upper": 50,
+        "description": "导航数据库记录频道号与航图拟公布频道号之间的差异。"
+      },
+      "publication_channel_spacing_margin_unitless_096": {
+        "type": "continuous",
+        "unit": "channel_number_delta",
+        "lower": 0,
+        "upper": 80,
+        "description": "航图拟公布频道号与邻近已占用频道号之间的最小间隔裕度。"
+      },
+      "publication_field_missing_count_096": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 0,
+        "upper": 12,
+        "description": "最终进近航段数据块或航图公布资料的必填字段缺失数。"
+      },
+      "publication_channel_consistency_margin_096": {
+        "type": "continuous",
+        "unit": "margin_index",
+        "lower": 0,
+        "upper": 100,
+        "description": "频道号记录一致性与字段完整性共同形成的公布一致性裕度。"
+      },
+      "fas_data_field_completeness_count_096": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 0,
+        "upper": 12,
+        "description": "最终进近航段数据块或航图公布资料中已完成校核的字段数量，用于字段完整性和人工校核工作量闭环。"
+      },
+      "special_rule_wins_096": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1,
+        "business_meaning": "特殊规则或例外规则是否胜出。"
+      },
+      "general_rule_active_096": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1,
+        "business_meaning": "一般规则是否仍进入有效规则链。"
+      },
+      "fallback_rule_active_096": {
+        "type": "binary",
+        "unit": "indicator",
+        "lower": 0,
+        "upper": 1,
+        "business_meaning": "兜底规则是否进入有效规则链。"
+      },
+      "effective_rule_count_096": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 0,
+        "upper": 3,
+        "business_meaning": "胜出规则链有效规则数量。"
+      },
+      "blocked_rule_count_096": {
+        "type": "integer",
+        "unit": "count",
+        "lower": 0,
+        "upper": 3,
+        "business_meaning": "被覆盖或被屏蔽规则数量。"
+      },
+      "winning_rule_chain_completeness_096": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 1,
+        "business_meaning": "胜出规则链完整度。"
+      },
+      "overridden_rule_entry_risk_096": {
+        "type": "continuous",
+        "unit": "risk",
+        "lower": 0,
+        "upper": 1,
+        "business_meaning": "被覆盖规则误进入风险。"
+      },
+      "precedence_explanation_consistency_096": {
+        "type": "continuous",
+        "unit": "score",
+        "lower": 0,
+        "upper": 1,
+        "business_meaning": "优先级解释一致性。"
+      }
+    },
+    "objectives": [
+      {
+        "name": "maximize_winning_rule_chain",
+        "expression": "winning_rule_chain_completeness_096",
+        "sense": "maximize",
+        "business_meaning": "提高胜出规则链完整度。"
+      },
+      {
+        "name": "minimize_overridden_rule_entry_risk",
+        "expression": "overridden_rule_entry_risk_096",
+        "sense": "minimize",
+        "business_meaning": "降低被覆盖规则误进入风险。"
+      },
+      {
+        "name": "maximize_precedence_explanation_consistency",
+        "expression": "precedence_explanation_consistency_096",
+        "sense": "maximize",
+        "business_meaning": "提高优先级或例外触发解释一致性。"
+      }
+    ],
+    "query_preferences": {
+      "lambda": [
+        0.34,
+        0.33,
+        0.33
+      ],
+      "meaning": "优先保持程序适用性和安全裕度，同时控制空域、航段、速度、角度或公布误差带来的业务代价。"
+    },
+    "public_scenario_model": {
+      "model_id": "AVI_SMIX_096_v5_scenario_model",
+      "path": "scenario_models/aviation_strong_mixed_public_scenario_models.json",
+      "visibility": "public_algorithm_input",
+      "purpose": "公开的非规范业务闭环模型；用于把规则变量、设计变量和多目标求解连接起来，不含隐藏参考规则编号或证书答案。"
+    },
+    "visible_input_note": "算法只能读取公开任务输入、公开场景模型和规则库；隐藏参考和来源证据只供评估器使用。",
+    "strong_mixed_subtype": "业务均衡混合",
+    "v8_strong_coupling_summary": {
+      "original_numeric_rule_variable": "channel_number_unitless",
+      "business_counter_template_id": "publication_precision_density",
+      "coupling_policy": "原规则数值变量至少进入一个反向业务约束；非航图公布题还进入目标函数。"
+    },
+    "task_focus": "override_precedence",
+    "task_focus_description": "覆盖和优先级判断：核心是判断一般规则、特殊规则、例外条件或来源层级之间谁胜出。",
+    "objective_interpretation": "目标函数用于可行解排序；本题主要挑战由 task_focus 决定，不应把全部任务理解为同一种非线性连续优化问题。",
+    "solver_mechanism_profile": "lightweight_linear_or_boolean_rule_cell",
+    "v13_lightweight_cell_note": "本题公开场景模型已降级为线性或布尔轻量规则可行域单元，避免把规则关系题误变成障碍物连续几何优化题。"
+  }
+}

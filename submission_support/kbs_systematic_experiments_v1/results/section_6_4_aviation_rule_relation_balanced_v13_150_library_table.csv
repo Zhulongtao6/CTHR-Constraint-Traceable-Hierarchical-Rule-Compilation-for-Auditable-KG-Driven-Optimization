@@ -1,0 +1,4 @@
+﻿Domain,Generator,Rules,Provenance valid,Constraint grounding,Relation grounding
+Aviation rule relation balanced v13 150,Qwen-plus,111,100.0%,100.0%,100.0%
+Aviation rule relation balanced v13 150,DeepSeek-Pro,142,100.0%,99.1%,99.6%
+Aviation rule relation balanced v13 150,Xiaomi MIMO,186,100.0%,100.0%,100.0%
